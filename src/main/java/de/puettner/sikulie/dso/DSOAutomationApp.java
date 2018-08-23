@@ -17,35 +17,30 @@ public class DSOAutomationApp {
 
         DSOServices dSOAutomation = new DSOServices();
 
-//        sikuli.existsLetsPlayButton();
         dSOAutomation.startDsoApp();
-//        dSOAutomation.closeWelcomeDialog();
-//        setROI(10, 115, 1290 - 10, 1047 - 115) // setROI(x, y, w, h)
-//        focusApp()
+        dSOAutomation.closeWelcomeDialog();
         //dSOAutomation.findAllCollectables()
-
         // *** Geologen***
-        dSOAutomation.prepareStarMenuForGeologicsNExplorers();
-        dSOAutomation.launchAllHappyGeologics("ST", 6);
-        //dSOAutomation.sleep(70);
-        //dSOAutomation.launchAllHappyGeologics("KU", 6);
-        //dSOAutomation.solveDailyQuest();
-        //dSOAutomation.solveGuildQuest();
-        //dSOAutomation.sleep();
-        //dSOAutomation.launchAllHappyGeologics("GR", 6);
-
-        //dSOAutomation.launchAllNormalGeologics("MA", 3);
-        //dSOAutomation.launchAllConscientiousGeologics("MA", 2);
-        //dSOAutomation.launchAllHappyGeologics("EI", 6);
-
-        //dSOAutomation.openStarMenuForExplorer();
-        // *** TODO Entdecker***
-        // Sternmenu für Entdecker öffnen
-        //dSOAutomation.launchAllBraveExplorer();        // Mutige
-        //dSOAutomation.launchAllSuccessfulExplorer();    // Erfolgreiche
-        //dSOAutomation.launchAllWildExplorer();          // Wilde
-        //dSOAutomation.launchAllFearlessExplorer();      // Furchlose
-        //dSOAutomation.launchAllNormalExplorer();
+//        dSOAutomation.prepareStarMenuForGeologicsNExplorers();
+//        dSOAutomation.launchAllHappyGeologics("ST", 6);
+//
+//        dSOAutomation.launchAllHappyGeologics("KU", 6);
+//        dSOAutomation.solveDailyQuest();
+//        dSOAutomation.solveGuildQuest();
+//
+//        dSOAutomation.launchAllNormalGeologics("MA", 3);
+//        dSOAutomation.launchAllHappyGeologics("GR", 6);
+//        dSOAutomation.launchAllConscientiousGeologics("MA", 2);
+//        dSOAutomation.launchAllHappyGeologics("EI", 4);
+//
+//        //dSOAutomation.openStarMenuForExplorer();
+//        // *** TODO Entdecker***
+//        // Sternmenu für Entdecker öffnen
+//        dSOAutomation.launchAllBraveExplorer();        // Mutige
+//        dSOAutomation.launchAllSuccessfulExplorer();    // Erfolgreiche
+//        dSOAutomation.launchAllWildExplorer();          // Wilde
+//        dSOAutomation.launchAllFearlessExplorer();      // Furchlose
+//        dSOAutomation.launchAllNormalExplorer();
         // *** Todo Geologen***
         // ....
 
