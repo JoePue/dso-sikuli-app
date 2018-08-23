@@ -1,10 +1,7 @@
 package de.puettner.sikulie.dso;
 
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
-
-import static org.junit.Assert.*;
 
 public class DSOServicesTest {
 
@@ -16,6 +13,20 @@ public class DSOServicesTest {
     }
 
     @Test
+    public void launchAllNormalExplorer() {
+        dsoServices.launchAllNormalExplorer();
+    }
+
+    @Test
+    public void launchAllBraveExplorer() {
+        dsoServices.launchAllBraveExplorer();
+    }
+
+    @Test
+    public void launchAllHappyGeologics() {
+        dsoServices.launchAllHappyGeologics("ST", 7);
+    }
+    @Test
     public void closeWelcomeDialog() {
         dsoServices.closeWelcomeDialog();
     }
@@ -24,5 +35,4 @@ public class DSOServicesTest {
     public void fetchBookbinderItem() {
         dsoServices.fetchBookbinderItem();
     }
-
 }

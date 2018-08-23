@@ -31,17 +31,17 @@ public class DSOServices {
     public void closeWelcomeDialog() {
         log.info("closeWelcomeDialog");
         int timeout = 300;
+        int okButtonTimeout = 3;
         while (timeout > 0) {
             sikuliComd.sleep(1);
             timeout -= 1;
             if (sikuliComd.existsAvatar()) {
-                timeout = 0;
-                if (sikuliComd.clickSmallOkButton()) {
+                okButtonTimeout -= 1;
+                if (okButtonTimeout < 0 || sikuliComd.clickSmallOkButton()) {
                     sikuliComd.sleep(1);
+                    timeout = 0;
                     // Login Bonus
-                    if (sikuliComd.clickLoginBonusButton()) {
-
-                    }
+                    sikuliComd.clickLoginBonusButton();
                 }
             }
         }
@@ -138,7 +138,6 @@ public class DSOServices {
         return true;
     }
 
-    // gewissenhaft
     public boolean launchAllHappyGeologics(String material, int launchLimit) {
         log.info("launchAllHappyGeologics");
         sikuliComd.parkMouse();
@@ -163,7 +162,7 @@ public class DSOServices {
 
     public void prepareStarMenuForGeologicsNExplorers() {
         log.info("prepareStarMenuForGeologicsNExplorers");
-        sikuliComd.openStarMenuOpenButton("entdeck|kundsch|geolo");
+        sikuliComd.openStarMenu("entdeck|kundsch|geolo");
         sikuliComd.typeESC();
     }
 
@@ -198,5 +197,11 @@ public class DSOServices {
     void switchToBrowser() {
         log.info("switchToBrowser");
         sikuliComd.switchToBrowser();
+    }
+
+    public void exitDso() {
+        log.info("exitDso()");
+        sikuliComd.typeESC();
+        sikuliComd.clickExitButton();
     }
 }

@@ -15,35 +15,35 @@ public class DSOAutomationApp {
     public static void main(String[] args) {
         log.info("App starting");
 
-        DSOServices dSOAutomation = new DSOServices();
+        DSOServices dsoService = new DSOServices();
 
-        dSOAutomation.startDsoApp();
-        dSOAutomation.closeWelcomeDialog();
-        //dSOAutomation.findAllCollectables()
-        // *** Geologen***
-//        dSOAutomation.prepareStarMenuForGeologicsNExplorers();
-//        dSOAutomation.launchAllHappyGeologics("ST", 6);
+//        dsoService.startDsoApp();
+//        dsoService.closeWelcomeDialog();
+//        //dsoService.findAllCollectables()
+//        // *** Geologen***
+//        dsoService.prepareStarMenuForGeologicsNExplorers();
+//        dsoService.launchAllHappyGeologics("ST", 7);
 //
-//        dSOAutomation.launchAllHappyGeologics("KU", 6);
-//        dSOAutomation.solveDailyQuest();
-//        dSOAutomation.solveGuildQuest();
+//        dsoService.launchAllHappyGeologics("KU", 6);
+//        dsoService.solveDailyQuest();
+//        dsoService.solveGuildQuest();
 //
-//        dSOAutomation.launchAllNormalGeologics("MA", 3);
-//        dSOAutomation.launchAllHappyGeologics("GR", 6);
-//        dSOAutomation.launchAllConscientiousGeologics("MA", 2);
-//        dSOAutomation.launchAllHappyGeologics("EI", 4);
-//
-//        //dSOAutomation.openStarMenuForExplorer();
-//        // *** TODO Entdecker***
-//        // Sternmenu für Entdecker öffnen
-//        dSOAutomation.launchAllBraveExplorer();        // Mutige
-//        dSOAutomation.launchAllSuccessfulExplorer();    // Erfolgreiche
-//        dSOAutomation.launchAllWildExplorer();          // Wilde
-//        dSOAutomation.launchAllFearlessExplorer();      // Furchlose
-//        dSOAutomation.launchAllNormalExplorer();
+//        dsoService.launchAllNormalGeologics("MA", 3);
+//        dsoService.launchAllHappyGeologics("GR", 6);
+//        dsoService.launchAllConscientiousGeologics("MA", 2);
+//        dsoService.launchAllHappyGeologics("EI", 4);
+
+        //dsoService.openStarMenuForExplorer();
+        // *** TODO Entdecker***
+        // Sternmenu für Entdecker öffnen
+        dsoService.launchAllBraveExplorer();        // Mutige
+        dsoService.launchAllSuccessfulExplorer();    // Erfolgreiche
+        dsoService.launchAllWildExplorer();          // Wilde
+        dsoService.launchAllFearlessExplorer();      // Furchlose
+        dsoService.launchAllNormalExplorer();
         // *** Todo Geologen***
         // ....
-
+        dsoService.exitDso();
         log.info("App ends normally.");
     }
 }
