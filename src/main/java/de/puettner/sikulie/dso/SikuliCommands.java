@@ -42,9 +42,8 @@ public class SikuliCommands {
         return sikuliCommands;
     }
 
-    private static Region calculateBuildListRegion() {
+    private static Region calculateStarMenuRegion() {
         Region region = new Region(0, 0, 0, 0);
-        //        DSO_APP_REGION.x, DSO_APP_REGION.y, DSO_APP_REGION.w, DSO_APP_REGION.h
         region.w = 650;
         region.h = 600;
         region.x = (int) (0.3 * DSO_APP_REGION.w);
@@ -52,9 +51,8 @@ public class SikuliCommands {
         return region;
     }
 
-    private static Region calculateStarMenuRegion() {
+    private static Region calculateBuildListRegion() {
         Region region = new Region(0, 0, 0, 0);
-        //        DSO_APP_REGION.x, DSO_APP_REGION.y, DSO_APP_REGION.w, DSO_APP_REGION.h
         region.w = 50;
         region.h = 100;
         region.x = (int) (DSO_APP_REGION.w - region.w);
@@ -342,9 +340,9 @@ public class SikuliCommands {
         int launchCount = 0;
         do {
             openStarMenu();
-            Match match = this.find(image, appRegion);
+            Match match = this.find(image, starMenuRegion);
             if (match != null) {
-                launchExplorer(match, appRegion);
+                launchExplorer(match, starMenuRegion);
                 parkMouse();
                 launchCount++;
                 sleep(1);

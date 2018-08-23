@@ -109,7 +109,7 @@ public class DSOServices {
 
     public boolean launchAllWildExplorer() {
         log.info("launchAllWildExplorer");
-        sikuliComd.launchAllExplorerByImage(sikuliComd.pattern("WildExplorer-icon.png").similar(0.80f));
+        sikuliComd.launchAllExplorerByImage(sikuliComd.pattern("WildExplorer-icon.png").similar(0.85f));
         return true;
     }
 

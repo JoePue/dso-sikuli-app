@@ -17,21 +17,21 @@ public class DSOAutomationApp {
 
         DSOServices dsoService = new DSOServices();
 
-//        dsoService.startDsoApp();
-//        dsoService.closeWelcomeDialog();
-//        //dsoService.findAllCollectables()
-//        // *** Geologen***
-//        dsoService.prepareStarMenuForGeologicsNExplorers();
-//        dsoService.launchAllHappyGeologics("ST", 7);
-//
-//        dsoService.launchAllHappyGeologics("KU", 6);
-//        dsoService.solveDailyQuest();
-//        dsoService.solveGuildQuest();
-//
-//        dsoService.launchAllNormalGeologics("MA", 3);
-//        dsoService.launchAllHappyGeologics("GR", 6);
-//        dsoService.launchAllConscientiousGeologics("MA", 2);
-//        dsoService.launchAllHappyGeologics("EI", 4);
+        dsoService.startDsoApp();
+        dsoService.closeWelcomeDialog();
+        //dsoService.findAllCollectables()
+        // *** Geologen***
+        dsoService.prepareStarMenuForGeologicsNExplorers();
+        dsoService.launchAllHappyGeologics("ST", 7);
+
+        dsoService.launchAllHappyGeologics("KU", 6);
+        dsoService.solveDailyQuest();
+        dsoService.solveGuildQuest();
+
+        dsoService.launchAllNormalGeologics("MA", 3);
+        dsoService.launchAllHappyGeologics("GR", 6);
+        dsoService.launchAllConscientiousGeologics("MA", 2);
+        dsoService.launchAllHappyGeologics("EI", 4);
 
         //dsoService.openStarMenuForExplorer();
         // *** TODO Entdecker***

@@ -38,7 +38,7 @@ public class SikuliCommandsTest {
     }
 
     @Test
-    public void test3() {
+    public void highlightAppRegions() {
         sikuliCmd.highlightAppRegions();
     }
 
