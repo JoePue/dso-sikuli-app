@@ -13,6 +13,11 @@ public class DSOServicesTest {
     }
 
     @Test
+    public void buildCopperMines() {
+        dsoServices.buildCopperMines();
+    }
+
+    @Test
     public void launchAllNormalExplorer() {
         dsoServices.launchAllNormalExplorer();
     }

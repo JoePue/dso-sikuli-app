@@ -70,12 +70,6 @@ public class SikuliCommands {
         }
     }
 
-//    @Deprecated
-//    private Match getLastMatch() {
-//        // return appRegion.getLastMatch();
-//        throw new IllegalStateException("Verwendung nicht gestattet.");
-//    }
-
     public static Pattern pattern(String filename) {
         Image img = Image.create(filename);
         return new Pattern(img);
@@ -283,43 +277,9 @@ public class SikuliCommands {
         return true;
     }
 
-    //    public boolean closeWelcomeDialog() {
-    //        log.info("closeWelcomeDialog");
-    //        int timeout = 300;
-    //        print("timeout: " + str(timeout));
-    //        while (timeout > 0) {
-    //            sleep(1);
-    //            timeout -= 1;
-    //            if (existsAvatar()) {
-    //                timeout = 0;
-    //                if (clickIfExists(pattern("Ok-Button-1.png").exact(), appRegion)) {
-    //                    sleep(1);
-    //                    // Login Bonus
-    //                    if (clickIfExists(pattern("Ok-Button-2.png").similar(0.90f), appRegion)) {
-    //
-    //                    }
-    //                }
-    //            }
-    //        }
-    //        return true;
-    //    }
-
     public boolean existsAvatar() {
         return this.exists("Avatar.png");
     }
-
-    /*
-    public boolean startApp() {
-        print "Start DSO"
-        focusApp()
-        click("DSOTabIcon.png")
-        click("LetsPlay-Button.png")
-        parkMouse()
-        closeWelcomeDialog()
-
-        return true;
-    }
-    */
 
     public boolean openQuestBook() {
         clickIfExists("Questbook-icon.png", appRegion);
@@ -423,5 +383,9 @@ public class SikuliCommands {
 
     public void clickExitButton() {
         click("exit-button.png");
+    }
+
+    public void buildMine(String s) {
+
     }
 }

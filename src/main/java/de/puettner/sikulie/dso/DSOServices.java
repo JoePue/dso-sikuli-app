@@ -204,4 +204,8 @@ public class DSOServices {
         sikuliComd.typeESC();
         sikuliComd.clickExitButton();
     }
+
+    public void buildCopperMines() {
+        sikuliComd.buildMine("");
+    }
 }

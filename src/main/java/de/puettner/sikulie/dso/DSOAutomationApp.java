@@ -41,6 +41,7 @@ public class DSOAutomationApp {
         dsoService.launchAllWildExplorer();          // Wilde
         dsoService.launchAllFearlessExplorer();      // Furchlose
         dsoService.launchAllNormalExplorer();
+        dsoService.fetchBookbinderItem();
         // *** Todo Geologen***
         // ....
         dsoService.exitDso();
