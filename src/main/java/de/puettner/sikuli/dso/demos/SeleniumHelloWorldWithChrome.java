@@ -1,4 +1,6 @@
-package de.puettner.sikuli.dso;
+package de.puettner.sikuli.dso.demos;
+
+import de.puettner.sikuli.dso.Constants;
 
 public class SeleniumHelloWorldWithChrome {
 

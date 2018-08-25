@@ -1,4 +1,4 @@
-package de.puettner.sikuli.dso;
+package de.puettner.sikuli.dso.exception;
 
 import org.sikuli.script.FindFailed;
 

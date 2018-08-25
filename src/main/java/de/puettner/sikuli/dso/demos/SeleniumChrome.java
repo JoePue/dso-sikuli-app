@@ -1,4 +1,4 @@
-package de.puettner.sikuli.dso;
+package de.puettner.sikuli.dso.demos;
 
 import org.openqa.selenium.chrome.ChromeDriver;
 
