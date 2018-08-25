@@ -11,12 +11,12 @@ import static de.puettner.sikuli.dso.commands.ui.SikuliCommands.pattern;
 @Slf4j
 public class StarMenuCommands extends MenuCommands {
 
-    protected StarMenuCommands(Region menuRegion, SikuliCommands sikuliCmds) {
-        super(menuRegion, sikuliCmds);
+    protected StarMenuCommands(Region menuRegion, IslandCommands islandCmds) {
+        super(menuRegion, islandCmds);
     }
 
     public void openBuildMenu() {
-        sikuliCmds.click(pattern("BuildMenuBarButton.png").similar(0.90f));
+        islandCmds.click(pattern("BuildMenuBarButton.png").similar(0.90f));
     }
 
     public int launchAllExplorerByImage(Pattern image) {
@@ -24,12 +24,12 @@ public class StarMenuCommands extends MenuCommands {
         int launchCount = 0;
         do {
             openStarMenu();
-            Match match = sikuliCmds.find(image, menuRegion);
+            Match match = islandCmds.find(image, menuRegion);
             if (match != null) {
                 launchExplorer(match, menuRegion);
-                sikuliCmds.parkMouse();
+                islandCmds.parkMouse();
                 launchCount++;
-                sikuliCmds.sleep(1);
+                islandCmds.sleep(1);
             } else {
                 log.info("No explorer found. launchCount: " + launchCount);
                 break;
@@ -45,31 +45,31 @@ public class StarMenuCommands extends MenuCommands {
     public <PSI> boolean launchExplorer(Match match, Region searchRegion) {
         log.info("launchExplorer()");
         match.click();
-        sikuliCmds.click(pattern("TreasureFind-icon.png").targetOffset(49, -1));
-        sikuliCmds.click(pattern("TreasureSearchVeryLong.png").targetOffset(53, 0));
-        sikuliCmds.clickSmallOkButton();
+        islandCmds.click(pattern("TreasureFind-icon.png").targetOffset(49, -1));
+        islandCmds.click(pattern("TreasureSearchVeryLong.png").targetOffset(53, 0));
+        islandCmds.clickSmallOkButton();
         return true;
     }
 
     public boolean openStarMenu(String searchString) {
         log.info("openStarMenu()" + (searchString == null ? "" : "searchString: " + searchString));
         if (!isStarMenuOpen()) {
-            sikuliCmds.clickStarButton();
-            sikuliCmds.sleep(1);
+            islandCmds.clickStarButton();
+            islandCmds.sleep(1);
         }
         if (searchString != null) {
-            sikuliCmds.clickIfExists(StarMenuButtons.ZOOM_ICON.pattern, menuRegion);
-            sikuliCmds.sleep(1);
-            sikuliCmds.type("a", Key.CTRL);
-            sikuliCmds.sleep(1);
-            sikuliCmds.paste(searchString);
+            islandCmds.clickIfExists(StarMenuButtons.ZOOM_ICON.pattern, menuRegion);
+            islandCmds.sleep(1);
+            islandCmds.type("a", Key.CTRL);
+            islandCmds.sleep(1);
+            islandCmds.paste(searchString);
         }
-        sikuliCmds.parkMouse();
+        islandCmds.parkMouse();
         return true;
     }
 
     public boolean isStarMenuOpen() {
-        if (sikuliCmds.exists(StarMenuButtons.StarMenuTitleImage.pattern, menuRegion)) {
+        if (islandCmds.exists(StarMenuButtons.StarMenuTitleImage.pattern, menuRegion)) {
             log.info("StarMenu is open");
             return true;
         }
@@ -84,13 +84,12 @@ public class StarMenuCommands extends MenuCommands {
             if (!openStarMenu()) {
                 break;
             }
-            highlightMenuRegion();
-            Match match = sikuliCmds.find(image.getPattern(), menuRegion);
+            Match match = islandCmds.find(image.getPattern(), menuRegion);
             if (match != null) {
                 if (launchGeologic(match, material)) {
                     launchCount++;
-                    sikuliCmds.parkMouse();
-                    sikuliCmds.sleep(1);
+                    islandCmds.parkMouse();
+                    islandCmds.sleep(1);
                 }
             } else {
                 log.info("No Geologic launched");
@@ -105,19 +104,19 @@ public class StarMenuCommands extends MenuCommands {
         log.info("launchGeologic material: " + material);
         if (match.click() == 1) {
             if (MaterialType.ST.equals(material)) {
-                sikuliCmds.clickIfExists(pattern("Material-Stone-Button.png"), menuRegion);
+                islandCmds.clickIfExists(pattern("Material-Stone-Button.png"), menuRegion);
             } else if (MaterialType.MA.equals(material)) {
-                sikuliCmds.clickIfExists(pattern("Material-Marble-Button.png"), menuRegion);
+                islandCmds.clickIfExists(pattern("Material-Marble-Button.png"), menuRegion);
             } else if (MaterialType.GR.equals(material)) {
-                sikuliCmds.clickIfExists(pattern("Material-Granite-Button.png"), menuRegion);
+                islandCmds.clickIfExists(pattern("Material-Granite-Button.png"), menuRegion);
             } else if (MaterialType.KU.equals(material)) {
-                sikuliCmds.clickIfExists(pattern("Material-Copper-Button.png"), menuRegion);
+                islandCmds.clickIfExists(pattern("Material-Copper-Button.png"), menuRegion);
             } else if (MaterialType.EI.equals(material)) {
-                sikuliCmds.clickIfExists(pattern("Material-Iron-Button.png"), menuRegion);
+                islandCmds.clickIfExists(pattern("Material-Iron-Button.png"), menuRegion);
             } else {
                 throw new IllegalArgumentException("Unsupported type: " + material);
             }
-            return sikuliCmds.clickSmallOkButton();
+            return islandCmds.clickSmallOkButton();
         }
         return false;
     }
@@ -126,7 +125,7 @@ public class StarMenuCommands extends MenuCommands {
         boolean rv = false;
         if (isStarMenuOpen()) {
             log.info("closeStarMenu");
-            sikuliCmds.typeESC();
+            islandCmds.typeESC();
             rv = true;
         } else {
             log.info("closeStarMenu : Not open");

@@ -12,7 +12,7 @@ import static java.awt.event.KeyEvent.VK_ENTER;
 public class SikuliCommandsTest {
 
     private static final CommandBuilder cmBuilder = CommandBuilder.build();
-    private final SikuliCommands sikuliCmd = cmBuilder.buildSikuliCommand();
+    private final IslandCommands sikuliCmd = cmBuilder.buildSikuliCommand();
     private final StarMenuCommands starMenu = cmBuilder.buildStarMenuCommands();
 
     @Before

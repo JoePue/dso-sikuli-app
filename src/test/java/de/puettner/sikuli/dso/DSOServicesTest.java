@@ -45,14 +45,13 @@ public class DSOServicesTest {
     @Test
     public void launchAllHappyGeologics() {
         //        dsoServices.prepareStarMenu();
-        dsoServices.launchAllHappyGeologics(MaterialType.KU, 6);
+        dsoServices.launchAllHappyGeologics(MaterialType.EI, 6);
     }
 
     @Test
-    public void launchAllGeologics() {
+    public void launchAllSuccessfulExplorer() {
 //        dsoServices.prepareStarMenu();
         dsoServices.launchAllSuccessfulExplorer();    // Erfolgreiche
-//        System.out.println(dsoServices.launchAllGeologics(MaterialType.MA, 100));
     }
 
     @Test

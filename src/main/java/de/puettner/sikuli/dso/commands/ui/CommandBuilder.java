@@ -10,7 +10,7 @@ import static de.puettner.sikuli.dso.commands.os.WindowsPlatformHelper.CHROME_EX
 public class CommandBuilder {
 
     private static CommandBuilder cmdBuilder;
-    private static SikuliCommands sikuliCmds;
+    private static IslandCommands islandCmds;
     private static BuildMenuCommands buildMenuCommands;
     private static StarMenuCommands starMenuCommands;
     private static BookbinderMenuCommands bookbinderMenuCommands;
@@ -38,22 +38,12 @@ public class CommandBuilder {
         return buildMenuCommands;
     }
 
-    public SikuliCommands buildSikuliCommand() {
-        if (sikuliCmds == null) {
+    public IslandCommands buildSikuliCommand() {
+        if (islandCmds == null) {
             ImagePath.add("../dso_1.sikuli");
-            sikuliCmds = new SikuliCommands(new App(CHROME_EXE), dsoAppRegion);
+            islandCmds = new IslandCommands(new App(CHROME_EXE), dsoAppRegion);
         }
-        return sikuliCmds;
-    }
-
-    public Region calculateBuildQueueRegion() {
-        final int menuWidth = 150, menuHeight = 400;
-        Region region = new Region(0, 0, 0, 0);
-        region.x = dsoAppRegion.x + dsoAppRegion.w - menuWidth;
-        region.y = dsoAppRegion.y;
-        region.w = menuWidth;
-        region.h = menuHeight;
-        return region;
+        return islandCmds;
     }
 
     public StarMenuCommands buildStarMenuCommands() {
@@ -68,6 +58,26 @@ public class CommandBuilder {
         Region region = new Region(0, 0, 0, 0);
         region.x = dsoAppRegion.x + (dsoAppRegion.w / 2) - (menuWidth / 2);
         region.y = dsoAppRegion.y + (dsoAppRegion.h / 2) - (menuHeight / 2) + 100;
+        region.w = menuWidth;
+        region.h = menuHeight;
+        return region;
+    }
+
+    public Region calculateBuildQueueRegion() {
+        final int menuWidth = 150, menuHeight = 400;
+        Region region = new Region(0, 0, 0, 0);
+        region.x = dsoAppRegion.x + dsoAppRegion.w - menuWidth;
+        region.y = dsoAppRegion.y;
+        region.w = menuWidth;
+        region.h = menuHeight;
+        return region;
+    }
+
+    public Region calculateGeologicSearchRegion() {
+        final int menuWidth = dsoAppRegion.w - 100, menuHeight = dsoAppRegion.h - 100;
+        Region region = new Region(0, 0, 0, 0);
+        region.x = dsoAppRegion.x + (dsoAppRegion.w / 2) - (menuWidth / 2);
+        region.y = dsoAppRegion.y + (dsoAppRegion.h / 2) - (menuHeight / 2);
         region.w = menuWidth;
         region.h = menuHeight;
         return region;

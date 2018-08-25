@@ -6,16 +6,16 @@ import org.sikuli.script.Region;
 @Slf4j
 public class BookbinderMenuCommands extends MenuCommands {
 
-    public BookbinderMenuCommands(Region menuRegion, SikuliCommands sikuliCmds) {
-        super(menuRegion, sikuliCmds);
+    public BookbinderMenuCommands(Region menuRegion, IslandCommands islandCmds) {
+        super(menuRegion, islandCmds);
     }
 
     public void clickBuildMenuButton(BuildMenuButtons entry) {
-        sikuliCmds.clickIfExists(entry.pattern, menuRegion);
+        islandCmds.clickIfExists(entry.pattern, menuRegion);
     }
 
     public boolean clickOkButtonBookbinder() {
-        return sikuliCmds.clickOkButton(3);
+        return islandCmds.clickOkButton(3);
     }
 
     /**
@@ -25,11 +25,11 @@ public class BookbinderMenuCommands extends MenuCommands {
      */
     public boolean clickButton(BookbinderMenuButtons bookType) {
         if (BookbinderMenuButtons.Manusskript.equals(bookType)) {
-            return sikuliCmds.click(BookbinderMenuButtons.Manusskript.pattern);
+            return islandCmds.click(BookbinderMenuButtons.Manusskript.pattern);
         } else if (BookbinderMenuButtons.Kompendium.equals(bookType)) {
-            return sikuliCmds.click(BookbinderMenuButtons.Kompendium.pattern);
+            return islandCmds.click(BookbinderMenuButtons.Kompendium.pattern);
         } else if (BookbinderMenuButtons.Kodex.equals(bookType)) {
-            return sikuliCmds.click(BookbinderMenuButtons.Kodex.pattern);
+            return islandCmds.click(BookbinderMenuButtons.Kodex.pattern);
         } else {
             log.error("Unknown bootType: " + bookType);
         }

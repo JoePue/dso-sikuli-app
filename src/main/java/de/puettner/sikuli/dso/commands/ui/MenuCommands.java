@@ -5,12 +5,12 @@ import org.sikuli.script.Region;
 public class MenuCommands {
 
     protected final Region menuRegion;
-    protected SikuliCommands sikuliCmds;
+    protected IslandCommands islandCmds;
 
 
-    protected MenuCommands(Region menuRegion, SikuliCommands sikuliCmds) {
+    protected MenuCommands(Region menuRegion, IslandCommands islandCmds) {
         this.menuRegion = menuRegion;
-        this.sikuliCmds = sikuliCmds;
+        this.islandCmds = islandCmds;
     }
 
     public void highlightMenuRegion() {
