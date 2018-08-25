@@ -10,8 +10,9 @@ import static java.awt.event.KeyEvent.VK_ENTER;
 
 public class SikuliCommandsTest {
 
-    private final SikuliCommands sikuliCmd = CommandBuilder.buildSikuliCommand();
-    private final StarMenuCommands starMenu = CommandBuilder.buildStarMenuCommands();
+    private static final CommandBuilder cmBuilder = CommandBuilder.build();
+    private final SikuliCommands sikuliCmd = cmBuilder.buildSikuliCommand();
+    private final StarMenuCommands starMenu = cmBuilder.buildStarMenuCommands();
 
     @Before
     public void before() {

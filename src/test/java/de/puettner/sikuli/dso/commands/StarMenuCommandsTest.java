@@ -5,8 +5,8 @@ import org.junit.Test;
 
 public class StarMenuCommandsTest {
 
-    private final SikuliCommands sikuliCmd = CommandBuilder.buildSikuliCommand();
-    private final StarMenuCommands starMenu = CommandBuilder.buildStarMenuCommands();
+    private final SikuliCommands sikuliCmd = CommandBuilder.build().buildSikuliCommand();
+    private final StarMenuCommands starMenu = CommandBuilder.build().buildStarMenuCommands();
 
     @Before
     public void before() {

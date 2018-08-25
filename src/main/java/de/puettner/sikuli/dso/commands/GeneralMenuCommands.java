@@ -4,12 +4,12 @@ import lombok.extern.slf4j.Slf4j;
 import org.sikuli.script.Region;
 
 @Slf4j
-public class GeneralCommands {
+public class GeneralMenuCommands {
 
     private Region menuRegion;
     private SikuliCommands sikuliCommands;
 
-    public GeneralCommands(Region menuRegion, SikuliCommands sikuliCommands) {
+    public GeneralMenuCommands(Region menuRegion, SikuliCommands sikuliCommands) {
         this.menuRegion = menuRegion;
         this.sikuliCommands = sikuliCommands;
     }

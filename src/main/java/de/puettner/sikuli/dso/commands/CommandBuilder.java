@@ -1,63 +1,81 @@
 package de.puettner.sikuli.dso.commands;
 
+import de.puettner.sikuli.dso.WindowsPlatformHelper;
 import org.sikuli.script.App;
 import org.sikuli.script.ImagePath;
 import org.sikuli.script.Region;
 
-import static de.puettner.sikuli.dso.Constants.CHROME_EXE;
+import static de.puettner.sikuli.dso.WindowsPlatformHelper.CHROME_EXE;
 
-public abstract class CommandBuilder {
+public class CommandBuilder {
 
-    private static final Region DSO_APP_REGION = new Region(10, 115, 1290 - 10, 1047 - 115);
+    private static CommandBuilder cmdBuilder;
     private static SikuliCommands sikuliCommands;
     private static BuildMenuCommands buildMenuCommands;
     private static StarMenuCommands starMenuCommands;
     private static BookbinderMenuCommands bookbinderMenuCommands;
+    private final Region dsoAppRegion;
 
-    public static BuildMenuCommands buildBuildMenuCommands() {
+    private CommandBuilder(Region chromeAppRegion) {
+        this.dsoAppRegion = chromeAppRegion;
+        this.dsoAppRegion.x = chromeAppRegion.x + 10;
+        this.dsoAppRegion.y = chromeAppRegion.y + 115;
+        this.dsoAppRegion.w = chromeAppRegion.w - 40;
+        this.dsoAppRegion.h = chromeAppRegion.h - 115;
+    }
+
+    public static CommandBuilder build() {
+        if (cmdBuilder == null) {
+            cmdBuilder = new CommandBuilder(WindowsPlatformHelper.getChromeDimension().getRegion());
+        }
+        return cmdBuilder;
+    }
+
+    public BuildMenuCommands buildBuildMenuCommands() {
         if (buildMenuCommands == null) {
-            buildMenuCommands = new BuildMenuCommands(DSO_APP_REGION, buildSikuliCommand());
+            buildMenuCommands = new BuildMenuCommands(dsoAppRegion, buildSikuliCommand());
         }
         return buildMenuCommands;
     }
 
-    public static SikuliCommands buildSikuliCommand() {
+    public SikuliCommands buildSikuliCommand() {
         if (sikuliCommands == null) {
             ImagePath.add("../dso_1.sikuli");
-            // setROI(10, 115, 1290 - 10, 1047 - 115)
-            sikuliCommands = new SikuliCommands(new App(CHROME_EXE), DSO_APP_REGION, calculateStarMenuRegion(), calculateBuildListRegion());
+            sikuliCommands = new SikuliCommands(new App(CHROME_EXE), dsoAppRegion, calculateStarMenuRegion(), calculateBuildQueueRegion());
         }
         return sikuliCommands;
     }
 
-    public static Region calculateStarMenuRegion() {
+    public Region calculateStarMenuRegion() {
+        final int menuWidth = 650, menuHeight = 600;
         Region region = new Region(0, 0, 0, 0);
-        region.w = 650;
-        region.h = 600;
-        region.x = (int) (0.3 * DSO_APP_REGION.w);
-        region.y = (int) (0.45 * DSO_APP_REGION.h);
+        region.x = dsoAppRegion.x + (dsoAppRegion.w / 2) - (menuWidth / 2);
+        region.y = dsoAppRegion.y + (dsoAppRegion.h / 2) - (menuHeight / 2) + 100;
+        region.w = menuWidth;
+        region.h = menuHeight;
         return region;
     }
 
-    public static Region calculateBuildListRegion() {
+    public Region calculateBuildQueueRegion() {
+        final int menuWidth = 150, menuHeight = 400;
         Region region = new Region(0, 0, 0, 0);
-        region.w = 50;
-        region.h = 100;
-        region.x = (int) (DSO_APP_REGION.w - region.w);
-        region.y = DSO_APP_REGION.y;
+        region.x = dsoAppRegion.x + dsoAppRegion.w - menuWidth;
+        region.y = dsoAppRegion.y;
+        region.w = menuWidth;
+        region.h = menuHeight;
         return region;
     }
 
-    public static StarMenuCommands buildStarMenuCommands() {
+    public StarMenuCommands buildStarMenuCommands() {
         if (starMenuCommands == null) {
             starMenuCommands = new StarMenuCommands(calculateStarMenuRegion(), buildSikuliCommand());
         }
         return starMenuCommands;
     }
 
-    public static BookbinderMenuCommands buildBookbinderMenuCommands() {
+    public BookbinderMenuCommands buildBookbinderMenuCommands() {
         if (bookbinderMenuCommands == null) {
-            bookbinderMenuCommands = new BookbinderMenuCommands(DSO_APP_REGION, buildSikuliCommand());
+            bookbinderMenuCommands = new BookbinderMenuCommands(dsoAppRegion, buildSikuliCommand());
         }
         return bookbinderMenuCommands;
     }

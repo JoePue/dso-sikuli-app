@@ -22,10 +22,10 @@ public class DSOServices {
 
 
     public DSOServices() {
-        sikuliComd = CommandBuilder.buildSikuliCommand();
-        this.buildMenu = CommandBuilder.buildBuildMenuCommands();
-        this.starMenu = CommandBuilder.buildStarMenuCommands();
-        this.bookbinderMenu = CommandBuilder.buildBookbinderMenuCommands();
+        sikuliComd = CommandBuilder.build().buildSikuliCommand();
+        this.buildMenu = CommandBuilder.build().buildBuildMenuCommands();
+        this.starMenu = CommandBuilder.build().buildStarMenuCommands();
+        this.bookbinderMenu = CommandBuilder.build().buildBookbinderMenuCommands();
     }
 
     public void startDsoApp() {
