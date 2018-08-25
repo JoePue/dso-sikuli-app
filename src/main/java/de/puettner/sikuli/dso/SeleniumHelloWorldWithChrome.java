@@ -1,7 +1,4 @@
-package de.puettner.sikulie.dso;
-
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+package de.puettner.sikuli.dso;
 
 public class SeleniumHelloWorldWithChrome {
 

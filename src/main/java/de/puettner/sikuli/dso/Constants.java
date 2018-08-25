@@ -1,4 +1,4 @@
-package de.puettner.sikulie.dso;
+package de.puettner.sikuli.dso;
 
 public interface Constants {
     // E:\Programme\NirSoft Utilities\nircmd.exe

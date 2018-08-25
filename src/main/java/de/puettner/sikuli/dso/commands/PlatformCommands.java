@@ -1,6 +1,8 @@
-package de.puettner.sikulie.dso;
+package de.puettner.sikuli.dso.commands;
 
-import static de.puettner.sikulie.dso.Constants.CHROME_EXE;
+import de.puettner.sikuli.dso.WindowsPlatformHelper;
+
+import static de.puettner.sikuli.dso.Constants.CHROME_EXE;
 
 public class PlatformCommands {
 

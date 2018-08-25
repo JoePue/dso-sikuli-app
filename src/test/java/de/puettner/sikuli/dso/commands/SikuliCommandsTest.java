@@ -1,4 +1,4 @@
-package de.puettner.sikulie.dso;
+package de.puettner.sikuli.dso.commands;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -8,32 +8,31 @@ import org.sikuli.script.Location;
 
 import static java.awt.event.KeyEvent.VK_ENTER;
 
-/**
- * Created by joerg.puettner on 19.08.2018.
- */
 public class SikuliCommandsTest {
 
     private final SikuliCommands sikuliCmd = SikuliCommands.build();
+    private StarMenuCommands starMenu;
 
     @Before
     public void before() {
+        starMenu = sikuliCmd.buildStarMenuCommands();
         sikuliCmd.switchToBrowser();
     }
 
     @Test
     public void openStarMenu() {
-        sikuliCmd.openStarMenu();
+        starMenu.openStarMenu();
     }
 
     @Test
-    public void test5() {
+    public void exists() {
         System.out.println(sikuliCmd.exists("Ok-Button-0.png"));
         System.out.println(sikuliCmd.exists("Ok-Button-1.png"));
         System.out.println(sikuliCmd.exists("Ok-Button-2.png"));
     }
 
     @Test
-    public void test4() {
+    public void type() {
         sikuliCmd.type(Key.ESC);
     }
 
@@ -43,7 +42,7 @@ public class SikuliCommandsTest {
     }
 
     @Test
-    public void test2() {
+    public void paste() {
         Location location = Commands.click(new Location(100, 1000));
         sikuliCmd.type("Sikuli Test " + System.currentTimeMillis() + Key.ENTER); // java.lang.IllegalArgumentException: Invalid key code
         // wegen ":"

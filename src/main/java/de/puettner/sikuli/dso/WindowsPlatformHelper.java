@@ -1,4 +1,4 @@
-package de.puettner.sikulie.dso;
+package de.puettner.sikuli.dso;
 
 import java.awt.*;
 import java.io.File;

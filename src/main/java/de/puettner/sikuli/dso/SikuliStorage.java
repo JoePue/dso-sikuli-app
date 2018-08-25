@@ -1,4 +1,4 @@
-package de.puettner.sikulie.dso;
+package de.puettner.sikuli.dso;
 
 /**
  * Store some of your information persistently and reload it later

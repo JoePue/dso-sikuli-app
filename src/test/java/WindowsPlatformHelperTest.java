@@ -1,5 +1,5 @@
-import de.puettner.sikulie.dso.Constants;
-import de.puettner.sikulie.dso.WindowsPlatformHelper;
+import de.puettner.sikuli.dso.Constants;
+import de.puettner.sikuli.dso.WindowsPlatformHelper;
 
 import static junit.framework.Assert.assertTrue;
 

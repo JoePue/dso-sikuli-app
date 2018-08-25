@@ -1,20 +1,23 @@
-package de.puettner.sikulie.dso;
+package de.puettner.sikuli.dso.commands;
 
+import de.puettner.sikuli.dso.FindFailedRTException;
 import lombok.extern.slf4j.Slf4j;
 import org.sikuli.script.*;
 
+import java.util.Collections;
 import java.util.Iterator;
 
-import static de.puettner.sikulie.dso.Constants.CHROME_EXE;
+import static de.puettner.sikuli.dso.Constants.CHROME_EXE;
 
 @Slf4j
 public class SikuliCommands {
 
     private static SikuliCommands sikuliCommands;
-    private final Region appRegion;
+    protected final Region appRegion;
     private final Region starMenuRegion;
     private final Region buildListRegion;
     private final App app;
+
     public final String[] okButtonList = {"Ok-Button-0.png", "Ok-Button-1.png", "Ok-Button-2.png", "Ok-Button-3-Bookbinder.png"};
 
     private static final Region DSO_APP_REGION = new Region(10, 115, 1290 - 10, 1047 - 115);
@@ -23,7 +26,7 @@ public class SikuliCommands {
 
     public final Pattern LetsPlayButton = pattern("LetsPlay-Button.png").similar(0.8f);
 
-    private SikuliCommands(App app, Region appRegion, Region starMenuRegion, Region buildListRegion) {
+    protected SikuliCommands(App app, Region appRegion, Region starMenuRegion, Region buildListRegion) {
         this.app = app;
         this.appRegion = appRegion;
         this.starMenuRegion = starMenuRegion;
@@ -40,6 +43,18 @@ public class SikuliCommands {
             sikuliCommands = new SikuliCommands(new App(CHROME_EXE), DSO_APP_REGION, starMenuRegion, buildListRegion);
         }
         return sikuliCommands;
+    }
+
+    public BuildMenuCommands buildBuildMenuCommands() {
+        return new BuildMenuCommands(appRegion, this);
+    }
+
+    public StarMenuCommands buildStarMenuCommands() {
+        return new StarMenuCommands(starMenuRegion, this);
+    }
+
+    public BookbinderMenuCommands buildBookbinderMenuCommands() {
+        return new BookbinderMenuCommands(appRegion, this);
     }
 
     private static Region calculateStarMenuRegion() {
@@ -75,7 +90,7 @@ public class SikuliCommands {
         return new Pattern(img);
     }
 
-    int paste(Object input) {
+    public int paste(Object input) {
         return appRegion.paste(input.toString());
     }
 
@@ -83,7 +98,7 @@ public class SikuliCommands {
         return this.type(Key.ESC.toString(), null);
     }
 
-    int type(Object input) {
+    public int type(Object input) {
         return this.type(input.toString(), null);
     }
 
@@ -98,7 +113,7 @@ public class SikuliCommands {
         return appRegion.type(text.toString(), modifiers);
     }
 
-    private int hover(Match match) {
+    public int hover(Match match) {
         try {
             return appRegion.hover(match);
         } catch (FindFailed e) {
@@ -106,8 +121,20 @@ public class SikuliCommands {
         }
     }
 
-    Iterator<Match> findAll(Pattern pattern) throws FindFailed {
-        return appRegion.findAll(pattern);
+    public Iterator<Match> findAll(Pattern pattern) {
+        return this.findAll(pattern, appRegion);
+    }
+
+    Iterator<Match> findAll(Pattern pattern, Region searchRegion) {
+        if (pattern == null || searchRegion == null) {
+            throw new IllegalArgumentException(pattern + " " + searchRegion);
+        }
+        try {
+            return searchRegion.findAll(pattern);
+        } catch (FindFailed e) {
+            log.error(e.getMessage(), e);
+        }
+        return Collections.emptyListIterator();
     }
 
     private void switchApp() {
@@ -147,35 +174,31 @@ public class SikuliCommands {
         return this.clickIfExists(LetsPlayButton, appRegion);
     }
 
-    public boolean waitUntilDsoIsLoaded() {
-        return false;
-    }
-
     public Location parkMouse() {
         return org.sikuli.script.Commands.click(new Location(100, 1000));
     }
 
-    private <PSI> Match find(PSI filename, Region searchRegion) {
+    public <PSI> Match find(PSI filename, Region searchRegion) {
         final Match match = searchRegion.exists(filename);
         return match;
     }
 
-    private <PSI> boolean exists(PSI filename, Region searchRegion) {
+    <PSI> boolean exists(PSI filename, Region searchRegion) {
         final Match match = find(filename, searchRegion);
         boolean exists = (match == null ? false : true);
         log.info(filename + " " + (exists ? "exists" : "not exists"));
         return exists;
     }
 
-    public <PSI> boolean exists(PSI filename) {
+    <PSI> boolean exists(PSI filename) {
         return this.exists(filename, appRegion);
     }
 
-    private <PSI> boolean click(PSI filename) {
+    <PSI> boolean click(PSI filename) {
         return this.clickIfExists(filename, appRegion);
     }
 
-    private <PSI> boolean clickIfExists(PSI filename, Region searchRegion) {
+    <PSI> boolean clickIfExists(PSI filename, Region searchRegion) {
         final Match match = searchRegion.exists(filename);
         boolean rv = false;
         if (match != null) {
@@ -195,10 +218,6 @@ public class SikuliCommands {
 
     public boolean clickBigOkButton() {
         return this.clickOkButton(1);
-    }
-
-    public boolean clickOkButtonBookbinder() {
-        return this.clickOkButton(3);
     }
 
     public boolean clickLoginBonusButton() {
@@ -225,56 +244,11 @@ public class SikuliCommands {
 
     public boolean clickStarMenuButton() {
         log.info("clickStarMenuButton");
-        clickIfExists(pattern("StarMenu-icon.png").targetOffset(-2, -25), appRegion);
-        return true;
+        return clickIfExists(pattern("StarMenu-icon.png").targetOffset(-2, -25), appRegion);
     }
 
-    public boolean isStarMenuOpen() {
-        if (exists("StarMenu-Button.png", appRegion)) {
-            log.info("StarMenu is open");
-            return true;
-        }
-        log.info("StarMenu is NOT open");
-        return false;
-    }
-
-    public boolean openStarMenu() {
-        return this.openStarMenu(null);
-    }
-
-    public boolean openStarMenu(@Deprecated String searchString) {
-        log.info("openStarMenu() searchString: " + searchString);
-        if (!isStarMenuOpen()) {
-            clickStarMenuButton();
-            sleep(1);
-        }
-        if (searchString != null) {
-            clickIfExists(pattern("zoom-icon.png").targetOffset(-43, -3), appRegion);
-            sleep(1);
-            type("a", Key.CTRL);
-            sleep(1);
-            paste(searchString);
-        }
-//        this.closeStarMenu();
-        parkMouse();
-        return true;
-    }
-
-    public boolean closeStarMenu() {
-        boolean rv = false;
-        if (isStarMenuOpen()) {
-            log.info("closeStarMenu");
-            this.typeESC();
-            rv = true;
-        } else {
-            log.info("closeStarMenu : Not open");
-        }
-        return rv;
-    }
-
-    public boolean focusApp() {
+    public void focusApp() {
         switchApp();
-        return true;
     }
 
     public boolean existsAvatar() {
@@ -286,74 +260,6 @@ public class SikuliCommands {
         return true;
     }
 
-    public <PSI> boolean launchExplorer(Match match, Region searchRegion) {
-        print("launchExplorer()");
-        match.click();
-        click(pattern("TreasureFind-icon.png").targetOffset(49, -1));
-        click(pattern("TreasureSearchVeryLong.png").targetOffset(53, 0));
-        clickSmallOkButton();
-        return true;
-    }
-
-    public int launchAllExplorerByImage(Pattern image) {
-        log.info("launchAllExplorerByImage");
-        int launchCount = 0;
-        do {
-            openStarMenu();
-            Match match = this.find(image, starMenuRegion);
-            if (match != null) {
-                launchExplorer(match, starMenuRegion);
-                parkMouse();
-                launchCount++;
-                sleep(1);
-            } else {
-                log.info("No explorer found. launchCount: " + launchCount);
-                break;
-            }
-        } while (true);
-        return launchCount;
-    }
-
-    // ST KU MA EI KO GO GR TI SA
-    public boolean launchGeologic(Match match, String material) {
-        log.info("launchGeologic material: " + material);
-        if (match.click() == 1) {
-            if (material == "ST") {
-                clickIfExists("Material-Stone-Button.png", appRegion);
-            } else if (material == "KU") {
-                clickIfExists("Material-Copper-Button.png", appRegion);
-            } else if (material == "GR") {
-                clickIfExists("Material-Granite-Button.png", appRegion);
-            } else if (material == "MA") {
-                clickIfExists("Material-Marble-Button.png", appRegion);
-            } else if (material == "EI") {
-                clickIfExists("Material-Iron-Button.png", appRegion);
-            }
-            return clickSmallOkButton();
-        }
-        return false;
-    }
-
-    public <PSI> int launchAllGeologicsByImage(PSI image, String material, int launchLimit) {
-        print("launchAllGeologicsByImage");
-        int launchCount = 0;
-        for (int i = 0; i <= launchLimit; ++i) {
-            openStarMenu();
-            Match match = this.find(image, appRegion);
-            if (match != null) {
-                if (launchGeologic(match, material)) {
-                    launchCount++;
-                    this.parkMouse();
-                    sleep(1);
-                }
-            } else {
-                log.info("No Geologic launched");
-                break;
-            }
-        }
-        return launchCount;
-    }
-
     public boolean existsDailyQuestMenuIem() {
         return this.exists(pattern("DailyQuestMenuItem-icon.png").targetOffset(-1, 29));
     }
@@ -363,29 +269,25 @@ public class SikuliCommands {
         this.click(pattern("BookBinderBuilding.png").similar(0.80f));
     }
 
-    /**
-     * Types: Manuskript, Kompendium, Kodex
-     *
-     * @param bookType
-     */
-    public void clickNextBook(String bookType) {
-        if ("MA".equals(bookType)) {
-            click(pattern("Manusskript-Button.png").similar(0.90f));
-        } else if ("KO".equals(bookType)) {
-            click(pattern("Kompendium-Button.png").similar(0.90f));
-        } else if ("KX".equals(bookType)) {
-            click(pattern("Kodex-Button.png").similar(0.90f));
-        } else {
-            log.error("Unknown bootType: " + bookType);
-        }
-    }
-
-
     public void clickExitButton() {
         click("exit-button.png");
     }
 
-    public void buildMine(String s) {
+    public Iterator<Match> findMines(MaterialType material) {
+        if (MaterialType.KU.equals(material)) {
+            return this.sikuliCommands.findAll(MaterialType.KU.sourcePattern, appRegion);
+        } else if (MaterialType.GO.equals(material)) {
+            return this.sikuliCommands.findAll(MaterialType.GO.sourcePattern, appRegion);
+        } else if (MaterialType.EI.equals(material)) {
+            return this.sikuliCommands.findAll(MaterialType.EI.sourcePattern, appRegion);
+            //        } else if (MaterialType.MA.equals(material)) {
+            //        } else if (MaterialType.KU.equals(material)) {
+        } else {
+            throw new IllegalArgumentException("Unsupported type: " + material);
+        }
+    }
 
+    public boolean clickBuildCancelButton() {
+        return this.clickIfExists(pattern("BuildCancelButton.png").similar(0.80f), appRegion);
     }
 }
