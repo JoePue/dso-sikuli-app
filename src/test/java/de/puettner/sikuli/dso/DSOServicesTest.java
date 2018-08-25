@@ -44,7 +44,7 @@ public class DSOServicesTest {
 
     @Test
     public void launchAllHappyGeologics() {
-        dsoServices.prepareStarMenu();
+        //        dsoServices.prepareStarMenu();
         dsoServices.launchAllHappyGeologics(MaterialType.KU, 6);
     }
 

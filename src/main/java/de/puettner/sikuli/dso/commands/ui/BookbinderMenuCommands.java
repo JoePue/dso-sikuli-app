@@ -29,7 +29,7 @@ public class BookbinderMenuCommands extends MenuCommands {
         } else if (BookbinderMenuButtons.Kompendium.equals(bookType)) {
             return sikuliCmds.click(BookbinderMenuButtons.Kompendium.pattern);
         } else if (BookbinderMenuButtons.Kodex.equals(bookType)) {
-            return sikuliCmds.click(BookbinderMenuButtons.Kodex.equals(bookType));
+            return sikuliCmds.click(BookbinderMenuButtons.Kodex.pattern);
         } else {
             log.error("Unknown bootType: " + bookType);
         }

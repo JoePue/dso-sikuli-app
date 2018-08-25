@@ -6,6 +6,7 @@ import org.sikuli.script.Commands;
 import org.sikuli.script.Key;
 import org.sikuli.script.Location;
 
+import static de.puettner.sikuli.dso.commands.ui.SikuliCommands.pattern;
 import static java.awt.event.KeyEvent.VK_ENTER;
 
 public class SikuliCommandsTest {
@@ -26,9 +27,9 @@ public class SikuliCommandsTest {
 
     @Test
     public void exists() {
-        System.out.println(sikuliCmd.exists("Ok-Button-0.png"));
-        System.out.println(sikuliCmd.exists("Ok-Button-1.png"));
-        System.out.println(sikuliCmd.exists("Ok-Button-2.png"));
+        System.out.println(sikuliCmd.exists(pattern("Ok-Button-0.png")));
+        System.out.println(sikuliCmd.exists(pattern("Ok-Button-1.png")));
+        System.out.println(sikuliCmd.exists(pattern("Ok-Button-2.png")));
     }
 
     @Test

@@ -6,6 +6,8 @@ import org.sikuli.script.Match;
 import org.sikuli.script.Pattern;
 import org.sikuli.script.Region;
 
+import static de.puettner.sikuli.dso.commands.ui.SikuliCommands.pattern;
+
 @Slf4j
 public class StarMenuCommands extends MenuCommands {
 
@@ -14,7 +16,7 @@ public class StarMenuCommands extends MenuCommands {
     }
 
     public void openBuildMenu() {
-        sikuliCmds.click(SikuliCommands.pattern("BuildMenuBarButton.png").similar(0.90f));
+        sikuliCmds.click(pattern("BuildMenuBarButton.png").similar(0.90f));
     }
 
     public int launchAllExplorerByImage(Pattern image) {
@@ -43,20 +45,20 @@ public class StarMenuCommands extends MenuCommands {
     public <PSI> boolean launchExplorer(Match match, Region searchRegion) {
         log.info("launchExplorer()");
         match.click();
-        sikuliCmds.click(SikuliCommands.pattern("TreasureFind-icon.png").targetOffset(49, -1));
-        sikuliCmds.click(SikuliCommands.pattern("TreasureSearchVeryLong.png").targetOffset(53, 0));
+        sikuliCmds.click(pattern("TreasureFind-icon.png").targetOffset(49, -1));
+        sikuliCmds.click(pattern("TreasureSearchVeryLong.png").targetOffset(53, 0));
         sikuliCmds.clickSmallOkButton();
         return true;
     }
 
-    public boolean openStarMenu(@Deprecated String searchString) {
+    public boolean openStarMenu(String searchString) {
         log.info("openStarMenu()" + (searchString == null ? "" : "searchString: " + searchString));
         if (!isStarMenuOpen()) {
-            sikuliCmds.clickStarMenuButton();
+            sikuliCmds.clickStarButton();
             sikuliCmds.sleep(1);
         }
         if (searchString != null) {
-            sikuliCmds.clickIfExists(SikuliCommands.pattern("zoom-icon.png").targetOffset(-43, -3), menuRegion);
+            sikuliCmds.clickIfExists(StarMenuButtons.ZOOM_ICON.pattern, menuRegion);
             sikuliCmds.sleep(1);
             sikuliCmds.type("a", Key.CTRL);
             sikuliCmds.sleep(1);
@@ -67,7 +69,7 @@ public class StarMenuCommands extends MenuCommands {
     }
 
     public boolean isStarMenuOpen() {
-        if (sikuliCmds.exists("StarMenu-Button.png", menuRegion)) {
+        if (sikuliCmds.exists(StarMenuButtons.StarMenuTitleImage.pattern, menuRegion)) {
             log.info("StarMenu is open");
             return true;
         }
@@ -75,12 +77,15 @@ public class StarMenuCommands extends MenuCommands {
         return false;
     }
 
-    public <PSI> int launchAllGeologicsByImage(PSI image, MaterialType material, int launchLimit) {
+    public <PSI> int launchAllGeologicsByImage(MenuButton image, MaterialType material, int launchLimit) {
         log.info("launchAllGeologicsByImage");
         int launchCount = 0;
         for (int i = 0; i <= launchLimit; ++i) {
-            openStarMenu();
-            Match match = sikuliCmds.find(image, menuRegion);
+            if (!openStarMenu()) {
+                break;
+            }
+            highlightMenuRegion();
+            Match match = sikuliCmds.find(image.getPattern(), menuRegion);
             if (match != null) {
                 if (launchGeologic(match, material)) {
                     launchCount++;
@@ -100,15 +105,15 @@ public class StarMenuCommands extends MenuCommands {
         log.info("launchGeologic material: " + material);
         if (match.click() == 1) {
             if (MaterialType.ST.equals(material)) {
-                sikuliCmds.clickIfExists("Material-Stone-Button.png", menuRegion);
+                sikuliCmds.clickIfExists(pattern("Material-Stone-Button.png"), menuRegion);
             } else if (MaterialType.MA.equals(material)) {
-                sikuliCmds.clickIfExists("Material-Marble-Button.png", menuRegion);
+                sikuliCmds.clickIfExists(pattern("Material-Marble-Button.png"), menuRegion);
             } else if (MaterialType.GR.equals(material)) {
-                sikuliCmds.clickIfExists("Material-Granite-Button.png", menuRegion);
+                sikuliCmds.clickIfExists(pattern("Material-Granite-Button.png"), menuRegion);
             } else if (MaterialType.KU.equals(material)) {
-                sikuliCmds.clickIfExists("Material-Copper-Button.png", menuRegion);
+                sikuliCmds.clickIfExists(pattern("Material-Copper-Button.png"), menuRegion);
             } else if (MaterialType.EI.equals(material)) {
-                sikuliCmds.clickIfExists("Material-Iron-Button.png", menuRegion);
+                sikuliCmds.clickIfExists(pattern("Material-Iron-Button.png"), menuRegion);
             } else {
                 throw new IllegalArgumentException("Unsupported type: " + material);
             }

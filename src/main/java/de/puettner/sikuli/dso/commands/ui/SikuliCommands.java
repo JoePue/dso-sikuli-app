@@ -98,11 +98,12 @@ public class SikuliCommands {
         return this.clickIfExists(LetsPlayButton, appRegion);
     }
 
-    <PSI> boolean clickIfExists(PSI filename, Region searchRegion) {
+    boolean clickIfExists(Pattern filename, Region searchRegion) {
         final Match match = searchRegion.exists(filename);
         boolean rv = false;
         if (match != null) {
             match.click();
+            rv = true;
         }
         log.info(filename + (rv ? " exists and clicked" : " not exists and not clicked"));
         return rv;
@@ -113,7 +114,12 @@ public class SikuliCommands {
     }
 
     public boolean closeMenu() {
-        return this.clickIfExists("Close-icon.png", appRegion);
+        return this.clickIfExists(pattern("Close-icon.png"), appRegion);
+    }
+
+    public static Pattern pattern(String filename) {
+        Image img = Image.create(filename);
+        return new Pattern(img);
     }
 
     public boolean clickSmallOkButton() {
@@ -154,14 +160,9 @@ public class SikuliCommands {
         return this.clickOkButton(2);
     }
 
-    public boolean clickStarMenuButton() {
-        log.info("clickStarMenuButton");
-        return clickIfExists(pattern("StarMenuButton.png").targetOffset(-2, -25), appRegion);
-    }
-
-    public static Pattern pattern(String filename) {
-        Image img = Image.create(filename);
-        return new Pattern(img);
+    public boolean clickStarButton() {
+        log.info("clickStarButton");
+        return clickIfExists(pattern("StarButton.png").targetOffset(-2, -25), appRegion);
     }
 
     public void focusApp() {
@@ -173,27 +174,27 @@ public class SikuliCommands {
     }
 
     public boolean existsAvatar() {
-        return this.exists("Avatar.png");
+        return this.exists(pattern("Avatar.png").similar(0.80f));
     }
 
-    <PSI> boolean exists(PSI filename) {
+    boolean exists(Pattern filename) {
         return this.exists(filename, appRegion);
     }
 
-    <PSI> boolean exists(PSI filename, Region searchRegion) {
+    boolean exists(Pattern filename, Region searchRegion) {
         final Match match = find(filename, searchRegion);
         boolean exists = (match == null ? false : true);
         log.info(filename + " " + (exists ? "exists" : "not exists"));
         return exists;
     }
 
-    public <PSI> Match find(PSI filename, Region searchRegion) {
+    public Match find(Pattern filename, Region searchRegion) {
         final Match match = searchRegion.exists(filename);
         return match;
     }
 
     public boolean openQuestBook() {
-        clickIfExists("Questbook-icon.png", appRegion);
+        clickIfExists(pattern("Questbook-icon.png"), appRegion);
         return true;
     }
 
@@ -205,12 +206,12 @@ public class SikuliCommands {
         this.click(pattern("BookBinderBuilding.png").similar(0.80f));
     }
 
-    <PSI> boolean click(PSI filename) {
+    boolean click(Pattern filename) {
         return this.clickIfExists(filename, appRegion);
     }
 
     public void clickExitButton() {
-        click("exit-button.png");
+        click(pattern("exit-button.png"));
     }
 
     public Iterator<Match> findMines(MaterialType material) {

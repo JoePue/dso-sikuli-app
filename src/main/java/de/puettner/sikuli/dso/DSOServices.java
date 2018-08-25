@@ -151,12 +151,12 @@ public class DSOServices {
     public int launchAllHappyGeologics(MaterialType material, int launchLimit) {
         log.info("launchAllHappyGeologics");
         sikuliCmds.parkMouse();
-        return starMenu.launchAllGeologicsByImage(pattern("HappyGeologic-icon.png").similar(0.90f), material, launchLimit);
+        return starMenu.launchAllGeologicsByImage(StarMenuButtons.HappyGeologic, material, launchLimit);
     }
 
     public int launchAllNormalGeologics(MaterialType material, int launchLimit) {
         log.info("launchAllNormalGeologics");
-        return starMenu.launchAllGeologicsByImage(pattern("NormalGeologic-icon.png").similar(0.90f), material, launchLimit);
+        return starMenu.launchAllGeologicsByImage(StarMenuButtons.NormalGeologic, material, launchLimit);
     }
 
     /**
@@ -164,7 +164,7 @@ public class DSOServices {
      */
     public int launchAllConscientiousGeologics(MaterialType material, int launchLimit) {
         log.info("launchAllConscientiousGeologics");
-        return starMenu.launchAllGeologicsByImage(pattern("ConscientiousGeologic-icon.png").similar(0.90f), material, launchLimit);
+        return starMenu.launchAllGeologicsByImage(StarMenuButtons.ConscientiousGeologic, material, launchLimit);
     }
 
     public void prepareStarMenu() {

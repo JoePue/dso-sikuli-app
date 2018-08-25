@@ -2,7 +2,7 @@ package de.puettner.sikuli.dso.commands.ui;
 
 import org.sikuli.script.Pattern;
 
-public enum BuildMenuButtons {
+public enum BuildMenuButtons implements MenuButton {
     // *************** Building-Buttons ******************
     /** Verbesserter Gebäude */
     ImprovedBuildingButton(SikuliCommands.pattern("ImprovedBuildingsButton.png").similar(0.90f)),
@@ -19,5 +19,9 @@ public enum BuildMenuButtons {
 
     BuildMenuButtons(Pattern pattern) {
         this.pattern = pattern;
+    }
+
+    public Pattern getPattern() {
+        return pattern;
     }
 }
