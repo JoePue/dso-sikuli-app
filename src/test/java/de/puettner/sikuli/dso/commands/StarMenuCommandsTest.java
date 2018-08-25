@@ -5,12 +5,11 @@ import org.junit.Test;
 
 public class StarMenuCommandsTest {
 
-    private final SikuliCommands sikuliCmd = SikuliCommands.build();
-    private StarMenuCommands starMenu;
+    private final SikuliCommands sikuliCmd = CommandBuilder.buildSikuliCommand();
+    private final StarMenuCommands starMenu = CommandBuilder.buildStarMenuCommands();
 
     @Before
     public void before() {
-        starMenu = sikuliCmd.buildStarMenuCommands();
         sikuliCmd.switchToBrowser();
     }
 

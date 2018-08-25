@@ -10,12 +10,11 @@ import static java.awt.event.KeyEvent.VK_ENTER;
 
 public class SikuliCommandsTest {
 
-    private final SikuliCommands sikuliCmd = SikuliCommands.build();
-    private StarMenuCommands starMenu;
+    private final SikuliCommands sikuliCmd = CommandBuilder.buildSikuliCommand();
+    private final StarMenuCommands starMenu = CommandBuilder.buildStarMenuCommands();
 
     @Before
     public void before() {
-        starMenu = sikuliCmd.buildStarMenuCommands();
         sikuliCmd.switchToBrowser();
     }
 

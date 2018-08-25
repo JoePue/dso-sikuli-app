@@ -1,5 +1,6 @@
 package de.puettner.sikuli.dso;
 
+import de.puettner.sikuli.dso.commands.CommandBuilder;
 import de.puettner.sikuli.dso.commands.MaterialType;
 import de.puettner.sikuli.dso.commands.SikuliCommands;
 import lombok.extern.slf4j.Slf4j;
@@ -7,7 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class DSOAutomationApp {
 
-    private static final SikuliCommands sikuli = SikuliCommands.build();
+    private static final SikuliCommands sikuli = CommandBuilder.buildSikuliCommand();
 
     public static void main(String[] args) {
         log.info("App starting");

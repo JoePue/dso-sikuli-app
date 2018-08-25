@@ -22,10 +22,25 @@ public class DSOServices {
 
 
     public DSOServices() {
-        sikuliComd = SikuliCommands.build();
-        this.buildMenu = sikuliComd.buildBuildMenuCommands();
-        this.starMenu = sikuliComd.buildStarMenuCommands();
-        this.bookbinderMenu = sikuliComd.buildBookbinderMenuCommands();
+        sikuliComd = CommandBuilder.buildSikuliCommand();
+        this.buildMenu = CommandBuilder.buildBuildMenuCommands();
+        this.starMenu = CommandBuilder.buildStarMenuCommands();
+        this.bookbinderMenu = CommandBuilder.buildBookbinderMenuCommands();
+    }
+
+    public void startDsoApp() {
+        log.info("startDsoApp");
+        if (!winCommand.isChromeRunning()) {
+            throw new NotImplementedException();
+        }
+        sikuliComd.switchToBrowser();
+        sikuliComd.sleep(1);
+        sikuliComd.clickDsoTab();
+        if (sikuliComd.clickLetsPlayButtonIfExists()) {
+            this.closeWelcomeDialog();
+        } else {
+            log.info("expect running DSO app");
+        }
     }
 
     public void closeWelcomeDialog() {
@@ -44,21 +59,6 @@ public class DSOServices {
                     sikuliComd.clickLoginBonusButton();
                 }
             }
-        }
-    }
-
-    public void startDsoApp() {
-        log.info("startDsoApp");
-        if (!winCommand.isChromeRunning()) {
-            throw new NotImplementedException();
-        }
-        sikuliComd.switchToBrowser();
-        sikuliComd.sleep(1);
-        sikuliComd.clickDsoTab();
-        if (sikuliComd.clickLetsPlayButtonIfExists()) {
-            this.closeWelcomeDialog();
-        } else {
-            log.info("expect running DSO app");
         }
     }
 
@@ -90,6 +90,14 @@ public class DSOServices {
             }
         }
         return true;
+    }
+
+    private void goToSector(int i) {
+        log.info("goToSector");
+        if (i < 0 || i > 9) {
+            throw new IllegalArgumentException();
+        }
+        sikuliComd.type(i);
     }
 
     public boolean solveGuildQuest() {
@@ -132,17 +140,22 @@ public class DSOServices {
         return starMenu.launchAllExplorerByImage(pattern("BraveExplorer-icon.png").similar(0.80f));
     }
 
+    public int launchAllGeologics(MaterialType material, int launchLimit) {
+        launchLimit = launchLimit - this.launchAllHappyGeologics(material, launchLimit);
+        launchLimit = launchLimit - this.launchAllNormalGeologics(material, launchLimit);
+        launchLimit = launchLimit - this.launchAllConscientiousGeologics(material, launchLimit);
+        return launchLimit;
+    }
+
     public int launchAllHappyGeologics(MaterialType material, int launchLimit) {
         log.info("launchAllHappyGeologics");
         sikuliComd.parkMouse();
         return starMenu.launchAllGeologicsByImage(pattern("HappyGeologic-icon.png").similar(0.90f), material, launchLimit);
     }
 
-    public int launchAllGeologics(MaterialType material, int launchLimit) {
-        launchLimit = launchLimit - this.launchAllHappyGeologics(material, launchLimit);
-        launchLimit = launchLimit - this.launchAllNormalGeologics(material, launchLimit);
-        launchLimit = launchLimit - this.launchAllConscientiousGeologics(material, launchLimit);
-        return launchLimit;
+    public int launchAllNormalGeologics(MaterialType material, int launchLimit) {
+        log.info("launchAllNormalGeologics");
+        return starMenu.launchAllGeologicsByImage(pattern("NormalGeologic-icon.png").similar(0.90f), material, launchLimit);
     }
 
     /**
@@ -151,11 +164,6 @@ public class DSOServices {
     public int launchAllConscientiousGeologics(MaterialType material, int launchLimit) {
         log.info("launchAllConscientiousGeologics");
         return starMenu.launchAllGeologicsByImage(pattern("ConscientiousGeologic-icon.png").similar(0.90f), material, launchLimit);
-    }
-
-    public int launchAllNormalGeologics(MaterialType material, int launchLimit) {
-        log.info("launchAllNormalGeologics");
-        return starMenu.launchAllGeologicsByImage(pattern("NormalGeologic-icon.png").similar(0.90f), material, launchLimit);
     }
 
     public void prepareStarMenu() {
@@ -185,14 +193,6 @@ public class DSOServices {
         sikuliComd.parkMouse();
     }
 
-    private void goToSector(int i) {
-        log.info("goToSector");
-        if (i < 0 || i > 9) {
-            throw new IllegalArgumentException();
-        }
-        sikuliComd.type(i);
-    }
-
     void switchToBrowser() {
         log.info("switchToBrowser");
         sikuliComd.switchToBrowser();
@@ -207,16 +207,6 @@ public class DSOServices {
     public int buildColeMines(int limit) {
         int[] sectors = {7, 6};
         return this.buildMines(limit, MaterialType.KO, BuildMenuButtons.RaisedBuildingButton, BuildMenuButtons.ColeMineButton, sectors);
-    }
-
-    public int buildIronMines(int limit) {
-        int[] sectors = {6, 7, 9, 4};
-        return this.buildMines(limit, MaterialType.EI, BuildMenuButtons.RaisedBuildingButton, BuildMenuButtons.CopperMineButton, sectors);
-    }
-
-    public int buildCopperMines(int limit) {
-        int[] sectors = {2, 4};
-        return this.buildMines(limit, MaterialType.KU, BuildMenuButtons.ImprovedBuildingButton, BuildMenuButtons.CopperMineButton, sectors);
     }
 
     private int buildMines(int limit, MaterialType material, BuildMenuButtons buildingButton, BuildMenuButtons mineButton, int[] sectors) {
@@ -258,6 +248,15 @@ public class DSOServices {
         sikuliComd.typeESC();
     }
 
+    public int buildIronMines(int limit) {
+        int[] sectors = {6, 7, 9, 4};
+        return this.buildMines(limit, MaterialType.EI, BuildMenuButtons.RaisedBuildingButton, BuildMenuButtons.CopperMineButton, sectors);
+    }
+
+    public int buildCopperMines(int limit) {
+        int[] sectors = {2, 4};
+        return this.buildMines(limit, MaterialType.KU, BuildMenuButtons.ImprovedBuildingButton, BuildMenuButtons.CopperMineButton, sectors);
+    }
 
     void sleep(int i) {
         sikuliComd.sleep(i);
