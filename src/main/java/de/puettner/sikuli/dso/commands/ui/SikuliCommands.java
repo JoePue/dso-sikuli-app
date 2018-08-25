@@ -39,6 +39,10 @@ public class SikuliCommands {
         return appRegion.type(text.toString(), modifiers);
     }
 
+    public int typeKeyDown() {
+        return this.type(Key.DOWN.toString(), null);
+    }
+
     public int type(Object input) {
         return this.type(input.toString(), null);
     }
@@ -62,7 +66,7 @@ public class SikuliCommands {
         try {
             return searchRegion.findAll(pattern);
         } catch (FindFailed e) {
-            log.error(e.getMessage(), e);
+            log.warn(e.getMessage());
         }
         return Collections.emptyListIterator();
     }
@@ -147,5 +151,22 @@ public class SikuliCommands {
 
     public void hightlightRegions() {
         appRegion.highlight(2, "green");
+    }
+
+    public void dragNdrop(int xOffset, int yOffset) {
+        int xSource = appRegion.w - 100, ySource = appRegion.h - 100;
+        if (yOffset < 0) {
+            ySource = appRegion.h - 100;
+        }
+        if (xOffset < 0) {
+            xSource = appRegion.w - 100;
+        }
+        Location sourceLocation = new Location(xSource, ySource);
+        Location targetLocation = new Location(sourceLocation.x - xOffset, sourceLocation.y + yOffset);
+        try {
+            appRegion.dragDrop(sourceLocation, targetLocation);
+        } catch (FindFailed e) {
+            log.error(e.getMessage(), e);
+        }
     }
 }

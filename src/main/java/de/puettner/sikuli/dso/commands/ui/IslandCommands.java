@@ -110,4 +110,10 @@ public class IslandCommands extends SikuliCommands {
         super.hightlightRegions();
         this.geologicSearchRegion.highlight(2, "green");
     }
+
+    public void typeKeyDown(int count) {
+        for (int i = 0; i < count; ++i) {
+            super.typeKeyDown();
+        }
+    }
 }

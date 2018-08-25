@@ -26,6 +26,7 @@ public class DSOAutomationApp {
         dsoService.closeWelcomeDialog();
         dsoService.prepareStarMenu();
 
+        dsoService.buildCopperMines(3);
         dsoService.launchAllHappyGeologics(MaterialType.KU, 6);
         dsoService.launchAllHappyGeologics(MaterialType.ST, 2);
         dsoService.launchAllNormalGeologics(MaterialType.ST, 3);

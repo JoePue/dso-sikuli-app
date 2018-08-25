@@ -12,4 +12,7 @@ public class BuildMenuCommands extends MenuCommands {
         islandCmds.clickIfExists(entry.pattern, menuRegion);
     }
 
+    public boolean isRaisedBuildingMenuDisabled() {
+        return islandCmds.exists(BuildMenuButtons.RaisedBuildingMenuDisabled.pattern);
+    }
 }

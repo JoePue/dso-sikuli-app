@@ -17,4 +17,5 @@ public class IslandCommandsTest {
     public void hightlightRegions() {
         islandCmds.hightlightRegions();
     }
+
 }

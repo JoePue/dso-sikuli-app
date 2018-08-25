@@ -14,14 +14,26 @@ public class DSOServicesTest {
     }
 
     @Test
+    public void goToSector() {
+        dsoServices.goToSector(10);
+    }
+
+
+    @Test
     public void buildCopperMines() {
         System.out.println(dsoServices.buildCopperMines(3));
     }
 
     @Test
+    public void buildGoldMines() {
+        System.out.println(dsoServices.buildGoldMines(3));
+    }
+
+    @Test
     public void buildIronMines() {
         //        do {
-            int count = dsoServices.buildIronMines(3);
+        int count = 0;
+        count = dsoServices.buildIronMines(3);
             System.out.println("Build " + count + " iron mines");
         //            if (count == 0) {
         //                break;
