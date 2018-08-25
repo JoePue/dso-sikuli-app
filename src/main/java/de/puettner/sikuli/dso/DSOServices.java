@@ -16,14 +16,14 @@ import static org.sikuli.script.Commands.hover;
 public class DSOServices {
 
     private final PlatformCommands winCommand = new PlatformCommands();
-    private final SikuliCommands sikuliComd;
+    private final SikuliCommands sikuliCmds;
     private final BuildMenuCommands buildMenu;
     private final StarMenuCommands starMenu;
     private final BookbinderMenuCommands bookbinderMenu;
 
 
     public DSOServices() {
-        sikuliComd = CommandBuilder.build().buildSikuliCommand();
+        sikuliCmds = CommandBuilder.build().buildSikuliCommand();
         this.buildMenu = CommandBuilder.build().buildBuildMenuCommands();
         this.starMenu = CommandBuilder.build().buildStarMenuCommands();
         this.bookbinderMenu = CommandBuilder.build().buildBookbinderMenuCommands();
@@ -34,10 +34,10 @@ public class DSOServices {
         if (!winCommand.isChromeRunning()) {
             throw new NotImplementedException();
         }
-        sikuliComd.switchToBrowser();
-        sikuliComd.sleep(1);
-        sikuliComd.clickDsoTab();
-        if (sikuliComd.clickLetsPlayButtonIfExists()) {
+        sikuliCmds.switchToBrowser();
+        sikuliCmds.sleep(1);
+        sikuliCmds.clickDsoTab();
+        if (sikuliCmds.clickLetsPlayButtonIfExists()) {
             this.closeWelcomeDialog();
         } else {
             log.info("expect running DSO app");
@@ -49,15 +49,15 @@ public class DSOServices {
         int timeout = 300;
         int okButtonTimeout = 3;
         while (timeout > 0) {
-            sikuliComd.sleep(1);
+            sikuliCmds.sleep(1);
             timeout -= 1;
-            if (sikuliComd.existsAvatar()) {
+            if (sikuliCmds.existsAvatar()) {
                 okButtonTimeout -= 1;
-                if (okButtonTimeout < 0 || sikuliComd.clickSmallOkButton()) {
-                    sikuliComd.sleep(1);
+                if (okButtonTimeout < 0 || sikuliCmds.clickSmallOkButton()) {
+                    sikuliCmds.sleep(1);
                     timeout = 0;
                     // Login Bonus
-                    sikuliComd.clickLoginBonusButton();
+                    sikuliCmds.clickLoginBonusButton();
                 }
             }
         }
@@ -65,11 +65,11 @@ public class DSOServices {
 
     public boolean solveDailyQuest() {
         log.info("solveDailyQuest");
-        sikuliComd.openQuestBook();
-        if (sikuliComd.existsDailyQuestMenuIem()) {
-            sikuliComd.clickSmallOkButton();
-            sikuliComd.sleep(20);
-            sikuliComd.clickSmallOkButton();
+        sikuliCmds.openQuestBook();
+        if (sikuliCmds.existsDailyQuestMenuIem()) {
+            sikuliCmds.clickSmallOkButton();
+            sikuliCmds.sleep(20);
+            sikuliCmds.clickSmallOkButton();
         }
         return true;
     }
@@ -80,12 +80,12 @@ public class DSOServices {
         int[] quadranten = {1, 2, 3, 4, 5, 6, 7, 8, 9};
         for (int quadrant : quadranten) {
             this.goToSector(quadrant);
-            Iterator<Match> icons = sikuliComd.findAll(pattern("Collectable-icon.png").targetOffset(5, 6));
+            Iterator<Match> icons = sikuliCmds.findAll(pattern("Collectable-icon.png").targetOffset(5, 6));
             while (icons.hasNext()) {
                 Match icon = icons.next();
                 log.info("Sammelgegenstand gefunden");
                 hover(icon);
-                sikuliComd.sleep(1);
+                sikuliCmds.sleep(1);
                 //click(icon);
                 //sleep(1);
             }
@@ -98,16 +98,16 @@ public class DSOServices {
         if (i < 0 || i > 9) {
             throw new IllegalArgumentException();
         }
-        sikuliComd.type(i);
+        sikuliCmds.type(i);
     }
 
     public boolean solveGuildQuest() {
         log.info("solveGuildQuest");
-        sikuliComd.openQuestBook();
+        sikuliCmds.openQuestBook();
         click(pattern("GuildQuestMenuItem-icon.png").targetOffset(6, 57));
-        sikuliComd.clickSmallOkButton();
-        sikuliComd.sleep(20);
-        sikuliComd.clickSmallOkButton();
+        sikuliCmds.clickSmallOkButton();
+        sikuliCmds.sleep(20);
+        sikuliCmds.clickSmallOkButton();
         return true;
     }
 
@@ -150,7 +150,7 @@ public class DSOServices {
 
     public int launchAllHappyGeologics(MaterialType material, int launchLimit) {
         log.info("launchAllHappyGeologics");
-        sikuliComd.parkMouse();
+        sikuliCmds.parkMouse();
         return starMenu.launchAllGeologicsByImage(pattern("HappyGeologic-icon.png").similar(0.90f), material, launchLimit);
     }
 
@@ -170,39 +170,39 @@ public class DSOServices {
     public void prepareStarMenu() {
         log.info("prepareStarMenu");
         starMenu.openStarMenu("entdeck|kundsch|geolo");
-        sikuliComd.typeESC();
+        sikuliCmds.typeESC();
     }
 
     public void fetchBookbinderItem() {
         log.info("fetchBookbinderItem");
-        sikuliComd.parkMouse();
+        sikuliCmds.parkMouse();
         this.goToSector(3);
-        sikuliComd.clickBookbinderBuilding();
-        sikuliComd.sleep(2);
-        if (sikuliComd.clickBigOkButton()) {
+        sikuliCmds.clickBookbinderBuilding();
+        sikuliCmds.sleep(2);
+        if (sikuliCmds.clickBigOkButton()) {
             // Assumes production is ready
-            sikuliComd.sleep(15);
+            sikuliCmds.sleep(15);
         }
         bookbinderMenu.clickButton(BookbinderMenuButtons.Kompendium);
-        sikuliComd.sleep(1);
+        sikuliCmds.sleep(1);
         if (bookbinderMenu.clickOkButtonBookbinder()) {
 
         }
-        sikuliComd.typeESC();
-        sikuliComd.sleep(1);
+        sikuliCmds.typeESC();
+        sikuliCmds.sleep(1);
         this.goToSector(1);
-        sikuliComd.parkMouse();
+        sikuliCmds.parkMouse();
     }
 
     void switchToBrowser() {
         log.info("switchToBrowser");
-        sikuliComd.switchToBrowser();
+        sikuliCmds.switchToBrowser();
     }
 
     public void exitDso() {
         log.info("exitDso()");
-        sikuliComd.typeESC();
-        sikuliComd.clickExitButton();
+        sikuliCmds.typeESC();
+        sikuliCmds.clickExitButton();
     }
 
     public int buildColeMines(int limit) {
@@ -214,31 +214,31 @@ public class DSOServices {
         log.info("buildCopperMines");
 
         int buildCount = 0;
-        sikuliComd.parkMouse();
+        sikuliCmds.parkMouse();
         outerloop: for(int sector : sectors) {
             goToSector(sector);
-            Iterator<Match> matches = sikuliComd.findMines(material);
+            Iterator<Match> matches = sikuliCmds.findMines(material);
             while (matches.hasNext()) {
                 if (buildCount >= limit) {
                     break outerloop;
                 }
-                sikuliComd.typeESC();
+                sikuliCmds.typeESC();
                 if (buildCount == 0) {
                     prepareBuildMenu(buildingButton);
                 }
                 starMenu.openBuildMenu();
-                sikuliComd.sleep(1);
+                sikuliCmds.sleep(1);
                 buildMenu.clickButton(mineButton);
-                sikuliComd.sleep(1);
+                sikuliCmds.sleep(1);
                 Match match = matches.next();
 //                match.hover();
                 match.click();
-                sikuliComd.sleep(1);
+                sikuliCmds.sleep(1);
                 buildCount++;
             }
         }
-        sikuliComd.clickBuildCancelButton();
-        sikuliComd.typeESC();
+        sikuliCmds.clickBuildCancelButton();
+        sikuliCmds.typeESC();
         return buildCount;
     }
 
@@ -246,7 +246,7 @@ public class DSOServices {
         log.info("prepareBuildMenu");
         starMenu.openBuildMenu();
         buildMenu.clickButton(buildingType);
-        sikuliComd.typeESC();
+        sikuliCmds.typeESC();
     }
 
     public int buildIronMines(int limit) {
@@ -260,6 +260,6 @@ public class DSOServices {
     }
 
     void sleep(int i) {
-        sikuliComd.sleep(i);
+        sikuliCmds.sleep(i);
     }
 }

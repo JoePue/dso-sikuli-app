@@ -10,7 +10,7 @@ import static de.puettner.sikuli.dso.commands.os.WindowsPlatformHelper.CHROME_EX
 public class CommandBuilder {
 
     private static CommandBuilder cmdBuilder;
-    private static SikuliCommands sikuliCommands;
+    private static SikuliCommands sikuliCmds;
     private static BuildMenuCommands buildMenuCommands;
     private static StarMenuCommands starMenuCommands;
     private static BookbinderMenuCommands bookbinderMenuCommands;
@@ -39,11 +39,11 @@ public class CommandBuilder {
     }
 
     public SikuliCommands buildSikuliCommand() {
-        if (sikuliCommands == null) {
+        if (sikuliCmds == null) {
             ImagePath.add("../dso_1.sikuli");
-            sikuliCommands = new SikuliCommands(new App(CHROME_EXE), dsoAppRegion);
+            sikuliCmds = new SikuliCommands(new App(CHROME_EXE), dsoAppRegion);
         }
-        return sikuliCommands;
+        return sikuliCmds;
     }
 
     public Region calculateBuildQueueRegion() {

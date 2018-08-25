@@ -4,12 +4,12 @@ import org.sikuli.script.Region;
 
 public class BuildMenuCommands extends MenuCommands {
 
-    public BuildMenuCommands(Region menuRegion, SikuliCommands sikuliCommands) {
-        super(menuRegion, sikuliCommands);
+    public BuildMenuCommands(Region menuRegion, SikuliCommands sikuliCmds) {
+        super(menuRegion, sikuliCmds);
     }
 
     public void clickButton(BuildMenuButtons entry) {
-        sikuliCommands.clickIfExists(entry.pattern, menuRegion);
+        sikuliCmds.clickIfExists(entry.pattern, menuRegion);
     }
 
     public void buildMine(String s) {
