@@ -23,7 +23,7 @@ public class DSOServices {
 
 
     public DSOServices() {
-        this.islandCmds = CommandBuilder.build().buildSikuliCommand();
+        this.islandCmds = CommandBuilder.build().buildIslandCommand();
         this.buildMenu = CommandBuilder.build().buildBuildMenuCommands();
         this.starMenu = CommandBuilder.build().buildStarMenuCommands();
         this.bookbinderMenu = CommandBuilder.build().buildBookbinderMenuCommands();
@@ -217,6 +217,7 @@ public class DSOServices {
         islandCmds.parkMouse();
         outerloop: for(int sector : sectors) {
             goToSector(sector);
+            //             islandCmds.hightlightRegions(); islandCmds.sleep(1);
             Iterator<Match> matches = islandCmds.findMines(material);
             while (matches.hasNext()) {
                 if (buildCount >= limit) {
@@ -250,8 +251,8 @@ public class DSOServices {
     }
 
     public int buildIronMines(int limit) {
-        int[] sectors = {6, 7, 9, 4};
-        return this.buildMines(limit, MaterialType.EI, BuildMenuButtons.RaisedBuildingButton, BuildMenuButtons.CopperMineButton, sectors);
+        int[] sectors = {3, 4, 5, 6, 8, 9};
+        return this.buildMines(limit, MaterialType.EI, BuildMenuButtons.RaisedBuildingButton, BuildMenuButtons.IronMineButton, sectors);
     }
 
     public int buildCopperMines(int limit) {

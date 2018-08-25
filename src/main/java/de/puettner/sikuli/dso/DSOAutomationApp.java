@@ -18,7 +18,7 @@ public class DSOAutomationApp {
     public static void main(String[] args) {
         log.info("App starting");
         CommandBuilder cmdBuilder = CommandBuilder.build();
-        SikuliCommands sikuli = cmdBuilder.buildSikuliCommand();
+        SikuliCommands sikuli = cmdBuilder.buildIslandCommand();
 
         DSOServices dsoService = new DSOServices();
 

@@ -8,7 +8,7 @@ import org.junit.Test;
 
 public class StarMenuCommandsTest {
 
-    private final SikuliCommands sikuliCmd = CommandBuilder.build().buildSikuliCommand();
+    private final SikuliCommands sikuliCmd = CommandBuilder.build().buildIslandCommand();
     private final StarMenuCommands starMenu = CommandBuilder.build().buildStarMenuCommands();
 
     @Before

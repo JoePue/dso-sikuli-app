@@ -12,12 +12,12 @@ import static java.awt.event.KeyEvent.VK_ENTER;
 public class SikuliCommandsTest {
 
     private static final CommandBuilder cmBuilder = CommandBuilder.build();
-    private final IslandCommands sikuliCmd = cmBuilder.buildSikuliCommand();
+    private final IslandCommands islandCmds = cmBuilder.buildIslandCommand();
     private final StarMenuCommands starMenu = cmBuilder.buildStarMenuCommands();
 
     @Before
     public void before() {
-        sikuliCmd.switchToBrowser();
+        islandCmds.switchToBrowser();
     }
 
     @Test
@@ -27,22 +27,22 @@ public class SikuliCommandsTest {
 
     @Test
     public void exists() {
-        System.out.println(sikuliCmd.exists(pattern("Ok-Button-0.png")));
-        System.out.println(sikuliCmd.exists(pattern("Ok-Button-1.png")));
-        System.out.println(sikuliCmd.exists(pattern("Ok-Button-2.png")));
+        System.out.println(islandCmds.exists(pattern("Ok-Button-0.png")));
+        System.out.println(islandCmds.exists(pattern("Ok-Button-1.png")));
+        System.out.println(islandCmds.exists(pattern("Ok-Button-2.png")));
     }
 
     @Test
     public void type() {
-        sikuliCmd.type(Key.ESC);
+        islandCmds.type(Key.ESC);
     }
 
     @Test
     public void paste() {
         Location location = Commands.click(new Location(100, 1000));
-        sikuliCmd.type("Sikuli Test " + System.currentTimeMillis() + Key.ENTER); // java.lang.IllegalArgumentException: Invalid key code
+        islandCmds.type("Sikuli Test " + System.currentTimeMillis() + Key.ENTER); // java.lang.IllegalArgumentException: Invalid key code
         // wegen ":"
-        sikuliCmd.paste("entdeck|kundsch|geolo");
+        islandCmds.paste("entdeck|kundsch|geolo");
         System.out.println(VK_ENTER);
     }
 

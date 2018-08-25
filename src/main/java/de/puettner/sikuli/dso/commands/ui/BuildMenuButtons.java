@@ -11,9 +11,9 @@ public enum BuildMenuButtons implements MenuButton {
 
     // Building dependent buttons
     CopperMineButton(SikuliCommands.pattern("CopperMineBuildingButton").similar(0.90f)),
-    IronMineButton(SikuliCommands.pattern("IronMineBuildingButton").similar(0.90f)),
-    ColeMineButton(SikuliCommands.pattern("ColeMineBuildingButton").similar(0.90f)),
-    GoldMineButton(SikuliCommands.pattern("GoldMineBuildingButton").similar(0.90f)),
+    IronMineButton(SikuliCommands.pattern("IronMineBuildingButton").similar(0.92f)),
+    ColeMineButton(SikuliCommands.pattern("ColeMineBuildingButton").similar(0.92f)),
+    GoldMineButton(SikuliCommands.pattern("GoldMineBuildingButton").similar(0.92f)),
     ;
     public final Pattern pattern;
 

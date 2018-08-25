@@ -13,10 +13,11 @@ public class IslandCommands extends SikuliCommands {
 
     protected final String[] okButtonList = {"Ok-Button-0.png", "Ok-Button-1.png", "Ok-Button-2.png", "Ok-Button-3-Bookbinder.png"};
     protected final Pattern LetsPlayButton = pattern("LetsPlay-Button.png").similar(0.8f);
+    private final Region geologicSearchRegion;
 
-    public IslandCommands(App app, Region appRegion) {
-        super(app, appRegion);
-        this.appRegion = appRegion;
+    public IslandCommands(App app, Region dsoAppRegion, Region geologicSearchRegion) {
+        super(app, dsoAppRegion);
+        this.geologicSearchRegion = geologicSearchRegion;
     }
 
     public boolean clickLetsPlayButtonIfExists() {
@@ -91,9 +92,9 @@ public class IslandCommands extends SikuliCommands {
         if (MaterialType.KU.equals(material)) {
             return findAll(MaterialType.KU.sourcePattern);
         } else if (MaterialType.GO.equals(material)) {
-            return findAll(MaterialType.GO.sourcePattern, appRegion);
+            return findAll(MaterialType.GO.sourcePattern, geologicSearchRegion);
         } else if (MaterialType.EI.equals(material)) {
-            return findAll(MaterialType.EI.sourcePattern, appRegion);
+            return findAll(MaterialType.EI.sourcePattern, geologicSearchRegion);
             //        } else if (MaterialType.MA.equals(material)) {
             //        } else if (MaterialType.KU.equals(material)) {
         } else {
@@ -103,5 +104,10 @@ public class IslandCommands extends SikuliCommands {
 
     public boolean clickBuildCancelButton() {
         return clickIfExists(pattern("BuildCancelButton.png").similar(0.80f), appRegion);
+    }
+
+    public void hightlightRegions() {
+        super.hightlightRegions();
+        this.geologicSearchRegion.highlight(2, "green");
     }
 }

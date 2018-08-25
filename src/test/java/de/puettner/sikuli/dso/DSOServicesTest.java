@@ -18,18 +18,17 @@ public class DSOServicesTest {
         System.out.println(dsoServices.buildCopperMines(3));
     }
 
-
     @Test
     public void buildIronMines() {
-        do {
+        //        do {
             int count = dsoServices.buildIronMines(3);
             System.out.println("Build " + count + " iron mines");
-            if (count == 0) {
-                break;
-            }
-            dsoServices.sleep(500);
-        } while (true);
-        System.out.println();
+        //            if (count == 0) {
+        //                break;
+        //            }
+        //            dsoServices.sleep(500);
+        //        } while (true);
+        //        System.out.println();
     }
 
     @Test
@@ -45,7 +44,7 @@ public class DSOServicesTest {
     @Test
     public void launchAllHappyGeologics() {
         //        dsoServices.prepareStarMenu();
-        dsoServices.launchAllHappyGeologics(MaterialType.EI, 6);
+        dsoServices.launchAllHappyGeologics(MaterialType.GR, 4);
     }
 
     @Test

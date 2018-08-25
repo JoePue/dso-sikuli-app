@@ -33,22 +33,32 @@ public class CommandBuilder {
 
     public BuildMenuCommands buildBuildMenuCommands() {
         if (buildMenuCommands == null) {
-            buildMenuCommands = new BuildMenuCommands(dsoAppRegion, buildSikuliCommand());
+            buildMenuCommands = new BuildMenuCommands(dsoAppRegion, buildIslandCommand());
         }
         return buildMenuCommands;
     }
 
-    public IslandCommands buildSikuliCommand() {
+    public IslandCommands buildIslandCommand() {
         if (islandCmds == null) {
             ImagePath.add("../dso_1.sikuli");
-            islandCmds = new IslandCommands(new App(CHROME_EXE), dsoAppRegion);
+            islandCmds = new IslandCommands(new App(CHROME_EXE), dsoAppRegion, this.calculateGeologicSearchRegion());
         }
         return islandCmds;
     }
 
+    public Region calculateGeologicSearchRegion() {
+        final int menuWidth = dsoAppRegion.w - 50, menuHeight = dsoAppRegion.h - 200;
+        Region region = new Region(0, 0, 0, 0);
+        region.x = dsoAppRegion.x + (dsoAppRegion.w / 2) - (menuWidth / 2);
+        region.y = dsoAppRegion.y + (dsoAppRegion.h / 2) - (menuHeight / 2) - 50;
+        region.w = menuWidth;
+        region.h = menuHeight;
+        return region;
+    }
+
     public StarMenuCommands buildStarMenuCommands() {
         if (starMenuCommands == null) {
-            starMenuCommands = new StarMenuCommands(calculateStarMenuRegion(), buildSikuliCommand());
+            starMenuCommands = new StarMenuCommands(calculateStarMenuRegion(), buildIslandCommand());
         }
         return starMenuCommands;
     }
@@ -73,19 +83,9 @@ public class CommandBuilder {
         return region;
     }
 
-    public Region calculateGeologicSearchRegion() {
-        final int menuWidth = dsoAppRegion.w - 100, menuHeight = dsoAppRegion.h - 100;
-        Region region = new Region(0, 0, 0, 0);
-        region.x = dsoAppRegion.x + (dsoAppRegion.w / 2) - (menuWidth / 2);
-        region.y = dsoAppRegion.y + (dsoAppRegion.h / 2) - (menuHeight / 2);
-        region.w = menuWidth;
-        region.h = menuHeight;
-        return region;
-    }
-
     public BookbinderMenuCommands buildBookbinderMenuCommands() {
         if (bookbinderMenuCommands == null) {
-            bookbinderMenuCommands = new BookbinderMenuCommands(dsoAppRegion, buildSikuliCommand());
+            bookbinderMenuCommands = new BookbinderMenuCommands(dsoAppRegion, buildIslandCommand());
         }
         return bookbinderMenuCommands;
     }

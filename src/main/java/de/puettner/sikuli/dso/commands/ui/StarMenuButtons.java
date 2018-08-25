@@ -9,7 +9,7 @@ public enum StarMenuButtons implements MenuButton {
     HappyGeologic(pattern("HappyGeologic-icon.png").similar(0.80f)),
     NormalGeologic(pattern("NormalGeologic-icon.png").similar(0.80f)),
     ConscientiousGeologic(pattern("ConscientiousGeologic-icon.png").similar(0.80f)),
-    StarMenuTitleImage(pattern("StarMenuTitleImage.png"));
+    StarMenuTitleImage(pattern("StarMenuTitleImage.png").similar(0.90f));
 
 
     public final Pattern pattern;
