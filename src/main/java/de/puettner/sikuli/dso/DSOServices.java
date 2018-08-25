@@ -1,13 +1,14 @@
 package de.puettner.sikuli.dso;
 
-import de.puettner.sikuli.dso.commands.*;
+import de.puettner.sikuli.dso.commands.os.PlatformCommands;
+import de.puettner.sikuli.dso.commands.ui.*;
 import lombok.extern.slf4j.Slf4j;
 import org.sikuli.script.Match;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.Iterator;
 
-import static de.puettner.sikuli.dso.commands.SikuliCommands.pattern;
+import static de.puettner.sikuli.dso.commands.ui.SikuliCommands.pattern;
 import static org.sikuli.script.Commands.click;
 import static org.sikuli.script.Commands.hover;
 

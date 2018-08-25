@@ -1,19 +1,14 @@
-package de.puettner.sikuli.dso.commands;
+package de.puettner.sikuli.dso.commands.ui;
 
-import org.sikuli.script.Match;
 import org.sikuli.script.Region;
 
-import java.util.Iterator;
-
-import static de.puettner.sikuli.dso.commands.SikuliCommands.pattern;
-
-public class BuildMenuCommands {
+public class BuildMenuCommands extends GeneralMenusCommands {
 
     private Region menuRegion;
     private SikuliCommands sikuliCommands;
 
     public BuildMenuCommands(Region menuRegion, SikuliCommands sikuliCommands) {
-        this.menuRegion = menuRegion;
+        super(menuRegion);
         this.sikuliCommands = sikuliCommands;
     }
 

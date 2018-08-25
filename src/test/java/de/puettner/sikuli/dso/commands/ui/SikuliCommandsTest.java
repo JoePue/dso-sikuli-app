@@ -1,4 +1,4 @@
-package de.puettner.sikuli.dso.commands;
+package de.puettner.sikuli.dso.commands.ui;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -34,11 +34,6 @@ public class SikuliCommandsTest {
     @Test
     public void type() {
         sikuliCmd.type(Key.ESC);
-    }
-
-    @Test
-    public void highlightAppRegions() {
-        sikuliCmd.highlightAppRegions();
     }
 
     @Test

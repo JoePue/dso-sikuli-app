@@ -1,4 +1,4 @@
-package de.puettner.sikuli.dso.commands;
+package de.puettner.sikuli.dso.commands.ui;
 
 import de.puettner.sikuli.dso.exception.FindFailedRTException;
 import lombok.extern.slf4j.Slf4j;
@@ -13,17 +13,13 @@ public class SikuliCommands {
     public final String[] okButtonList = {"Ok-Button-0.png", "Ok-Button-1.png", "Ok-Button-2.png", "Ok-Button-3-Bookbinder.png"};
     public final Pattern LetsPlayButton = pattern("LetsPlay-Button.png").similar(0.8f);
     protected final Region appRegion;
-    private final Region starMenuRegion;
-    private final Region buildQueueRegion;
 
     // !!! Kein static bei Pattern-Properties !!!
     private final App app;
 
-    SikuliCommands(App app, Region appRegion, Region starMenuRegion, Region buildListRegion) {
+    SikuliCommands(App app, Region appRegion) {
         this.app = app;
         this.appRegion = appRegion;
-        this.starMenuRegion = starMenuRegion;
-        this.buildQueueRegion = buildListRegion;
         log.info(app.getWindow());
     }
 
@@ -86,13 +82,6 @@ public class SikuliCommands {
 
     public void switchToBrowser() {
         app.focus(1);
-    }
-
-    public void highlightAppRegions() {
-        int secs = 2;
-        this.appRegion.highlight(secs, "green");
-        this.starMenuRegion.highlight(secs, "white");
-        this.buildQueueRegion.highlight(secs, "green");
     }
 
     public Location clickDsoTab() {

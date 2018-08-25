@@ -1,8 +1,8 @@
 package de.puettner.sikuli.dso;
 
-import de.puettner.sikuli.dso.commands.CommandBuilder;
-import de.puettner.sikuli.dso.commands.MaterialType;
-import de.puettner.sikuli.dso.commands.SikuliCommands;
+import de.puettner.sikuli.dso.commands.ui.CommandBuilder;
+import de.puettner.sikuli.dso.commands.ui.MaterialType;
+import de.puettner.sikuli.dso.commands.ui.SikuliCommands;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j

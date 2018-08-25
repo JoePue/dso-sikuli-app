@@ -1,6 +1,6 @@
 package de.puettner.sikuli.dso;
 
-import de.puettner.sikuli.dso.commands.MaterialType;
+import de.puettner.sikuli.dso.commands.ui.MaterialType;
 import org.junit.Before;
 import org.junit.Test;
 

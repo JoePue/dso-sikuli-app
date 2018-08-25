@@ -1,4 +1,4 @@
-package de.puettner.sikuli.dso.commands;
+package de.puettner.sikuli.dso.commands.ui;
 
 import de.puettner.sikuli.dso.WindowsPlatformHelper;
 import org.sikuli.script.App;
@@ -41,19 +41,9 @@ public class CommandBuilder {
     public SikuliCommands buildSikuliCommand() {
         if (sikuliCommands == null) {
             ImagePath.add("../dso_1.sikuli");
-            sikuliCommands = new SikuliCommands(new App(CHROME_EXE), dsoAppRegion, calculateStarMenuRegion(), calculateBuildQueueRegion());
+            sikuliCommands = new SikuliCommands(new App(CHROME_EXE), dsoAppRegion);
         }
         return sikuliCommands;
-    }
-
-    public Region calculateStarMenuRegion() {
-        final int menuWidth = 650, menuHeight = 600;
-        Region region = new Region(0, 0, 0, 0);
-        region.x = dsoAppRegion.x + (dsoAppRegion.w / 2) - (menuWidth / 2);
-        region.y = dsoAppRegion.y + (dsoAppRegion.h / 2) - (menuHeight / 2) + 100;
-        region.w = menuWidth;
-        region.h = menuHeight;
-        return region;
     }
 
     public Region calculateBuildQueueRegion() {
@@ -71,6 +61,16 @@ public class CommandBuilder {
             starMenuCommands = new StarMenuCommands(calculateStarMenuRegion(), buildSikuliCommand());
         }
         return starMenuCommands;
+    }
+
+    public Region calculateStarMenuRegion() {
+        final int menuWidth = 650, menuHeight = 600;
+        Region region = new Region(0, 0, 0, 0);
+        region.x = dsoAppRegion.x + (dsoAppRegion.w / 2) - (menuWidth / 2);
+        region.y = dsoAppRegion.y + (dsoAppRegion.h / 2) - (menuHeight / 2) + 100;
+        region.w = menuWidth;
+        region.h = menuHeight;
+        return region;
     }
 
     public BookbinderMenuCommands buildBookbinderMenuCommands() {

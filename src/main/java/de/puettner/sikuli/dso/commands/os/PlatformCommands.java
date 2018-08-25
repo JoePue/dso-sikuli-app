@@ -1,4 +1,4 @@
-package de.puettner.sikuli.dso.commands;
+package de.puettner.sikuli.dso.commands.os;
 
 import de.puettner.sikuli.dso.WindowsPlatformHelper;
 

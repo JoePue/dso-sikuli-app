@@ -1,4 +1,4 @@
-package de.puettner.sikuli.dso.commands;
+package de.puettner.sikuli.dso.commands.ui;
 
 import lombok.extern.slf4j.Slf4j;
 import org.sikuli.script.Region;

@@ -1,16 +1,14 @@
-package de.puettner.sikuli.dso.commands;
+package de.puettner.sikuli.dso.commands.ui;
 
 import org.sikuli.script.Pattern;
-
-import static de.puettner.sikuli.dso.commands.SikuliCommands.pattern;
 
 public enum MaterialType {
     ST(null),
     MA(null),
-    KU(pattern("copper-source-icon.png").similar(0.92f)),
-    EI(pattern("iron-source-icon.png").similar(0.92f)),
+    KU(SikuliCommands.pattern("copper-source-icon.png").similar(0.92f)),
+    EI(SikuliCommands.pattern("iron-source-icon.png").similar(0.92f)),
     KO(null),
-    GO(pattern("gold-source-icon.png").similar(0.90f)),
+    GO(SikuliCommands.pattern("gold-source-icon.png").similar(0.90f)),
     GR(null),
     SA(null),
     TI(null);

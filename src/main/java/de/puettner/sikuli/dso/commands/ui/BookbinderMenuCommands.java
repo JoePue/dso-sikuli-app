@@ -1,16 +1,15 @@
-package de.puettner.sikuli.dso.commands;
+package de.puettner.sikuli.dso.commands.ui;
 
 import lombok.extern.slf4j.Slf4j;
 import org.sikuli.script.Region;
 
 @Slf4j
-public class BookbinderMenuCommands {
+public class BookbinderMenuCommands extends GeneralMenusCommands {
 
-    private Region menuRegion;
     private SikuliCommands sikuliCommands;
 
-    public BookbinderMenuCommands(Region appRegion, SikuliCommands sikuliCommands) {
-        this.menuRegion = appRegion;
+    public BookbinderMenuCommands(Region menuRegion, SikuliCommands sikuliCommands) {
+        super(menuRegion);
         this.sikuliCommands = sikuliCommands;
     }
 

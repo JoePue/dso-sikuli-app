@@ -1,5 +1,8 @@
-package de.puettner.sikuli.dso.commands;
+package de.puettner.sikuli.dso.ui.commands;
 
+import de.puettner.sikuli.dso.commands.ui.CommandBuilder;
+import de.puettner.sikuli.dso.commands.ui.SikuliCommands;
+import de.puettner.sikuli.dso.commands.ui.StarMenuCommands;
 import org.junit.Before;
 import org.junit.Test;
 

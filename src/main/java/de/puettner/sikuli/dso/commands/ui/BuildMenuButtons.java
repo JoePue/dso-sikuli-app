@@ -1,15 +1,13 @@
-package de.puettner.sikuli.dso.commands;
+package de.puettner.sikuli.dso.commands.ui;
 
 import org.sikuli.script.Pattern;
-
-import static de.puettner.sikuli.dso.commands.SikuliCommands.pattern;
 
 public enum BuildMenuButtons {
     // *************** Building-Buttons ******************
     /** Verbesserter Gebäude */
-    ImprovedBuildingButton(pattern("ImprovedBuildingsButton.png").similar(0.90f)),
+    ImprovedBuildingButton(SikuliCommands.pattern("ImprovedBuildingsButton.png").similar(0.90f)),
     // gehobene Gebäude
-    RaisedBuildingButton(pattern("RaisedBuildingsButton.png").similar(0.90f)),
+    RaisedBuildingButton(SikuliCommands.pattern("RaisedBuildingsButton.png").similar(0.90f)),
 
     // Building dependent buttons
     CopperMineButton(SikuliCommands.pattern("CopperMineBuildingButton").similar(0.90f)),
