@@ -4,13 +4,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.sikuli.script.Region;
 
 @Slf4j
-public class BookbinderMenuCommands extends GeneralMenusCommands {
-
-    private SikuliCommands sikuliCommands;
+public class BookbinderMenuCommands extends MenuCommands {
 
     public BookbinderMenuCommands(Region menuRegion, SikuliCommands sikuliCommands) {
-        super(menuRegion);
-        this.sikuliCommands = sikuliCommands;
+        super(menuRegion, sikuliCommands);
     }
 
     public void clickBuildMenuButton(BuildMenuButtons entry) {

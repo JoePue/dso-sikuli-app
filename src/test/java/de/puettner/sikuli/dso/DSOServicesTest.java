@@ -18,6 +18,7 @@ public class DSOServicesTest {
         System.out.println(dsoServices.buildCopperMines(3));
     }
 
+
     @Test
     public void buildIronMines() {
         do {
@@ -44,7 +45,7 @@ public class DSOServicesTest {
     @Test
     public void launchAllHappyGeologics() {
         dsoServices.prepareStarMenu();
-        dsoServices.launchAllHappyGeologics(MaterialType.EI, 7);
+        dsoServices.launchAllHappyGeologics(MaterialType.KU, 6);
     }
 
     @Test

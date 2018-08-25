@@ -1,10 +1,11 @@
-package com.sikuli.demo;
+package de.puettner.sikuli.dso.demos;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.sikuli.script.FindFailed;
 import org.sikuli.script.Pattern;
 import org.sikuli.script.Screen;
-import org.openqa.selenium.chrome.ChromeDriver;
 
 public class SikuliDemo {
 
@@ -18,7 +19,7 @@ public class SikuliDemo {
         Pattern openButton = new Pattern(filepath + "OpenButton.PNG");
         WebDriver driver;
 
-        // Open Chrome browser    
+        // Open Chrome browser
         driver = new ChromeDriver();
         driver.get("http://demo.guru99.com/test/image_upload/index.php");
 

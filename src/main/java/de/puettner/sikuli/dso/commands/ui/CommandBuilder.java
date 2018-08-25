@@ -1,11 +1,11 @@
 package de.puettner.sikuli.dso.commands.ui;
 
-import de.puettner.sikuli.dso.WindowsPlatformHelper;
+import de.puettner.sikuli.dso.commands.os.WindowsPlatformHelper;
 import org.sikuli.script.App;
 import org.sikuli.script.ImagePath;
 import org.sikuli.script.Region;
 
-import static de.puettner.sikuli.dso.WindowsPlatformHelper.CHROME_EXE;
+import static de.puettner.sikuli.dso.commands.os.WindowsPlatformHelper.CHROME_EXE;
 
 public class CommandBuilder {
 

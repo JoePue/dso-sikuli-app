@@ -2,14 +2,10 @@ package de.puettner.sikuli.dso.commands.ui;
 
 import org.sikuli.script.Region;
 
-public class BuildMenuCommands extends GeneralMenusCommands {
-
-    private Region menuRegion;
-    private SikuliCommands sikuliCommands;
+public class BuildMenuCommands extends MenuCommands {
 
     public BuildMenuCommands(Region menuRegion, SikuliCommands sikuliCommands) {
-        super(menuRegion);
-        this.sikuliCommands = sikuliCommands;
+        super(menuRegion, sikuliCommands);
     }
 
     public void clickButton(BuildMenuButtons entry) {

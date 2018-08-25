@@ -1,5 +1,7 @@
 package de.puettner.sikuli.dso;
 
+import de.puettner.sikuli.dso.commands.os.CmdowOuput;
+import de.puettner.sikuli.dso.commands.os.WindowsPlatformHelper;
 import org.junit.Test;
 
 import static junit.framework.Assert.assertNotNull;

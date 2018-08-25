@@ -7,14 +7,10 @@ import org.sikuli.script.Pattern;
 import org.sikuli.script.Region;
 
 @Slf4j
-public class StarMenuCommands {
-
-    private final SikuliCommands sikuliCommands;
-    private Region menuRegion;
+public class StarMenuCommands extends MenuCommands {
 
     protected StarMenuCommands(Region menuRegion, SikuliCommands sikuliCommands) {
-        this.menuRegion = menuRegion;
-        this.sikuliCommands = sikuliCommands;
+        super(menuRegion, sikuliCommands);
     }
 
     public void openBuildMenu() {
@@ -54,7 +50,7 @@ public class StarMenuCommands {
     }
 
     public boolean openStarMenu(@Deprecated String searchString) {
-        log.info("openStarMenu() searchString: " + searchString);
+        log.info("openStarMenu()" + (searchString == null ? "" : "searchString: " + searchString));
         if (!isStarMenuOpen()) {
             sikuliCommands.clickStarMenuButton();
             sikuliCommands.sleep(1);

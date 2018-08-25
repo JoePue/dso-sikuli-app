@@ -1,4 +1,4 @@
-package de.puettner.sikuli.dso;
+package de.puettner.sikuli.dso.commands.os;
 
 import lombok.Builder;
 import lombok.Data;

@@ -156,7 +156,7 @@ public class SikuliCommands {
 
     public boolean clickStarMenuButton() {
         log.info("clickStarMenuButton");
-        return clickIfExists(pattern("StarMenu-icon.png").targetOffset(-2, -25), appRegion);
+        return clickIfExists(pattern("StarMenuButton.png").targetOffset(-2, -25), appRegion);
     }
 
     public static Pattern pattern(String filename) {

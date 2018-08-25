@@ -1,8 +1,6 @@
 package de.puettner.sikuli.dso.commands.os;
 
-import de.puettner.sikuli.dso.WindowsPlatformHelper;
-
-import static de.puettner.sikuli.dso.WindowsPlatformHelper.CHROME_EXE;
+import static de.puettner.sikuli.dso.commands.os.WindowsPlatformHelper.CHROME_EXE;
 
 public class PlatformCommands {
 

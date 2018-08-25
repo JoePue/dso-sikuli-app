@@ -1,6 +1,6 @@
 package de.puettner.sikuli.dso.demos;
 
-import de.puettner.sikuli.dso.WindowsPlatformHelper;
+import de.puettner.sikuli.dso.commands.os.WindowsPlatformHelper;
 
 public class SeleniumHelloWorldWithChrome {
 
