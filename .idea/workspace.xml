@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="43e08700-d549-440b-b7a2-3d3239d97692" name="Default" comment="Bugfixing in findAllCollectables">
+    <list default="true" id="43e08700-d549-440b-b7a2-3d3239d97692" name="Default" comment="Bugfixing at buildColeMines() missing source icon">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/DSOAutomationApp.java" afterPath="$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/DSOAutomationApp.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/DSOServices.java" afterPath="$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/DSOServices.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/commands/ui/IslandButtons.java" afterPath="$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/commands/ui/IslandButtons.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/commands/os/WindowsPlatformHelper.java" afterPath="$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/commands/os/WindowsPlatformHelper.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/commands/ui/IslandCommands.java" afterPath="$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/commands/ui/IslandCommands.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/commands/ui/SikuliCommands.java" afterPath="$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/commands/ui/SikuliCommands.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/de/puettner/sikuli/dso/DSOServicesTest.java" afterPath="$PROJECT_DIR$/src/test/java/de/puettner/sikuli/dso/DSOServicesTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/commands/ui/MaterialType.java" afterPath="$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/commands/ui/MaterialType.java" />
     </list>
     <ignored path="dso_1-sikuli-idea.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -34,14 +31,14 @@
     <favorites_list name="dso_1-sikuli-idea" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="vertical" split-proportion="0.6208791">
+    <splitter split-orientation="vertical" split-proportion="0.687188">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="DSOAutomationApp.java" pinned="false" current-in-tab="true">
+          <file leaf-file-name="DSOAutomationApp.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/DSOAutomationApp.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="312">
-                  <caret line="50" column="38" selection-start-line="50" selection-start-column="19" selection-end-line="50" selection-end-column="38" />
+                <state relative-caret-position="162">
+                  <caret line="50" column="41" selection-start-line="50" selection-start-column="41" selection-end-line="50" selection-end-column="41" />
                   <folding />
                 </state>
               </provider>
@@ -50,8 +47,8 @@
           <file leaf-file-name="DSOServices.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/DSOServices.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="98">
-                  <caret line="106" column="31" selection-start-line="106" selection-start-column="31" selection-end-line="106" selection-end-column="31" />
+                <state relative-caret-position="312">
+                  <caret line="276" column="16" selection-start-line="276" selection-start-column="16" selection-end-line="276" selection-end-column="16" />
                   <folding />
                 </state>
               </provider>
@@ -67,41 +64,31 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="Commands.java" pinned="false" current-in-tab="false">
-            <entry file="jar://$MAVEN_REPOSITORY$/com/sikulix/sikulixapi/1.1.1/sikulixapi-1.1.1-sources.jar!/org/sikuli/script/Commands.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="178">
-                  <caret line="363" column="27" selection-start-line="363" selection-start-column="27" selection-end-line="363" selection-end-column="27" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="SikuliCommands.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/commands/ui/SikuliCommands.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="183">
-                  <caret line="52" column="20" selection-start-line="52" selection-start-column="20" selection-end-line="52" selection-end-column="20" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="Region.java" pinned="false" current-in-tab="false">
-            <entry file="jar://$MAVEN_REPOSITORY$/com/sikulix/sikulixapi/1.1.1/sikulixapi-1.1.1-sources.jar!/org/sikuli/script/Region.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="183">
-                  <caret line="2445" column="31" selection-start-line="2445" selection-start-column="31" selection-end-line="2445" selection-end-column="31" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
           <file leaf-file-name="IslandCommands.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/commands/ui/IslandCommands.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="170">
-                  <caret line="93" column="51" selection-start-line="93" selection-start-column="51" selection-end-line="93" selection-end-column="51" />
+                <state relative-caret-position="115">
+                  <caret line="92" column="42" selection-start-line="92" selection-start-column="42" selection-end-line="92" selection-end-column="42" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="MaterialType.java" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/commands/ui/MaterialType.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="131">
+                  <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="WindowsPlatformHelper.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/commands/os/WindowsPlatformHelper.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="317">
+                  <caret line="30" column="49" selection-start-line="30" selection-start-column="49" selection-end-line="30" selection-end-column="49" />
                   <folding />
                 </state>
               </provider>
@@ -124,8 +111,8 @@
           <file leaf-file-name="DSOServicesTest.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/test/java/de/puettner/sikuli/dso/DSOServicesTest.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="84">
-                  <caret line="18" column="22" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="22" />
+                <state relative-caret-position="67">
+                  <caret line="38" column="16" selection-start-line="38" selection-start-column="16" selection-end-line="38" selection-end-column="16" />
                   <folding />
                 </state>
               </provider>
@@ -171,7 +158,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/de/puettner/sikuli/demos/SeleniumHelloWorldWithChrome.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/FindFailedRTException.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/puettner/sikuli/demos/SeleniumChrome.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/demos/SeleniumHelloWorldWithChrome.java" />
@@ -196,7 +182,6 @@
         <option value="$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/commands/ui/lMenuCommands.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/demos/SikuliDemo.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/commands/os/CmdowOuput.java" />
-        <option value="$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/commands/os/WindowsPlatformHelper.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/commands/ui/MenuButton.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/commands/ui/StarMenuButtons.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/commands/ui/BookbinderMenuButtons.java" />
@@ -217,11 +202,13 @@
         <option value="$PROJECT_DIR$/src/test/java/de/puettner/sikuli/dso/commands/ui/IslandCommandsTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/de/puettner/sikuli/dso/commands/ui/SikuliCommandsTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/commands/ui/SikuliCommands.java" />
-        <option value="$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/commands/ui/IslandCommands.java" />
         <option value="$PROJECT_DIR$/src/test/java/de/puettner/sikuli/dso/DSOServicesTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/commands/ui/IslandButtons.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/DSOServices.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/DSOAutomationApp.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/commands/ui/IslandCommands.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/commands/ui/MaterialType.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/commands/os/WindowsPlatformHelper.java" />
       </list>
     </option>
   </component>
@@ -688,6 +675,32 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="ui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dso_1-sikuli-idea" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dso_1-sikuli-idea" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="os" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1329,7 +1342,7 @@
       <workItem from="1534708300906" duration="52204000" />
       <workItem from="1535183690676" duration="12487000" />
       <workItem from="1535198911476" duration="17625000" />
-      <workItem from="1535258560414" duration="9830000" />
+      <workItem from="1535258560414" duration="11539000" />
     </task>
     <task id="LOCAL-00001" summary="Introduced MenuCommand classes">
       <created>1535183817344</created>
@@ -1485,7 +1498,14 @@
       <option name="project" value="LOCAL" />
       <updated>1535271808582</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Bugfixing in findAllCollectables">
+      <created>1535274799757</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1535274799757</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1495,20 +1515,17 @@
     <history-entry file="DSOServicesTest_buildColeMines - 2018.08.26 at 11h 09m 54s.xml">
       <configuration name="DSOServicesTest.buildColeMines" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="DSOServicesTest_findAllCollectables - 2018.08.26 at 10h 43m 38s.xml">
-      <configuration name="DSOServicesTest.findAllCollectables" configurationId="JUnit" />
+    <history-entry file="DSOServicesTest_buildColeMines - 2018.08.26 at 11h 16m 12s.xml">
+      <configuration name="DSOServicesTest.buildColeMines" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="DSOServicesTest_findAllCollectables - 2018.08.26 at 10h 44m 35s.xml">
-      <configuration name="DSOServicesTest.findAllCollectables" configurationId="JUnit" />
+    <history-entry file="DSOServicesTest_buildColeMines - 2018.08.26 at 11h 17m 46s.xml">
+      <configuration name="DSOServicesTest.buildColeMines" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="DSOServicesTest_findAllCollectables - 2018.08.26 at 10h 47m 25s.xml">
-      <configuration name="DSOServicesTest.findAllCollectables" configurationId="JUnit" />
+    <history-entry file="DSOServicesTest_buildColeMines - 2018.08.26 at 11h 22m 57s.xml">
+      <configuration name="DSOServicesTest.buildColeMines" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="DSOServicesTest_findAllCollectables - 2018.08.26 at 10h 50m 13s.xml">
-      <configuration name="DSOServicesTest.findAllCollectables" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="DSOServicesTest_findAllCollectables - 2018.08.26 at 10h 50m 48s.xml">
-      <configuration name="DSOServicesTest.findAllCollectables" configurationId="JUnit" />
+    <history-entry file="DSOServicesTest_buildColeMines - 2018.08.26 at 11h 36m 03s.xml">
+      <configuration name="DSOServicesTest.buildColeMines" configurationId="JUnit" />
     </history-entry>
     <history-entry file="DSOServicesTest_findAllCollectables - 2018.08.26 at 10h 52m 16s.xml">
       <configuration name="DSOServicesTest.findAllCollectables" configurationId="JUnit" />
@@ -1519,9 +1536,12 @@
     <history-entry file="DSOServicesTest_findAllCollectables - 2018.08.26 at 11h 12m 06s.xml">
       <configuration name="DSOServicesTest.findAllCollectables" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="DSOServicesTest_findAllCollectables - 2018.08.26 at 11h 37m 40s.xml">
+      <configuration name="DSOServicesTest.findAllCollectables" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="120107000" />
+    <option name="totallyTimeSpent" value="121816000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="622" y="0" width="1305" height="1087" extended-state="0" />
@@ -1540,7 +1560,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2892473" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3031275" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25581396" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27741936" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2496063" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1622,7 +1642,8 @@
     <MESSAGE value="Introduced new class Sector" />
     <MESSAGE value="Introduced new classes QuestBookMenuButtons" />
     <MESSAGE value="Bugfixing in findAllCollectables" />
-    <option name="LAST_COMMIT_MESSAGE" value="Bugfixing in findAllCollectables" />
+    <MESSAGE value="Bugfixing at buildColeMines() missing source icon" />
+    <option name="LAST_COMMIT_MESSAGE" value="Bugfixing at buildColeMines() missing source icon" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -1700,6 +1721,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="7" column="87" selection-start-line="7" selection-start-column="87" selection-end-line="7" selection-end-column="87" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1729,6 +1751,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
           <caret line="19" column="25" selection-start-line="19" selection-start-column="25" selection-end-line="19" selection-end-column="25" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1755,13 +1778,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/commands/ui/GeneralMenuCommands.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/commands/ui/MaterialType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="12" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/demos/SikuliDemo.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
@@ -1774,14 +1790,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/commands/os/WindowsPlatformHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
           <folding />
         </state>
       </provider>
@@ -1965,34 +1973,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/de/puettner/sikuli/dso/DSOServicesTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="18" column="22" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/commands/ui/IslandCommands.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="93" column="51" selection-start-line="93" selection-start-column="51" selection-end-line="93" selection-end-column="51" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/com/sikulix/sikulixapi/1.1.1/sikulixapi-1.1.1-sources.jar!/org/sikuli/script/Region.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="183">
           <caret line="2445" column="31" selection-start-line="2445" selection-start-column="31" selection-end-line="2445" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/commands/ui/SikuliCommands.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="183">
-          <caret line="52" column="20" selection-start-line="52" selection-start-column="20" selection-end-line="52" selection-end-column="20" />
           <folding />
         </state>
       </provider>
@@ -2005,18 +1989,58 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/DSOServices.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/DSOAutomationApp.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="98">
-          <caret line="106" column="31" selection-start-line="106" selection-start-column="31" selection-end-line="106" selection-end-column="31" />
+        <state relative-caret-position="162">
+          <caret line="50" column="41" selection-start-line="50" selection-start-column="41" selection-end-line="50" selection-end-column="41" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/DSOAutomationApp.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/DSOServices.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="312">
-          <caret line="50" column="38" selection-start-line="50" selection-start-column="19" selection-end-line="50" selection-end-column="38" />
+          <caret line="276" column="16" selection-start-line="276" selection-start-column="16" selection-end-line="276" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/commands/ui/SikuliCommands.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="54" column="0" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/commands/ui/IslandCommands.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="92" column="42" selection-start-line="92" selection-start-column="42" selection-end-line="92" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/de/puettner/sikuli/dso/DSOServicesTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="67">
+          <caret line="38" column="16" selection-start-line="38" selection-start-column="16" selection-end-line="38" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/commands/os/WindowsPlatformHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="317">
+          <caret line="30" column="49" selection-start-line="30" selection-start-column="49" selection-end-line="30" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/commands/ui/MaterialType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="131">
+          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
           <folding />
         </state>
       </provider>

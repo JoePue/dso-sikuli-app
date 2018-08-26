@@ -87,12 +87,12 @@ public class IslandCommands extends SikuliCommands {
     public Iterator<Match> findMines(MaterialType material) {
         if (MaterialType.KU.equals(material)) {
             return findAll(MaterialType.KU.sourcePattern);
-        } else if (MaterialType.GO.equals(material)) {
-            return findAll(MaterialType.GO.sourcePattern, geologicSearchRegion);
         } else if (MaterialType.EI.equals(material)) {
             return findAll(MaterialType.EI.sourcePattern, geologicSearchRegion);
-            //        } else if (MaterialType.MA.equals(material)) {
-            //        } else if (MaterialType.KU.equals(material)) {
+        } else if (MaterialType.KO.equals(material)) {
+            return findAll(MaterialType.KO.sourcePattern, geologicSearchRegion);
+        } else if (MaterialType.GO.equals(material)) {
+            return findAll(MaterialType.GO.sourcePattern, geologicSearchRegion);
         } else {
             throw new IllegalArgumentException("Unsupported type: " + material);
         }

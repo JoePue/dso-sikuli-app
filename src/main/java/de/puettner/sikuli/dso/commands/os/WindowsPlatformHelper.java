@@ -8,6 +8,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Scanner;
 
+/**
+ * Documentation of cmdow: https://ritchielawrence.github.io/cmdow/
+ */
 public class WindowsPlatformHelper {
 
     public static final String BINS_CHROME_DRIVER_WIN32_EXE = "bins/chromedriver_win32-v2.41.exe";
@@ -21,6 +24,10 @@ public class WindowsPlatformHelper {
         return getAppDimensionByCmdow(CMDOW_EXE, "\"" + CHROME_PROCESS_CAPTION_REGEX + "\"");
     }
 
+    /**
+     * Get Window informaton data: cmdow.exe "* - Google Chrome"  /p maximize window: "cmdow.exe 0xC5105A  /max" restore window:  "cmdow.exe
+     * 0xC5105A  /res" hide window:     "cmdow.exe 0xC5105A  /hid"
+     */
     static CmdowOuput getAppDimensionByCmdow(String exe, String caption) {
         ProcessBuilder processBuilder = new ProcessBuilder(exe, caption, "/p");
         Process process;
