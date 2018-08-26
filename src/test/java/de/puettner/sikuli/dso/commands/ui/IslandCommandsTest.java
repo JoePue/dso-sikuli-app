@@ -18,4 +18,8 @@ public class IslandCommandsTest {
         islandCmds.hightlightRegions();
     }
 
+    @Test
+    public void parkMouse() {
+        islandCmds.parkMouse();
+    }
 }

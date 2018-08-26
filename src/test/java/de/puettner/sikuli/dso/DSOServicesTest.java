@@ -17,7 +17,7 @@ public class DSOServicesTest {
     @Test
     public void buildAllMines() {
         dsoServices.buildAllMines();
-        dsoServices.exitDso();
+        //        dsoServices.exitDso();
     }
 
     @Test

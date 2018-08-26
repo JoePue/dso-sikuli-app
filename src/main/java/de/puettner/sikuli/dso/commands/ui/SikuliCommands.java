@@ -78,14 +78,8 @@ public class SikuliCommands {
         return org.sikuli.script.Commands.click("DSOTabIcon.png");
     }
 
-    // **********************************************************************************************
-
-    public Location clickByLocation(Location location) {
-        return org.sikuli.script.Commands.click(location);
-    }
-
     public Location parkMouse() {
-        return org.sikuli.script.Commands.click(new Location(100, 1000));
+        return org.sikuli.script.Commands.hover(new Location(appRegion.w / 2, appRegion.h + 50));
     }
 
     public boolean closeMenu() {

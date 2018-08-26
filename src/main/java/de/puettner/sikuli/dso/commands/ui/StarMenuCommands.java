@@ -56,7 +56,7 @@ public class StarMenuCommands extends MenuCommands {
         log.info("openStarMenu()" + (searchString == null ? "" : "searchString: " + searchString));
         if (!isStarMenuOpen()) {
             islandCmds.clickStarButton();
-            islandCmds.sleep(1);
+            islandCmds.sleep(2);
         }
         if (searchString != null) {
             islandCmds.clickIfExists(StarMenuButtons.ZOOM_ICON.pattern, menuRegion);

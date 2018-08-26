@@ -248,14 +248,17 @@ public class DSOServices {
                 Iterator<Match> matches = islandCmds.findAll(sourceSector.pattern);
                 while (matches.hasNext()) {
                     if (buildCount >= limit) {
+                        log.info("limit of build reached");
                         break outerloop;
                     }
                     if (buildCount == 0) {
                         prepareBuildMenu(buildingButton);
                     }
-                    if (!buildMine(matches.next(), limit, mineButton, buildingButton)) {
+                    if (!buildMine(matches.next(), mineButton)) {
+                        log.info("build of mine was not succesful");
                         break outerloop;
                     }
+                    islandCmds.parkMouse();
                     ++buildCount;
                 }
             }
@@ -265,8 +268,8 @@ public class DSOServices {
         return buildCount;
     }
 
-    private boolean buildMine(Match match, int limit, BuildMenuButtons mineButton, BuildMenuButtons buildingButton) {
-        log.info("buildCopperMine");
+    private boolean buildMine(Match match, BuildMenuButtons mineButton) {
+        log.info("buildMine");
         islandCmds.typeESC();
         starMenu.openBuildMenu();
         if (buildMenu.isRaisedBuildingMenuDisabled()) {

@@ -58,8 +58,8 @@ public class DSOAutomationApp {
         dsoService.fetchBookbinderItem();
         dsoService.solveDailyQuest();
         dsoService.solveGuildQuest();
-        dsoService.findAllCollectables();
         dsoService.buildAllMines();
+        dsoService.findAllCollectables();
 
         // TODO Minen buffen Fkt. impl.
         // TODO Buffen Fkt. impl. für GoldTürm, Granitm., Gold, Eisen, (Stein, Marmor)
