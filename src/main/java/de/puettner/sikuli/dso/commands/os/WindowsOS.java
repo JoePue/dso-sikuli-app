@@ -11,7 +11,7 @@ import java.util.Scanner;
 /**
  * Documentation of cmdow: https://ritchielawrence.github.io/cmdow/
  */
-public class WindowsPlatformHelper {
+public class WindowsOS {
 
     public static final String BINS_CHROME_DRIVER_WIN32_EXE = "bins/chromedriver_win32-v2.41.exe";
     public static final String BINS_CHROME_DRIVER_WIN32_EXE_ABS_PATH =
@@ -20,7 +20,7 @@ public class WindowsPlatformHelper {
     public static final String CMDOW_EXE = "bins/cmdow.exe";
     private static final String CHROME_PROCESS_CAPTION_REGEX = "* - Google Chrome";
 
-    public static CmdowOuput getChromeDimension() {
+    public CmdowOuput getDsoBrowserDimension() {
         return getAppDimensionByCmdow(CMDOW_EXE, "\"" + CHROME_PROCESS_CAPTION_REGEX + "\"");
     }
 
@@ -28,7 +28,7 @@ public class WindowsPlatformHelper {
      * Get Window informaton data: cmdow.exe "* - Google Chrome"  /p maximize window: "cmdow.exe 0xC5105A  /max" restore window:  "cmdow.exe
      * 0xC5105A  /res" hide window:     "cmdow.exe 0xC5105A  /hid"
      */
-    static CmdowOuput getAppDimensionByCmdow(String exe, String caption) {
+    CmdowOuput getAppDimensionByCmdow(String exe, String caption) {
         ProcessBuilder processBuilder = new ProcessBuilder(exe, caption, "/p");
         Process process;
         try {

@@ -3,7 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="43e08700-d549-440b-b7a2-3d3239d97692" name="Default" comment="Implemented service method buildAllMines()">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/DSOAutomationApp.java" afterPath="$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/DSOAutomationApp.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/DSOServices.java" afterPath="$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/DSOServices.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/commands/os/PlatformCommands.java" afterPath="$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/commands/os/PlatformCommands.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/commands/ui/CommandBuilder.java" afterPath="$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/commands/ui/CommandBuilder.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/demos/SeleniumHelloWorldWithChrome.java" afterPath="$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/demos/SeleniumHelloWorldWithChrome.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/de/puettner/sikuli/dso/DSOServicesTest.java" afterPath="$PROJECT_DIR$/src/test/java/de/puettner/sikuli/dso/DSOServicesTest.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/commands/os/WindowsPlatformHelper.java" afterPath="$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/commands/os/WindowsOS.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/test/java/de/puettner/sikuli/dso/WindowsPlatformHelperTest.java" afterPath="$PROJECT_DIR$/src/test/java/de/puettner/sikuli/dso/WindowsOSTest.java" />
     </list>
     <ignored path="dso_1-sikuli-idea.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -35,8 +42,8 @@
           <file leaf-file-name="DSOAutomationApp.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/DSOAutomationApp.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="442">
-                  <caret line="59" column="26" selection-start-line="59" selection-start-column="19" selection-end-line="59" selection-end-column="26" />
+                <state relative-caret-position="301">
+                  <caret line="24" column="44" selection-start-line="24" selection-start-column="44" selection-end-line="24" selection-end-column="44" />
                   <folding />
                 </state>
               </provider>
@@ -45,8 +52,18 @@
           <file leaf-file-name="DSOServices.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/DSOServices.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="289">
-                  <caret line="316" column="9" selection-start-line="316" selection-start-column="9" selection-end-line="316" selection-end-column="9" />
+                <state relative-caret-position="128">
+                  <caret line="24" column="11" selection-start-line="24" selection-start-column="11" selection-end-line="24" selection-end-column="11" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="CommandBuilder.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/commands/ui/CommandBuilder.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="238">
+                  <caret line="31" column="12" selection-start-line="31" selection-start-column="12" selection-end-line="31" selection-end-column="12" />
                   <folding />
                 </state>
               </provider>
@@ -92,11 +109,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="WindowsPlatformHelper.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/commands/os/WindowsPlatformHelper.java">
+          <file leaf-file-name="WindowsOS.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/commands/os/WindowsOS.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="317">
-                  <caret line="28" column="65" selection-start-line="28" selection-start-column="65" selection-end-line="28" selection-end-column="65" />
+                <state relative-caret-position="17">
+                  <caret line="22" column="11" selection-start-line="22" selection-start-column="11" selection-end-line="22" selection-end-column="11" />
                   <folding />
                 </state>
               </provider>
@@ -119,8 +136,8 @@
           <file leaf-file-name="DSOServicesTest.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/test/java/de/puettner/sikuli/dso/DSOServicesTest.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="60">
-                  <caret line="17" column="29" selection-start-line="17" selection-start-column="16" selection-end-line="17" selection-end-column="29" />
+                <state relative-caret-position="153">
+                  <caret line="10" column="72" selection-start-line="10" selection-start-column="72" selection-end-line="10" selection-end-column="72" />
                   <folding />
                 </state>
               </provider>
@@ -204,7 +221,6 @@
         <option value="$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/Sector.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/commands/ui/Sector.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/commands/ui/QuestBookCommands.java" />
-        <option value="$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/commands/ui/CommandBuilder.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/commands/ui/QuestBookMenuButtons.java" />
         <option value="$PROJECT_DIR$/src/test/java/de/puettner/sikuli/dso/commands/ui/QuestBookMenuCommandsTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/de/puettner/sikuli/dso/commands/ui/IslandCommandsTest.java" />
@@ -214,9 +230,10 @@
         <option value="$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/commands/ui/IslandCommands.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/commands/ui/MaterialType.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/commands/os/WindowsPlatformHelper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/DSOAutomationApp.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/DSOServices.java" />
         <option value="$PROJECT_DIR$/src/test/java/de/puettner/sikuli/dso/DSOServicesTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/commands/ui/CommandBuilder.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/DSOAutomationApp.java" />
       </list>
     </option>
   </component>
@@ -530,6 +547,20 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="target" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dso_1-sikuli-idea" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dso_1-sikuli-idea" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -770,6 +801,7 @@
     <property name="js-jscs-nodeInterpreter" value="E:\dev-js\nodejs\nodejs\node.exe" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/src/test/java/de/puettner/sikuli/dso" />
+    <property name="extract.method.default.visibility" value="private" />
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
@@ -1356,7 +1388,7 @@
       <workItem from="1534708300906" duration="52204000" />
       <workItem from="1535183690676" duration="12487000" />
       <workItem from="1535198911476" duration="17625000" />
-      <workItem from="1535258560414" duration="13201000" />
+      <workItem from="1535258560414" duration="13995000" />
     </task>
     <task id="LOCAL-00001" summary="Introduced MenuCommand classes">
       <created>1535183817344</created>
@@ -1540,7 +1572,14 @@
       <option name="project" value="LOCAL" />
       <updated>1535277021584</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="Implemented service method buildAllMines()">
+      <created>1535279303115</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1535279303115</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1553,8 +1592,8 @@
     <history-entry file="DSOServicesTest_buildAllMines - 2018.08.26 at 12h 27m 28s.xml">
       <configuration name="DSOServicesTest.buildAllMines" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="DSOServicesTest_buildColeMines - 2018.08.26 at 11h 17m 46s.xml">
-      <configuration name="DSOServicesTest.buildColeMines" configurationId="JUnit" />
+    <history-entry file="DSOServicesTest_buildAllMines - 2018.08.26 at 12h 39m 20s.xml">
+      <configuration name="DSOServicesTest.buildAllMines" configurationId="JUnit" />
     </history-entry>
     <history-entry file="DSOServicesTest_buildColeMines - 2018.08.26 at 11h 22m 57s.xml">
       <configuration name="DSOServicesTest.buildColeMines" configurationId="JUnit" />
@@ -1576,11 +1615,11 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="123478000" />
+    <option name="totallyTimeSpent" value="124272000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="622" y="0" width="1305" height="1087" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1590,9 +1629,9 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.44731182" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.35376343" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.35376343" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Mongo Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2892473" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2892473" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25581396" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -1783,7 +1822,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/de/puettner/sikuli/dso/WindowsPlatformHelperTest.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/de/puettner/sikuli/dso/WindowsOSTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
           <caret line="19" column="25" selection-start-line="19" selection-start-column="25" selection-end-line="19" selection-end-column="25" />
@@ -1985,14 +2024,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/commands/ui/CommandBuilder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="103" column="25" selection-start-line="103" selection-start-column="25" selection-end-line="103" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/commands/ui/QuestBookMenuCommands.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -2033,14 +2064,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/commands/os/WindowsPlatformHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="317">
-          <caret line="28" column="65" selection-start-line="28" selection-start-column="65" selection-end-line="28" selection-end-column="65" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/commands/ui/MaterialType.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="131">
@@ -2057,26 +2080,42 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/DSOServices.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/commands/os/WindowsOS.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="316" column="9" selection-start-line="316" selection-start-column="9" selection-end-line="316" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/DSOAutomationApp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="59" column="26" selection-start-line="59" selection-start-column="19" selection-end-line="59" selection-end-column="26" />
+        <state relative-caret-position="17">
+          <caret line="22" column="11" selection-start-line="22" selection-start-column="11" selection-end-line="22" selection-end-column="11" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/de/puettner/sikuli/dso/DSOServicesTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="17" column="29" selection-start-line="17" selection-start-column="16" selection-end-line="17" selection-end-column="29" />
+        <state relative-caret-position="153">
+          <caret line="10" column="72" selection-start-line="10" selection-start-column="72" selection-end-line="10" selection-end-column="72" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/commands/ui/CommandBuilder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="31" column="12" selection-start-line="31" selection-start-column="12" selection-end-line="31" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/DSOServices.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="128">
+          <caret line="24" column="11" selection-start-line="24" selection-start-column="11" selection-end-line="24" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/DSOAutomationApp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="301">
+          <caret line="24" column="44" selection-start-line="24" selection-start-column="44" selection-end-line="24" selection-end-column="44" />
           <folding />
         </state>
       </provider>

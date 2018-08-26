@@ -1,5 +1,6 @@
 package de.puettner.sikuli.dso;
 
+import de.puettner.sikuli.dso.commands.os.WindowsOS;
 import de.puettner.sikuli.dso.commands.ui.CommandBuilder;
 import de.puettner.sikuli.dso.commands.ui.MaterialType;
 import de.puettner.sikuli.dso.commands.ui.SikuliCommands;
@@ -17,11 +18,16 @@ public class DSOAutomationApp {
      */
     public static void main(String[] args) {
         log.info("App starting");
+        WindowsOS winOs = new WindowsOS();
+        winOs.getDsoBrowserDimension();
         CommandBuilder cmdBuilder = CommandBuilder.build();
         SikuliCommands sikuli = cmdBuilder.buildIslandCommand();
+        DSOServices dsoService = new DSOServices(cmdBuilder);
+        dailySetup(dsoService);
+        log.info("App ends normally.");
+    }
 
-        DSOServices dsoService = new DSOServices();
-
+    private static void dailySetup(DSOServices dsoService) {
         dsoService.startDsoApp();
         dsoService.closeWelcomeDialog();
         dsoService.prepareStarMenu();
@@ -58,6 +64,5 @@ public class DSOAutomationApp {
         dsoService.launchAllHappyGeologics(MaterialType.GR, 6);
 
         dsoService.exitDso();
-        log.info("App ends normally.");
     }
 }

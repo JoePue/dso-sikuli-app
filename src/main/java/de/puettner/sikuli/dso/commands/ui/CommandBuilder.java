@@ -1,11 +1,11 @@
 package de.puettner.sikuli.dso.commands.ui;
 
-import de.puettner.sikuli.dso.commands.os.WindowsPlatformHelper;
+import de.puettner.sikuli.dso.commands.os.WindowsOS;
 import org.sikuli.script.App;
 import org.sikuli.script.ImagePath;
 import org.sikuli.script.Region;
 
-import static de.puettner.sikuli.dso.commands.os.WindowsPlatformHelper.CHROME_EXE;
+import static de.puettner.sikuli.dso.commands.os.WindowsOS.CHROME_EXE;
 
 public class CommandBuilder {
 
@@ -29,7 +29,8 @@ public class CommandBuilder {
 
     public static CommandBuilder build() {
         if (cmdBuilder == null) {
-            cmdBuilder = new CommandBuilder(WindowsPlatformHelper.getChromeDimension().getRegion());
+            WindowsOS osCommands = new WindowsOS();
+            cmdBuilder = new CommandBuilder(osCommands.getDsoBrowserDimension().getRegion());
         }
         return cmdBuilder;
     }

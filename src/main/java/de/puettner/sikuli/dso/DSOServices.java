@@ -22,8 +22,8 @@ public class DSOServices {
     private final BuildQueueMenuCommands buildQueueMenu;
     private final QuestBookMenuCommands questBookCmds;
 
-    public DSOServices() {
-        this.cmdBuilder = CommandBuilder.build();
+    public DSOServices(CommandBuilder cmdBuilder) {
+        this.cmdBuilder = cmdBuilder;
         this.islandCmds = cmdBuilder.buildIslandCommand();
         this.buildMenu = cmdBuilder.buildBuildMenuCommands();
         this.starMenu = cmdBuilder.buildStarMenuCommands();

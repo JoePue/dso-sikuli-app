@@ -1,24 +1,24 @@
 package de.puettner.sikuli.dso;
 
 import de.puettner.sikuli.dso.commands.os.CmdowOuput;
-import de.puettner.sikuli.dso.commands.os.WindowsPlatformHelper;
+import de.puettner.sikuli.dso.commands.os.WindowsOS;
 import org.junit.Test;
 
 import static junit.framework.Assert.assertNotNull;
 import static junit.framework.Assert.assertTrue;
 
-public class WindowsPlatformHelperTest {
+public class WindowsOSTest {
 
-    private WindowsPlatformHelper sut = new WindowsPlatformHelper();
+    private WindowsOS sut = new WindowsOS();
 
     @Test
     public void isProcessRunning() {
-        assertTrue(sut.isProcessRunning(WindowsPlatformHelper.CHROME_EXE));
+        assertTrue(sut.isProcessRunning(WindowsOS.CHROME_EXE));
     }
 
     @Test
     public void getChromeDimension() {
-        CmdowOuput rect = sut.getChromeDimension();
+        CmdowOuput rect = sut.getDsoBrowserDimension();
         assertNotNull(rect);
     }
 
