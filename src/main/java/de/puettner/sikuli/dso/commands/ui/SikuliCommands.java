@@ -117,6 +117,10 @@ public class SikuliCommands {
         return new Pattern(img);
     }
 
+    boolean click(Pattern filename) {
+        return clickIfExists(filename, appRegion);
+    }
+
     public void sleep(int seconds) {
         try {
             Thread.currentThread().sleep(seconds * 1000);

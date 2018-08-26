@@ -15,6 +15,8 @@ public class CommandBuilder {
     private static BuildQueueMenuCommands buildQueueMenuCommands;
     private static StarMenuCommands starMenuCommands;
     private static BookbinderMenuCommands bookbinderMenuCommands;
+    private static QuestBookMenuCommands questBookCmds;
+
     private final Region dsoAppRegion;
 
     private CommandBuilder(Region chromeAppRegion) {
@@ -96,6 +98,13 @@ public class CommandBuilder {
             bookbinderMenuCommands = new BookbinderMenuCommands(dsoAppRegion, buildIslandCommand());
         }
         return bookbinderMenuCommands;
+    }
+
+    public QuestBookMenuCommands buildQuestBookMenuCommands() {
+        if (questBookCmds == null) {
+            questBookCmds = new QuestBookMenuCommands(dsoAppRegion, buildIslandCommand());
+        }
+        return questBookCmds;
     }
 
 }

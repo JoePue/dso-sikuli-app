@@ -80,10 +80,6 @@ public class IslandCommands extends SikuliCommands {
         this.click(pattern("BookBinderBuilding.png").similar(0.80f));
     }
 
-    boolean click(Pattern filename) {
-        return clickIfExists(filename, appRegion);
-    }
-
     public void clickExitButton() {
         click(pattern("exit-button.png"));
     }

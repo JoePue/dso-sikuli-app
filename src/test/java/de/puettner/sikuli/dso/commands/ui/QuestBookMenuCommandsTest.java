@@ -3,10 +3,11 @@ package de.puettner.sikuli.dso.commands.ui;
 import org.junit.Before;
 import org.junit.Test;
 
-public class IslandCommandsTest {
+public class QuestBookMenuCommandsTest {
 
     private static final CommandBuilder cmdBuilder = CommandBuilder.build();
     private final IslandCommands islandCmds = cmdBuilder.buildIslandCommand();
+    private final QuestBookMenuCommands menuCmds = cmdBuilder.buildQuestBookMenuCommands();
 
     @Before
     public void before() {
@@ -14,8 +15,8 @@ public class IslandCommandsTest {
     }
 
     @Test
-    public void hightlightRegions() {
-        islandCmds.hightlightRegions();
+    public void highlightMenuRegion() {
+        menuCmds.highlightMenuRegion();
     }
 
 }

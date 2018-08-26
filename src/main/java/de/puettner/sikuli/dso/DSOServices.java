@@ -9,25 +9,27 @@ import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 import java.util.Iterator;
 
 import static de.puettner.sikuli.dso.commands.ui.SikuliCommands.pattern;
-import static org.sikuli.script.Commands.click;
-import static org.sikuli.script.Commands.hover;
 
 @Slf4j
 public class DSOServices {
 
+    private final CommandBuilder cmdBuilder;
     private final PlatformCommands winCommand = new PlatformCommands();
     private final IslandCommands islandCmds;
     private final BuildMenuCommands buildMenu;
     private final StarMenuCommands starMenu;
     private final BookbinderMenuCommands bookbinderMenu;
     private final BuildQueueMenuCommands buildQueueMenu;
+    private final QuestBookMenuCommands questBookCmds;
 
     public DSOServices() {
-        this.islandCmds = CommandBuilder.build().buildIslandCommand();
-        this.buildMenu = CommandBuilder.build().buildBuildMenuCommands();
-        this.starMenu = CommandBuilder.build().buildStarMenuCommands();
-        this.bookbinderMenu = CommandBuilder.build().buildBookbinderMenuCommands();
-        this.buildQueueMenu = CommandBuilder.build().buildBuildQueueMenuCommands();
+        this.cmdBuilder = CommandBuilder.build();
+        this.islandCmds = cmdBuilder.buildIslandCommand();
+        this.buildMenu = cmdBuilder.buildBuildMenuCommands();
+        this.starMenu = cmdBuilder.buildStarMenuCommands();
+        this.bookbinderMenu = cmdBuilder.buildBookbinderMenuCommands();
+        this.buildQueueMenu = cmdBuilder.buildBuildQueueMenuCommands();
+        this.questBookCmds = cmdBuilder.buildQuestBookMenuCommands();
     }
 
     public void startDsoApp() {
@@ -41,13 +43,10 @@ public class DSOServices {
         if (islandCmds.clickLetsPlayButtonIfExists()) {
             this.closeWelcomeDialog();
         } else {
-            log.info("expect running DSO app");
+            log.info("expected a running DSO app");
         }
     }
 
-    /**
-     *
-     */
     public void closeWelcomeDialog() {
         log.info("closeWelcomeDialog");
         int timeout = 300;
@@ -110,8 +109,9 @@ public class DSOServices {
             while (icons.hasNext()) {
                 Match icon = icons.next();
                 log.info("Sammelgegenstand gefunden");
-                hover(icon);
+                islandCmds.hover(icon);
                 islandCmds.sleep(1);
+                islandCmds.typeESC();
             }
         }
         return true;
@@ -120,7 +120,7 @@ public class DSOServices {
     public boolean solveGuildQuest() {
         log.info("solveGuildQuest");
         islandCmds.openQuestBook();
-        click(pattern("GuildQuestMenuItem-icon.png").targetOffset(6, 57));
+        questBookCmds.clickButton(QuestBookMenuButtons.GuildQuestMenuItem);
         islandCmds.clickSmallOkButton();
         islandCmds.sleep(20);
         islandCmds.clickSmallOkButton();
