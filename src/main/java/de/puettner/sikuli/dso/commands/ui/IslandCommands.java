@@ -77,7 +77,7 @@ public class IslandCommands extends SikuliCommands {
     }
 
     public void clickBookbinderBuilding() {
-        this.click(pattern("BookBinderBuilding.png").similar(0.80f));
+        this.click(IslandButtons.BookbinderBuilding.pattern);
     }
 
     public void clickExitButton() {

@@ -1,6 +1,5 @@
 package de.puettner.sikuli.dso.commands.ui;
 
-import de.puettner.sikuli.dso.exception.FindFailedRTException;
 import lombok.extern.slf4j.Slf4j;
 import org.sikuli.script.*;
 
@@ -45,14 +44,6 @@ public class SikuliCommands {
 
     public int type(Object input) {
         return this.type(input.toString(), null);
-    }
-
-    public int hover(Match match) {
-        try {
-            return appRegion.hover(match);
-        } catch (FindFailed e) {
-            throw new FindFailedRTException(e);
-        }
     }
 
     public Iterator<Match> findAll(Pattern pattern) {
@@ -173,4 +164,5 @@ public class SikuliCommands {
             log.error(e.getMessage(), e);
         }
     }
+
 }

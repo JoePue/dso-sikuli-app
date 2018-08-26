@@ -36,6 +36,11 @@ public class DSOServicesTest {
     }
 
     @Test
+    public void buildColeMines() {
+        System.out.println(dsoServices.buildColeMines(3));
+    }
+
+    @Test
     public void buildIronMines() {
         //        do {
         int count = 0;
@@ -62,7 +67,7 @@ public class DSOServicesTest {
     @Test
     public void launchAllHappyGeologics() {
         //        dsoServices.prepareStarMenu();
-        dsoServices.launchAllHappyGeologics(MaterialType.GR, 4);
+        dsoServices.launchAllHappyGeologics(MaterialType.GR, 6);
     }
 
     @Test

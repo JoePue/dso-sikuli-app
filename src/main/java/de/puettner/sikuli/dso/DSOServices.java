@@ -103,15 +103,20 @@ public class DSOServices {
 
     public boolean findAllCollectables() {
         log.info("findAllCollectables");
-        for (Sector sector : Sector.valuesFromS1ToS9()) {
+        Sector[] sectors = Sector.valuesFromS1ToS9();
+        for (Sector sector : sectors) {
             this.goToSector(sector);
-            Iterator<Match> icons = islandCmds.findAll(pattern("Collectable-icon.png").targetOffset(5, 6));
-            while (icons.hasNext()) {
-                Match icon = icons.next();
-                log.info("Sammelgegenstand gefunden");
-                islandCmds.hover(icon);
-                islandCmds.sleep(1);
-                islandCmds.typeESC();
+            islandCmds.parkMouse();
+            IslandButtons[] collectableIcons = {IslandButtons.CollectableIconOne, IslandButtons.CollectableIconThree};
+            for (IslandButtons collectableIcon : collectableIcons) {
+                Iterator<Match> icons = islandCmds.findAll(collectableIcon.pattern);
+                while (icons.hasNext()) {
+                    Match match = icons.next();
+                    log.info("Sammelgegenstand gefunden");
+                    match.doubleClick();
+                    islandCmds.sleep(1);
+                    islandCmds.typeESC();
+                }
             }
         }
         return true;
