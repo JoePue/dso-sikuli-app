@@ -17,6 +17,7 @@ public class SikuliCommands {
         this.app = app;
         this.appRegion = appRegion;
         log.info(app.getWindow());
+        Key.addHotkey("j", Key.C_CTRL + Key.C_ALT, new SikuliHotKeyListener());
     }
 
     public int paste(Object input) {

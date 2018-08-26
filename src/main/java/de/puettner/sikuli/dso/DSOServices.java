@@ -136,6 +136,8 @@ public class DSOServices {
         islandCmds.clickSmallOkButton();
         islandCmds.sleep(20);
         islandCmds.clickSmallOkButton();
+        islandCmds.sleep(1);
+        islandCmds.typeESC();
         return true;
     }
 
@@ -216,10 +218,10 @@ public class DSOServices {
         if (bookbinderMenu.clickOkButtonBookbinder()) {
 
         }
-        islandCmds.typeESC();
-        islandCmds.sleep(1);
-        this.goToSector(Sector.S1);
         islandCmds.parkMouse();
+        islandCmds.sleep(1);
+        islandCmds.typeESC();
+        this.goToSector(Sector.S1);
     }
 
     void switchToBrowser() {
