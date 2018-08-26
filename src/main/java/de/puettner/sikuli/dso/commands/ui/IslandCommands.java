@@ -6,8 +6,6 @@ import org.sikuli.script.Match;
 import org.sikuli.script.Pattern;
 import org.sikuli.script.Region;
 
-import java.util.Iterator;
-
 @Slf4j
 public class IslandCommands extends SikuliCommands {
 
@@ -82,19 +80,6 @@ public class IslandCommands extends SikuliCommands {
 
     public void clickExitButton() {
         click(pattern("exit-button.png"));
-    }
-
-    public Iterator<Match> findMines(MaterialType material, boolean searchSpecial) {
-        if (searchSpecial) {
-            if (material == null || material.sourcePattern == null) {
-                throw new IllegalArgumentException("Unsupported type: " + material);
-            }
-            return findAll(material.additionalSourcePattern);
-        }
-        if (material == null || material.sourcePattern == null) {
-            throw new IllegalArgumentException("Unsupported type: " + material);
-        }
-        return findAll(material.sourcePattern);
     }
 
     public boolean clickBuildCancelButton() {

@@ -110,12 +110,13 @@ public class DSOServices {
                 islandCmds.dragNdrop(0, -100);
             }
             islandCmds.parkMouse();
-            IslandButtons[] collectableIcons = {IslandButtons.CollectableIconOne, IslandButtons.CollectableIconThree};
+            IslandButtons[] collectableIcons = {IslandButtons.CollectableIconTwo, IslandButtons.CollectableIconOne, IslandButtons
+                    .CollectableIconThree};
             for (IslandButtons collectableIcon : collectableIcons) {
                 Iterator<Match> icons = islandCmds.findAll(collectableIcon.pattern);
                 while (icons.hasNext()) {
                     Match match = icons.next();
-                    log.info("Sammelgegenstand gefunden");
+                    log.info("Sammelgegenstand gefunden. " + match);
                     match.doubleClick();
                     islandCmds.sleep(1);
                     islandCmds.typeESC();
@@ -235,26 +236,29 @@ public class DSOServices {
         int buildCount = 0;
         islandCmds.parkMouse();
         outerloop:
-        for (Sector sector : material.sourceSectors) {
-            goToSector(sector);
-            // islandCmds.hightlightRegions(); islandCmds.sleep(1);
-            islandCmds.parkMouse();
-            Iterator<Match> matches = islandCmds.findMines(material, false);
-            while (matches.hasNext()) {
-                if (buildCount >= limit) {
-                    break outerloop;
+        for (int i = 0; i < material.msl.length; ++i) {
+            MaterialSector sourceSector = material.msl[i];
+            for (Sector sector : sourceSector.sectors) {
+                goToSector(sector);
+                // islandCmds.hightlightRegions();
+                islandCmds.parkMouse();
+                Iterator<Match> matches = islandCmds.findAll(sourceSector.pattern);
+                while (matches.hasNext()) {
+                    if (buildCount >= limit) {
+                        break outerloop;
+                    }
+                    if (buildCount == 0) {
+                        prepareBuildMenu(buildingButton);
+                    }
+                    if (!buildMine(matches.next(), limit, mineButton, buildingButton)) {
+                        break outerloop;
+                    }
+                    ++buildCount;
                 }
-                if (buildCount == 0) {
-                    prepareBuildMenu(buildingButton);
-                }
-                if (!buildMine(matches.next(), limit, mineButton, buildingButton)) {
-                    break outerloop;
-                }
-                ++buildCount;
             }
+            islandCmds.clickBuildCancelButton();
+            islandCmds.typeESC();
         }
-        islandCmds.clickBuildCancelButton();
-        islandCmds.typeESC();
         return buildCount;
     }
 
