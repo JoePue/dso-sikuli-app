@@ -17,6 +17,7 @@ public class StarMenuCommands extends MenuCommands {
 
     public void openBuildMenu() {
         islandCmds.click(pattern("BuildMenuBarButton.png").similar(0.90f));
+        islandCmds.sleep(1);
     }
 
     public int launchAllExplorerByImage(Pattern image) {

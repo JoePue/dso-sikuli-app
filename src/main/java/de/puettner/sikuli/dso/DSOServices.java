@@ -229,50 +229,50 @@ public class DSOServices {
         islandCmds.clickExitButton();
     }
 
-    public int buildColeMines(int limit) {
-        Sector[] sectors = {Sector.S7, Sector.S6};
-        return this.buildMines(limit, MaterialType.KO, BuildMenuButtons.ColeMineButton, BuildMenuButtons.RaisedBuildingButton, sectors);
-    }
-
-    private int buildMines(int limit, MaterialType material, BuildMenuButtons mineButton, BuildMenuButtons buildingButton, Sector[]
-            sectors) {
+    private int buildMines(int limit, MaterialType material, BuildMenuButtons mineButton, BuildMenuButtons buildingButton) {
         log.info("buildCopperMines");
 
         int buildCount = 0;
         islandCmds.parkMouse();
         outerloop:
-        for (Sector sector : sectors) {
+        for (Sector sector : material.sourceSectors) {
             goToSector(sector);
-            //             islandCmds.hightlightRegions(); islandCmds.sleep(1);
+            // islandCmds.hightlightRegions(); islandCmds.sleep(1);
             islandCmds.parkMouse();
-            Iterator<Match> matches = islandCmds.findMines(material);
+            Iterator<Match> matches = islandCmds.findMines(material, false);
             while (matches.hasNext()) {
                 if (buildCount >= limit) {
                     break outerloop;
                 }
-                islandCmds.typeESC();
                 if (buildCount == 0) {
                     prepareBuildMenu(buildingButton);
                 }
-                starMenu.openBuildMenu();
-                islandCmds.sleep(1);
-                if (buildMenu.isRaisedBuildingMenuDisabled()) {
-                    log.info("Build-Menu is disabled");
+                if (!buildMine(matches.next(), limit, mineButton, buildingButton)) {
                     break outerloop;
-                } else {
-                    buildMenu.clickButton(mineButton);
-                    islandCmds.sleep(1);
-                    Match match = matches.next();
-                    //                match.hover();
-                    match.click();
-                    islandCmds.sleep(1);
-                    buildCount++;
                 }
+                ++buildCount;
             }
         }
         islandCmds.clickBuildCancelButton();
         islandCmds.typeESC();
         return buildCount;
+    }
+
+    private boolean buildMine(Match match, int limit, BuildMenuButtons mineButton, BuildMenuButtons buildingButton) {
+        log.info("buildCopperMine");
+        islandCmds.typeESC();
+        starMenu.openBuildMenu();
+        if (buildMenu.isRaisedBuildingMenuDisabled()) {
+            log.info("Build-Menu is disabled");
+            return false;
+        }
+        buildMenu.clickButton(mineButton);
+        islandCmds.sleep(1);
+        // Match match = matches.next();
+        //                match.hover();
+        match.click();
+        islandCmds.sleep(1);
+        return true;
     }
 
     private void prepareBuildMenu(BuildMenuButtons buildingType) {
@@ -282,24 +282,25 @@ public class DSOServices {
         islandCmds.typeESC();
     }
 
+    void sleep(int i) {
+        islandCmds.sleep(i);
+    }
 
     public int buildCopperMines(int limit) {
-        Sector[] sectors = {Sector.S2, Sector.S4};
-        return this.buildMines(limit, MaterialType.KU, BuildMenuButtons.CopperMineButton, BuildMenuButtons.ImprovedBuildingButton, sectors);
+        return this.buildMines(limit, MaterialType.KU, BuildMenuButtons.CopperMineButton, BuildMenuButtons.ImprovedBuildingButton);
     }
 
     public int buildIronMines(int limit) {
-        Sector[] sectors = {Sector.S10, Sector.S3, Sector.S4, Sector.S5, Sector.S6, Sector.S8, Sector.S9};
-        return this.buildMines(limit, MaterialType.EI, BuildMenuButtons.IronMineButton, BuildMenuButtons.RaisedBuildingButton, sectors);
+        return this.buildMines(limit, MaterialType.EI, BuildMenuButtons.IronMineButton, BuildMenuButtons.RaisedBuildingButton);
     }
 
     public int buildGoldMines(int limit) {
-        Sector[] sectors = {Sector.S2, Sector.S9, Sector.S10};
-        return this.buildMines(limit, MaterialType.GO, BuildMenuButtons.GoldMineButton, BuildMenuButtons.RaisedBuildingButton, sectors);
+        int buildCount = this.buildMines(limit, MaterialType.GO, BuildMenuButtons.GoldMineButton, BuildMenuButtons.RaisedBuildingButton);
+        return buildCount;
     }
 
-    void sleep(int i) {
-        islandCmds.sleep(i);
+    public int buildColeMines(int limit) {
+        return this.buildMines(limit, MaterialType.KO, BuildMenuButtons.ColeMineButton, BuildMenuButtons.RaisedBuildingButton);
     }
 
     public void buildAllMines() {

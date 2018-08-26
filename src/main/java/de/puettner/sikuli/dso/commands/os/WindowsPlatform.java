@@ -6,10 +6,8 @@ import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.*;
 import java.util.List;
-import java.util.Scanner;
 
 /**
  * Documentation of cmdow: https://ritchielawrence.github.io/cmdow/
@@ -32,14 +30,7 @@ public class WindowsPlatform {
     }
 
     public String getTaskList() {
-        ProcessBuilder processBuilder = new ProcessBuilder("tasklist.exe");
-        Process process;
-        try {
-            process = processBuilder.start();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        return toString(process.getInputStream());
+        return toString(startProcess(Collections.singletonList("tasklist.exe")).getInputStream());
     }
 
     // http://stackoverflow.com/a/5445161/3764804
@@ -48,6 +39,17 @@ public class WindowsPlatform {
         String string = scanner.hasNext() ? scanner.next() : "";
         scanner.close();
         return string;
+    }
+
+    private Process startProcess(List<String> arguments) {
+        ProcessBuilder processBuilder = new ProcessBuilder(arguments);
+        Process process;
+        try {
+            process = processBuilder.start();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return process;
     }
 
     /**
@@ -86,14 +88,7 @@ public class WindowsPlatform {
         arguments.add(CMDOW_EXE);
         arguments.addAll(Arrays.asList(args));
 
-        ProcessBuilder processBuilder = new ProcessBuilder(arguments);
-        Process process;
-        try {
-            process = processBuilder.start();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        return process;
+        return startProcess(arguments);
     }
 
     /**
@@ -105,7 +100,7 @@ public class WindowsPlatform {
     }
 
     public void standby() {
-        throw new IllegalStateException(":-(");
+        startProcess(Arrays.asList("shutdown", "/h"));
     }
 
     public void runApplication(String applicationFilePath) throws IOException, InterruptedException {

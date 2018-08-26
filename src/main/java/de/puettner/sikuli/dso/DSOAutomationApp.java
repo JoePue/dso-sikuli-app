@@ -64,7 +64,7 @@ public class DSOAutomationApp {
         // TODO Minen buffen Fkt. impl.
         // TODO Buffen Fkt. impl. für GoldTürm, Granitm., Gold, Eisen, (Stein, Marmor)
         // TODO standby-Cmd impl.
-        // TODO Goldsuche
+        // TODO Goldsuche für spezial Icon erweitern
         dsoService.launchAllHappyGeologics(MaterialType.GR, 6);
 
         dsoService.exitDso();

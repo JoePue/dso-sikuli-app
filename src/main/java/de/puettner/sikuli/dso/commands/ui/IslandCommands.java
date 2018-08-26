@@ -84,18 +84,17 @@ public class IslandCommands extends SikuliCommands {
         click(pattern("exit-button.png"));
     }
 
-    public Iterator<Match> findMines(MaterialType material) {
-        if (MaterialType.KU.equals(material)) {
-            return findAll(MaterialType.KU.sourcePattern);
-        } else if (MaterialType.EI.equals(material)) {
-            return findAll(MaterialType.EI.sourcePattern, geologicSearchRegion);
-        } else if (MaterialType.KO.equals(material)) {
-            return findAll(MaterialType.KO.sourcePattern, geologicSearchRegion);
-        } else if (MaterialType.GO.equals(material)) {
-            return findAll(MaterialType.GO.sourcePattern, geologicSearchRegion);
-        } else {
+    public Iterator<Match> findMines(MaterialType material, boolean searchSpecial) {
+        if (searchSpecial) {
+            if (material == null || material.sourcePattern == null) {
+                throw new IllegalArgumentException("Unsupported type: " + material);
+            }
+            return findAll(material.additionalSourcePattern);
+        }
+        if (material == null || material.sourcePattern == null) {
             throw new IllegalArgumentException("Unsupported type: " + material);
         }
+        return findAll(material.sourcePattern);
     }
 
     public boolean clickBuildCancelButton() {

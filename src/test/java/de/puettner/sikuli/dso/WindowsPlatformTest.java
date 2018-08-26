@@ -39,4 +39,9 @@ public class WindowsPlatformTest {
         System.out.println(taskList);
     }
 
+    @Test
+    public void standby() {
+        sut.standby();
+    }
+
 }
