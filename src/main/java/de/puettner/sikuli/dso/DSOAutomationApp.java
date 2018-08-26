@@ -50,12 +50,9 @@ public class DSOAutomationApp {
         dsoService.solveGuildQuest();
         //dsoService.findAllCollectables()
 
-        dsoService.buildCopperMines(6);
-        dsoService.buildIronMines(19);
-        dsoService.buildColeMines(6);
-        dsoService.buildGoldMines(9);
-        // TODO Minen buffen
-        // Todo standby-Cmd impl.
+        // TODO Minen buffen Fkt. impl.
+        // TODO Buffen Fkt. impl. für GoldTürm, Granitm., Gold, Eisen, (Stein, Marmor)
+        // TODO standby-Cmd impl.
         // TODO Goldsuche
         dsoService.launchAllHappyGeologics(MaterialType.GR, 6);
 
