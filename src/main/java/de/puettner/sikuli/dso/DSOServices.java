@@ -1,6 +1,6 @@
 package de.puettner.sikuli.dso;
 
-import de.puettner.sikuli.dso.commands.os.PlatformCommands;
+import de.puettner.sikuli.dso.commands.os.WindowsPlatform;
 import de.puettner.sikuli.dso.commands.ui.*;
 import lombok.extern.slf4j.Slf4j;
 import org.sikuli.script.Match;
@@ -13,8 +13,7 @@ import static de.puettner.sikuli.dso.commands.ui.SikuliCommands.pattern;
 @Slf4j
 public class DSOServices {
 
-    private final CommandBuilder cmdBuilder;
-    private final PlatformCommands winCommand = new PlatformCommands();
+    private final WindowsPlatform winCommand;
     private final IslandCommands islandCmds;
     private final BuildMenuCommands buildMenu;
     private final StarMenuCommands starMenu;
@@ -22,19 +21,20 @@ public class DSOServices {
     private final BuildQueueMenuCommands buildQueueMenu;
     private final QuestBookMenuCommands questBookCmds;
 
-    public DSOServices(CommandBuilder cmdBuilder) {
-        this.cmdBuilder = cmdBuilder;
-        this.islandCmds = cmdBuilder.buildIslandCommand();
-        this.buildMenu = cmdBuilder.buildBuildMenuCommands();
-        this.starMenu = cmdBuilder.buildStarMenuCommands();
-        this.bookbinderMenu = cmdBuilder.buildBookbinderMenuCommands();
-        this.buildQueueMenu = cmdBuilder.buildBuildQueueMenuCommands();
-        this.questBookCmds = cmdBuilder.buildQuestBookMenuCommands();
+    DSOServices(WindowsPlatform winCommand, IslandCommands islandCmds, BuildMenuCommands buildMenu, StarMenuCommands starMenu,
+                BookbinderMenuCommands bookbinderMenu, BuildQueueMenuCommands buildQueueMenu, QuestBookMenuCommands questBookCmds) {
+        this.winCommand = winCommand;
+        this.islandCmds = islandCmds;
+        this.buildMenu = buildMenu;
+        this.starMenu = starMenu;
+        this.bookbinderMenu = bookbinderMenu;
+        this.buildQueueMenu = buildQueueMenu;
+        this.questBookCmds = questBookCmds;
     }
 
     public void startDsoApp() {
         log.info("startDsoApp");
-        if (!winCommand.isChromeRunning()) {
+        if (!winCommand.isDsoBrowserRunning()) {
             throw new NotImplementedException();
         }
         islandCmds.switchToBrowser();

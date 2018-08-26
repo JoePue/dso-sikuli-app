@@ -1,6 +1,5 @@
 package de.puettner.sikuli.dso;
 
-import de.puettner.sikuli.dso.commands.ui.CommandBuilder;
 import de.puettner.sikuli.dso.commands.ui.MaterialType;
 import de.puettner.sikuli.dso.commands.ui.Sector;
 import org.junit.Before;
@@ -8,7 +7,7 @@ import org.junit.Test;
 
 public class DSOServicesTest {
 
-    private DSOServices dsoServices = new DSOServices(CommandBuilder.build());
+    private DSOServices dsoServices = DSOServiceBuilder.build();
 
     @Before
     public void before() {

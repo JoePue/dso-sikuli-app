@@ -1,11 +1,11 @@
 package de.puettner.sikuli.dso.commands.ui;
 
-import de.puettner.sikuli.dso.commands.os.WindowsOS;
+import de.puettner.sikuli.dso.commands.os.WindowsPlatform;
 import org.sikuli.script.App;
 import org.sikuli.script.ImagePath;
 import org.sikuli.script.Region;
 
-import static de.puettner.sikuli.dso.commands.os.WindowsOS.CHROME_EXE;
+import static de.puettner.sikuli.dso.commands.os.WindowsPlatform.CHROME_EXE;
 
 public class CommandBuilder {
 
@@ -16,6 +16,7 @@ public class CommandBuilder {
     private static StarMenuCommands starMenuCommands;
     private static BookbinderMenuCommands bookbinderMenuCommands;
     private static QuestBookMenuCommands questBookCmds;
+    private static WindowsPlatform platformCmds;
 
     private final Region dsoAppRegion;
 
@@ -29,8 +30,8 @@ public class CommandBuilder {
 
     public static CommandBuilder build() {
         if (cmdBuilder == null) {
-            WindowsOS osCommands = new WindowsOS();
-            cmdBuilder = new CommandBuilder(osCommands.getDsoBrowserDimension().getRegion());
+            WindowsPlatform platformCmds = new WindowsPlatform();
+            cmdBuilder = new CommandBuilder(platformCmds.getDsoBrowserDimension().getRegion());
         }
         return cmdBuilder;
     }
