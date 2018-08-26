@@ -15,7 +15,6 @@ import static org.sikuli.script.Commands.hover;
 @Slf4j
 public class DSOServices {
 
-    public static final int MAX_SECTOR_INDEX = 12;
     private final PlatformCommands winCommand = new PlatformCommands();
     private final IslandCommands islandCmds;
     private final BuildMenuCommands buildMenu;
@@ -71,19 +70,17 @@ public class DSOServices {
     }
 
     private void warmupIslandAfterLogin() {
-        for (int i = 0; i <= MAX_SECTOR_INDEX; ++i) {
-            this.goToSector(i);
+        for (Sector sector : Sector.values()) {
+            this.goToSector(sector);
             islandCmds.sleep(1);
         }
-        goToSector(1);
+        goToSector(Sector.S1);
         islandCmds.sleep(1);
     }
 
-    void goToSector(int i) {
-        log.info("goToSector");
-        if (i < 0 || i > MAX_SECTOR_INDEX) {
-            throw new IllegalArgumentException();
-        }
+    void goToSector(Sector sector) {
+        log.info("goToSector() " + sector);
+        int i = sector.index();
         if (i >= 0 && i <= 9) {
             islandCmds.type(i);
         } else {
@@ -107,18 +104,14 @@ public class DSOServices {
 
     public boolean findAllCollectables() {
         log.info("findAllCollectables");
-        //int[] quadranten = {8};
-        int[] quadranten = {1, 2, 3, 4, 5, 6, 7, 8, 9};
-        for (int quadrant : quadranten) {
-            this.goToSector(quadrant);
+        for (Sector sector : Sector.valuesFromS1ToS9()) {
+            this.goToSector(sector);
             Iterator<Match> icons = islandCmds.findAll(pattern("Collectable-icon.png").targetOffset(5, 6));
             while (icons.hasNext()) {
                 Match icon = icons.next();
                 log.info("Sammelgegenstand gefunden");
                 hover(icon);
                 islandCmds.sleep(1);
-                //click(icon);
-                //sleep(1);
             }
         }
         return true;
@@ -199,7 +192,7 @@ public class DSOServices {
     public void fetchBookbinderItem() {
         log.info("fetchBookbinderItem");
         islandCmds.parkMouse();
-        this.goToSector(3);
+        this.goToSector(Sector.S3);
         islandCmds.clickBookbinderBuilding();
         islandCmds.sleep(2);
         if (islandCmds.clickBigOkButton()) {
@@ -213,7 +206,7 @@ public class DSOServices {
         }
         islandCmds.typeESC();
         islandCmds.sleep(1);
-        this.goToSector(1);
+        this.goToSector(Sector.S1);
         islandCmds.parkMouse();
     }
 
@@ -229,16 +222,18 @@ public class DSOServices {
     }
 
     public int buildColeMines(int limit) {
-        int[] sectors = {7, 6};
+        Sector[] sectors = {Sector.S7, Sector.S6};
         return this.buildMines(limit, MaterialType.KO, BuildMenuButtons.ColeMineButton, BuildMenuButtons.RaisedBuildingButton, sectors);
     }
 
-    private int buildMines(int limit, MaterialType material, BuildMenuButtons mineButton, BuildMenuButtons buildingButton, int[] sectors) {
+    private int buildMines(int limit, MaterialType material, BuildMenuButtons mineButton, BuildMenuButtons buildingButton, Sector[]
+            sectors) {
         log.info("buildCopperMines");
 
         int buildCount = 0;
         islandCmds.parkMouse();
-        outerloop: for(int sector : sectors) {
+        outerloop:
+        for (Sector sector : sectors) {
             goToSector(sector);
             //             islandCmds.hightlightRegions(); islandCmds.sleep(1);
             islandCmds.parkMouse();
@@ -281,17 +276,17 @@ public class DSOServices {
 
 
     public int buildCopperMines(int limit) {
-        int[] sectors = {2, 4};
+        Sector[] sectors = {Sector.S2, Sector.S4};
         return this.buildMines(limit, MaterialType.KU, BuildMenuButtons.CopperMineButton, BuildMenuButtons.ImprovedBuildingButton, sectors);
     }
 
     public int buildIronMines(int limit) {
-        int[] sectors = {10, 3, 4, 5, 6, 8, 9};
+        Sector[] sectors = {Sector.S10, Sector.S3, Sector.S4, Sector.S5, Sector.S6, Sector.S8, Sector.S9};
         return this.buildMines(limit, MaterialType.EI, BuildMenuButtons.IronMineButton, BuildMenuButtons.RaisedBuildingButton, sectors);
     }
 
     public int buildGoldMines(int limit) {
-        int[] sectors = {2, 9, 10};
+        Sector[] sectors = {Sector.S2, Sector.S9, Sector.S10};
         return this.buildMines(limit, MaterialType.GO, BuildMenuButtons.GoldMineButton, BuildMenuButtons.RaisedBuildingButton, sectors);
     }
 

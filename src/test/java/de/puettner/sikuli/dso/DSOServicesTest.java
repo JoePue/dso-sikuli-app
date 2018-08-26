@@ -1,6 +1,7 @@
 package de.puettner.sikuli.dso;
 
 import de.puettner.sikuli.dso.commands.ui.MaterialType;
+import de.puettner.sikuli.dso.commands.ui.Sector;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -14,8 +15,13 @@ public class DSOServicesTest {
     }
 
     @Test
+    public void findAllCollectables() {
+        dsoServices.findAllCollectables();
+    }
+
+    @Test
     public void goToSector() {
-        dsoServices.goToSector(10);
+        dsoServices.goToSector(Sector.S10);
     }
 
 
