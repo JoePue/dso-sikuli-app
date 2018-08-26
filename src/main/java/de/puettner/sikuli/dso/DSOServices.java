@@ -106,6 +106,9 @@ public class DSOServices {
         Sector[] sectors = Sector.valuesFromS1ToS9();
         for (Sector sector : sectors) {
             this.goToSector(sector);
+            if (Sector.S3.equals(sector)) {
+                islandCmds.dragNdrop(0, -100);
+            }
             islandCmds.parkMouse();
             IslandButtons[] collectableIcons = {IslandButtons.CollectableIconOne, IslandButtons.CollectableIconThree};
             for (IslandButtons collectableIcon : collectableIcons) {
@@ -297,5 +300,20 @@ public class DSOServices {
 
     void sleep(int i) {
         islandCmds.sleep(i);
+    }
+
+    public void buildAllMines() {
+        if (buildQueueMenu.getBuildQueueSize() < 3) {
+            buildGoldMines(3);
+        }
+        if (buildQueueMenu.getBuildQueueSize() < 3) {
+            buildIronMines(3);
+        }
+        if (buildQueueMenu.getBuildQueueSize() < 3) {
+            buildColeMines(3);
+        }
+        if (buildQueueMenu.getBuildQueueSize() < 3) {
+            buildCopperMines(3);
+        }
     }
 }

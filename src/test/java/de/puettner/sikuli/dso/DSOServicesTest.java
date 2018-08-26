@@ -15,6 +15,12 @@ public class DSOServicesTest {
     }
 
     @Test
+    public void buildAllMines() {
+        dsoServices.buildAllMines();
+        dsoServices.exitDso();
+    }
+
+    @Test
     public void findAllCollectables() {
         dsoServices.findAllCollectables();
     }
@@ -23,7 +29,6 @@ public class DSOServicesTest {
     public void goToSector() {
         dsoServices.goToSector(Sector.S10);
     }
-
 
     @Test
     public void buildCopperMines() {

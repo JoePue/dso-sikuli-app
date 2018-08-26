@@ -49,6 +49,7 @@ public class DSOAutomationApp {
         dsoService.solveDailyQuest();
         dsoService.solveGuildQuest();
         dsoService.findAllCollectables();
+        dsoService.buildAllMines();
 
         // TODO Minen buffen Fkt. impl.
         // TODO Buffen Fkt. impl. für GoldTürm, Granitm., Gold, Eisen, (Stein, Marmor)
