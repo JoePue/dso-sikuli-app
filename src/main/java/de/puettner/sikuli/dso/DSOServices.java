@@ -61,20 +61,18 @@ public class DSOServices {
                     timeout = 0;
                     // Login Bonus
                     if (islandCmds.clickLoginBonusButton()) {
-                        this.warmupIslandAfterLogin();
+                        this.visitAllSectors();
                     }
                 }
             }
         }
     }
 
-    private void warmupIslandAfterLogin() {
+    private void visitAllSectors() {
         for (Sector sector : Sector.values()) {
             this.goToSector(sector);
-            islandCmds.sleep(1);
         }
         goToSector(Sector.S1);
-        islandCmds.sleep(1);
     }
 
     void goToSector(Sector sector) {
@@ -88,6 +86,11 @@ public class DSOServices {
                 islandCmds.dragNdrop(200, -750);
             }
         }
+        this.sleep(1);
+    }
+
+    void sleep(int i) {
+        islandCmds.sleep(i);
     }
 
     public boolean solveDailyQuest() {
@@ -284,10 +287,6 @@ public class DSOServices {
         starMenu.openBuildMenu();
         buildMenu.clickButton(buildingType);
         islandCmds.typeESC();
-    }
-
-    void sleep(int i) {
-        islandCmds.sleep(i);
     }
 
     public int buildCopperMines(int limit) {
