@@ -88,7 +88,7 @@
             <entry file="file://$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/commands/os/WindowsPlatformHelper.java">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="317">
-                  <caret line="30" column="49" selection-start-line="30" selection-start-column="49" selection-end-line="30" selection-end-column="49" />
+                  <caret line="28" column="65" selection-start-line="28" selection-start-column="65" selection-end-line="28" selection-end-column="65" />
                   <folding />
                 </state>
               </provider>
@@ -1342,7 +1342,7 @@
       <workItem from="1534708300906" duration="52204000" />
       <workItem from="1535183690676" duration="12487000" />
       <workItem from="1535198911476" duration="17625000" />
-      <workItem from="1535258560414" duration="11539000" />
+      <workItem from="1535258560414" duration="11540000" />
     </task>
     <task id="LOCAL-00001" summary="Introduced MenuCommand classes">
       <created>1535183817344</created>
@@ -1541,11 +1541,11 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="121816000" />
+    <option name="totallyTimeSpent" value="121817000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="622" y="0" width="1305" height="1087" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -2032,7 +2032,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/commands/os/WindowsPlatformHelper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="317">
-          <caret line="30" column="49" selection-start-line="30" selection-start-column="49" selection-end-line="30" selection-end-column="49" />
+          <caret line="28" column="65" selection-start-line="28" selection-start-column="65" selection-end-line="28" selection-end-column="65" />
           <folding />
         </state>
       </provider>
