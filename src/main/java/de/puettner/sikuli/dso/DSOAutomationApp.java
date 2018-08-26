@@ -11,9 +11,9 @@ public class DSOAutomationApp {
     /*
      * *** Inventar ***                 *** Vorkommen ***
      * ================                 ================
-     * HappyGeologics: 10               7 Steinvork. / 6 Kupfervk.
-     * NormalGeologics: 3               8 Marmorvk. / 19 Eisenvorkommen
-     * ConscientiousGeologics: 2        9 Goldvork. / 6 Kohlevork.
+     * HappyGeologics: 10               7 Steinvork. / 8 Marmorvk. / 6 Granitvk.
+     * NormalGeologics: 3               6 Kupfervk. / 19 Eisenvorkommen / Titan
+     * ConscientiousGeologics: 2        9 Goldvork. / 6 Kohlevork. / Salpeter
      */
     public static void main(String[] args) {
         log.info("App starting");
@@ -37,6 +37,8 @@ public class DSOAutomationApp {
         dsoService.launchAllNormalGeologics(MaterialType.MA, 3);
         dsoService.launchAllConscientiousGeologics(MaterialType.MA, 2);
 
+        // *** So nun 30min verbrauchen ***
+
         dsoService.launchAllBraveExplorer();        // Mutige
         dsoService.launchAllSuccessfulExplorer();   // Erfolgreiche
         dsoService.launchAllWildExplorer();         // Wilde
@@ -48,6 +50,13 @@ public class DSOAutomationApp {
         dsoService.solveGuildQuest();
         //dsoService.findAllCollectables()
 
+        dsoService.buildCopperMines(6);
+        dsoService.buildIronMines(19);
+        dsoService.buildColeMines(6);
+        dsoService.buildGoldMines(9);
+        // TODO Minen buffen
+        // Todo standby-Cmd impl.
+        // TODO Goldsuche
         dsoService.launchAllHappyGeologics(MaterialType.GR, 6);
 
         dsoService.exitDso();

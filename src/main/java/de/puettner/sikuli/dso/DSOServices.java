@@ -15,18 +15,20 @@ import static org.sikuli.script.Commands.hover;
 @Slf4j
 public class DSOServices {
 
+    public static final int MAX_SECTOR_INDEX = 12;
     private final PlatformCommands winCommand = new PlatformCommands();
     private final IslandCommands islandCmds;
     private final BuildMenuCommands buildMenu;
     private final StarMenuCommands starMenu;
     private final BookbinderMenuCommands bookbinderMenu;
-
+    private final BuildQueueMenuCommands buildQueueMenu;
 
     public DSOServices() {
         this.islandCmds = CommandBuilder.build().buildIslandCommand();
         this.buildMenu = CommandBuilder.build().buildBuildMenuCommands();
         this.starMenu = CommandBuilder.build().buildStarMenuCommands();
         this.bookbinderMenu = CommandBuilder.build().buildBookbinderMenuCommands();
+        this.buildQueueMenu = CommandBuilder.build().buildBuildQueueMenuCommands();
     }
 
     public void startDsoApp() {
@@ -44,6 +46,9 @@ public class DSOServices {
         }
     }
 
+    /**
+     *
+     */
     public void closeWelcomeDialog() {
         log.info("closeWelcomeDialog");
         int timeout = 300;
@@ -57,8 +62,34 @@ public class DSOServices {
                     islandCmds.sleep(1);
                     timeout = 0;
                     // Login Bonus
-                    islandCmds.clickLoginBonusButton();
+                    if (islandCmds.clickLoginBonusButton()) {
+                        this.warmupIslandAfterLogin();
+                    }
                 }
+            }
+        }
+    }
+
+    private void warmupIslandAfterLogin() {
+        for (int i = 0; i <= MAX_SECTOR_INDEX; ++i) {
+            this.goToSector(i);
+            islandCmds.sleep(1);
+        }
+        goToSector(1);
+        islandCmds.sleep(1);
+    }
+
+    void goToSector(int i) {
+        log.info("goToSector");
+        if (i < 0 || i > MAX_SECTOR_INDEX) {
+            throw new IllegalArgumentException();
+        }
+        if (i >= 0 && i <= 9) {
+            islandCmds.type(i);
+        } else {
+            islandCmds.type(i - 10);
+            if (i >= 10 && i <= 12) {
+                islandCmds.dragNdrop(200, -750);
             }
         }
     }
@@ -91,21 +122,6 @@ public class DSOServices {
             }
         }
         return true;
-    }
-
-    void goToSector(int i) {
-        log.info("goToSector");
-        if (i < 0 || i > 12) {
-            throw new IllegalArgumentException();
-        }
-        if (i >= 0 && i <= 9) {
-            islandCmds.type(i);
-        } else {
-            islandCmds.type(i - 10);
-            if (i >= 10 && i <= 12) {
-                islandCmds.dragNdrop(200, -750);
-            }
-        }
     }
 
     public boolean solveGuildQuest() {

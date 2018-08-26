@@ -12,6 +12,7 @@ public class CommandBuilder {
     private static CommandBuilder cmdBuilder;
     private static IslandCommands islandCmds;
     private static BuildMenuCommands buildMenuCommands;
+    private static BuildQueueMenuCommands buildQueueMenuCommands;
     private static StarMenuCommands starMenuCommands;
     private static BookbinderMenuCommands bookbinderMenuCommands;
     private final Region dsoAppRegion;
@@ -56,6 +57,23 @@ public class CommandBuilder {
         return region;
     }
 
+    public BuildQueueMenuCommands buildBuildQueueMenuCommands() {
+        if (buildQueueMenuCommands == null) {
+            buildQueueMenuCommands = new BuildQueueMenuCommands(calculateBuildQueueRegion(), buildIslandCommand());
+        }
+        return buildQueueMenuCommands;
+    }
+
+    public Region calculateBuildQueueRegion() {
+        final int menuWidth = 150, menuHeight = 400;
+        Region region = new Region(0, 0, 0, 0);
+        region.x = dsoAppRegion.x + dsoAppRegion.w - menuWidth;
+        region.y = dsoAppRegion.y;
+        region.w = menuWidth;
+        region.h = menuHeight;
+        return region;
+    }
+
     public StarMenuCommands buildStarMenuCommands() {
         if (starMenuCommands == null) {
             starMenuCommands = new StarMenuCommands(calculateStarMenuRegion(), buildIslandCommand());
@@ -73,20 +91,11 @@ public class CommandBuilder {
         return region;
     }
 
-    public Region calculateBuildQueueRegion() {
-        final int menuWidth = 150, menuHeight = 400;
-        Region region = new Region(0, 0, 0, 0);
-        region.x = dsoAppRegion.x + dsoAppRegion.w - menuWidth;
-        region.y = dsoAppRegion.y;
-        region.w = menuWidth;
-        region.h = menuHeight;
-        return region;
-    }
-
     public BookbinderMenuCommands buildBookbinderMenuCommands() {
         if (bookbinderMenuCommands == null) {
             bookbinderMenuCommands = new BookbinderMenuCommands(dsoAppRegion, buildIslandCommand());
         }
         return bookbinderMenuCommands;
     }
+
 }
