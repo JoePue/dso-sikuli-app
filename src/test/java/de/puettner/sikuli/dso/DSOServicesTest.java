@@ -5,7 +5,7 @@ import de.puettner.sikuli.dso.commands.ui.Sector;
 import org.junit.Before;
 import org.junit.Test;
 
-public class DSOServicesTest {
+public class DSOServicesTest extends BaseServiceTest {
 
     private DSOServices dsoServices = DSOServiceBuilder.build();
 
@@ -73,6 +73,9 @@ public class DSOServicesTest {
     public void launchAllHappyGeologics() {
         //        dsoServices.prepareStarMenu();
         dsoServices.launchAllHappyGeologics(MaterialType.GR, 6);
+        dsoServices.buildAllMines();
+        dsoServices.exitDso();
+        windowsPlatform.standby();
     }
 
     @Test

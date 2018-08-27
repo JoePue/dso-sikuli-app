@@ -9,6 +9,7 @@ import org.sikuli.basics.HotkeyListener;
  */
 @Slf4j
 public class SikuliHotKeyListener extends HotkeyListener {
+
     /**
      * Register Hot-Key: STRG+UMSCHALT J
      *

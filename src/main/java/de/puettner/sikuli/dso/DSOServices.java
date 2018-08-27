@@ -113,7 +113,7 @@ public class DSOServices {
                 islandCmds.dragNdrop(0, -100);
             }
             islandCmds.parkMouse();
-            IslandButtons[] collectableIcons = {IslandButtons.CollectableIconTwo, IslandButtons.CollectableIconOne, IslandButtons
+            IslandButtons[] collectableIcons = {/*IslandButtons.CollectableIconTwo,*/ IslandButtons.CollectableIconOne, IslandButtons
                     .CollectableIconThree};
             for (IslandButtons collectableIcon : collectableIcons) {
                 Iterator<Match> icons = islandCmds.findAll(collectableIcon.pattern);
@@ -121,7 +121,7 @@ public class DSOServices {
                     Match match = icons.next();
                     log.info("Sammelgegenstand gefunden. " + match);
                     match.doubleClick();
-                    islandCmds.sleep(1);
+                    islandCmds.sleep(5);
                     islandCmds.typeESC();
                 }
             }
@@ -136,7 +136,7 @@ public class DSOServices {
         islandCmds.clickSmallOkButton();
         islandCmds.sleep(20);
         islandCmds.clickSmallOkButton();
-        islandCmds.sleep(1);
+        islandCmds.sleep(3);
         islandCmds.typeESC();
         return true;
     }
@@ -250,7 +250,7 @@ public class DSOServices {
                 Iterator<Match> matches = islandCmds.findAll(sourceSector.pattern);
                 while (matches.hasNext()) {
                     if (buildCount >= limit) {
-                        log.info("limit of build reached");
+                        log.info("limit of builds reached");
                         break outerloop;
                     }
                     if (buildCount == 0) {
