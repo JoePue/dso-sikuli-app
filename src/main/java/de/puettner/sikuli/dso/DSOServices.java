@@ -325,4 +325,13 @@ public class DSOServices {
             buildCopperMines(3);
         }
     }
+
+    public void highlightRegions() {
+        islandCmds.hightlightRegions();
+        buildMenu.highlightMenuRegion();
+        starMenu.highlightMenuRegion();
+        bookbinderMenu.highlightMenuRegion();
+        buildQueueMenu.highlightMenuRegion();
+        questBookCmds.highlightMenuRegion();
+    }
 }

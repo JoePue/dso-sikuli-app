@@ -34,8 +34,8 @@ public class DSOAutomationApp {
     private static void dailySetup(DSOServices dsoService) {
         dsoService.startDsoApp();
         dsoService.closeWelcomeDialog();
+        dsoService.highlightRegions();
         dsoService.prepareStarMenu();
-
         dsoService.buildCopperMines(3);
         dsoService.launchAllHappyGeologics(MaterialType.KU, 6);
         dsoService.launchAllHappyGeologics(MaterialType.ST, 2);
@@ -61,10 +61,12 @@ public class DSOAutomationApp {
         dsoService.buildAllMines();
         dsoService.findAllCollectables();
 
-        // TODO Minen buffen Fkt. impl.
-        // TODO Buffen Fkt. impl. für GoldTürm, Granitm., Gold, Eisen, (Stein, Marmor)
-        // TODO standby-Cmd impl.
-        // TODO Goldsuche für spezial Icon erweitern
+        // TODO Logging konfigurieren / fachliches Logging def. / Log-File
+        // TODO Programmabstürze fixen (Ständig Endlosschleifen)
+        // TODO Workaround für Programmabstürze finden
+        // TODO Goldsuche impl.
+        // TODO Kohlesuche impl. TODO Buffen Fkt. impl. für GoldTürm, Granitm., Gold, Eisen, (Stein, Marmor)
+        // TODO implement programm arguments or something like profiles
         dsoService.launchAllHappyGeologics(MaterialType.GR, 6);
 
         dsoService.exitDso();
