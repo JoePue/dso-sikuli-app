@@ -6,6 +6,8 @@ import org.sikuli.script.Match;
 import org.sikuli.script.Pattern;
 import org.sikuli.script.Region;
 
+import java.util.Optional;
+
 import static de.puettner.sikuli.dso.commands.ui.SikuliCommands.pattern;
 
 @Slf4j
@@ -24,7 +26,7 @@ public class StarMenuCommands extends MenuCommands {
         log.info("launchAllExplorerByImage");
         int launchCount = 0;
         do {
-            openStarMenu();
+            openStarMenu(Optional.empty());
             Match match = islandCmds.find(image, menuRegion);
             if (match != null) {
                 launchExplorer(match, menuRegion);
@@ -39,8 +41,21 @@ public class StarMenuCommands extends MenuCommands {
         return launchCount;
     }
 
-    public boolean openStarMenu() {
-        return this.openStarMenu(null);
+    public boolean openStarMenu(Optional<String> searchString) {
+        log.info("openStarMenu()" + (searchString == null ? "" : "searchString: " + searchString));
+        if (!isStarMenuOpen()) {
+            islandCmds.clickStarButton();
+            islandCmds.sleep(2);
+        }
+        if (searchString.isPresent()) {
+            islandCmds.clickIfExists(StarMenuButtons.ZOOM_ICON.pattern, menuRegion);
+            islandCmds.sleep(1);
+            islandCmds.type("a", Key.CTRL);
+            islandCmds.sleep(1);
+            islandCmds.paste(searchString.get());
+        }
+        islandCmds.parkMouse();
+        return true;
     }
 
     public <PSI> boolean launchExplorer(Match match, Region searchRegion) {
@@ -49,23 +64,6 @@ public class StarMenuCommands extends MenuCommands {
         islandCmds.click(pattern("TreasureFind-icon.png").targetOffset(49, -1));
         islandCmds.click(pattern("TreasureSearchVeryLong.png").targetOffset(53, 0));
         islandCmds.clickSmallOkButton();
-        return true;
-    }
-
-    public boolean openStarMenu(String searchString) {
-        log.info("openStarMenu()" + (searchString == null ? "" : "searchString: " + searchString));
-        if (!isStarMenuOpen()) {
-            islandCmds.clickStarButton();
-            islandCmds.sleep(2);
-        }
-        if (searchString != null) {
-            islandCmds.clickIfExists(StarMenuButtons.ZOOM_ICON.pattern, menuRegion);
-            islandCmds.sleep(1);
-            islandCmds.type("a", Key.CTRL);
-            islandCmds.sleep(1);
-            islandCmds.paste(searchString);
-        }
-        islandCmds.parkMouse();
         return true;
     }
 
@@ -82,7 +80,7 @@ public class StarMenuCommands extends MenuCommands {
         log.info("launchAllGeologicsByImage");
         int launchCount = 0;
         for (int i = 0; i <= launchLimit; ++i) {
-            if (!openStarMenu()) {
+            if (!openStarMenu(Optional.empty())) {
                 break;
             }
             Match match = islandCmds.find(image.getPattern(), menuRegion);
@@ -100,7 +98,6 @@ public class StarMenuCommands extends MenuCommands {
         return launchCount;
     }
 
-    // ST KU MA EI KO GO GR TI SA
     public boolean launchGeologic(Match match, MaterialType material) {
         log.info("launchGeologic material: " + material);
         if (match.click() == 1) {
@@ -114,6 +111,10 @@ public class StarMenuCommands extends MenuCommands {
                 islandCmds.clickIfExists(pattern("Material-Copper-Button.png"), menuRegion);
             } else if (MaterialType.EI.equals(material)) {
                 islandCmds.clickIfExists(pattern("Material-Iron-Button.png"), menuRegion);
+            } else if (MaterialType.GO.equals(material)) {
+                islandCmds.clickIfExists(pattern("Material-Gold-Button.png").similar(0.80f), menuRegion);
+            } else if (MaterialType.KO.equals(material)) {
+                islandCmds.clickIfExists(pattern("Material-Cole-Button.png").similar(0.80f), menuRegion);
             } else {
                 throw new IllegalArgumentException("Unsupported type: " + material);
             }

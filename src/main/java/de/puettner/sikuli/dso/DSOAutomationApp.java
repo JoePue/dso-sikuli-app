@@ -19,19 +19,27 @@ public class DSOAutomationApp {
     public static void main(String[] args) {
         log.info("App starting");
         WindowsPlatform platform = new WindowsPlatform();
+        //platform.maximizeBrowserWindow(); // must the first stmt !!!
         CommandBuilder cmdBuilder = CommandBuilder.build();
         SikuliCommands sikuli = cmdBuilder.buildIslandCommand();
         DSOServices dsoService = DSOServiceBuilder.build();
-        platform.maximizeBrowserWindow();
         try {
-            dailySetup(dsoService);
+            for (String arg : args) {
+                if ("firstDailyRun".equals(arg)) {
+                    firstDailyRun(dsoService);
+                } else if ("secondDailyRun".equals(arg)) {
+                    secondDailyRun(dsoService);
+                } else if ("standby".equals(arg)) {
+                    platform.standby();
+                }
+            }
         } finally {
             platform.restoreBrowserWindow();
         }
         log.info("App ends normally.");
     }
 
-    private static void dailySetup(DSOServices dsoService) {
+    private static void firstDailyRun(DSOServices dsoService) {
         dsoService.startDsoApp();
         dsoService.closeWelcomeDialog();
         dsoService.highlightRegions();
@@ -68,6 +76,23 @@ public class DSOAutomationApp {
         // TODO Kohlesuche impl. TODO Buffen Fkt. impl. für GoldTürm, Granitm., Gold, Eisen, (Stein, Marmor)
         // TODO implement programm arguments or something like profiles
         dsoService.launchAllHappyGeologics(MaterialType.GR, 6);
+
+        dsoService.exitDso();
+    }
+
+    private static void secondDailyRun(DSOServices dsoService) {
+        dsoService.startDsoApp();
+        dsoService.closeWelcomeDialog();
+
+        dsoService.prepareStarMenuForGold();
+        dsoService.launchAllHappyGeologics(MaterialType.GO, 2);
+
+        dsoService.prepareStarMenu();
+        dsoService.launchAllHappyGeologics(MaterialType.GR, 4);
+        dsoService.launchAllHappyGeologics(MaterialType.KO, 4);
+        dsoService.launchAllConscientiousGeologics(MaterialType.GR, 2);
+
+        dsoService.buildAllMines();
 
         dsoService.exitDso();
     }

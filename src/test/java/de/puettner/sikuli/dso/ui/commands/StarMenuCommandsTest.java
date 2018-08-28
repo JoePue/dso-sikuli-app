@@ -6,6 +6,8 @@ import de.puettner.sikuli.dso.commands.ui.StarMenuCommands;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.Optional;
+
 public class StarMenuCommandsTest {
 
     private final SikuliCommands sikuliCmd = CommandBuilder.build().buildIslandCommand();
@@ -18,7 +20,7 @@ public class StarMenuCommandsTest {
 
     @Test
     public void openStarMenu() {
-        starMenu.openStarMenu();
+        starMenu.openStarMenu(Optional.empty());
     }
 
 }

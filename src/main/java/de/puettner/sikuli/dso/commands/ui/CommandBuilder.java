@@ -1,6 +1,7 @@
 package de.puettner.sikuli.dso.commands.ui;
 
 import de.puettner.sikuli.dso.commands.os.WindowsPlatform;
+import org.sikuli.basics.Debug;
 import org.sikuli.script.App;
 import org.sikuli.script.ImagePath;
 import org.sikuli.script.Region;
@@ -46,6 +47,7 @@ public class CommandBuilder {
     public IslandCommands buildIslandCommand() {
         if (islandCmds == null) {
             ImagePath.add("../dso_1.sikuli");
+            Debug.setDebugLevel(3);
             islandCmds = new IslandCommands(new App(CHROME_EXE), dsoAppRegion, this.calculateGeologicSearchRegion());
         }
         return islandCmds;

@@ -7,6 +7,7 @@ import org.sikuli.script.Match;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.Iterator;
+import java.util.Optional;
 
 import static de.puettner.sikuli.dso.commands.ui.SikuliCommands.pattern;
 
@@ -198,9 +199,17 @@ public class DSOServices {
     }
 
     public void prepareStarMenu() {
+        this.prepareStarMenu(StarMenuFilter.ENTDDECK_KUNDSCH_GEOLO);
+    }
+
+    public void prepareStarMenu(StarMenuFilter filter) {
         log.info("prepareStarMenu");
-        starMenu.openStarMenu("entdeck|kundsch|geolo");
+        starMenu.openStarMenu(Optional.of(filter.filterString));
         islandCmds.typeESC();
+    }
+
+    public void prepareStarMenuForGold() {
+        this.prepareStarMenu(StarMenuFilter.EIGTH_PERCENT);
     }
 
     public void fetchBookbinderItem() {

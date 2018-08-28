@@ -6,6 +6,8 @@ import org.sikuli.script.Commands;
 import org.sikuli.script.Key;
 import org.sikuli.script.Location;
 
+import java.util.Optional;
+
 import static de.puettner.sikuli.dso.commands.ui.SikuliCommands.pattern;
 import static java.awt.event.KeyEvent.VK_ENTER;
 
@@ -33,7 +35,7 @@ public class SikuliCommandsTest {
 
     @Test
     public void openStarMenu() {
-        starMenu.openStarMenu();
+        starMenu.openStarMenu(Optional.empty());
     }
 
     @Test
