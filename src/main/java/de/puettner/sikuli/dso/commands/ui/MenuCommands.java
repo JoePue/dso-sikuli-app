@@ -2,6 +2,8 @@ package de.puettner.sikuli.dso.commands.ui;
 
 import org.sikuli.script.Region;
 
+import static de.puettner.sikuli.dso.commands.ui.SikuliCommands.initRegion;
+
 public class MenuCommands {
 
     protected final Region menuRegion;
@@ -10,6 +12,7 @@ public class MenuCommands {
     protected MenuCommands(Region menuRegion, IslandCommands islandCmds) {
         this.menuRegion = menuRegion;
         this.islandCmds = islandCmds;
+        initRegion(menuRegion);
     }
 
     public void highlightMenuRegion() {

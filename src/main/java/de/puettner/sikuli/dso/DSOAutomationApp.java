@@ -4,17 +4,18 @@ import de.puettner.sikuli.dso.commands.os.WindowsPlatform;
 import de.puettner.sikuli.dso.commands.ui.CommandBuilder;
 import de.puettner.sikuli.dso.commands.ui.MaterialType;
 import de.puettner.sikuli.dso.commands.ui.SikuliCommands;
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.java.Log;
 import org.sikuli.basics.Settings;
 import org.sikuli.script.FindFailed;
 import org.sikuli.script.Match;
 import org.sikuli.script.Region;
 
 import java.util.Iterator;
+import java.util.logging.Level;
 
 import static de.puettner.sikuli.dso.commands.ui.SikuliCommands.pattern;
 
-@Slf4j
+@Log
 public class DSOAutomationApp {
 
     /*
@@ -76,7 +77,7 @@ public class DSOAutomationApp {
                 } else if ("exitDso".equals(arg)) {
                     dsoService.exitDso();
                 } else {
-                    log.warn("Unknown argument: " + arg);
+                    log.log(Level.WARNING, "Unknown argument: " + arg);
                 }
             }
         } finally {

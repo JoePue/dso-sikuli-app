@@ -1,9 +1,11 @@
 package de.puettner.sikuli.dso.commands.ui;
 
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.java.Log;
 import org.sikuli.script.Region;
 
-@Slf4j
+import java.util.logging.Level;
+
+@Log
 public class BookbinderMenuCommands extends MenuCommands {
 
     public BookbinderMenuCommands(Region menuRegion, IslandCommands islandCmds) {
@@ -31,7 +33,7 @@ public class BookbinderMenuCommands extends MenuCommands {
         } else if (BookbinderMenuButtons.Kodex.equals(bookType)) {
             return islandCmds.click(BookbinderMenuButtons.Kodex.pattern);
         } else {
-            log.error("Unknown bootType: " + bookType);
+            log.log(Level.SEVERE, "Unknown bootType: " + bookType);
         }
         return false;
     }

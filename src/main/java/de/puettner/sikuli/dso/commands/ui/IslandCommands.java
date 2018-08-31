@@ -1,12 +1,14 @@
 package de.puettner.sikuli.dso.commands.ui;
 
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.java.Log;
 import org.sikuli.script.App;
 import org.sikuli.script.Match;
 import org.sikuli.script.Pattern;
 import org.sikuli.script.Region;
 
-@Slf4j
+import java.util.logging.Level;
+
+@Log
 public class IslandCommands extends SikuliCommands {
 
     protected final String[] okButtonList = {"Ok-Button-0.png", "Ok-Button-1.png", "Ok-Button-2.png", "Ok-Button-3-Bookbinder.png"};
@@ -46,7 +48,7 @@ public class IslandCommands extends SikuliCommands {
             rv = true;
             log.info("clickSmallOkButton[" + buttonFilename + "]" + (rv ? " Clicked" : " not found"));
         } else {
-            log.error("Missing OkButton_" + buttonId);
+            log.log(Level.SEVERE, "Missing OkButton_" + buttonId);
         }
         return rv;
     }

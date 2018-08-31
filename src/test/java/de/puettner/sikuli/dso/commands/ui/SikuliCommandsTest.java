@@ -27,7 +27,7 @@ public class SikuliCommandsTest {
         int[] sectors = {1, 2, 3};
         for (int sector : sectors) {
             islandCmds.type("" + sector, null);
-            islandCmds.sleep(1);
+            islandCmds.sleep();
             islandCmds.dragNdrop(200, -750);
         }
 

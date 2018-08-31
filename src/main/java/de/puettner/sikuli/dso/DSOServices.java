@@ -2,7 +2,7 @@ package de.puettner.sikuli.dso;
 
 import de.puettner.sikuli.dso.commands.os.WindowsPlatform;
 import de.puettner.sikuli.dso.commands.ui.*;
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.java.Log;
 import org.sikuli.script.Match;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
@@ -11,7 +11,7 @@ import java.util.Optional;
 
 import static de.puettner.sikuli.dso.commands.ui.SikuliCommands.pattern;
 
-@Slf4j
+@Log
 public class DSOServices {
 
     private final WindowsPlatform winCommand;
@@ -39,7 +39,7 @@ public class DSOServices {
             throw new NotImplementedException();
         }
         islandCmds.switchToBrowser();
-        islandCmds.sleep(1);
+        islandCmds.sleep();
         islandCmds.clickDsoTab();
         if (islandCmds.clickLetsPlayButtonIfExists()) {
             this.closeWelcomeDialog();
@@ -53,12 +53,12 @@ public class DSOServices {
         int timeout = 300;
         int okButtonTimeout = 3;
         while (timeout > 0) {
-            islandCmds.sleep(1);
+            islandCmds.sleep();
             timeout -= 1;
             if (islandCmds.existsAvatar()) {
                 okButtonTimeout -= 1;
                 if (okButtonTimeout < 0 || islandCmds.clickSmallOkButton()) {
-                    islandCmds.sleep(1);
+                    islandCmds.sleep();
                     timeout = 0;
                     // Login Bonus
                     if (islandCmds.clickLoginBonusButton()) {
@@ -87,7 +87,7 @@ public class DSOServices {
                 islandCmds.dragNdrop(200, -750);
             }
         }
-        this.sleep(1);
+        this.sleep(1000);
     }
 
     void sleep(int i) {
@@ -99,7 +99,7 @@ public class DSOServices {
         islandCmds.openQuestBook();
         if (islandCmds.existsDailyQuestMenuIem()) {
             islandCmds.clickSmallOkButton();
-            islandCmds.sleep(20);
+            islandCmds.sleep(20000);
             islandCmds.clickSmallOkButton();
         }
         return true;
@@ -122,7 +122,7 @@ public class DSOServices {
                     Match match = icons.next();
                     log.info("Sammelgegenstand gefunden. " + match);
                     match.doubleClick();
-                    islandCmds.sleep(5);
+                    islandCmds.sleep(5000);
                     islandCmds.typeESC();
                 }
             }
@@ -135,9 +135,9 @@ public class DSOServices {
         islandCmds.openQuestBook();
         questBookCmds.clickButton(QuestBookMenuButtons.GuildQuestMenuItem);
         islandCmds.clickSmallOkButton();
-        islandCmds.sleep(20);
+        islandCmds.sleep(20000);
         islandCmds.clickSmallOkButton();
-        islandCmds.sleep(3);
+        islandCmds.sleep(3000);
         islandCmds.typeESC();
         return true;
     }
@@ -217,18 +217,18 @@ public class DSOServices {
         islandCmds.parkMouse();
         this.goToSector(Sector.S3);
         islandCmds.clickBookbinderBuilding();
-        islandCmds.sleep(2);
+        islandCmds.sleep(2000);
         if (islandCmds.clickBigOkButton()) {
             // Assumes production is ready
-            islandCmds.sleep(15);
+            islandCmds.sleep(15000);
         }
         bookbinderMenu.clickButton(BookbinderMenuButtons.Kompendium);
-        islandCmds.sleep(1);
+        islandCmds.sleep();
         if (bookbinderMenu.clickOkButtonBookbinder()) {
 
         }
         islandCmds.parkMouse();
-        islandCmds.sleep(1);
+        islandCmds.sleep();
         islandCmds.typeESC();
         this.goToSector(Sector.S1);
     }
@@ -254,23 +254,24 @@ public class DSOServices {
             MaterialSector sourceSector = material.msl[i];
             for (Sector sector : sourceSector.sectors) {
                 goToSector(sector);
-                // islandCmds.hightlightRegions();
                 islandCmds.parkMouse();
                 Iterator<Match> matches = islandCmds.findAll(sourceSector.pattern);
-                while (matches.hasNext()) {
-                    if (buildCount >= limit) {
-                        log.info("limit of builds reached");
-                        break outerloop;
+                if (matches != null) {
+                    while (matches.hasNext()) {
+                        if (buildCount >= limit) {
+                            log.info("limit of builds reached");
+                            break outerloop;
+                        }
+                        if (buildCount == 0) {
+                            prepareBuildMenu(buildingButton);
+                        }
+                        if (!buildMine(matches.next(), mineButton)) {
+                            log.info("build of mine was not succesful");
+                            break outerloop;
+                        }
+                        islandCmds.parkMouse();
+                        ++buildCount;
                     }
-                    if (buildCount == 0) {
-                        prepareBuildMenu(buildingButton);
-                    }
-                    if (!buildMine(matches.next(), mineButton)) {
-                        log.info("build of mine was not succesful");
-                        break outerloop;
-                    }
-                    islandCmds.parkMouse();
-                    ++buildCount;
                 }
             }
             islandCmds.clickBuildCancelButton();
@@ -288,11 +289,11 @@ public class DSOServices {
             return false;
         }
         buildMenu.clickButton(mineButton);
-        islandCmds.sleep(1);
+        islandCmds.sleep();
         // Match match = matches.next();
         //                match.hover();
         match.click();
-        islandCmds.sleep(1);
+        islandCmds.sleep();
         return true;
     }
 
@@ -325,17 +326,33 @@ public class DSOServices {
     }
 
     public void buildAllMines() {
-        if (buildQueueMenu.getBuildQueueSize() < 3) {
-            buildGoldMines(3);
+        //        if (buildQueueMenu.getBuildQueueSize() < 3) {
+        //            buildGoldMines(3);
+        //        }
+        //        if (buildQueueMenu.getBuildQueueSize() < 3) {
+        //            buildIronMines(3);
+        //        }
+        //        if (buildQueueMenu.getBuildQueueSize() < 3) {
+        //            buildColeMines(3);
+        //        }
+        //        if (buildQueueMenu.getBuildQueueSize() < 3) {
+        //            buildCopperMines(3);
+        //        }
+        int buildCount = buildGoldMines(3);
+        if (buildCount > 5) {
+            return;
         }
-        if (buildQueueMenu.getBuildQueueSize() < 3) {
-            buildIronMines(3);
+        buildCount = buildCount + buildIronMines(3);
+        if (buildCount > 5) {
+            return;
         }
-        if (buildQueueMenu.getBuildQueueSize() < 3) {
-            buildColeMines(3);
+        buildCount = buildCount + buildColeMines(3);
+        if (buildCount > 5) {
+            return;
         }
-        if (buildQueueMenu.getBuildQueueSize() < 3) {
-            buildCopperMines(3);
+        buildCount = buildCount + buildCopperMines(3);
+        if (buildCount > 5) {
+            return;
         }
     }
 

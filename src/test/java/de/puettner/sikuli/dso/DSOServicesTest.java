@@ -71,15 +71,19 @@ public class DSOServicesTest extends BaseServiceTest {
 
     @Test
     public void launchAllHappyGeologics() {
-        //        dsoServices.prepareStarMenu();
-        dsoServices.launchAllConscientiousGeologics(MaterialType.ST, 2);
-        dsoServices.launchAllNormalGeologics(MaterialType.ST, 3);
-        dsoServices.launchAllHappyGeologics(MaterialType.GR, 6);
-        dsoServices.launchAllConscientiousGeologics(MaterialType.MA, 2);
-        dsoServices.launchAllNormalGeologics(MaterialType.MA, 3);
         dsoServices.buildAllMines();
-        dsoServices.exitDso();
-        windowsPlatform.standby();
+        dsoServices.launchAllHappyGeologics(MaterialType.KU, 3);
+        dsoServices.launchAllNormalGeologics(MaterialType.ST, 3);
+
+        dsoServices.launchAllHappyGeologics(MaterialType.GR, 3);
+        dsoServices.launchAllNormalGeologics(MaterialType.MA, 3);
+        dsoServices.launchAllConscientiousGeologics(MaterialType.EI, 2);
+        dsoServices.launchAllHappyGeologics(MaterialType.KO, 1);
+        dsoServices.launchAllHappyGeologics(MaterialType.EI, 5);
+        dsoServices.buildAllMines();
+        //dsoServices.buildAllMines();
+        // dsoServices.exitDso();
+        // windowsPlatform.standby();
     }
 
     @Test

@@ -1,12 +1,12 @@
 package de.puettner.sikuli.dso.commands.ui;
 
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.java.Log;
 import org.sikuli.script.*;
 
-import java.util.Collections;
 import java.util.Iterator;
+import java.util.logging.Level;
 
-@Slf4j
+@Log
 public class SikuliCommands {
 
     // !!! Kein static bei Pattern-Properties !!!
@@ -16,8 +16,15 @@ public class SikuliCommands {
     protected SikuliCommands(App app, Region appRegion) {
         this.app = app;
         this.appRegion = appRegion;
+        initRegion(appRegion);
         log.info(app.getWindow());
         Key.addHotkey("j", Key.C_CTRL + Key.C_ALT, new SikuliHotKeyListener());
+    }
+
+    public static void initRegion(Region region) {
+        region.setAutoWaitTimeout(0);
+        region.setFindFailedResponse(FindFailedResponse.SKIP);
+        region.setThrowException(false);
     }
 
     public int paste(Object input) {
@@ -52,15 +59,23 @@ public class SikuliCommands {
     }
 
     Iterator<Match> findAll(Pattern pattern, Region searchRegion) {
+        log.info("findAll");
         if (pattern == null || searchRegion == null) {
             throw new IllegalArgumentException(pattern + " " + searchRegion);
         }
         try {
             return searchRegion.findAll(pattern);
+            //            Match match = searchRegion.find(pattern);
+            //            if (match == null) {
+            //                log.info("Nothing found.");
+            //            } else {
+            //                log.info("Found");
+            //            }
+            //            return Collections.emptyListIterator();
         } catch (FindFailed e) {
-            log.warn(e.getMessage());
+            throw new RuntimeException(e);
         }
-        return Collections.emptyListIterator();
+        //        return Collections.emptyListIterator();
     }
 
     private String str(Object o) {
@@ -104,22 +119,26 @@ public class SikuliCommands {
     }
 
     boolean click(Pattern filename) {
-        return clickIfExists(filename, appRegion);
+        if (clickIfExists(filename, appRegion)) {
+            return true;
+        }
+        log.log(Level.SEVERE, "Missing element");
+        return false;
+    }
+
+    public void sleep() {
+        this.sleep(1000);
     }
 
     public void sleep(int seconds) {
         try {
-            Thread.currentThread().sleep(seconds * 1000);
+            Thread.currentThread().sleep(seconds);
         } catch (InterruptedException e) {
-            log.error(e.getMessage(), e);
+            log.log(Level.SEVERE, e.getMessage(), e);
         }
     }
 
     public void focusApp() {
-        switchApp();
-    }
-
-    private void switchApp() {
         app.focus(1);
     }
 
@@ -156,7 +175,7 @@ public class SikuliCommands {
         try {
             appRegion.dragDrop(sourceLocation, targetLocation);
         } catch (FindFailed e) {
-            log.error(e.getMessage(), e);
+            log.log(Level.SEVERE, e.getMessage(), e);
         }
     }
 

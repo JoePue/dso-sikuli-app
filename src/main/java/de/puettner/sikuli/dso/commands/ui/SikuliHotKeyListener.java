@@ -1,13 +1,15 @@
 package de.puettner.sikuli.dso.commands.ui;
 
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.java.Log;
 import org.sikuli.basics.HotkeyEvent;
 import org.sikuli.basics.HotkeyListener;
+
+import java.util.logging.Level;
 
 /**
  * Docu.: https://sikulix-2014.readthedocs.io/en/latest/interaction.html#listening-to-global-hotkeys
  */
-@Slf4j
+@Log
 public class SikuliHotKeyListener extends HotkeyListener {
 
     /**
@@ -18,7 +20,7 @@ public class SikuliHotKeyListener extends HotkeyListener {
     @Override
     public void hotkeyPressed(HotkeyEvent e) {
         String msg = "hotkeyPressed => System.exit(-1);";
-        log.error(msg);
+        log.log(Level.SEVERE, msg);
         System.out.println(msg);
         System.err.println(msg);
         System.exit(-1);
