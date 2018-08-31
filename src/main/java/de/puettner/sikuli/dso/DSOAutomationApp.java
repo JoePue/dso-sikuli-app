@@ -5,6 +5,14 @@ import de.puettner.sikuli.dso.commands.ui.CommandBuilder;
 import de.puettner.sikuli.dso.commands.ui.MaterialType;
 import de.puettner.sikuli.dso.commands.ui.SikuliCommands;
 import lombok.extern.slf4j.Slf4j;
+import org.sikuli.basics.Settings;
+import org.sikuli.script.FindFailed;
+import org.sikuli.script.Match;
+import org.sikuli.script.Region;
+
+import java.util.Iterator;
+
+import static de.puettner.sikuli.dso.commands.ui.SikuliCommands.pattern;
 
 @Slf4j
 public class DSOAutomationApp {
@@ -19,18 +27,56 @@ public class DSOAutomationApp {
     public static void main(String[] args) {
         log.info("App starting");
         WindowsPlatform platform = new WindowsPlatform();
+        log.info("AutoWaitTimeout: " + Settings.AutoWaitTimeout);
         //platform.maximizeBrowserWindow(); // must the first stmt !!!
         CommandBuilder cmdBuilder = CommandBuilder.build();
         SikuliCommands sikuli = cmdBuilder.buildIslandCommand();
         DSOServices dsoService = DSOServiceBuilder.build();
         try {
             for (String arg : args) {
+                dsoService.switchToBrowser();
                 if ("firstDailyRun".equals(arg)) {
                     firstDailyRun(dsoService);
                 } else if ("secondDailyRun".equals(arg)) {
                     secondDailyRun(dsoService);
+                } else if ("launchAllExplorer".equals(arg)) {
+                    launchAllExplorer(dsoService);
+                } else if ("launchAllExplorer".equals(arg)) {
+                    dsoService.findAllCollectables();
+                } else if ("getBuildQueueSize".equals(arg)) {
+                    getBuildQueueSize(dsoService);
+                } else if ("buildAllMines".equals(arg)) {
+                    dsoService.buildAllMines();
                 } else if ("standby".equals(arg)) {
                     platform.standby();
+                } else if ("closeWelcomeDialog".equals(arg)) {
+                    dsoService.closeWelcomeDialog();
+                } else if ("highlightRegions".equals(arg)) {
+                    dsoService.highlightRegions();
+                } else if ("prepareStarMenu".equals(arg)) {
+                    dsoService.prepareStarMenu();
+                } else if ("buildCopperMines".equals(arg)) {
+                    dsoService.buildCopperMines(Integer.valueOf(args[1]));
+                } else if ("launchAllHappyGeologics".equals(arg)) {
+                    dsoService.launchAllHappyGeologics(MaterialType.valueOf(args[1]), Integer.valueOf(args[1]));
+                } else if ("launchAllNormalGeologics".equals(arg)) {
+                    dsoService.launchAllNormalGeologics(MaterialType.valueOf(args[1]), Integer.valueOf(args[1]));
+                } else if ("launchAllConscientiousGeologics".equals(arg)) {
+                    dsoService.launchAllConscientiousGeologics(MaterialType.valueOf(args[1]), Integer.valueOf(args[1]));
+                } else if ("launchAllExplorer".equals(arg)) {
+                    launchAllExplorer(dsoService);
+                } else if ("fetchBookbinderItem".equals(arg)) {
+                    dsoService.fetchBookbinderItem();
+                } else if ("solveDailyQuest".equals(arg)) {
+                    dsoService.solveDailyQuest();
+                } else if ("solveGuildQuest".equals(arg)) {
+                    dsoService.solveGuildQuest();
+                } else if ("findAllCollectables".equals(arg)) {
+                    dsoService.findAllCollectables();
+                } else if ("exitDso".equals(arg)) {
+                    dsoService.exitDso();
+                } else {
+                    log.warn("Unknown argument: " + arg);
                 }
             }
         } finally {
@@ -57,11 +103,7 @@ public class DSOAutomationApp {
 
         // *** So nun 30min verbrauchen ***
 
-        dsoService.launchAllBraveExplorer();        // Mutige
-        dsoService.launchAllSuccessfulExplorer();   // Erfolgreiche
-        dsoService.launchAllWildExplorer();         // Wilde
-        dsoService.launchAllFearlessExplorer();     // Furchlose
-        dsoService.launchAllNormalExplorer();
+        launchAllExplorer(dsoService);
 
         dsoService.fetchBookbinderItem();
         dsoService.solveDailyQuest();
@@ -95,5 +137,30 @@ public class DSOAutomationApp {
         dsoService.buildAllMines();
 
         dsoService.exitDso();
+    }
+
+    private static void launchAllExplorer(DSOServices dsoService) {
+        dsoService.launchAllBraveExplorer();        // Mutige
+        dsoService.launchAllSuccessfulExplorer();   // Erfolgreiche
+        dsoService.launchAllWildExplorer();         // Wilde
+        dsoService.launchAllFearlessExplorer();     // Furchlose
+        dsoService.launchAllNormalExplorer();
+    }
+
+    private static int getBuildQueueSize(DSOServices dsoService) {
+        dsoService.switchToBrowser();
+        int counter = 0;
+        Region searchRegion = Region.create(1213, 115, 150, 400);
+        Iterator<Match> it = null;
+        while (true) {
+            try {
+                it = searchRegion.findAll(pattern("BuildQueueEntry.png").similar(0.90f));
+                while (it.hasNext()) {
+                    counter++;
+                }
+            } catch (FindFailed findFailed) {
+                findFailed.printStackTrace();
+            }
+        }
     }
 }

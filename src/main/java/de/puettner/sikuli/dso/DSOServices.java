@@ -233,7 +233,7 @@ public class DSOServices {
         this.goToSector(Sector.S1);
     }
 
-    void switchToBrowser() {
+    public void switchToBrowser() {
         log.info("switchToBrowser");
         islandCmds.switchToBrowser();
     }
@@ -318,6 +318,10 @@ public class DSOServices {
 
     public int buildColeMines(int limit) {
         return this.buildMines(limit, MaterialType.KO, BuildMenuButtons.ColeMineButton, BuildMenuButtons.RaisedBuildingButton);
+    }
+
+    public int getBuildQueueSize() {
+        return buildQueueMenu.getBuildQueueSize();
     }
 
     public void buildAllMines() {
