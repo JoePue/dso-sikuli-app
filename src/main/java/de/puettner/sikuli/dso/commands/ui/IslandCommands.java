@@ -40,11 +40,14 @@ public class IslandCommands extends SikuliCommands {
         }
         Match match = appRegion.exists(buttonFilename);
         if (match != null) {
+            match.hover();
             match.click();
             sleep(1);
             rv = true;
+            log.info("clickSmallOkButton[" + buttonFilename + "]" + (rv ? " Clicked" : " not found"));
+        } else {
+            log.error("Missing OkButton_" + buttonId);
         }
-        log.info("clickSmallOkButton[" + buttonFilename + "]" + (rv ? " Clicked" : " not found"));
         return rv;
     }
 

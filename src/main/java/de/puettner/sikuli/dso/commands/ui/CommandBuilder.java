@@ -47,7 +47,7 @@ public class CommandBuilder {
     public IslandCommands buildIslandCommand() {
         if (islandCmds == null) {
             ImagePath.add("../dso_1.sikuli");
-            Debug.setDebugLevel(3);
+            Debug.setDebugLevel(5);
             islandCmds = new IslandCommands(new App(CHROME_EXE), dsoAppRegion, this.calculateGeologicSearchRegion());
         }
         return islandCmds;
