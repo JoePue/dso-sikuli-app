@@ -25,16 +25,23 @@ public class StarMenuCommands extends MenuCommands {
     public int launchAllExplorerByImage(Pattern image) {
         log.info("launchAllExplorerByImage");
         int launchCount = 0;
+        int maxLoops = 4;
         do {
             openStarMenu(Optional.empty());
             Match match = islandCmds.find(image, menuRegion);
             if (match != null) {
-                launchExplorer(match, menuRegion);
-                islandCmds.parkMouse();
+                if (!launchExplorer(match, menuRegion)) {
+                    log.warn("No explorer launched");
+                    break;
+                }
                 launchCount++;
+                islandCmds.parkMouse();
                 islandCmds.sleep(1);
             } else {
                 log.info("No explorer found. launchCount: " + launchCount);
+                break;
+            }
+            if (launchCount > maxLoops) {
                 break;
             }
         } while (true);
@@ -61,9 +68,18 @@ public class StarMenuCommands extends MenuCommands {
     public <PSI> boolean launchExplorer(Match match, Region searchRegion) {
         log.info("launchExplorer()");
         match.click();
-        islandCmds.click(pattern("TreasureFind-icon.png").targetOffset(49, -1));
-        islandCmds.click(pattern("TreasureSearchVeryLong.png").targetOffset(53, 0));
-        islandCmds.clickSmallOkButton();
+        islandCmds.sleep(1);
+        if (!islandCmds.click(pattern("TreasureFind-icon.png").targetOffset(49, -1))) {
+            return false;
+        }
+        islandCmds.sleep(1);
+        if (!islandCmds.click(pattern("TreasureSearchVeryLong.png").targetOffset(53, 0))) {
+            return false;
+        }
+        islandCmds.sleep(1);
+        if (!islandCmds.clickSmallOkButton()) {
+            return false;
+        }
         return true;
     }
 
