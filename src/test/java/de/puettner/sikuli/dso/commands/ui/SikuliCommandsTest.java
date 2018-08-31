@@ -19,7 +19,7 @@ public class SikuliCommandsTest {
 
     @Before
     public void before() {
-        islandCmds.switchToBrowser();
+        islandCmds.focusBrowser();
     }
 
     @Test

@@ -5,21 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="43e08700-d549-440b-b7a2-3d3239d97692" name="Default" comment="sleep-Method now accepts milliseconds, Changed loggin to java.util.logging.* /  Created initRegion() to configure Sikulie">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_slf4j_api_1_7_25.xml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dso-automation.iml" afterPath="$PROJECT_DIR$/dso-automation.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/DSOAutomationApp.java" afterPath="$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/DSOAutomationApp.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/DSOServices.java" afterPath="$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/DSOServices.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/commands/ui/BookbinderMenuCommands.java" afterPath="$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/commands/ui/BookbinderMenuCommands.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/commands/ui/IslandCommands.java" afterPath="$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/commands/ui/IslandCommands.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/commands/ui/MenuCommands.java" afterPath="$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/commands/ui/MenuCommands.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/commands/ui/SikuliCommands.java" afterPath="$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/commands/ui/SikuliCommands.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/commands/ui/SikuliHotKeyListener.java" afterPath="$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/commands/ui/SikuliHotKeyListener.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/commands/ui/StarMenuCommands.java" afterPath="$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/commands/ui/StarMenuCommands.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/de/puettner/sikuli/dso/DSOServicesTest.java" afterPath="$PROJECT_DIR$/src/test/java/de/puettner/sikuli/dso/DSOServicesTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/de/puettner/sikuli/dso/commands/ui/BuildQueueMenuCommandsTest.java" afterPath="$PROJECT_DIR$/src/test/java/de/puettner/sikuli/dso/commands/ui/BuildQueueMenuCommandsTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/de/puettner/sikuli/dso/commands/ui/IslandCommandsTest.java" afterPath="$PROJECT_DIR$/src/test/java/de/puettner/sikuli/dso/commands/ui/IslandCommandsTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/de/puettner/sikuli/dso/commands/ui/QuestBookMenuCommandsTest.java" afterPath="$PROJECT_DIR$/src/test/java/de/puettner/sikuli/dso/commands/ui/QuestBookMenuCommandsTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/de/puettner/sikuli/dso/commands/ui/SikuliCommandsTest.java" afterPath="$PROJECT_DIR$/src/test/java/de/puettner/sikuli/dso/commands/ui/SikuliCommandsTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/de/puettner/sikuli/dso/ui/commands/StarMenuCommandsTest.java" afterPath="$PROJECT_DIR$/src/test/java/de/puettner/sikuli/dso/ui/commands/StarMenuCommandsTest.java" />
     </list>
     <ignored path="dso_1-sikuli-idea.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -65,7 +58,7 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="pom.xml" pinned="false" current-in-tab="true">
+          <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/pom.xml">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="187">
@@ -99,14 +92,12 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="SikuliCommands.java" pinned="false" current-in-tab="false">
+          <file leaf-file-name="SikuliCommands.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/commands/ui/SikuliCommands.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="145">
-                  <caret line="128" column="21" selection-start-line="128" selection-start-column="16" selection-end-line="128" selection-end-column="21" />
-                  <folding>
-                    <marker date="1535734391464" expanded="true" signature="52:163" placeholder="..." />
-                  </folding>
+                <state relative-caret-position="485">
+                  <caret line="88" column="28" selection-start-line="88" selection-start-column="16" selection-end-line="88" selection-end-column="28" />
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -240,9 +231,9 @@
         <option value="$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/DSOAutomationApp.java" />
         <option value="$PROJECT_DIR$/src/test/java/de/puettner/sikuli/dso/DSOServicesTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/commands/ui/StarMenuCommands.java" />
-        <option value="$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/commands/ui/SikuliCommands.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/DSOServices.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/commands/ui/SikuliCommands.java" />
       </list>
     </option>
   </component>
@@ -1189,14 +1180,7 @@
       <workItem from="1535515685460" duration="3748000" />
       <workItem from="1535568455959" duration="897000" />
       <workItem from="1535601571828" duration="5027000" />
-      <workItem from="1535642643967" duration="11496000" />
-    </task>
-    <task id="LOCAL-00002" summary="Introduced CommandBuilder class">
-      <created>1535184821297</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1535184821297</updated>
+      <workItem from="1535642643967" duration="11579000" />
     </task>
     <task id="LOCAL-00003" summary="Introduced new packages demos and exception">
       <created>1535185077743</created>
@@ -1534,13 +1518,17 @@
       <option name="project" value="LOCAL" />
       <updated>1535692362883</updated>
     </task>
-    <option name="localTasksCounter" value="51" />
+    <task id="LOCAL-00051" summary="sleep-Method now accepts milliseconds, Changed loggin to java.util.logging.* /  Created initRegion() to configure Sikulie">
+      <created>1535734392388</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1535734392388</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="DSOServicesTest_launchAllHappyGeologics - 2018.08.29 at 06h 14m 32s.xml">
-      <configuration name="DSOServicesTest.launchAllHappyGeologics" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="DSOServicesTest_launchAllHappyGeologics - 2018.08.29 at 06h 19m 37s.xml">
       <configuration name="DSOServicesTest.launchAllHappyGeologics" configurationId="JUnit" />
     </history-entry>
@@ -1559,6 +1547,9 @@
     <history-entry file="DSOServicesTest_launchAllHappyGeologics - 2018.08.31 at 18h 42m 46s.xml">
       <configuration name="DSOServicesTest.launchAllHappyGeologics" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="DSOServicesTest_launchAllHappyGeologics - 2018.08.31 at 18h 54m 27s.xml">
+      <configuration name="DSOServicesTest.launchAllHappyGeologics" configurationId="JUnit" />
+    </history-entry>
     <history-entry file="IslandCommandsTest_parkMouse - 2018.08.26 at 18h 13m 30s.xml">
       <configuration name="IslandCommandsTest.parkMouse" configurationId="JUnit" />
     </history-entry>
@@ -1570,11 +1561,11 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="183260000" />
+    <option name="totallyTimeSpent" value="183343000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="422" y="0" width="1505" height="1087" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -2057,16 +2048,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/commands/ui/SikuliCommands.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="145">
-          <caret line="128" column="21" selection-start-line="128" selection-start-column="16" selection-end-line="128" selection-end-column="21" />
-          <folding>
-            <marker date="1535734391464" expanded="true" signature="52:163" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/DSOServices.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-17">
@@ -2079,6 +2060,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="58" column="21" selection-start-line="54" selection-start-column="18" selection-end-line="58" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/commands/ui/SikuliCommands.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="485">
+          <caret line="88" column="28" selection-start-line="88" selection-start-column="16" selection-end-line="88" selection-end-column="28" />
           <folding />
         </state>
       </provider>

@@ -86,7 +86,7 @@ public class SikuliCommands {
         log.info(o.toString());
     }
 
-    public void switchToBrowser() {
+    public void focusBrowser() {
         app.focus(1);
     }
 

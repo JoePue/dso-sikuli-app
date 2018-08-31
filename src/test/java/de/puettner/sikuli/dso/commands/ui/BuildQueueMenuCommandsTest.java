@@ -10,7 +10,7 @@ public class BuildQueueMenuCommandsTest {
 
     @Before
     public void before() {
-        sikuliCmd.switchToBrowser();
+        sikuliCmd.focusBrowser();
     }
 
     @Test

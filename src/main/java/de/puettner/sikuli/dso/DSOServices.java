@@ -38,7 +38,7 @@ public class DSOServices {
         if (!winCommand.isDsoBrowserRunning()) {
             throw new NotImplementedException();
         }
-        islandCmds.switchToBrowser();
+        islandCmds.focusBrowser();
         islandCmds.sleep();
         islandCmds.clickDsoTab();
         if (islandCmds.clickLetsPlayButtonIfExists()) {
@@ -234,8 +234,8 @@ public class DSOServices {
     }
 
     public void switchToBrowser() {
-        log.info("switchToBrowser");
-        islandCmds.switchToBrowser();
+        log.info("focusBrowser");
+        islandCmds.focusBrowser();
     }
 
     public void exitDso() {

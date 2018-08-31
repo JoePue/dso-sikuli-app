@@ -11,7 +11,7 @@ public class QuestBookMenuCommandsTest {
 
     @Before
     public void before() {
-        islandCmds.switchToBrowser();
+        islandCmds.focusBrowser();
     }
 
     @Test

@@ -10,7 +10,7 @@ public class IslandCommandsTest {
 
     @Before
     public void before() {
-        islandCmds.switchToBrowser();
+        islandCmds.focusBrowser();
     }
 
     @Test

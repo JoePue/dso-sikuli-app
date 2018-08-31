@@ -15,7 +15,7 @@ public class StarMenuCommandsTest {
 
     @Before
     public void before() {
-        sikuliCmd.switchToBrowser();
+        sikuliCmd.focusBrowser();
     }
 
     @Test
