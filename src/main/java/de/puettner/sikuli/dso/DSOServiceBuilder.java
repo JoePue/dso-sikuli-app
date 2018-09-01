@@ -7,14 +7,14 @@ public class DSOServiceBuilder {
 
     private static final CommandBuilder cmdBuilder = CommandBuilder.build();
     private static final WindowsPlatform winPlatfom = new WindowsPlatform();
-    private static DSOServices dsoServices = null;
+    private static DSOService dsoService = null;
 
-    public static DSOServices build() {
-        if (dsoServices == null) {
-            dsoServices = new DSOServices(winPlatfom, cmdBuilder.buildIslandCommand(), cmdBuilder.buildBuildMenuCommands(), cmdBuilder
+    public static DSOService build() {
+        if (dsoService == null) {
+            dsoService = new DSOService(winPlatfom, cmdBuilder.buildIslandCommand(), cmdBuilder.buildBuildMenuCommands(), cmdBuilder
                     .buildStarMenuCommands(), cmdBuilder.buildBookbinderMenuCommands(), cmdBuilder.buildBuildQueueMenuCommands(),
                     cmdBuilder.buildQuestBookMenuCommands());
         }
-        return dsoServices;
+        return dsoService;
     }
 }

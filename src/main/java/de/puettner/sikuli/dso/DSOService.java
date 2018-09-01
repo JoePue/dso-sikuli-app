@@ -12,7 +12,7 @@ import java.util.Optional;
 import static de.puettner.sikuli.dso.commands.ui.SikuliCommands.pattern;
 
 @Log
-public class DSOServices {
+public class DSOService {
 
     private final WindowsPlatform winCommand;
     private final IslandCommands islandCmds;
@@ -22,8 +22,8 @@ public class DSOServices {
     private final BuildQueueMenuCommands buildQueueMenu;
     private final QuestBookMenuCommands questBookCmds;
 
-    DSOServices(WindowsPlatform winCommand, IslandCommands islandCmds, BuildMenuCommands buildMenu, StarMenuCommands starMenu,
-                BookbinderMenuCommands bookbinderMenu, BuildQueueMenuCommands buildQueueMenu, QuestBookMenuCommands questBookCmds) {
+    DSOService(WindowsPlatform winCommand, IslandCommands islandCmds, BuildMenuCommands buildMenu, StarMenuCommands starMenu,
+               BookbinderMenuCommands bookbinderMenu, BuildQueueMenuCommands buildQueueMenu, QuestBookMenuCommands questBookCmds) {
         this.winCommand = winCommand;
         this.islandCmds = islandCmds;
         this.buildMenu = buildMenu;

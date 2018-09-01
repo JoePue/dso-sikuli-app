@@ -32,7 +32,7 @@ public class DSOAutomationApp {
         //platform.maximizeBrowserWindow(); // must the first stmt !!!
         CommandBuilder cmdBuilder = CommandBuilder.build();
         SikuliCommands sikuli = cmdBuilder.buildIslandCommand();
-        DSOServices dsoService = DSOServiceBuilder.build();
+        DSOService dsoService = DSOServiceBuilder.build();
         try {
             for (String arg : args) {
                 dsoService.switchToBrowser();
@@ -84,19 +84,18 @@ public class DSOAutomationApp {
         log.info("App ends normally.");
     }
 
-    private static void firstDailyRun(DSOServices dsoService) {
+    private static void firstDailyRun(DSOService dsoService) {
         dsoService.startDsoApp();
         dsoService.closeWelcomeDialog();
         dsoService.highlightRegions();
         dsoService.prepareStarMenu();
         dsoService.buildCopperMines(3);
+
         dsoService.launchAllHappyGeologics(MaterialType.KU, 6);
         dsoService.launchAllHappyGeologics(MaterialType.ST, 2);
         dsoService.launchAllNormalGeologics(MaterialType.ST, 3);
         dsoService.launchAllConscientiousGeologics(MaterialType.ST, 2);
-        // jetzt sollte alle schnellen Geo's wieder verfügbar sein
         dsoService.launchAllHappyGeologics(MaterialType.EI, 8);
-        // TODO JPU dsoService.launchAllHappyGeologics(MaterialType.GO, 2);
         dsoService.launchAllNormalGeologics(MaterialType.MA, 3);
         dsoService.launchAllConscientiousGeologics(MaterialType.MA, 2);
 
@@ -121,7 +120,7 @@ public class DSOAutomationApp {
         dsoService.exitDso();
     }
 
-    private static void secondDailyRun(DSOServices dsoService) {
+    private static void secondDailyRun(DSOService dsoService) {
         dsoService.startDsoApp();
         dsoService.closeWelcomeDialog();
 
@@ -138,7 +137,7 @@ public class DSOAutomationApp {
         dsoService.exitDso();
     }
 
-    private static int getBuildQueueSize(DSOServices dsoService) {
+    private static int getBuildQueueSize(DSOService dsoService) {
         dsoService.switchToBrowser();
         int counter = 0;
         Region searchRegion = Region.create(1213, 115, 150, 400);

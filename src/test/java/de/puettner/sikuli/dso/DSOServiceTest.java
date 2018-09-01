@@ -5,78 +5,78 @@ import de.puettner.sikuli.dso.commands.ui.Sector;
 import org.junit.Before;
 import org.junit.Test;
 
-public class DSOServicesTest extends BaseServiceTest {
+public class DSOServiceTest extends BaseServiceTest {
 
-    private DSOServices dsoServices = DSOServiceBuilder.build();
+    private DSOService dsoService = DSOServiceBuilder.build();
 
     @Before
     public void before() {
-        dsoServices.switchToBrowser();
+        dsoService.switchToBrowser();
     }
 
     @Test
     public void buildAllMines() {
-        dsoServices.buildAllMines();
-        dsoServices.exitDso();
+        dsoService.buildAllMines();
+        dsoService.exitDso();
     }
 
     @Test
     public void findAllCollectables() {
-        dsoServices.findAllCollectables();
+        dsoService.findAllCollectables();
     }
 
     @Test
     public void goToSector() {
-        dsoServices.goToSector(Sector.S10);
+        dsoService.goToSector(Sector.S10);
     }
 
     @Test
     public void buildCopperMines() {
-        System.out.println(dsoServices.buildCopperMines(3));
+        System.out.println(dsoService.buildCopperMines(3));
     }
 
     @Test
     public void buildGoldMines() {
-        System.out.println(dsoServices.buildGoldMines(3));
+        System.out.println(dsoService.buildGoldMines(3));
     }
 
     @Test
     public void buildColeMines() {
-        System.out.println(dsoServices.buildColeMines(3));
+        System.out.println(dsoService.buildColeMines(3));
     }
 
     @Test
     public void buildIronMines() {
         //        do {
         int count = 0;
-        count = dsoServices.buildIronMines(3);
+        count = dsoService.buildIronMines(3);
         System.out.println("Build " + count + " iron mines");
         //            if (count == 0) {
         //                break;
         //            }
-        //            dsoServices.sleep(500);
+        //            dsoService.sleep(500);
         //        } while (true);
         //        System.out.println();
     }
 
     @Test
     public void launchAllExplorer() {
-        dsoServices.launchAllExplorer();
+        dsoService.launchAllExplorer();
     }
 
     @Test
     public void launchAllNormalExplorer() {
-        dsoServices.launchAllNormalExplorer();
+        dsoService.launchAllNormalExplorer();
     }
 
     @Test
     public void launchAllBraveExplorer() {
-        dsoServices.launchAllBraveExplorer();
+        dsoService.launchAllBraveExplorer();
     }
 
     @Test
     public void launchAllGeologics() {
-        //        dsoServices.buildAllMines();
+        //        dsoService.buildAllMines();
         GeologicLaunchs launchs = GeologicLaunchs.builder().build()
                 .add(GeologicType.Happy, MaterialType.KU, 3)
                 .add(GeologicType.Normal, MaterialType.ST, 3)
@@ -85,29 +85,29 @@ public class DSOServicesTest extends BaseServiceTest {
                 .add(GeologicType.Conscientious, MaterialType.EI, 2)
                 .add(GeologicType.Happy, MaterialType.KO, 1)
                 .add(GeologicType.Happy, MaterialType.EI, 5);
-        dsoServices.launchGeologics(launchs);
-        //        dsoServices.buildAllMines();
-        // dsoServices.exitDso();
+        dsoService.launchGeologics(launchs);
+        //        dsoService.buildAllMines();
+        // dsoService.exitDso();
         // windowsPlatform.standby();
     }
 
     @Test
     public void launchAllHappyGeologics() {
-        dsoServices.launchAllHappyGeologics(MaterialType.ST, 1);
+        dsoService.launchAllHappyGeologics(MaterialType.ST, 1);
     }
 
     @Test
     public void launchAllSuccessfulExplorer() {
-        dsoServices.launchAllSuccessfulExplorer();
+        dsoService.launchAllSuccessfulExplorer();
     }
 
     @Test
     public void closeWelcomeDialog() {
-        dsoServices.closeWelcomeDialog();
+        dsoService.closeWelcomeDialog();
     }
 
     @Test
     public void fetchBookbinderItem() {
-        dsoServices.fetchBookbinderItem();
+        dsoService.fetchBookbinderItem();
     }
 }
