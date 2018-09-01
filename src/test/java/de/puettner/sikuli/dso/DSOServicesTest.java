@@ -50,7 +50,7 @@ public class DSOServicesTest extends BaseServiceTest {
         //        do {
         int count = 0;
         count = dsoServices.buildIronMines(3);
-            System.out.println("Build " + count + " iron mines");
+        System.out.println("Build " + count + " iron mines");
         //            if (count == 0) {
         //                break;
         //            }
@@ -75,29 +75,30 @@ public class DSOServicesTest extends BaseServiceTest {
     }
 
     @Test
-    public void launchAllHappyGeologics() {
+    public void launchAllGeologics() {
         //        dsoServices.buildAllMines();
-        dsoServices.launchAllHappyGeologics(MaterialType.KU, 3);
-        dsoServices.launchAllNormalGeologics(MaterialType.ST, 3);
-
-        dsoServices.launchAllHappyGeologics(MaterialType.GR, 3);
-        dsoServices.launchAllNormalGeologics(MaterialType.MA, 3);
-        dsoServices.launchAllConscientiousGeologics(MaterialType.EI, 2);
-        dsoServices.launchAllHappyGeologics(MaterialType.KO, 1);
-        dsoServices.launchAllHappyGeologics(MaterialType.EI, 5);
+        GeologicLaunchs launchs = GeologicLaunchs.builder().build()
+                .add(GeologicType.Happy, MaterialType.KU, 3)
+                .add(GeologicType.Normal, MaterialType.ST, 3)
+                .add(GeologicType.Happy, MaterialType.GR, 3)
+                .add(GeologicType.Normal, MaterialType.MA, 3)
+                .add(GeologicType.Conscientious, MaterialType.EI, 2)
+                .add(GeologicType.Happy, MaterialType.KO, 1)
+                .add(GeologicType.Happy, MaterialType.EI, 5);
+        dsoServices.launchGeologics(launchs);
         //        dsoServices.buildAllMines();
         // dsoServices.exitDso();
         // windowsPlatform.standby();
     }
 
     @Test
-    public void launchAllHappyGeologics_SingleRun() {
+    public void launchAllHappyGeologics() {
         dsoServices.launchAllHappyGeologics(MaterialType.ST, 1);
     }
 
     @Test
     public void launchAllSuccessfulExplorer() {
-        dsoServices.launchAllSuccessfulExplorer();    // Erfolgreiche
+        dsoServices.launchAllSuccessfulExplorer();
     }
 
     @Test

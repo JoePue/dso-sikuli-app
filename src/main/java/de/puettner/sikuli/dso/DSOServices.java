@@ -146,30 +146,41 @@ public class DSOServices {
         return true;
     }
 
-    public int launchAllGeologics(MaterialType material, int launchLimit) {
-        launchLimit = launchLimit - this.launchAllHappyGeologics(material, launchLimit);
-        launchLimit = launchLimit - this.launchAllNormalGeologics(material, launchLimit);
-        launchLimit = launchLimit - this.launchAllConscientiousGeologics(material, launchLimit);
-        return launchLimit;
-    }
-
-    public int launchAllHappyGeologics(MaterialType material, int launchLimit) {
-        log.info("launchAllHappyGeologics");
-        islandCmds.parkMouse();
-        return starMenu.launchAllGeologicsByImage(StarMenuButtons.HappyGeologic, material, launchLimit);
-    }
-
+    @Deprecated
     public int launchAllNormalGeologics(MaterialType material, int launchLimit) {
         log.info("launchAllNormalGeologics");
-        return starMenu.launchAllGeologicsByImage(StarMenuButtons.NormalGeologic, material, launchLimit);
+        return launchGeologics(GeologicLaunchs.builder().build().add(GeologicType.Normal, material, launchLimit));
     }
 
-    /**
-     * Gewissenhafte Geologen
-     */
+    public int launchGeologics(GeologicLaunchs launchs) {
+        int launchCount = 0;
+        islandCmds.parkMouse();
+        StarMenuButtons starMenuButton;
+        for (GeologicLaunch launch : launchs) {
+            if (GeologicType.Normal.equals(launch.getType())) {
+                starMenuButton = StarMenuButtons.NormalGeologic;
+            } else if (GeologicType.Happy.equals(launch.getType())) {
+                starMenuButton = StarMenuButtons.HappyGeologic;
+            } else if (GeologicType.Conscientious.equals(launch.getType())) {
+                starMenuButton = StarMenuButtons.ConscientiousGeologic;
+            } else {
+                throw new IllegalArgumentException("Unknown type: " + launch);
+            }
+            launchCount += starMenu.launchAllGeologicsByImage(starMenuButton, launch.getMaterial(), launch.getLaunchLimit());
+        }
+        return launchCount;
+    }
+
+    @Deprecated
+    public int launchAllHappyGeologics(MaterialType material, int launchLimit) {
+        log.info("launchAllHappyGeologics");
+        return launchGeologics(GeologicLaunchs.builder().build().add(GeologicType.Happy, material, launchLimit));
+    }
+
+    @Deprecated
     public int launchAllConscientiousGeologics(MaterialType material, int launchLimit) {
         log.info("launchAllConscientiousGeologics");
-        return starMenu.launchAllGeologicsByImage(StarMenuButtons.ConscientiousGeologic, material, launchLimit);
+        return launchGeologics(GeologicLaunchs.builder().build().add(GeologicType.Conscientious, material, launchLimit));
     }
 
     public void prepareStarMenu() {
