@@ -35,7 +35,7 @@ public class SikuliCommandsTest {
 
     @Test
     public void openStarMenu() {
-        starMenu.openStarMenu(Optional.empty());
+        starMenu.openStarMenu(Optional.of(StarMenuFilter.ENTDDECK_KUNDSCH_GEOLO));
     }
 
     @Test
@@ -55,7 +55,7 @@ public class SikuliCommandsTest {
         Location location = Commands.click(new Location(100, 1000));
         islandCmds.type("Sikuli Test " + System.currentTimeMillis() + Key.ENTER); // java.lang.IllegalArgumentException: Invalid key code
         // wegen ":"
-        islandCmds.paste("entdeck|kundsch|geolo");
+        islandCmds.paste("TEST");
         System.out.println(VK_ENTER);
     }
 

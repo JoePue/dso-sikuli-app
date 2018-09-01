@@ -49,18 +49,18 @@ public class StarMenuCommands extends MenuCommands {
         return launchCount;
     }
 
-    public boolean openStarMenu(Optional<String> searchString) {
-        log.info("openStarMenu()" + (searchString == null ? "" : "searchString: " + searchString));
+    public boolean openStarMenu(Optional<StarMenuFilter> menuFilter) {
+        log.info("openStarMenu()" + (menuFilter == null ? "" : "menuFilter: " + menuFilter));
         if (!isStarMenuOpen()) {
             islandCmds.clickStarButton();
             islandCmds.sleep();
         }
-        if (searchString.isPresent()) {
+        if (menuFilter.isPresent()) {
             islandCmds.clickIfExists(StarMenuButtons.ZOOM_ICON.pattern, menuRegion);
             islandCmds.sleep();
             islandCmds.type("a", Key.CTRL);
             islandCmds.sleep();
-            islandCmds.paste(searchString.get());
+            islandCmds.paste(menuFilter.get().filterString);
         }
         islandCmds.parkMouse();
         return true;
@@ -96,12 +96,13 @@ public class StarMenuCommands extends MenuCommands {
     public <PSI> int launchAllGeologicsByImage(MenuButton image, MaterialType material, int launchLimit) {
         log.info("launchAllGeologicsByImage");
         int launchCount = 0;
-        for (int i = 0; i <= launchLimit; ++i) {
+        for (int i = 0; i < launchLimit; ++i) {
             if (!openStarMenu(Optional.empty())) {
                 break;
             }
             Match match = islandCmds.find(image.getPattern(), menuRegion);
             if (match != null) {
+                islandCmds.sleep();
                 if (launchGeologic(match, material)) {
                     launchCount++;
                     islandCmds.parkMouse();
@@ -115,9 +116,15 @@ public class StarMenuCommands extends MenuCommands {
         return launchCount;
     }
 
+    /**
+     * @param match    gefundener geoloage
+     * @param material
+     * @return
+     */
     public boolean launchGeologic(Match match, MaterialType material) {
         log.info("launchGeologic material: " + material);
         if (match.click() == 1) {
+            islandCmds.sleep();
             if (MaterialType.ST.equals(material)) {
                 islandCmds.clickIfExists(pattern("Material-Stone-Button.png"), menuRegion);
             } else if (MaterialType.MA.equals(material)) {

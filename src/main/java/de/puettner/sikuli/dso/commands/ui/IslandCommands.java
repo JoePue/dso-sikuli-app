@@ -44,7 +44,7 @@ public class IslandCommands extends SikuliCommands {
         if (match != null) {
             match.hover();
             match.click();
-            sleep(1);
+            sleep();
             rv = true;
             log.info("clickSmallOkButton[" + buttonFilename + "]" + (rv ? " Clicked" : " not found"));
         } else {

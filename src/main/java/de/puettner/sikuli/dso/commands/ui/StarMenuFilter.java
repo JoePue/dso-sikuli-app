@@ -2,7 +2,7 @@ package de.puettner.sikuli.dso.commands.ui;
 
 public enum StarMenuFilter {
 
-    ENTDDECK_KUNDSCH_GEOLO("entdeck|kundsch|geolo"),
+    ENTDDECK_KUNDSCH_GEOLO("entd|kunds|geolo|steak|irma"),
     EIGTH_PERCENT("8%");
 
     public final String filterString;

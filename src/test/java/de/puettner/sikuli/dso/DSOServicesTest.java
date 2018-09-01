@@ -17,7 +17,7 @@ public class DSOServicesTest extends BaseServiceTest {
     @Test
     public void buildAllMines() {
         dsoServices.buildAllMines();
-        //        dsoServices.exitDso();
+        dsoServices.exitDso();
     }
 
     @Test
@@ -60,6 +60,11 @@ public class DSOServicesTest extends BaseServiceTest {
     }
 
     @Test
+    public void launchAllExplorer() {
+        dsoServices.launchAllExplorer();
+    }
+
+    @Test
     public void launchAllNormalExplorer() {
         dsoServices.launchAllNormalExplorer();
     }
@@ -71,7 +76,7 @@ public class DSOServicesTest extends BaseServiceTest {
 
     @Test
     public void launchAllHappyGeologics() {
-        dsoServices.buildAllMines();
+        //        dsoServices.buildAllMines();
         dsoServices.launchAllHappyGeologics(MaterialType.KU, 3);
         dsoServices.launchAllNormalGeologics(MaterialType.ST, 3);
 
@@ -80,15 +85,18 @@ public class DSOServicesTest extends BaseServiceTest {
         dsoServices.launchAllConscientiousGeologics(MaterialType.EI, 2);
         dsoServices.launchAllHappyGeologics(MaterialType.KO, 1);
         dsoServices.launchAllHappyGeologics(MaterialType.EI, 5);
-        dsoServices.buildAllMines();
-        //dsoServices.buildAllMines();
+        //        dsoServices.buildAllMines();
         // dsoServices.exitDso();
         // windowsPlatform.standby();
     }
 
     @Test
+    public void launchAllHappyGeologics_SingleRun() {
+        dsoServices.launchAllHappyGeologics(MaterialType.ST, 1);
+    }
+
+    @Test
     public void launchAllSuccessfulExplorer() {
-//        dsoServices.prepareStarMenu();
         dsoServices.launchAllSuccessfulExplorer();    // Erfolgreiche
     }
 

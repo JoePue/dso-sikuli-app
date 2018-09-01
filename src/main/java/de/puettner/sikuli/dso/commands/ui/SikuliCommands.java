@@ -127,7 +127,7 @@ public class SikuliCommands {
     }
 
     public void sleep() {
-        this.sleep(1000);
+        this.sleep(500);
     }
 
     public void sleep(int seconds) {

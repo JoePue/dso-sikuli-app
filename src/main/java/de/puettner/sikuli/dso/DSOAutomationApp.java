@@ -41,7 +41,7 @@ public class DSOAutomationApp {
                 } else if ("secondDailyRun".equals(arg)) {
                     secondDailyRun(dsoService);
                 } else if ("launchAllExplorer".equals(arg)) {
-                    launchAllExplorer(dsoService);
+                    dsoService.launchAllExplorer();
                 } else if ("launchAllExplorer".equals(arg)) {
                     dsoService.findAllCollectables();
                 } else if ("getBuildQueueSize".equals(arg)) {
@@ -64,8 +64,6 @@ public class DSOAutomationApp {
                     dsoService.launchAllNormalGeologics(MaterialType.valueOf(args[1]), Integer.valueOf(args[1]));
                 } else if ("launchAllConscientiousGeologics".equals(arg)) {
                     dsoService.launchAllConscientiousGeologics(MaterialType.valueOf(args[1]), Integer.valueOf(args[1]));
-                } else if ("launchAllExplorer".equals(arg)) {
-                    launchAllExplorer(dsoService);
                 } else if ("fetchBookbinderItem".equals(arg)) {
                     dsoService.fetchBookbinderItem();
                 } else if ("solveDailyQuest".equals(arg)) {
@@ -104,7 +102,7 @@ public class DSOAutomationApp {
 
         // *** So nun 30min verbrauchen ***
 
-        launchAllExplorer(dsoService);
+        dsoService.launchAllExplorer();
 
         dsoService.fetchBookbinderItem();
         dsoService.solveDailyQuest();
@@ -138,14 +136,6 @@ public class DSOAutomationApp {
         dsoService.buildAllMines();
 
         dsoService.exitDso();
-    }
-
-    private static void launchAllExplorer(DSOServices dsoService) {
-        dsoService.launchAllBraveExplorer();        // Mutige
-        dsoService.launchAllSuccessfulExplorer();   // Erfolgreiche
-        dsoService.launchAllWildExplorer();         // Wilde
-        dsoService.launchAllFearlessExplorer();     // Furchlose
-        dsoService.launchAllNormalExplorer();
     }
 
     private static int getBuildQueueSize(DSOServices dsoService) {
