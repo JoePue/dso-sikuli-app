@@ -190,16 +190,17 @@ public class DSOServices {
         log.info("fetchBookbinderItem");
         islandCmds.parkMouse();
         this.goToSector(Sector.S3);
-        islandCmds.clickBookbinderBuilding();
-        islandCmds.sleep(2000);
-        if (islandCmds.clickBigOkButton()) {
-            // Assumes production is ready
-            islandCmds.sleep(15000);
-        }
-        bookbinderMenu.clickButton(BookbinderMenuButtons.Kompendium);
-        islandCmds.sleep();
-        if (bookbinderMenu.clickOkButtonBookbinder()) {
+        if (islandCmds.clickBookbinderBuilding()) {
+            islandCmds.sleep(2000);
+            if (islandCmds.clickBigOkButton()) {
+                // Assumes production is ready
+                islandCmds.sleep(15000);
+            }
+            bookbinderMenu.clickButton(BookbinderMenuButtons.Kompendium);
+            islandCmds.sleep();
+            if (bookbinderMenu.clickOkButtonBookbinder()) {
 
+            }
         }
         islandCmds.parkMouse();
         islandCmds.sleep();

@@ -66,10 +66,6 @@ public class IslandCommands extends SikuliCommands {
         return clickIfExists(pattern("StarButton.png").targetOffset(-2, -25), appRegion);
     }
 
-    public void clickButton(BuildMenuButtons entry) {
-        clickIfExists(entry.pattern, appRegion);
-    }
-
     public boolean openQuestBook() {
         clickIfExists(pattern("Questbook-icon.png"), appRegion);
         return true;
@@ -79,12 +75,12 @@ public class IslandCommands extends SikuliCommands {
         return exists(pattern("DailyQuestMenuItem-icon.png").targetOffset(-1, 29));
     }
 
-    public void clickBookbinderBuilding() {
-        this.click(IslandButtons.BookbinderBuilding.pattern);
+    public boolean clickBookbinderBuilding() {
+        return this.click(IslandButtons.BookbinderBuilding.pattern);
     }
 
-    public void clickExitButton() {
-        click(pattern("exit-button.png"));
+    public boolean clickExitButton() {
+        return click(pattern("exit-button.png"));
     }
 
     public boolean clickBuildCancelButton() {
