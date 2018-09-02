@@ -59,11 +59,17 @@ public class DSOAutomationApp {
                 } else if ("buildCopperMines".equals(arg)) {
                     dsoService.buildCopperMines(Integer.valueOf(args[1]));
                 } else if ("launchAllHappyGeologics".equals(arg)) {
-                    dsoService.launchAllHappyGeologics(MaterialType.valueOf(args[1]), Integer.valueOf(args[1]));
+                    GeologicLaunchs launch = GeologicLaunchs.builder().build().add(GeologicType.Happy, MaterialType.valueOf
+                            (args[1]), Integer.valueOf(args[1]));
+                    dsoService.launchGeologics(launch);
                 } else if ("launchAllNormalGeologics".equals(arg)) {
-                    dsoService.launchAllNormalGeologics(MaterialType.valueOf(args[1]), Integer.valueOf(args[1]));
+                    GeologicLaunchs launch = GeologicLaunchs.builder().build().add(GeologicType.Normal, MaterialType.valueOf
+                            (args[1]), Integer.valueOf(args[1]));
+                    dsoService.launchGeologics(launch);
                 } else if ("launchAllConscientiousGeologics".equals(arg)) {
-                    dsoService.launchAllConscientiousGeologics(MaterialType.valueOf(args[1]), Integer.valueOf(args[1]));
+                    GeologicLaunchs launch = GeologicLaunchs.builder().build().add(GeologicType.Conscientious, MaterialType.valueOf
+                            (args[1]), Integer.valueOf(args[1]));
+                    dsoService.launchGeologics(launch);
                 } else if ("fetchBookbinderItem".equals(arg)) {
                     dsoService.fetchBookbinderItem();
                 } else if ("solveDailyQuest".equals(arg)) {
@@ -91,13 +97,16 @@ public class DSOAutomationApp {
         dsoService.prepareStarMenu();
         dsoService.buildCopperMines(3);
 
-        dsoService.launchAllHappyGeologics(MaterialType.KU, 6);
-        dsoService.launchAllHappyGeologics(MaterialType.ST, 2);
-        dsoService.launchAllNormalGeologics(MaterialType.ST, 3);
-        dsoService.launchAllConscientiousGeologics(MaterialType.ST, 2);
-        dsoService.launchAllHappyGeologics(MaterialType.EI, 8);
-        dsoService.launchAllNormalGeologics(MaterialType.MA, 3);
-        dsoService.launchAllConscientiousGeologics(MaterialType.MA, 2);
+        GeologicLaunchs launchs = GeologicLaunchs.builder().build()
+                .add(GeologicType.Happy, MaterialType.KU, 6)
+                .add(GeologicType.Happy, MaterialType.ST, 2)
+                .add(GeologicType.Normal, MaterialType.ST, 3)
+                .add(GeologicType.Conscientious, MaterialType.ST, 2)
+                .add(GeologicType.Happy, MaterialType.EI, 8)
+                .add(GeologicType.Normal, MaterialType.MA, 3)
+                .add(GeologicType.Conscientious, MaterialType.MA, 2);
+        dsoService.launchGeologics(launchs);
+        dsoService.launchAllExplorer();
 
         // *** So nun 30min verbrauchen ***
 
@@ -115,7 +124,7 @@ public class DSOAutomationApp {
         // TODO Goldsuche impl.
         // TODO Kohlesuche impl. TODO Buffen Fkt. impl. für GoldTürm, Granitm., Gold, Eisen, (Stein, Marmor)
         // TODO implement programm arguments or something like profiles
-        dsoService.launchAllHappyGeologics(MaterialType.GR, 6);
+        dsoService.launchGeologics(GeologicLaunchs.builder().build().add(GeologicType.Happy, MaterialType.GR, 6));
 
         dsoService.exitDso();
     }
@@ -125,12 +134,14 @@ public class DSOAutomationApp {
         dsoService.closeWelcomeDialog();
 
         dsoService.prepareStarMenuForGold();
-        dsoService.launchAllHappyGeologics(MaterialType.GO, 2);
+        dsoService.launchGeologics(GeologicLaunchs.builder().build().add(GeologicType.Happy, MaterialType.GO, 2));
 
         dsoService.prepareStarMenu();
-        dsoService.launchAllHappyGeologics(MaterialType.GR, 4);
-        dsoService.launchAllHappyGeologics(MaterialType.KO, 4);
-        dsoService.launchAllConscientiousGeologics(MaterialType.GR, 2);
+        GeologicLaunchs launchs = GeologicLaunchs.builder().build()
+                .add(GeologicType.Happy, MaterialType.GR, 4)
+                .add(GeologicType.Happy, MaterialType.KO, 4)
+                .add(GeologicType.Conscientious, MaterialType.GR, 2);
+        dsoService.launchGeologics(launchs);
 
         dsoService.buildAllMines();
 

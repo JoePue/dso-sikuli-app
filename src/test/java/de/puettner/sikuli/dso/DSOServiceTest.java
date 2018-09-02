@@ -93,7 +93,7 @@ public class DSOServiceTest extends BaseServiceTest {
 
     @Test
     public void launchAllHappyGeologics() {
-        dsoService.launchAllHappyGeologics(MaterialType.ST, 1);
+        GeologicLaunchs.builder().build().add(GeologicType.Happy, MaterialType.ST, 1);
     }
 
     @Test

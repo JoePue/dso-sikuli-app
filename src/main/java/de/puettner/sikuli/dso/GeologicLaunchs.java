@@ -11,10 +11,10 @@ import java.util.Iterator;
 @Data
 public class GeologicLaunchs implements Iterable<GeologicLaunch> {
 
-    private ArrayList<GeologicLaunch> lanches = new ArrayList<>();
+    private final ArrayList<GeologicLaunch> lanches = new ArrayList<>();
 
     public GeologicLaunchs add(GeologicType type, MaterialType material, int launchLimit) {
-        lanches.add(new GeologicLaunch(type, material, launchLimit));
+        this.lanches.add(new GeologicLaunch(type, material, launchLimit));
         return this;
     }
 

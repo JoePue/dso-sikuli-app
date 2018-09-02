@@ -147,9 +147,9 @@ public class DSOService {
     }
 
     @Deprecated
-    public int launchAllNormalGeologics(MaterialType material, int launchLimit) {
-        log.info("launchAllNormalGeologics");
-        return launchGeologics(GeologicLaunchs.builder().build().add(GeologicType.Normal, material, launchLimit));
+    public int launchAllHappyGeologics(MaterialType material, int launchLimit) {
+        log.info("launchAllHappyGeologics");
+        return launchGeologics(GeologicLaunchs.builder().build().add(GeologicType.Happy, material, launchLimit));
     }
 
     public int launchGeologics(GeologicLaunchs launchs) {
@@ -169,12 +169,6 @@ public class DSOService {
             launchCount += starMenu.launchAllGeologicsByImage(starMenuButton, launch.getMaterial(), launch.getLaunchLimit());
         }
         return launchCount;
-    }
-
-    @Deprecated
-    public int launchAllHappyGeologics(MaterialType material, int launchLimit) {
-        log.info("launchAllHappyGeologics");
-        return launchGeologics(GeologicLaunchs.builder().build().add(GeologicType.Happy, material, launchLimit));
     }
 
     @Deprecated
