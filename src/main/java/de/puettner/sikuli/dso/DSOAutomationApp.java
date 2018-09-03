@@ -88,6 +88,9 @@ public class DSOAutomationApp {
             platform.restoreBrowserWindow();
         }
         log.info("App ends normally.");
+        dsoService.sleep(5000);
+        // Currently some Sikuli-Threads prevent termination of the java process
+        System.exit(0);
     }
 
     private static void firstDailyRun(DSOService dsoService) {

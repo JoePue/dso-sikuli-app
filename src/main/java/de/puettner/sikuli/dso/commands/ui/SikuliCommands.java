@@ -9,6 +9,7 @@ import java.util.logging.Level;
 @Log
 public class SikuliCommands {
 
+    public static final int DEFAULT_WAITING = 500;
     // !!! Kein static bei Pattern-Properties !!!
     private final App app;
     protected Region appRegion;
@@ -127,12 +128,18 @@ public class SikuliCommands {
     }
 
     public void sleep() {
-        this.sleep(500);
+        this.sleep(DEFAULT_WAITING);
     }
 
-    public void sleep(int seconds) {
+    /**
+     * @param ms milliseconds
+     */
+    public void sleep(int ms) {
         try {
-            Thread.currentThread().sleep(seconds);
+            if (ms > DEFAULT_WAITING) {
+                log.info("sleep() for " + ms + " ms");
+            }
+            Thread.currentThread().sleep(ms);
         } catch (InterruptedException e) {
             log.log(Level.SEVERE, e.getMessage(), e);
         }
