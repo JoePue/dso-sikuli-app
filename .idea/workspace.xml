@@ -4,13 +4,11 @@
     <bookmark url="file://$PROJECT_DIR$/pom.xml" line="58" mnemonic="7" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="43e08700-d549-440b-b7a2-3d3239d97692" name="Default" comment="Refactoring for using GeologicLaunch">
+    <list default="true" id="43e08700-d549-440b-b7a2-3d3239d97692" name="Default" comment="Implemented checks of  return values in solveDaily- and solveGuildQuest">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/DSOAutomationApp.java" afterPath="$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/DSOAutomationApp.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/DSOService.java" afterPath="$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/DSOService.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/commands/ui/IslandCommands.java" afterPath="$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/commands/ui/IslandCommands.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/commands/ui/QuestBookMenuCommands.java" afterPath="$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/commands/ui/QuestBookMenuCommands.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/commands/ui/SikuliCommands.java" afterPath="$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/commands/ui/SikuliCommands.java" />
     </list>
     <ignored path="dso_1-sikuli-idea.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -59,8 +57,8 @@
           <file leaf-file-name="DSOService.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/DSOService.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="187">
-                  <caret line="124" column="34" selection-start-line="0" selection-start-column="0" selection-end-line="383" selection-end-column="0" />
+                <state relative-caret-position="6613">
+                  <caret line="383" column="0" selection-start-line="383" selection-start-column="0" selection-end-line="383" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
@@ -1170,14 +1168,7 @@
       <workItem from="1535515685460" duration="3748000" />
       <workItem from="1535568455959" duration="897000" />
       <workItem from="1535601571828" duration="5027000" />
-      <workItem from="1535642643967" duration="26970000" />
-    </task>
-    <task id="LOCAL-00010" summary="Introduced new class IslandCommands as extension of SikulieCommands">
-      <created>1535208228775</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1535208228775</updated>
+      <workItem from="1535642643967" duration="27194000" />
     </task>
     <task id="LOCAL-00011" summary="Introduced new class IslandCommands as extension of SikulieCommands">
       <created>1535208243373</created>
@@ -1515,7 +1506,14 @@
       <option name="project" value="LOCAL" />
       <updated>1535867015056</updated>
     </task>
-    <option name="localTasksCounter" value="59" />
+    <task id="LOCAL-00059" summary="Logging sleep event if time span is greater than default waiting time span">
+      <created>1535953480811</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1535953480811</updated>
+    </task>
+    <option name="localTasksCounter" value="60" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1551,11 +1549,11 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="198734000" />
+    <option name="totallyTimeSpent" value="198958000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="434" y="0" width="1493" height="1087" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -1635,8 +1633,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="Adjust parkMouse method, Adjust copper-source-icon similary" />
-    <MESSAGE value="Adjust parkMouse method, Adjust copper-source-icon similarity" />
     <MESSAGE value="Introduced new class SikuliHotKeyListener" />
     <MESSAGE value="Disabled search for CollectableIconTwo / Added class BaseDsoTest" />
     <MESSAGE value="Disabled search for CollectableIconTwo / Added class BaseServiceTest" />
@@ -1660,7 +1656,9 @@
     <MESSAGE value="Introduced new service method launchGeologics" />
     <MESSAGE value="Renamed DsoServices to DsoService" />
     <MESSAGE value="Refactoring for using GeologicLaunch" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactoring for using GeologicLaunch" />
+    <MESSAGE value="Logging sleep event if time span is greater than default waiting time span" />
+    <MESSAGE value="Implemented checks of  return values in solveDaily- and solveGuildQuest" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented checks of  return values in solveDaily- and solveGuildQuest" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -2068,8 +2066,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/DSOService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="124" column="34" selection-start-line="0" selection-start-column="0" selection-end-line="383" selection-end-column="0" />
+        <state relative-caret-position="6613">
+          <caret line="383" column="0" selection-start-line="383" selection-start-column="0" selection-end-line="383" selection-end-column="0" />
           <folding />
         </state>
       </provider>

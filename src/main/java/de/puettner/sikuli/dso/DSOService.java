@@ -90,20 +90,47 @@ public class DSOService {
         this.sleep(1000);
     }
 
-    void sleep(int i) {
-        islandCmds.sleep(i);
+    void sleep(int ms) {
+        islandCmds.sleep(ms);
     }
 
     public boolean solveDailyQuest() {
+        boolean rv = false;
         log.info("solveDailyQuest");
-        islandCmds.openQuestBook();
-        if (islandCmds.existsDailyQuestMenuIem()) {
-            islandCmds.clickSmallOkButton();
-            islandCmds.sleep(20000);
-            islandCmds.clickSmallOkButton();
+        if (islandCmds.openQuestBook()) {
+            if (islandCmds.existsDailyQuestMenuIem()) {
+                if (islandCmds.clickSmallOkButton()) {
+                    islandCmds.sleep(20000);
+                    if (islandCmds.clickSmallOkButton()) {
+                        rv = true;
+                    }
+                }
+            }
         }
-        return true;
+        log.warning("DailyQuest NOT solved.");
+        islandCmds.typeESC();
+        return rv;
     }
+
+
+    public boolean solveGuildQuest() {
+        log.info("solveGuildQuest");
+        boolean rv = false;
+        if (islandCmds.openQuestBook()) {
+            if (questBookCmds.clickButton(QuestBookMenuButtons.GuildQuestMenuItem)) {
+                if (islandCmds.clickSmallOkButton()) {
+                    islandCmds.sleep(20000);
+                    if (islandCmds.clickSmallOkButton()) {
+                        islandCmds.sleep(3000);
+                        rv = true;
+                    }
+                }
+            }
+        }
+        islandCmds.typeESC();
+        return rv;
+    }
+
 
     public boolean findAllCollectables() {
         log.info("findAllCollectables");
@@ -131,18 +158,6 @@ public class DSOService {
                 }
             }
         }
-        return true;
-    }
-
-    public boolean solveGuildQuest() {
-        log.info("solveGuildQuest");
-        islandCmds.openQuestBook();
-        questBookCmds.clickButton(QuestBookMenuButtons.GuildQuestMenuItem);
-        islandCmds.clickSmallOkButton();
-        islandCmds.sleep(20000);
-        islandCmds.clickSmallOkButton();
-        islandCmds.sleep(3000);
-        islandCmds.typeESC();
         return true;
     }
 

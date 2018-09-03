@@ -8,8 +8,8 @@ public class QuestBookMenuCommands extends MenuCommands {
         super(menuRegion, islandCmds);
     }
 
-    public void clickButton(QuestBookMenuButtons entry) {
-        islandCmds.clickIfExists(entry.pattern, menuRegion);
+    public boolean clickButton(QuestBookMenuButtons entry) {
+        return islandCmds.clickIfExists(entry.pattern, menuRegion);
     }
 
 }

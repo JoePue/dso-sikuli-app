@@ -67,8 +67,7 @@ public class IslandCommands extends SikuliCommands {
     }
 
     public boolean openQuestBook() {
-        clickIfExists(pattern("Questbook-icon.png"), appRegion);
-        return true;
+        return clickIfExists(pattern("Questbook-icon.png"), appRegion);
     }
 
     public boolean existsDailyQuestMenuIem() {
