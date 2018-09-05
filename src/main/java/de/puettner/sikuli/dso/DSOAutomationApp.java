@@ -2,7 +2,6 @@ package de.puettner.sikuli.dso;
 
 import de.puettner.sikuli.dso.commands.os.WindowsPlatform;
 import de.puettner.sikuli.dso.commands.ui.CommandBuilder;
-import de.puettner.sikuli.dso.commands.ui.MaterialType;
 import de.puettner.sikuli.dso.commands.ui.SikuliCommands;
 import lombok.extern.java.Log;
 import org.sikuli.basics.Settings;
@@ -13,8 +12,14 @@ import org.sikuli.script.Region;
 import java.util.Iterator;
 import java.util.logging.Level;
 
+import static de.puettner.sikuli.dso.commands.ui.MaterialType.*;
 import static de.puettner.sikuli.dso.commands.ui.SikuliCommands.pattern;
 
+// TODO Logging konfigurieren / fachliches Logging def. / Log-File
+// TODO Programmabstürze fixen (Ständig Endlosschleifen)
+// TODO Workaround für Programmabstürze finden
+// TODO Goldsuche impl.
+// TODO Kohlesuche impl. TODO Buffen Fkt. impl. für GoldTürm, Granitm., Gold, Eisen, (Stein, Marmor)
 @Log
 public class DSOAutomationApp {
 
@@ -40,6 +45,8 @@ public class DSOAutomationApp {
                     firstDailyRun(dsoService);
                 } else if ("secondDailyRun".equals(arg)) {
                     secondDailyRun(dsoService);
+                } else if ("thirdDailyRun".equals(arg)) {
+                    thirdDailyRun(dsoService);
                 } else if ("launchAllExplorer".equals(arg)) {
                     dsoService.launchAllExplorer();
                 } else if ("launchAllExplorer".equals(arg)) {
@@ -59,15 +66,15 @@ public class DSOAutomationApp {
                 } else if ("buildCopperMines".equals(arg)) {
                     dsoService.buildCopperMines(Integer.valueOf(args[1]));
                 } else if ("launchAllHappyGeologics".equals(arg)) {
-                    GeologicLaunchs launch = GeologicLaunchs.builder().build().add(GeologicType.Happy, MaterialType.valueOf
+                    GeologicLaunchs launch = GeologicLaunchs.builder().build().add(GeologicType.Happy, valueOf
                             (args[1]), Integer.valueOf(args[1]));
                     dsoService.launchGeologics(launch);
                 } else if ("launchAllNormalGeologics".equals(arg)) {
-                    GeologicLaunchs launch = GeologicLaunchs.builder().build().add(GeologicType.Normal, MaterialType.valueOf
+                    GeologicLaunchs launch = GeologicLaunchs.builder().build().add(GeologicType.Normal, valueOf
                             (args[1]), Integer.valueOf(args[1]));
                     dsoService.launchGeologics(launch);
                 } else if ("launchAllConscientiousGeologics".equals(arg)) {
-                    GeologicLaunchs launch = GeologicLaunchs.builder().build().add(GeologicType.Conscientious, MaterialType.valueOf
+                    GeologicLaunchs launch = GeologicLaunchs.builder().build().add(GeologicType.Conscientious, valueOf
                             (args[1]), Integer.valueOf(args[1]));
                     dsoService.launchGeologics(launch);
                 } else if ("fetchBookbinderItem".equals(arg)) {
@@ -88,7 +95,6 @@ public class DSOAutomationApp {
             platform.restoreBrowserWindow();
         }
         log.info("App ends normally.");
-        dsoService.sleep(5000);
         // Currently some Sikuli-Threads prevent termination of the java process
         System.exit(0);
     }
@@ -97,53 +103,59 @@ public class DSOAutomationApp {
         dsoService.startDsoApp();
         dsoService.closeWelcomeDialog();
         dsoService.highlightRegions();
-        dsoService.buildCopperMines(3);
-
+        dsoService.buildAllMines();
         dsoService.prepareStarMenu();
+
         GeologicLaunchs launchs = GeologicLaunchs.builder().build()
-                .add(GeologicType.Happy, MaterialType.KU, 6)
-                .add(GeologicType.Happy, MaterialType.ST, 2)
-                .add(GeologicType.Normal, MaterialType.ST, 3)
-                .add(GeologicType.Conscientious, MaterialType.ST, 2)
-                .add(GeologicType.Happy, MaterialType.EI, 8)
-                .add(GeologicType.Normal, MaterialType.MA, 3)
-                .add(GeologicType.Conscientious, MaterialType.MA, 2);
+                .add(GeologicType.Happy, KU, 6)
+                .add(GeologicType.Happy, ST, 2)
+                .add(GeologicType.Normal, ST, 3)
+                .add(GeologicType.Conscientious, ST, 2)
+                .add(GeologicType.Happy, EI, 8)
+                .add(GeologicType.Normal, MA, 3)
+                .add(GeologicType.Conscientious, MA, 2);
         dsoService.launchGeologics(launchs);
         dsoService.launchAllExplorer();
 
-        // *** So nun 30min verbrauchen ***
-
         dsoService.launchAllExplorer();
-
         dsoService.fetchBookbinderItem();
         dsoService.solveDailyQuest();
         dsoService.solveGuildQuest();
-        dsoService.buildAllMines();
         dsoService.findAllCollectables();
-
-        // TODO Logging konfigurieren / fachliches Logging def. / Log-File
-        // TODO Programmabstürze fixen (Ständig Endlosschleifen)
-        // TODO Workaround für Programmabstürze finden
-        // TODO Goldsuche impl.
-        // TODO Kohlesuche impl. TODO Buffen Fkt. impl. für GoldTürm, Granitm., Gold, Eisen, (Stein, Marmor)
-        // TODO implement programm arguments or something like profiles
-        dsoService.launchGeologics(GeologicLaunchs.builder().build().add(GeologicType.Happy, MaterialType.GR, 6));
-
+        dsoService.buildAllMines();
         dsoService.exitDso();
     }
 
     private static void secondDailyRun(DSOService dsoService) {
         dsoService.startDsoApp();
         dsoService.closeWelcomeDialog();
+        dsoService.highlightRegions();
+        dsoService.buildAllMines();
+
+        // Ausgangspunkt: 15 Geos verfügbar
+        // 2x Gold
+        // 3x 2,5h Granit
+        // 3x 8h Granit
+        dsoService.launchGeologics(GeologicLaunchs.builder().build().add(GeologicType.Happy, GR, 3));
+        dsoService.launchGeologics(GeologicLaunchs.builder().build().add(GeologicType.Normal, GR, 1));
+        dsoService.launchGeologics(GeologicLaunchs.builder().build().add(GeologicType.Conscientious, GR, 2));
+        dsoService.launchGeologics(GeologicLaunchs.builder().build().add(GeologicType.Happy, GO, 2));
+
+        dsoService.exitDso();
+    }
+
+    private static void thirdDailyRun(DSOService dsoService) {
+        dsoService.startDsoApp();
+        dsoService.closeWelcomeDialog();
 
         dsoService.prepareStarMenuForGold();
-        dsoService.launchGeologics(GeologicLaunchs.builder().build().add(GeologicType.Happy, MaterialType.GO, 2));
+        dsoService.launchGeologics(GeologicLaunchs.builder().build().add(GeologicType.Happy, GO, 2));
 
         dsoService.prepareStarMenu();
         GeologicLaunchs launchs = GeologicLaunchs.builder().build()
-                .add(GeologicType.Happy, MaterialType.GR, 4)
-                .add(GeologicType.Happy, MaterialType.KO, 4)
-                .add(GeologicType.Conscientious, MaterialType.GR, 2);
+                .add(GeologicType.Happy, GR, 4)
+                .add(GeologicType.Happy, KO, 4)
+                .add(GeologicType.Conscientious, GR, 2);
         dsoService.launchGeologics(launchs);
 
         dsoService.buildAllMines();

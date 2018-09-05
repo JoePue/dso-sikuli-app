@@ -39,9 +39,8 @@ public class DSOService {
             throw new NotImplementedException();
         }
         islandCmds.focusBrowser();
-        islandCmds.sleep();
         islandCmds.clickDsoTab();
-        if (islandCmds.clickLetsPlayButtonIfExists()) {
+        if (islandCmds.clickLetsPlayButton()) {
             this.closeWelcomeDialog();
         } else {
             log.info("expected a running DSO app");
@@ -53,7 +52,7 @@ public class DSOService {
         int timeout = 300;
         int okButtonTimeout = 3;
         while (timeout > 0) {
-            islandCmds.sleep();
+            islandCmds.sleep(3000);
             timeout -= 1;
             if (islandCmds.existsAvatar()) {
                 okButtonTimeout -= 1;
@@ -67,6 +66,7 @@ public class DSOService {
                 }
             }
         }
+        sleep();
     }
 
     private void visitAllSectors() {
@@ -74,6 +74,10 @@ public class DSOService {
             this.goToSector(sector);
         }
         goToSector(Sector.S1);
+    }
+
+    void sleep() {
+        islandCmds.sleep();
     }
 
     void goToSector(Sector sector) {
@@ -98,8 +102,11 @@ public class DSOService {
         boolean rv = false;
         log.info("solveDailyQuest");
         if (islandCmds.openQuestBook()) {
+            sleep();
             if (islandCmds.existsDailyQuestMenuIem()) {
+                sleep();
                 if (islandCmds.clickSmallOkButton()) {
+                    sleep();
                     islandCmds.sleep(20000);
                     if (islandCmds.clickSmallOkButton()) {
                         rv = true;
@@ -109,6 +116,7 @@ public class DSOService {
         }
         log.warning("DailyQuest NOT solved.");
         islandCmds.typeESC();
+        sleep();
         return rv;
     }
 
@@ -117,7 +125,9 @@ public class DSOService {
         log.info("solveGuildQuest");
         boolean rv = false;
         if (islandCmds.openQuestBook()) {
+            sleep();
             if (questBookCmds.clickButton(QuestBookMenuButtons.GuildQuestMenuItem)) {
+                sleep();
                 if (islandCmds.clickSmallOkButton()) {
                     islandCmds.sleep(20000);
                     if (islandCmds.clickSmallOkButton()) {
@@ -128,6 +138,7 @@ public class DSOService {
             }
         }
         islandCmds.typeESC();
+        sleep();
         return rv;
     }
 
@@ -183,6 +194,8 @@ public class DSOService {
             }
             launchCount += starMenu.launchAllGeologicsByImage(starMenuButton, launch.getMaterial(), launch.getLaunchLimit());
         }
+        islandCmds.typeESC();
+        islandCmds.sleep();
         return launchCount;
     }
 
@@ -240,6 +253,7 @@ public class DSOService {
         log.info("exitDso()");
         islandCmds.typeESC();
         islandCmds.clickExitButton();
+        sleep(5000);
     }
 
     private int buildMines(int limit, MaterialType material, BuildMenuButtons mineButton) {
@@ -308,18 +322,6 @@ public class DSOService {
     }
 
     public void buildAllMines() {
-        //        if (buildQueueMenu.getBuildQueueSize() < 3) {
-        //            buildGoldMines(3);
-        //        }
-        //        if (buildQueueMenu.getBuildQueueSize() < 3) {
-        //            buildIronMines(3);
-        //        }
-        //        if (buildQueueMenu.getBuildQueueSize() < 3) {
-        //            buildColeMines(3);
-        //        }
-        //        if (buildQueueMenu.getBuildQueueSize() < 3) {
-        //            buildCopperMines(3);
-        //        }
         int buildCount = buildGoldMines(3);
         if (buildCount > 5) {
             return;
