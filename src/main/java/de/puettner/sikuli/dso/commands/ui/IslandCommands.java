@@ -20,7 +20,7 @@ public class IslandCommands extends SikuliCommands {
         this.geologicSearchRegion = geologicSearchRegion;
     }
 
-    public boolean clickLetsPlayButtonIfExists() {
+    public boolean clickLetsPlayButton() {
         return this.clickIfExists(LetsPlayButton, appRegion);
     }
 
