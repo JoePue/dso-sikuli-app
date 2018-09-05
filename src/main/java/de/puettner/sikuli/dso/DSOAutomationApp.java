@@ -87,6 +87,8 @@ public class DSOAutomationApp {
                     dsoService.findAllCollectables();
                 } else if ("exitDso".equals(arg)) {
                     dsoService.exitDso();
+                } else if ("preventScreensaver".equals(arg)) {
+                    dsoService.preventScreensaver();
                 } else {
                     log.log(Level.WARNING, "Unknown argument: " + arg);
                 }
@@ -163,6 +165,9 @@ public class DSOAutomationApp {
         dsoService.exitDso();
     }
 
+    /**
+     * Test method for sikuli bug.
+     */
     private static int getBuildQueueSize(DSOService dsoService) {
         dsoService.switchToBrowser();
         int counter = 0;

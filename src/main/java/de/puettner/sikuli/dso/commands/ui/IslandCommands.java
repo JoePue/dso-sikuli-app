@@ -24,6 +24,10 @@ public class IslandCommands extends SikuliCommands {
         return this.clickIfExists(LetsPlayButton, appRegion);
     }
 
+    public int hover() {
+        return appRegion.hover();
+    }
+
     public boolean existsAvatar() {
         return this.exists(pattern("Avatar.png").similar(0.80f));
     }

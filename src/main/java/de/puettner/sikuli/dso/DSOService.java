@@ -386,4 +386,11 @@ public class DSOService {
         return true;
     }
 
+    public void preventScreensaver() {
+        islandCmds.clickDsoTab();
+        islandCmds.hover();
+        starMenu.hover();
+        buildQueueMenu.hover();
+        islandCmds.typeESC();
+    }
 }

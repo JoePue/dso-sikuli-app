@@ -115,4 +115,10 @@ public class DSOServiceTest extends BaseServiceTest {
     public void fetchBookbinderItem() {
         dsoService.fetchBookbinderItem();
     }
+
+    @Test
+    public void preventScreensaver() {
+        dsoService.preventScreensaver();
+    }
+
 }

@@ -19,4 +19,8 @@ public class MenuCommands {
         this.menuRegion.highlight(2, "green");
     }
 
+    public int hover() {
+        return this.menuRegion.hover();
+    }
+
 }
