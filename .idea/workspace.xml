@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="43e08700-d549-440b-b7a2-3d3239d97692" name="Default" comment="Implemented program argument thirdDailyRun&#10;">
+    <list default="true" id="43e08700-d549-440b-b7a2-3d3239d97692" name="Default" comment="Implement preventScreensaver logic">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/DSOAutomationApp.java" afterPath="$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/DSOAutomationApp.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/DSOService.java" afterPath="$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/DSOService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/commands/ui/IslandCommands.java" afterPath="$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/commands/ui/IslandCommands.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/commands/ui/MenuCommands.java" afterPath="$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/commands/ui/MenuCommands.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/de/puettner/sikuli/dso/DSOServiceTest.java" afterPath="$PROJECT_DIR$/src/test/java/de/puettner/sikuli/dso/DSOServiceTest.java" />
     </list>
     <ignored path="dso_1-sikuli-idea.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -43,17 +39,17 @@
     <splitter split-orientation="vertical" split-proportion="0.7482806">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="DSOAutomationApp.java" pinned="false" current-in-tab="false">
+          <file leaf-file-name="DSOAutomationApp.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/DSOAutomationApp.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-782">
-                  <caret line="104" column="25" selection-start-line="104" selection-start-column="25" selection-end-line="104" selection-end-column="25" />
+                <state relative-caret-position="357">
+                  <caret line="91" column="49" selection-start-line="91" selection-start-column="28" selection-end-line="91" selection-end-column="49" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="DSOService.java" pinned="false" current-in-tab="true">
+          <file leaf-file-name="DSOService.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/DSOService.java">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="482">
@@ -183,11 +179,11 @@
         <option value="$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/commands/ui/StarMenuCommands.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/commands/ui/SikuliCommands.java" />
-        <option value="$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/DSOAutomationApp.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/commands/ui/IslandCommands.java" />
         <option value="$PROJECT_DIR$/src/test/java/de/puettner/sikuli/dso/DSOServiceTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/commands/ui/MenuCommands.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/DSOService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/DSOAutomationApp.java" />
       </list>
     </option>
   </component>
@@ -1141,14 +1137,7 @@
       <workItem from="1535568455959" duration="897000" />
       <workItem from="1535601571828" duration="5027000" />
       <workItem from="1535642643967" duration="27882000" />
-      <workItem from="1535995745472" duration="9712000" />
-    </task>
-    <task id="LOCAL-00017" summary="Renamed local var buildQueueCmds to buildQueueMenu">
-      <created>1535268137301</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1535268137301</updated>
+      <workItem from="1535995745472" duration="9785000" />
     </task>
     <task id="LOCAL-00018" summary="Renamed local var buildQueueCmds to buildQueueMenu">
       <created>1535268163924</created>
@@ -1486,7 +1475,14 @@
       <option name="project" value="LOCAL" />
       <updated>1536173407648</updated>
     </task>
-    <option name="localTasksCounter" value="66" />
+    <task id="LOCAL-00066" summary="Implement preventScreensaver logic">
+      <created>1536174335046</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1536174335046</updated>
+    </task>
+    <option name="localTasksCounter" value="67" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1522,7 +1518,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="209358000" />
+    <option name="totallyTimeSpent" value="209431000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="295" y="0" width="1632" height="1087" extended-state="0" />
@@ -1606,7 +1602,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="Implemented support for programm arguments firstDailyRun, secondDailyRun, standby&#10;Refactored openStartMenu parameters to an Optional" />
     <MESSAGE value="Upgraded to Sikulie 1.1.2" />
     <MESSAGE value="Upgrade to sikuli version 1.1.4-SNAPSHOT" />
     <MESSAGE value="Removed Idea files from git" />
@@ -1631,7 +1626,8 @@
     <MESSAGE value="Renamed clickLetsPlayButtonIfExists to clickLetsPlayButton" />
     <MESSAGE value="Added sleep() method call to methods" />
     <MESSAGE value="Implemented program argument thirdDailyRun&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented program argument thirdDailyRun&#10;" />
+    <MESSAGE value="Implement preventScreensaver logic" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implement preventScreensaver logic" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -2011,18 +2007,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/DSOAutomationApp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-782">
-          <caret line="104" column="25" selection-start-line="104" selection-start-column="25" selection-end-line="104" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/DSOService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="482">
           <caret line="388" column="34" selection-start-line="388" selection-start-column="16" selection-end-line="388" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/DSOAutomationApp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="91" column="49" selection-start-line="91" selection-start-column="28" selection-end-line="91" selection-end-column="49" />
           <folding />
         </state>
       </provider>

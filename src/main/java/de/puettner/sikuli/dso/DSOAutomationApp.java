@@ -89,6 +89,8 @@ public class DSOAutomationApp {
                     dsoService.exitDso();
                 } else if ("preventScreensaver".equals(arg)) {
                     dsoService.preventScreensaver();
+                } else if ("maximizeBrowserWindow".equals(arg)) {
+                    platform.maximizeBrowserWindow();
                 } else {
                     log.log(Level.WARNING, "Unknown argument: " + arg);
                 }
