@@ -15,6 +15,11 @@ public class DSOServiceTest extends BaseServiceTest {
     }
 
     @Test
+    public void prepareStarMenu() {
+        dsoService.prepareStarMenu();
+    }
+
+    @Test
     public void buildAllMines() {
         dsoService.buildAllMines();
         dsoService.exitDso();

@@ -142,6 +142,7 @@ public class StarMenuCommands extends MenuCommands {
             } else {
                 throw new IllegalArgumentException("Unsupported type: " + material);
             }
+            islandCmds.sleep();
             return islandCmds.clickSmallOkButton();
         }
         return false;

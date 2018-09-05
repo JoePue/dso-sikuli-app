@@ -192,18 +192,21 @@ public class DSOService {
         return launchGeologics(GeologicLaunchs.builder().build().add(GeologicType.Conscientious, material, launchLimit));
     }
 
-    public void prepareStarMenu() {
-        this.prepareStarMenu(StarMenuFilter.ENTDDECK_KUNDSCH_GEOLO);
+    public boolean prepareStarMenu() {
+        return this.prepareStarMenu(StarMenuFilter.ENTDDECK_KUNDSCH_GEOLO);
     }
 
-    public void prepareStarMenu(StarMenuFilter filter) {
+    private boolean prepareStarMenu(StarMenuFilter filter) {
         log.info("prepareStarMenu");
-        starMenu.openStarMenu(Optional.of(filter));
+        boolean rv = starMenu.openStarMenu(Optional.of(filter));
+        islandCmds.sleep();
         islandCmds.typeESC();
+        islandCmds.sleep();
+        return rv;
     }
 
-    public void prepareStarMenuForGold() {
-        this.prepareStarMenu(StarMenuFilter.EIGTH_PERCENT);
+    public boolean prepareStarMenuForGold() {
+        return this.prepareStarMenu(StarMenuFilter.EIGTH_PERCENT);
     }
 
     public void fetchBookbinderItem() {
@@ -223,8 +226,8 @@ public class DSOService {
             }
         }
         islandCmds.parkMouse();
-        islandCmds.sleep();
         islandCmds.typeESC();
+        islandCmds.sleep();
         this.goToSector(Sector.S1);
     }
 
@@ -380,4 +383,5 @@ public class DSOService {
         starMenu.launchAllExplorerByImage(pattern("NormalExplorer-icon.png").similar(0.80f));
         return true;
     }
+
 }

@@ -97,9 +97,9 @@ public class DSOAutomationApp {
         dsoService.startDsoApp();
         dsoService.closeWelcomeDialog();
         dsoService.highlightRegions();
-        dsoService.prepareStarMenu();
         dsoService.buildCopperMines(3);
 
+        dsoService.prepareStarMenu();
         GeologicLaunchs launchs = GeologicLaunchs.builder().build()
                 .add(GeologicType.Happy, MaterialType.KU, 6)
                 .add(GeologicType.Happy, MaterialType.ST, 2)
