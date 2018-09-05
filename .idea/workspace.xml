@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="43e08700-d549-440b-b7a2-3d3239d97692" name="Default" comment="Implement maximizeBrowserWindow as programm argument">
+    <list default="true" id="43e08700-d549-440b-b7a2-3d3239d97692" name="Default" comment="New method logSettings()">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/DSOAutomationApp.java" afterPath="$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/DSOAutomationApp.java" />
     </list>
     <ignored path="dso_1-sikuli-idea.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -42,8 +41,8 @@
           <file leaf-file-name="DSOAutomationApp.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/DSOAutomationApp.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="223">
-                  <caret line="105" column="35" selection-start-line="105" selection-start-column="24" selection-end-line="105" selection-end-column="35" />
+                <state relative-caret-position="323">
+                  <caret line="89" column="46" selection-start-line="89" selection-start-column="28" selection-end-line="89" selection-end-column="46" />
                   <folding />
                 </state>
               </provider>
@@ -1137,14 +1136,7 @@
       <workItem from="1535568455959" duration="897000" />
       <workItem from="1535601571828" duration="5027000" />
       <workItem from="1535642643967" duration="27882000" />
-      <workItem from="1535995745472" duration="10137000" />
-    </task>
-    <task id="LOCAL-00019" summary="Renamed local var buildQueueCmds to buildQueueMenu">
-      <created>1535268195680</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1535268195680</updated>
+      <workItem from="1535995745472" duration="10321000" />
     </task>
     <task id="LOCAL-00020" summary="Introduced new class Sector">
       <created>1535269203719</created>
@@ -1482,7 +1474,14 @@
       <option name="project" value="LOCAL" />
       <updated>1536174409394</updated>
     </task>
-    <option name="localTasksCounter" value="68" />
+    <task id="LOCAL-00068" summary="New method logSettings()">
+      <created>1536174751056</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1536174751056</updated>
+    </task>
+    <option name="localTasksCounter" value="69" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1518,7 +1517,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="209783000" />
+    <option name="totallyTimeSpent" value="209967000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="295" y="0" width="1632" height="1087" extended-state="0" />
@@ -1602,7 +1601,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="Upgrade to sikuli version 1.1.4-SNAPSHOT" />
     <MESSAGE value="Removed Idea files from git" />
     <MESSAGE value="Added .gitignore" />
     <MESSAGE value="Removed idea files from git" />
@@ -1627,7 +1625,8 @@
     <MESSAGE value="Implemented program argument thirdDailyRun&#10;" />
     <MESSAGE value="Implement preventScreensaver logic" />
     <MESSAGE value="Implement maximizeBrowserWindow as programm argument" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implement maximizeBrowserWindow as programm argument" />
+    <MESSAGE value="New method logSettings()" />
+    <option name="LAST_COMMIT_MESSAGE" value="New method logSettings()" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -2017,8 +2016,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/puettner/sikuli/dso/DSOAutomationApp.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="223">
-          <caret line="105" column="35" selection-start-line="105" selection-start-column="24" selection-end-line="105" selection-end-column="35" />
+        <state relative-caret-position="323">
+          <caret line="89" column="46" selection-start-line="89" selection-start-column="28" selection-end-line="89" selection-end-column="46" />
           <folding />
         </state>
       </provider>
