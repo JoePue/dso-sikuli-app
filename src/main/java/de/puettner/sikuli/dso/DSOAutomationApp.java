@@ -33,7 +33,7 @@ public class DSOAutomationApp {
     public static void main(String[] args) {
         log.info("App starting");
         WindowsPlatform platform = new WindowsPlatform();
-        log.info("AutoWaitTimeout: " + Settings.AutoWaitTimeout);
+        logSettings();
         //platform.maximizeBrowserWindow(); // must the first stmt !!!
         CommandBuilder cmdBuilder = CommandBuilder.build();
         SikuliCommands sikuli = cmdBuilder.buildIslandCommand();
@@ -101,6 +101,12 @@ public class DSOAutomationApp {
         log.info("App ends normally.");
         // Currently some Sikuli-Threads prevent termination of the java process
         System.exit(0);
+    }
+
+    private static void logSettings() {
+        log.info("AutoWaitTimeout: " + Settings.AutoWaitTimeout);
+        log.info("DelayValue: " + Settings.DelayValue);
+        log.info("ThrowException: " + Settings.ThrowException);
     }
 
     private static void firstDailyRun(DSOService dsoService) {
