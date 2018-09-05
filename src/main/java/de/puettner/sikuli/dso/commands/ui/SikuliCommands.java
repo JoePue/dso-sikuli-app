@@ -89,42 +89,7 @@ public class SikuliCommands {
 
     public void focusBrowser() {
         app.focus(1);
-    }
-
-    public Location clickDsoTab() {
-        return org.sikuli.script.Commands.click("DSOTabIcon.png");
-    }
-
-    public Location parkMouse() {
-        return org.sikuli.script.Commands.hover(new Location(appRegion.w / 2, appRegion.h + 50));
-    }
-
-    public boolean closeMenu() {
-        return this.clickIfExists(pattern("Close-icon.png"), appRegion);
-    }
-
-    boolean clickIfExists(Pattern filename, Region searchRegion) {
-        final Match match = searchRegion.exists(filename);
-        boolean rv = false;
-        if (match != null) {
-            match.click();
-            rv = true;
-        }
-        log.info(filename + (rv ? " exists and clicked" : " not exists and not clicked"));
-        return rv;
-    }
-
-    public static Pattern pattern(String filename) {
-        Image img = Image.create(filename);
-        return new Pattern(img);
-    }
-
-    boolean click(Pattern filename) {
-        if (clickIfExists(filename, appRegion)) {
-            return true;
-        }
-        log.log(Level.SEVERE, "Missing element");
-        return false;
+        sleep();
     }
 
     public void sleep() {
@@ -143,6 +108,45 @@ public class SikuliCommands {
         } catch (InterruptedException e) {
             log.log(Level.SEVERE, e.getMessage(), e);
         }
+    }
+
+    public Location clickDsoTab() {
+        Location rv = Commands.click("DSOTabIcon.png");
+        sleep();
+        return rv;
+    }
+
+    public Location parkMouse() {
+        return org.sikuli.script.Commands.hover(new Location(appRegion.w / 2, appRegion.h + 50));
+    }
+
+    public boolean closeMenu() {
+        return this.clickIfExists(pattern("Close-icon.png"), appRegion);
+    }
+
+    boolean clickIfExists(Pattern filename, Region searchRegion) {
+        final Match match = searchRegion.exists(filename);
+        boolean rv = false;
+        if (match != null) {
+            match.click();
+            sleep(250);
+            rv = true;
+        }
+        log.info(filename + (rv ? " exists and clicked" : " not exists and not clicked"));
+        return rv;
+    }
+
+    public static Pattern pattern(String filename) {
+        Image img = Image.create(filename);
+        return new Pattern(img);
+    }
+
+    boolean click(Pattern filename) {
+        if (clickIfExists(filename, appRegion)) {
+            return true;
+        }
+        log.log(Level.SEVERE, "Missing element");
+        return false;
     }
 
     public void focusApp() {
