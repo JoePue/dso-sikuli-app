@@ -166,7 +166,8 @@ public class DSOService {
                         Match match = iconIt.next();
                         log.info("Sammelgegenstand gefunden. " + match);
                         match.doubleClick();
-                        islandCmds.sleep(5000);
+                        islandCmds.parkMouse();
+                        islandCmds.sleep(4000);
                         islandCmds.typeESC();
                     }
                 } else {
