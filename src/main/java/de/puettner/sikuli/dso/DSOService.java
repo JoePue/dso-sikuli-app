@@ -259,6 +259,7 @@ public class DSOService {
         log.info("buildCopperMines");
 
         int buildCount = 0;
+        boolean isBuildMenuNotPrepared = true;
         islandCmds.parkMouse();
         outerloop:
         for (int i = 0; i < material.msl.length; ++i) {
@@ -268,6 +269,7 @@ public class DSOService {
                 islandCmds.parkMouse();
                 Iterator<Match> matches = islandCmds.findAll(sourceSector.pattern);
                 if (matches != null) {
+                    // we have found a material source icon
                     while (matches.hasNext()) {
                         if (buildCount >= limit) {
                             log.info("limit of builds exceeded");
@@ -299,7 +301,6 @@ public class DSOService {
 
     public int buildIronMines(int limit) {
         starMenu.openBuildMenu();
-        buildMenu.prepareBuildMenu(BuildMenuButtons.RaisedBuildingButton);
         return this.buildMines(limit, MaterialType.EI, BuildMenuButtons.IronMineButton);
     }
 

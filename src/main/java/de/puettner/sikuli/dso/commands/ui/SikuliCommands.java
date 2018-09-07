@@ -33,7 +33,9 @@ public class SikuliCommands {
     }
 
     public int typeESC() {
-        return this.type(Key.ESC.toString(), null);
+        int rv = this.type(Key.ESC.toString(), null);
+        sleep(100);
+        return rv;
     }
 
     /**
