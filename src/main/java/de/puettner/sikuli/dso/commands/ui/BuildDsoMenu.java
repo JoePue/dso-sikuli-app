@@ -5,9 +5,9 @@ import org.sikuli.script.Match;
 import org.sikuli.script.Region;
 
 @Log
-public class BuildMenuCommands extends MenuCommands {
+public class BuildDsoMenu extends DsoMenu {
 
-    public BuildMenuCommands(Region menuRegion, IslandCommands islandCmds) {
+    public BuildDsoMenu(Region menuRegion, IslandCommands islandCmds) {
         super(menuRegion, islandCmds);
     }
 

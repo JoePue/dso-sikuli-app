@@ -13,9 +13,9 @@ import static java.awt.event.KeyEvent.VK_ENTER;
 
 public class SikuliCommandsTest {
 
-    private static final CommandBuilder cmdBuilder = CommandBuilder.build();
-    private final IslandCommands islandCmds = cmdBuilder.buildIslandCommand();
-    private final StarMenuCommands starMenu = cmdBuilder.buildStarMenuCommands();
+    private static final MenuBuilder menuBuilder = MenuBuilder.build();
+    private final IslandCommands islandCmds = menuBuilder.buildIslandCommand();
+    private final StarDsoMenu starMenu = menuBuilder.buildStarMenuCommands();
 
     @Before
     public void before() {

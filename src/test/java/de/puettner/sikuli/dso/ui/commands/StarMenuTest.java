@@ -1,17 +1,17 @@
 package de.puettner.sikuli.dso.ui.commands;
 
-import de.puettner.sikuli.dso.commands.ui.CommandBuilder;
+import de.puettner.sikuli.dso.commands.ui.MenuBuilder;
 import de.puettner.sikuli.dso.commands.ui.SikuliCommands;
-import de.puettner.sikuli.dso.commands.ui.StarMenuCommands;
+import de.puettner.sikuli.dso.commands.ui.StarDsoMenu;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.util.Optional;
 
-public class StarMenuCommandsTest {
+public class StarMenuTest {
 
-    private final SikuliCommands sikuliCmd = CommandBuilder.build().buildIslandCommand();
-    private final StarMenuCommands starMenu = CommandBuilder.build().buildStarMenuCommands();
+    private final SikuliCommands sikuliCmd = MenuBuilder.build().buildIslandCommand();
+    private final StarDsoMenu starMenu = MenuBuilder.build().buildStarMenuCommands();
 
     @Before
     public void before() {

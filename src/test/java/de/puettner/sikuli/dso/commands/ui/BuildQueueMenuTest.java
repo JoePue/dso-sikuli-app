@@ -3,10 +3,10 @@ package de.puettner.sikuli.dso.commands.ui;
 import org.junit.Before;
 import org.junit.Test;
 
-public class BuildQueueMenuCommandsTest {
+public class BuildQueueMenuTest {
 
-    private final SikuliCommands sikuliCmd = CommandBuilder.build().buildIslandCommand();
-    private final BuildQueueMenuCommands buildQueueMenu = CommandBuilder.build().buildBuildQueueMenuCommands();
+    private final SikuliCommands sikuliCmd = MenuBuilder.build().buildIslandCommand();
+    private final BuildQueueDsoMenu buildQueueMenu = MenuBuilder.build().buildBuildQueueMenuCommands();
 
     @Before
     public void before() {

@@ -8,40 +8,39 @@ import org.sikuli.script.Region;
 
 import static de.puettner.sikuli.dso.commands.os.WindowsPlatform.CHROME_EXE;
 
-public class CommandBuilder {
+public class MenuBuilder {
 
-    private static CommandBuilder cmdBuilder;
     private static IslandCommands islandCmds;
-    private static BuildMenuCommands buildMenuCommands;
-    private static BuildQueueMenuCommands buildQueueMenuCommands;
-    private static StarMenuCommands starMenuCommands;
-    private static BookbinderMenuCommands bookbinderMenuCommands;
-    private static QuestBookMenuCommands questBookCmds;
-    private static WindowsPlatform platformCmds;
+    private static MenuBuilder menuBuilder;
+    private static BuildDsoMenu buildMenu;
+    private static BuildQueueDsoMenu buildQueueMenu;
+    private static StarDsoMenu starMenu;
+    private static BookbinderDsoMenu bookbinderMenu;
+    private static QuestBookDsoMenu questBookCmds;
 
     private final Region dsoAppRegion;
 
-    private CommandBuilder(Region chromeAppRegion) {
+    private MenuBuilder(Region chromeAppRegion) {
         this.dsoAppRegion = chromeAppRegion;
-        this.dsoAppRegion.x = chromeAppRegion.x + 10;
-        this.dsoAppRegion.y = chromeAppRegion.y + 115;
+        this.dsoAppRegion.x = chromeAppRegion.x + 10; // without scrollbar
+        this.dsoAppRegion.y = chromeAppRegion.y + 115; // without chrome menu bar
         this.dsoAppRegion.w = chromeAppRegion.w - 40;
         this.dsoAppRegion.h = chromeAppRegion.h - 115;
     }
 
-    public static CommandBuilder build() {
-        if (cmdBuilder == null) {
+    public static MenuBuilder build() {
+        if (menuBuilder == null) {
             WindowsPlatform platformCmds = new WindowsPlatform();
-            cmdBuilder = new CommandBuilder(platformCmds.getDsoBrowserDimension().getRegion());
+            menuBuilder = new MenuBuilder(platformCmds.getDsoBrowserDimension().getRegion());
         }
-        return cmdBuilder;
+        return menuBuilder;
     }
 
-    public BuildMenuCommands buildBuildMenuCommands() {
-        if (buildMenuCommands == null) {
-            buildMenuCommands = new BuildMenuCommands(dsoAppRegion, buildIslandCommand());
+    public BuildDsoMenu buildBuildMenuCommands() {
+        if (buildMenu == null) {
+            buildMenu = new BuildDsoMenu(dsoAppRegion, buildIslandCommand());
         }
-        return buildMenuCommands;
+        return buildMenu;
     }
 
     public IslandCommands buildIslandCommand() {
@@ -63,11 +62,11 @@ public class CommandBuilder {
         return region;
     }
 
-    public BuildQueueMenuCommands buildBuildQueueMenuCommands() {
-        if (buildQueueMenuCommands == null) {
-            buildQueueMenuCommands = new BuildQueueMenuCommands(calculateBuildQueueRegion(), buildIslandCommand());
+    public BuildQueueDsoMenu buildBuildQueueMenuCommands() {
+        if (buildQueueMenu == null) {
+            buildQueueMenu = new BuildQueueDsoMenu(calculateBuildQueueRegion(), buildIslandCommand());
         }
-        return buildQueueMenuCommands;
+        return buildQueueMenu;
     }
 
     public Region calculateBuildQueueRegion() {
@@ -80,11 +79,11 @@ public class CommandBuilder {
         return region;
     }
 
-    public StarMenuCommands buildStarMenuCommands() {
-        if (starMenuCommands == null) {
-            starMenuCommands = new StarMenuCommands(calculateStarMenuRegion(), buildIslandCommand());
+    public StarDsoMenu buildStarMenuCommands() {
+        if (starMenu == null) {
+            starMenu = new StarDsoMenu(calculateStarMenuRegion(), buildIslandCommand());
         }
-        return starMenuCommands;
+        return starMenu;
     }
 
     public Region calculateStarMenuRegion() {
@@ -97,16 +96,16 @@ public class CommandBuilder {
         return region;
     }
 
-    public BookbinderMenuCommands buildBookbinderMenuCommands() {
-        if (bookbinderMenuCommands == null) {
-            bookbinderMenuCommands = new BookbinderMenuCommands(dsoAppRegion, buildIslandCommand());
+    public BookbinderDsoMenu buildBookbinderMenuCommands() {
+        if (bookbinderMenu == null) {
+            bookbinderMenu = new BookbinderDsoMenu(dsoAppRegion, buildIslandCommand());
         }
-        return bookbinderMenuCommands;
+        return bookbinderMenu;
     }
 
-    public QuestBookMenuCommands buildQuestBookMenuCommands() {
+    public QuestBookDsoMenu buildQuestBookMenuCommands() {
         if (questBookCmds == null) {
-            questBookCmds = new QuestBookMenuCommands(dsoAppRegion, buildIslandCommand());
+            questBookCmds = new QuestBookDsoMenu(dsoAppRegion, buildIslandCommand());
         }
         return questBookCmds;
     }

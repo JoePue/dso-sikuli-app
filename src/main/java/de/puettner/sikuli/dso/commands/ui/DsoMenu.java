@@ -4,12 +4,12 @@ import org.sikuli.script.Region;
 
 import static de.puettner.sikuli.dso.commands.ui.SikuliCommands.initRegion;
 
-public class MenuCommands {
+public class DsoMenu {
 
     protected final Region menuRegion;
     protected IslandCommands islandCmds;
 
-    protected MenuCommands(Region menuRegion, IslandCommands islandCmds) {
+    protected DsoMenu(Region menuRegion, IslandCommands islandCmds) {
         this.menuRegion = menuRegion;
         this.islandCmds = islandCmds;
         initRegion(menuRegion);

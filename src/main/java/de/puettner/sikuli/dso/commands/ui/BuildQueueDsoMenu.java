@@ -7,9 +7,9 @@ import java.util.Iterator;
 
 import static de.puettner.sikuli.dso.commands.ui.SikuliCommands.pattern;
 
-public class BuildQueueMenuCommands extends MenuCommands {
+public class BuildQueueDsoMenu extends DsoMenu {
 
-    public BuildQueueMenuCommands(Region menuRegion, IslandCommands islandCmds) {
+    public BuildQueueDsoMenu(Region menuRegion, IslandCommands islandCmds) {
         super(menuRegion, islandCmds);
     }
 

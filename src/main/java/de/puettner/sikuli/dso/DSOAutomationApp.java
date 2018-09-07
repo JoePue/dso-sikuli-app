@@ -1,7 +1,7 @@
 package de.puettner.sikuli.dso;
 
 import de.puettner.sikuli.dso.commands.os.WindowsPlatform;
-import de.puettner.sikuli.dso.commands.ui.CommandBuilder;
+import de.puettner.sikuli.dso.commands.ui.MenuBuilder;
 import de.puettner.sikuli.dso.commands.ui.SikuliCommands;
 import lombok.extern.java.Log;
 import org.sikuli.basics.Settings;
@@ -35,8 +35,8 @@ public class DSOAutomationApp {
         WindowsPlatform platform = new WindowsPlatform();
         logSettings();
         //platform.maximizeBrowserWindow(); // must the first stmt !!!
-        CommandBuilder cmdBuilder = CommandBuilder.build();
-        SikuliCommands sikuli = cmdBuilder.buildIslandCommand();
+        MenuBuilder menuBuilder = MenuBuilder.build();
+        SikuliCommands sikuli = menuBuilder.buildIslandCommand();
         DSOService dsoService = DSOServiceBuilder.build();
         try {
             for (String arg : args) {

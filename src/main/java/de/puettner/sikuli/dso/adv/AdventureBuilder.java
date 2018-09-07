@@ -8,11 +8,11 @@ import org.sikuli.script.ImagePath;
 import org.sikuli.script.Region;
 
 import static de.puettner.sikuli.dso.commands.os.WindowsPlatform.CHROME_EXE;
-import static de.puettner.sikuli.dso.commands.ui.CommandBuilder.calculateGeologicSearchRegion;
+import static de.puettner.sikuli.dso.commands.ui.MenuBuilder.calculateGeologicSearchRegion;
 
 public class AdventureBuilder {
 
-    private static AdventureBuilder cmdBuilder;
+    private static AdventureBuilder advBuilder;
     private static IslandCommands islandCmds;
     private static TapferesSchneiderleinAT tapferesSchneiderleinAT;
 
@@ -27,11 +27,11 @@ public class AdventureBuilder {
     }
 
     public static AdventureBuilder build() {
-        if (cmdBuilder == null) {
+        if (advBuilder == null) {
             WindowsPlatform platformCmds = new WindowsPlatform();
-            cmdBuilder = new AdventureBuilder(platformCmds.getDsoBrowserDimension().getRegion());
+            advBuilder = new AdventureBuilder(platformCmds.getDsoBrowserDimension().getRegion());
         }
-        return cmdBuilder;
+        return advBuilder;
     }
 
     public TapferesSchneiderleinAT buildTapferesSchneiderleinAT() {
