@@ -48,12 +48,12 @@ public class CommandBuilder {
         if (islandCmds == null) {
             ImagePath.add("../dso_1.sikuli");
             Debug.setDebugLevel(5);
-            islandCmds = new IslandCommands(new App(CHROME_EXE), dsoAppRegion, this.calculateGeologicSearchRegion());
+            islandCmds = new IslandCommands(new App(CHROME_EXE), dsoAppRegion, this.calculateGeologicSearchRegion(dsoAppRegion));
         }
         return islandCmds;
     }
 
-    public Region calculateGeologicSearchRegion() {
+    public static Region calculateGeologicSearchRegion(Region dsoAppRegion) {
         final int menuWidth = dsoAppRegion.w - 50, menuHeight = dsoAppRegion.h - 200;
         Region region = new Region(0, 0, 0, 0);
         region.x = dsoAppRegion.x + (dsoAppRegion.w / 2) - (menuWidth / 2);

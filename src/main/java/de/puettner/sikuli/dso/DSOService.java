@@ -38,13 +38,19 @@ public class DSOService {
         if (!winCommand.isDsoBrowserRunning()) {
             throw new NotImplementedException();
         }
-        islandCmds.focusBrowser();
+        focusBrowser();
         islandCmds.clickDsoTab();
         if (islandCmds.clickLetsPlayButton()) {
             this.closeWelcomeDialog();
         } else {
             log.info("expected a running DSO app");
         }
+    }
+
+    public void focusBrowser() {
+        log.info("focusBrowser");
+        islandCmds.focusBrowser();
+        islandCmds.sleep();
     }
 
     public void closeWelcomeDialog() {
@@ -120,7 +126,6 @@ public class DSOService {
         return rv;
     }
 
-
     public boolean solveGuildQuest() {
         log.info("solveGuildQuest");
         boolean rv = false;
@@ -141,7 +146,6 @@ public class DSOService {
         sleep();
         return rv;
     }
-
 
     public boolean findAllCollectables() {
         log.info("findAllCollectables");
@@ -242,11 +246,6 @@ public class DSOService {
         islandCmds.typeESC();
         islandCmds.sleep();
         this.goToSector(Sector.S1);
-    }
-
-    public void switchToBrowser() {
-        log.info("focusBrowser");
-        islandCmds.focusBrowser();
     }
 
     public void exitDso() {

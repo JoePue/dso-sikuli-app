@@ -11,7 +11,7 @@ public class DSOServiceTest extends BaseServiceTest {
 
     @Before
     public void before() {
-        dsoService.switchToBrowser();
+        dsoService.focusBrowser();
     }
 
     @Test
@@ -119,6 +119,11 @@ public class DSOServiceTest extends BaseServiceTest {
     @Test
     public void preventScreensaver() {
         dsoService.preventScreensaver();
+    }
+
+    @Test
+    public void startDsoApp() {
+        dsoService.startDsoApp();
     }
 
 }

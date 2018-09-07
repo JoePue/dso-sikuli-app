@@ -40,7 +40,7 @@ public class DSOAutomationApp {
         DSOService dsoService = DSOServiceBuilder.build();
         try {
             for (String arg : args) {
-                dsoService.switchToBrowser();
+                dsoService.focusBrowser();
                 if ("firstDailyRun".equals(arg)) {
                     firstDailyRun(dsoService);
                 } else if ("secondDailyRun".equals(arg)) {
@@ -177,7 +177,7 @@ public class DSOAutomationApp {
      * Test method for sikuli bug.
      */
     private static int getBuildQueueSize(DSOService dsoService) {
-        dsoService.switchToBrowser();
+        dsoService.focusBrowser();
         int counter = 0;
         Region searchRegion = Region.create(1213, 115, 150, 400);
         Iterator<Match> it = null;
