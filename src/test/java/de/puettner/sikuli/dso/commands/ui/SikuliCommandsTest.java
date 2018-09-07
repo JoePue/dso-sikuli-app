@@ -15,7 +15,7 @@ public class SikuliCommandsTest {
 
     private static final MenuBuilder menuBuilder = MenuBuilder.build();
     private final IslandCommands islandCmds = menuBuilder.buildIslandCommand();
-    private final StarDsoMenu starMenu = menuBuilder.buildStarMenuCommands();
+    private final StarMenu starMenu = menuBuilder.buildStarMenuCommands();
 
     @Before
     public void before() {

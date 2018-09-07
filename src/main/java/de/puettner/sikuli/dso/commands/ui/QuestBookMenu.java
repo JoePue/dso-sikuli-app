@@ -2,9 +2,9 @@ package de.puettner.sikuli.dso.commands.ui;
 
 import org.sikuli.script.Region;
 
-public class QuestBookDsoMenu extends DsoMenu {
+public class QuestBookMenu extends DsoMenu {
 
-    public QuestBookDsoMenu(Region menuRegion, IslandCommands islandCmds) {
+    public QuestBookMenu(Region menuRegion, IslandCommands islandCmds) {
         super(menuRegion, islandCmds);
     }
 

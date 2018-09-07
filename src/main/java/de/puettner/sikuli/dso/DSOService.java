@@ -16,14 +16,14 @@ public class DSOService {
 
     private final WindowsPlatform winCommand;
     private final IslandCommands islandCmds;
-    private final BuildDsoMenu buildMenu;
-    private final StarDsoMenu starMenu;
-    private final BookbinderDsoMenu bookbinderMenu;
-    private final BuildQueueDsoMenu buildQueueMenu;
-    private final QuestBookDsoMenu questBookCmds;
+    private final BuildMenu buildMenu;
+    private final StarMenu starMenu;
+    private final BookbinderMenu bookbinderMenu;
+    private final BuildQueueMenu buildQueueMenu;
+    private final QuestBookMenu questBookCmds;
 
-    DSOService(WindowsPlatform winCommand, IslandCommands islandCmds, BuildDsoMenu buildMenu, StarDsoMenu starMenu,
-               BookbinderDsoMenu bookbinderMenu, BuildQueueDsoMenu buildQueueMenu, QuestBookDsoMenu questBookCmds) {
+    DSOService(WindowsPlatform winCommand, IslandCommands islandCmds, BuildMenu buildMenu, StarMenu starMenu,
+               BookbinderMenu bookbinderMenu, BuildQueueMenu buildQueueMenu, QuestBookMenu questBookCmds) {
         this.winCommand = winCommand;
         this.islandCmds = islandCmds;
         this.buildMenu = buildMenu;

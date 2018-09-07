@@ -7,7 +7,7 @@ public class QuestBookMenuTest {
 
     private static final MenuBuilder menuBuilder = MenuBuilder.build();
     private final IslandCommands islandCmds = menuBuilder.buildIslandCommand();
-    private final QuestBookDsoMenu menuCmds = menuBuilder.buildQuestBookMenuCommands();
+    private final QuestBookMenu menuCmds = menuBuilder.buildQuestBookMenuCommands();
 
     @Before
     public void before() {

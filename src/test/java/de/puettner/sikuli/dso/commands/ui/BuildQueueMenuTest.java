@@ -6,7 +6,7 @@ import org.junit.Test;
 public class BuildQueueMenuTest {
 
     private final SikuliCommands sikuliCmd = MenuBuilder.build().buildIslandCommand();
-    private final BuildQueueDsoMenu buildQueueMenu = MenuBuilder.build().buildBuildQueueMenuCommands();
+    private final BuildQueueMenu buildQueueMenu = MenuBuilder.build().buildBuildQueueMenuCommands();
 
     @Before
     public void before() {

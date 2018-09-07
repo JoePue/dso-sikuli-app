@@ -12,11 +12,11 @@ public class MenuBuilder {
 
     private static IslandCommands islandCmds;
     private static MenuBuilder menuBuilder;
-    private static BuildDsoMenu buildMenu;
-    private static BuildQueueDsoMenu buildQueueMenu;
-    private static StarDsoMenu starMenu;
-    private static BookbinderDsoMenu bookbinderMenu;
-    private static QuestBookDsoMenu questBookCmds;
+    private static BuildMenu buildMenu;
+    private static BuildQueueMenu buildQueueMenu;
+    private static StarMenu starMenu;
+    private static BookbinderMenu bookbinderMenu;
+    private static QuestBookMenu questBookCmds;
 
     private final Region dsoAppRegion;
 
@@ -36,9 +36,9 @@ public class MenuBuilder {
         return menuBuilder;
     }
 
-    public BuildDsoMenu buildBuildMenuCommands() {
+    public BuildMenu buildBuildMenuCommands() {
         if (buildMenu == null) {
-            buildMenu = new BuildDsoMenu(dsoAppRegion, buildIslandCommand());
+            buildMenu = new BuildMenu(dsoAppRegion, buildIslandCommand());
         }
         return buildMenu;
     }
@@ -62,9 +62,9 @@ public class MenuBuilder {
         return region;
     }
 
-    public BuildQueueDsoMenu buildBuildQueueMenuCommands() {
+    public BuildQueueMenu buildBuildQueueMenuCommands() {
         if (buildQueueMenu == null) {
-            buildQueueMenu = new BuildQueueDsoMenu(calculateBuildQueueRegion(), buildIslandCommand());
+            buildQueueMenu = new BuildQueueMenu(calculateBuildQueueRegion(), buildIslandCommand());
         }
         return buildQueueMenu;
     }
@@ -79,9 +79,9 @@ public class MenuBuilder {
         return region;
     }
 
-    public StarDsoMenu buildStarMenuCommands() {
+    public StarMenu buildStarMenuCommands() {
         if (starMenu == null) {
-            starMenu = new StarDsoMenu(calculateStarMenuRegion(), buildIslandCommand());
+            starMenu = new StarMenu(calculateStarMenuRegion(), buildIslandCommand());
         }
         return starMenu;
     }
@@ -96,16 +96,16 @@ public class MenuBuilder {
         return region;
     }
 
-    public BookbinderDsoMenu buildBookbinderMenuCommands() {
+    public BookbinderMenu buildBookbinderMenuCommands() {
         if (bookbinderMenu == null) {
-            bookbinderMenu = new BookbinderDsoMenu(dsoAppRegion, buildIslandCommand());
+            bookbinderMenu = new BookbinderMenu(dsoAppRegion, buildIslandCommand());
         }
         return bookbinderMenu;
     }
 
-    public QuestBookDsoMenu buildQuestBookMenuCommands() {
+    public QuestBookMenu buildQuestBookMenuCommands() {
         if (questBookCmds == null) {
-            questBookCmds = new QuestBookDsoMenu(dsoAppRegion, buildIslandCommand());
+            questBookCmds = new QuestBookMenu(dsoAppRegion, buildIslandCommand());
         }
         return questBookCmds;
     }

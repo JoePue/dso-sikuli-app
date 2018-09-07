@@ -6,9 +6,9 @@ import org.sikuli.script.Region;
 import java.util.logging.Level;
 
 @Log
-public class BookbinderDsoMenu extends DsoMenu {
+public class BookbinderMenu extends DsoMenu {
 
-    public BookbinderDsoMenu(Region menuRegion, IslandCommands islandCmds) {
+    public BookbinderMenu(Region menuRegion, IslandCommands islandCmds) {
         super(menuRegion, islandCmds);
     }
 

@@ -12,9 +12,9 @@ import static de.puettner.sikuli.dso.commands.ui.SikuliCommands.pattern;
 import static java.util.logging.Level.WARNING;
 
 @Log
-public class StarDsoMenu extends DsoMenu {
+public class StarMenu extends DsoMenu {
 
-    protected StarDsoMenu(Region menuRegion, IslandCommands islandCmds) {
+    protected StarMenu(Region menuRegion, IslandCommands islandCmds) {
         super(menuRegion, islandCmds);
     }
 
@@ -86,10 +86,10 @@ public class StarDsoMenu extends DsoMenu {
 
     public boolean isStarMenuOpen() {
         if (islandCmds.exists(StarMenuButtons.StarMenuTitleImage.pattern, menuRegion)) {
-            log.info("StarDsoMenu is open");
+            log.info("StarMenu is open");
             return true;
         }
-        log.info("StarDsoMenu is NOT open");
+        log.info("StarMenu is NOT open");
         return false;
     }
 
