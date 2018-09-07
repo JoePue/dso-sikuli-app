@@ -11,14 +11,14 @@ public class BuildMenu extends DsoMenu {
         super(menuRegion, islandCmds);
     }
 
-    public void prepareBuildMenu(BuildMenuButtons buildingType) {
+    public void prepareBuildMenu(MenuButton buildingType) {
         log.info("prepareBuildMenu");
         this.clickButton(buildingType);
         islandCmds.typeESC();
     }
 
-    public void clickButton(BuildMenuButtons entry) {
-        islandCmds.clickIfExists(entry.pattern, menuRegion);
+    public void clickButton(MenuButton entry) {
+        islandCmds.clickIfExists(entry.getPattern(), menuRegion);
     }
 
     public boolean buildMine(Match match, BuildMenuButtons mineButton) {
@@ -35,6 +35,6 @@ public class BuildMenu extends DsoMenu {
     }
 
     public boolean isRaisedBuildingMenuDisabled() {
-        return islandCmds.exists(BuildMenuButtons.RaisedBuildingMenuDisabled.pattern);
+        return islandCmds.exists(BuildMenuTabs.RaisedBuildingMenuDisabled.pattern);
     }
 }

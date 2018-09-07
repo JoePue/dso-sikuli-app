@@ -276,6 +276,9 @@ public class DSOService {
                             break outerloop;
                         }
                         islandCmds.typeESC();
+                        if (isBuildMenuNotPrepared) {
+                            buildMenu.prepareBuildMenu(mineButton.tab);
+                        }
                         starMenu.openBuildMenu();
                         if (!buildMenu.buildMine(matches.next(), mineButton)) {
                             log.info("build of mine was not successful");
@@ -295,7 +298,6 @@ public class DSOService {
 
     public int buildCopperMines(int limit) {
         starMenu.openBuildMenu();
-        buildMenu.prepareBuildMenu(BuildMenuButtons.ImprovedBuildingButton);
         return this.buildMines(limit, MaterialType.KU, BuildMenuButtons.CopperMineButton);
     }
 
@@ -306,14 +308,12 @@ public class DSOService {
 
     public int buildGoldMines(int limit) {
         starMenu.openBuildMenu();
-        buildMenu.prepareBuildMenu(BuildMenuButtons.RaisedBuildingButton);
         int buildCount = this.buildMines(limit, MaterialType.GO, BuildMenuButtons.GoldMineButton);
         return buildCount;
     }
 
     public int buildColeMines(int limit) {
         starMenu.openBuildMenu();
-        buildMenu.prepareBuildMenu(BuildMenuButtons.RaisedBuildingButton);
         return this.buildMines(limit, MaterialType.KO, BuildMenuButtons.ColeMineButton);
     }
 
