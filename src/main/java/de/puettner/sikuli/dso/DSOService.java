@@ -110,7 +110,7 @@ public class DSOService {
         boolean rv = false;
         if (islandCmds.openQuestBook()) {
             sleep();
-            if (islandCmds.existsDailyQuestMenuIem()) {
+            if (islandCmds.clickDailyQuestMenuItem()) {
                 sleep();
                 if (islandCmds.clickSmallOkButton()) {
                     sleep();
@@ -121,7 +121,9 @@ public class DSOService {
                 }
             }
         }
-        log.warning("DailyQuest NOT solved.");
+        if (!rv) {
+            log.warning("DailyQuest NOT solved.");
+        }
         islandCmds.typeESC();
         sleep();
         return rv;

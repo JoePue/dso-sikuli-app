@@ -71,22 +71,27 @@ public class IslandCommands extends SikuliCommands {
     }
 
     public boolean openQuestBook() {
+        log.info("openQuestBook");
         return clickIfExists(pattern("Questbook-icon.png"), appRegion);
     }
 
-    public boolean existsDailyQuestMenuIem() {
-        return exists(pattern("DailyQuestMenuItem-icon.png").targetOffset(-1, 29));
+    public boolean clickDailyQuestMenuItem() {
+        log.info("clickDailyQuestMenuItem");
+        return clickIfExists(pattern("DailyQuestMenuItem-icon.png").targetOffset(-1, 29), appRegion);
     }
 
     public boolean clickBookbinderBuilding() {
+        log.info("clickBookbinderBuilding");
         return this.click(IslandButtons.BookbinderBuilding.pattern);
     }
 
     public boolean clickExitButton() {
+        log.info("clickExitButton");
         return click(pattern("exit-button.png"));
     }
 
     public boolean clickBuildCancelButton() {
+        log.info("clickBuildCancelButton");
         return clickIfExists(pattern("BuildCancelButton.png").similar(0.80f), appRegion);
     }
 

@@ -127,15 +127,15 @@ public class SikuliCommands {
         return this.clickIfExists(pattern("Close-icon.png"), appRegion);
     }
 
-    boolean clickIfExists(Pattern filename, Region searchRegion) {
-        final Match match = searchRegion.exists(filename);
+    boolean clickIfExists(Pattern pattern, Region searchRegion) {
+        final Match match = searchRegion.exists(pattern);
         boolean rv = false;
         if (match != null) {
             match.click();
             sleep(250);
             rv = true;
         }
-        log.info(filename + (rv ? " exists and clicked" : " not exists and not clicked"));
+        log.info(pattern.getFilename() + (rv ? " exists and clicked" : " not exists and not clicked"));
         return rv;
     }
 

@@ -119,4 +119,13 @@ public class DSOServiceTest extends BaseServiceTest {
         dsoService.startDsoApp();
     }
 
+    @Test
+    public void solveDailyQuest() {
+        dsoService.solveDailyQuest();
+    }
+
+    @Test
+    public void solveGuildQuest() {
+        dsoService.solveGuildQuest();
+    }
 }
