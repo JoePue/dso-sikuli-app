@@ -46,7 +46,7 @@ public class MenuBuilder {
     public IslandCommands buildIslandCommand() {
         if (islandCmds == null) {
             ImagePath.add("../dso_1.sikuli");
-            Debug.setDebugLevel(5);
+            Debug.setDebugLevel(0);
             islandCmds = new IslandCommands(new App(CHROME_EXE), dsoAppRegion, this.calculateGeologicSearchRegion(dsoAppRegion));
         }
         return islandCmds;

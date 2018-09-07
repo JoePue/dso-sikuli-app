@@ -33,9 +33,24 @@ public class SikuliCommands {
     }
 
     public int typeESC() {
+        sleep(100);
         int rv = this.type(Key.ESC.toString(), null);
         sleep(100);
         return rv;
+    }
+
+    /**
+     * @param ms milliseconds
+     */
+    public void sleep(int ms) {
+        try {
+            if (ms > DEFAULT_WAITING) {
+                log.info("sleep() for " + ms + " ms");
+            }
+            Thread.currentThread().sleep(ms);
+        } catch (InterruptedException e) {
+            log.log(Level.SEVERE, e.getMessage(), e);
+        }
     }
 
     /**
@@ -98,20 +113,6 @@ public class SikuliCommands {
         this.sleep(DEFAULT_WAITING);
     }
 
-    /**
-     * @param ms milliseconds
-     */
-    public void sleep(int ms) {
-        try {
-            if (ms > DEFAULT_WAITING) {
-                log.info("sleep() for " + ms + " ms");
-            }
-            Thread.currentThread().sleep(ms);
-        } catch (InterruptedException e) {
-            log.log(Level.SEVERE, e.getMessage(), e);
-        }
-    }
-
     public Location clickDsoTab() {
         Location rv = Commands.click("DSOTabIcon.png");
         sleep();
@@ -159,10 +160,10 @@ public class SikuliCommands {
         return this.exists(filename, appRegion);
     }
 
-    boolean exists(Pattern filename, Region searchRegion) {
-        final Match match = find(filename, searchRegion);
+    boolean exists(Pattern pattern, Region searchRegion) {
+        final Match match = find(pattern, searchRegion);
         boolean exists = (match == null ? false : true);
-        log.info(filename + " " + (exists ? "exists" : "not exists"));
+        log.fine(pattern.getFilename() + " " + (exists ? "exists" : "not exists"));
         return exists;
     }
 

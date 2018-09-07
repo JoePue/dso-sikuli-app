@@ -76,6 +76,7 @@ public class DSOService {
     }
 
     private void visitAllSectors() {
+        log.info("visitAllSectors()");
         for (Sector sector : Sector.values()) {
             this.goToSector(sector);
         }
@@ -105,8 +106,8 @@ public class DSOService {
     }
 
     public boolean solveDailyQuest() {
-        boolean rv = false;
         log.info("solveDailyQuest");
+        boolean rv = false;
         if (islandCmds.openQuestBook()) {
             sleep();
             if (islandCmds.existsDailyQuestMenuIem()) {
@@ -183,6 +184,7 @@ public class DSOService {
     }
 
     public int launchGeologics(GeologicLaunchs launchs) {
+        log.info("launchGeologics()");
         int launchCount = 0;
         islandCmds.parkMouse();
         StarMenuButtons starMenuButton;
@@ -210,11 +212,12 @@ public class DSOService {
     }
 
     public boolean prepareStarMenu() {
+        log.info("prepareStarMenu()");
         return this.prepareStarMenu(StarMenuFilter.ENTDDECK_KUNDSCH_GEOLO);
     }
 
     private boolean prepareStarMenu(StarMenuFilter filter) {
-        log.info("prepareStarMenu");
+        log.info("prepareStarMenu() filter: " + filter);
         boolean rv = starMenu.openStarMenu(Optional.of(filter));
         islandCmds.sleep();
         islandCmds.typeESC();
@@ -223,6 +226,7 @@ public class DSOService {
     }
 
     public boolean prepareStarMenuForGold() {
+        log.info("prepareStarMenuForGold()");
         return this.prepareStarMenu(StarMenuFilter.EIGTH_PERCENT);
     }
 
@@ -256,7 +260,7 @@ public class DSOService {
     }
 
     private int buildMines(int limit, MaterialType material, BuildMenuButtons mineButton) {
-        log.info("buildCopperMines");
+        log.info("buildMines");
 
         int buildCount = 0;
         boolean isBuildMenuNotPrepared = true;
@@ -297,31 +301,33 @@ public class DSOService {
     }
 
     public int buildCopperMines(int limit) {
-        starMenu.openBuildMenu();
+        log.info("buildCopperMines()");
         return this.buildMines(limit, MaterialType.KU, BuildMenuButtons.CopperMineButton);
     }
 
     public int buildIronMines(int limit) {
-        starMenu.openBuildMenu();
+        log.info("buildIronMines()");
         return this.buildMines(limit, MaterialType.EI, BuildMenuButtons.IronMineButton);
     }
 
     public int buildGoldMines(int limit) {
-        starMenu.openBuildMenu();
+        log.info("buildGoldMines()");
         int buildCount = this.buildMines(limit, MaterialType.GO, BuildMenuButtons.GoldMineButton);
         return buildCount;
     }
 
     public int buildColeMines(int limit) {
-        starMenu.openBuildMenu();
+        log.info("buildColeMines()");
         return this.buildMines(limit, MaterialType.KO, BuildMenuButtons.ColeMineButton);
     }
 
     public int getBuildQueueSize() {
+        log.info("getBuildQueueSize()");
         return buildQueueMenu.getBuildQueueSize();
     }
 
     public void buildAllMines() {
+        log.info("buildAllMines()");
         int buildCount = buildGoldMines(3);
         if (buildCount > 5) {
             return;
@@ -341,6 +347,7 @@ public class DSOService {
     }
 
     public void highlightRegions() {
+        log.info("highlightRegions()");
         islandCmds.hightlightRegions();
         buildMenu.highlightMenuRegion();
         starMenu.highlightMenuRegion();
@@ -350,6 +357,7 @@ public class DSOService {
     }
 
     public void launchAllExplorer() {
+        log.info("launchAllExplorer");
         launchAllBraveExplorer();        // Mutige
         launchAllSuccessfulExplorer();   // Erfolgreiche
         launchAllWildExplorer();         // Wilde
@@ -362,31 +370,28 @@ public class DSOService {
         return starMenu.launchAllExplorerByImage(pattern("BraveExplorer-icon.png").similar(0.80f));
     }
 
-    public boolean launchAllSuccessfulExplorer() {
+    public int launchAllSuccessfulExplorer() {
         log.info("launchAllSuccessfulExplorer");
-        starMenu.launchAllExplorerByImage(pattern("SuccessfulExplorer-icon.png").similar(0.80f));
-        return true;
+        return starMenu.launchAllExplorerByImage(pattern("SuccessfulExplorer-icon.png").similar(0.80f));
     }
 
-    public boolean launchAllWildExplorer() {
+    public int launchAllWildExplorer() {
         log.info("launchAllWildExplorer");
-        starMenu.launchAllExplorerByImage(pattern("WildExplorer-icon.png").similar(0.85f));
-        return true;
+        return starMenu.launchAllExplorerByImage(pattern("WildExplorer-icon.png").similar(0.85f));
     }
 
-    public boolean launchAllFearlessExplorer() {
+    public int launchAllFearlessExplorer() {
         log.info("launchAllFearlessExplorer");
-        starMenu.launchAllExplorerByImage(pattern("FearlessExplorer-icon.png").similar(0.81f));
-        return true;
+        return starMenu.launchAllExplorerByImage(pattern("FearlessExplorer-icon.png").similar(0.81f));
     }
 
-    public boolean launchAllNormalExplorer() {
+    public int launchAllNormalExplorer() {
         log.info("launchAllNormalExplorer");
-        starMenu.launchAllExplorerByImage(pattern("NormalExplorer-icon.png").similar(0.80f));
-        return true;
+        return starMenu.launchAllExplorerByImage(pattern("NormalExplorer-icon.png").similar(0.80f));
     }
 
     public void preventScreensaver() {
+        log.info("preventScreensaver()");
         islandCmds.clickDsoTab();
         islandCmds.hover();
         starMenu.hover();
