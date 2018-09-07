@@ -116,14 +116,12 @@ public class DsoSikuliApp {
         dsoService.buildAllMines();
         dsoService.prepareStarMenu();
 
+        // 10 Happy Geo / 3 Consic / 3 Normal
         GeologicLaunchs launchs = GeologicLaunchs.builder().build()
                 .add(GeologicType.Happy, KU, 6)
-                .add(GeologicType.Happy, ST, 2)
+                .add(GeologicType.Happy, ST, 4)
                 .add(GeologicType.Normal, ST, 3)
-                .add(GeologicType.Conscientious, ST, 2)
-                .add(GeologicType.Happy, EI, 8)
-                .add(GeologicType.Normal, MA, 3)
-                .add(GeologicType.Conscientious, MA, 2);
+                .add(GeologicType.Conscientious, ST, 2);
         dsoService.launchGeologics(launchs);
         dsoService.launchAllExplorer();
 
@@ -131,26 +129,42 @@ public class DsoSikuliApp {
         dsoService.fetchBookbinderItem();
         dsoService.solveDailyQuest();
         dsoService.solveGuildQuest();
+
         dsoService.findAllCollectables();
         dsoService.buildAllMines();
+
+        // jetzt sollten alle Goes wieder verfügbar sein.
+        launchs = GeologicLaunchs.builder().build()
+                .add(GeologicType.Happy, GO, 2)
+                .add(GeologicType.Happy, MA, 6)
+                .add(GeologicType.Happy, EI, 2)
+                .add(GeologicType.Normal, GR, 1)
+                .add(GeologicType.Normal, KO, 1)
+                .add(GeologicType.Normal, EI, 1)
+                .add(GeologicType.Conscientious, GR, 2)
+        ;
+        dsoService.launchGeologics(launchs);
+
         dsoService.exitDso();
     }
 
     private static void secondDailyRun(DSOService dsoService) {
         dsoService.startDsoApp();
         dsoService.closeWelcomeDialog();
-        dsoService.highlightRegions();
         dsoService.buildAllMines();
 
-        // Ausgangspunkt: 15 Geos verfügbar
-        // 2x Gold
-        // 3x 2,5h Granit
-        // 3x 8h Granit
-        dsoService.launchGeologics(GeologicLaunchs.builder().build().add(GeologicType.Happy, GR, 3));
-        dsoService.launchGeologics(GeologicLaunchs.builder().build().add(GeologicType.Normal, GR, 1));
-        dsoService.launchGeologics(GeologicLaunchs.builder().build().add(GeologicType.Conscientious, GR, 2));
-        dsoService.launchGeologics(GeologicLaunchs.builder().build().add(GeologicType.Happy, GO, 2));
+        // Ausgangspunkt: 6 verfügbare Geos
+        GeologicLaunchs launchs = GeologicLaunchs.builder().build()
+                .add(GeologicType.Happy, GO, 2)
+                .add(GeologicType.Happy, MA, 6)
+                .add(GeologicType.Happy, EI, 2)
+                .add(GeologicType.Normal, GR, 1)
+                .add(GeologicType.Normal, KO, 1)
+                .add(GeologicType.Normal, EI, 1)
+                .add(GeologicType.Conscientious, GR, 2);
+        dsoService.launchGeologics(launchs);
 
+        dsoService.buildAllMines();
         dsoService.exitDso();
     }
 

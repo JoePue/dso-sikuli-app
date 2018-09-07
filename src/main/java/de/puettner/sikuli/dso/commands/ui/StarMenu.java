@@ -18,9 +18,10 @@ public class StarMenu extends DsoMenu {
         super(menuRegion, islandCmds);
     }
 
-    public void openBuildMenu() {
-        islandCmds.click(pattern("BuildMenuBarButton.png").similar(0.90f));
+    public boolean openBuildMenu() {
+        boolean rv = islandCmds.click(pattern("BuildMenuBarButton.png").similar(0.90f));
         islandCmds.sleep();
+        return rv;
     }
 
     public int launchAllExplorerByImage(Pattern image) {

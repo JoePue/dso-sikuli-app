@@ -261,10 +261,10 @@ public class DSOService {
     }
 
     private int buildMines(int limit, MaterialType material, BuildMenuButtons mineButton) {
-        log.info("buildMines");
+        log.info("buildMines() limit: " + limit + ", material: " + material);
 
         int buildCount = 0;
-        boolean isBuildMenuNotPrepared = true;
+        boolean isBuildMenuPrepared = false;
         islandCmds.parkMouse();
         outerloop:
         for (int i = 0; i < material.msl.length; ++i) {
@@ -281,16 +281,29 @@ public class DSOService {
                             break outerloop;
                         }
                         islandCmds.typeESC();
-                        if (isBuildMenuNotPrepared) {
-                            buildMenu.prepareBuildMenu(mineButton.tab);
+                        if (!isBuildMenuPrepared) {
+                            isBuildMenuPrepared = true;
+                            if (!starMenu.openBuildMenu()) {
+                                log.warning("Cancel build");
+                                break outerloop;
+                            }
+                            if (!buildMenu.prepareBuildMenu(mineButton.tab)) {
+                                log.warning("Cancel build");
+                                break outerloop;
+                            }
                         }
-                        starMenu.openBuildMenu();
+                        if (!starMenu.openBuildMenu()) {
+                            log.warning("Cancel build");
+                            break outerloop;
+                        }
                         if (!buildMenu.buildMine(matches.next(), mineButton)) {
                             log.info("build of mine was not successful");
                             break outerloop;
                         }
                         islandCmds.parkMouse();
-                        ++buildCount;
+                        if (!islandCmds.clickBuildCancelButton()) {
+                            ++buildCount;
+                        }
                     }
                 }
             }

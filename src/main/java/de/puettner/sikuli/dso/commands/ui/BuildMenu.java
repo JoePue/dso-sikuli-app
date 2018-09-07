@@ -11,16 +11,26 @@ public class BuildMenu extends DsoMenu {
         super(menuRegion, islandCmds);
     }
 
-    public void prepareBuildMenu(MenuButton buildingType) {
+    /**
+     * Assumes a open build menu.
+     */
+    public boolean prepareBuildMenu(MenuButton buildingType) {
         log.info("prepareBuildMenu");
-        this.clickButton(buildingType);
+        boolean rv = this.clickButton(buildingType);
+        if (!rv) {
+            log.warning("... preparation was not successfull.");
+        }
         islandCmds.typeESC();
+        return rv;
     }
 
-    public void clickButton(MenuButton entry) {
-        islandCmds.clickIfExists(entry.getPattern(), menuRegion);
+    public boolean clickButton(MenuButton entry) {
+        return islandCmds.clickIfExists(entry.getPattern(), menuRegion);
     }
 
+    /**
+     * Assumes BuildMenu is open with the right tap.
+     */
     public boolean buildMine(Match match, BuildMenuButtons mineButton) {
         log.info("buildMine");
         if (isRaisedBuildingMenuDisabled()) {
@@ -37,4 +47,5 @@ public class BuildMenu extends DsoMenu {
     public boolean isRaisedBuildingMenuDisabled() {
         return islandCmds.exists(BuildMenuTabs.RaisedBuildingMenuDisabled.pattern);
     }
+
 }

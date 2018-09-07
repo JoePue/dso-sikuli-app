@@ -52,16 +52,9 @@ public class DSOServiceTest extends BaseServiceTest {
 
     @Test
     public void buildIronMines() {
-        //        do {
         int count = 0;
         count = dsoService.buildIronMines(3);
         System.out.println("Build " + count + " iron mines");
-        //            if (count == 0) {
-        //                break;
-        //            }
-        //            dsoService.sleep(500);
-        //        } while (true);
-        //        System.out.println();
     }
 
     @Test
