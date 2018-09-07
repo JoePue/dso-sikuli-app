@@ -21,7 +21,7 @@ import static de.puettner.sikuli.dso.commands.ui.SikuliCommands.pattern;
 // TODO Goldsuche impl.
 // TODO Kohlesuche impl. TODO Buffen Fkt. impl. für GoldTürm, Granitm., Gold, Eisen, (Stein, Marmor)
 @Log
-public class DSOAutomationApp {
+public class DsoSikuliApp {
 
     /*
      * *** Inventar ***                 *** Vorkommen ***
