@@ -14,7 +14,7 @@ public class AdventureBuilder {
 
     private static AdventureBuilder advBuilder;
     private static IslandCommands islandCmds;
-    private static TapferesSchneiderleinAT tapferesSchneiderleinAT;
+    private static BraveTailorAdv braveTailorAdv;
 
     private final Region dsoAppRegion;
 
@@ -34,11 +34,11 @@ public class AdventureBuilder {
         return advBuilder;
     }
 
-    public TapferesSchneiderleinAT buildTapferesSchneiderleinAT() {
-        if (tapferesSchneiderleinAT == null) {
-            tapferesSchneiderleinAT = new TapferesSchneiderleinAT(buildIslandCommand());
+    public BraveTailorAdv buildTapferesSchneiderleinAT() {
+        if (braveTailorAdv == null) {
+            braveTailorAdv = new BraveTailorAdv(buildIslandCommand());
         }
-        return tapferesSchneiderleinAT;
+        return braveTailorAdv;
     }
 
     public IslandCommands buildIslandCommand() {

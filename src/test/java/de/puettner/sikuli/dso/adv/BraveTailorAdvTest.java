@@ -5,11 +5,11 @@ import de.puettner.sikuli.dso.commands.ui.SikuliCommands;
 import org.junit.Before;
 import org.junit.Test;
 
-public class TapferesSchneiderleinATTest {
+public class BraveTailorAdvTest {
 
 
     private final SikuliCommands sikuliCmd = MenuBuilder.build().buildIslandCommand();
-    private final TapferesSchneiderleinAT adventure = AdventureBuilder.build().buildTapferesSchneiderleinAT();
+    private final BraveTailorAdv adventure = AdventureBuilder.build().buildTapferesSchneiderleinAT();
 
     @Before
     public void before() {

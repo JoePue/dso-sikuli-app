@@ -2,9 +2,12 @@ package de.puettner.sikuli.dso.adv;
 
 import de.puettner.sikuli.dso.commands.ui.IslandCommands;
 
-public class TapferesSchneiderleinAT extends Adventure {
+/**
+ * brave tailor = tapferes Schneiderlein
+ */
+public class BraveTailorAdv extends Adventure {
 
-    protected TapferesSchneiderleinAT(IslandCommands islandCmds) {
+    protected BraveTailorAdv(IslandCommands islandCmds) {
         super(islandCmds);
     }
 
