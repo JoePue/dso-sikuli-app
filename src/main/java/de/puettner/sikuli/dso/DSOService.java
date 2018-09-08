@@ -63,7 +63,7 @@ public class DSOService {
             if (islandCmds.existsAvatar()) {
                 okButtonTimeout -= 1;
                 if (okButtonTimeout < 0 || islandCmds.clickSmallOkButton()) {
-                    islandCmds.sleepX(4);
+                    islandCmds.sleepX(10);
                     timeout = 0;
                     // Login Bonus
                     if (islandCmds.clickLoginBonusButton()) {
@@ -222,9 +222,13 @@ public class DSOService {
     private boolean prepareStarMenu(StarMenuFilter filter) {
         log.info("prepareStarMenu() filter: " + filter);
         boolean rv = starMenu.openStarMenu(Optional.of(filter));
-        islandCmds.sleep();
-        islandCmds.typeESC();
-        islandCmds.sleep();
+        if (rv) {
+            islandCmds.sleep();
+            islandCmds.typeESC();
+            islandCmds.sleep();
+        } else {
+            log.warning("Missing open star menu.");
+        }
         return rv;
     }
 
@@ -379,6 +383,7 @@ public class DSOService {
         launchAllWildExplorer();         // Wilde
         launchAllFearlessExplorer();     // Furchlose
         launchAllNormalExplorer();
+        islandCmds.typeESC();
     }
 
     public int launchAllBraveExplorer() {

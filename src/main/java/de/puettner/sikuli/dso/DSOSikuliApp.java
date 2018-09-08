@@ -125,7 +125,6 @@ public class DsoSikuliApp {
         dsoService.launchGeologics(launchs);
         dsoService.launchAllExplorer();
 
-        dsoService.launchAllExplorer();
         dsoService.fetchBookbinderItem();
         dsoService.solveDailyQuest();
         dsoService.solveGuildQuest();

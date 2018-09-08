@@ -3,6 +3,7 @@ package de.puettner.sikuli.dso.commands.ui;
 import lombok.extern.java.Log;
 import org.sikuli.script.*;
 
+import java.io.File;
 import java.util.Iterator;
 import java.util.logging.Level;
 
@@ -139,13 +140,20 @@ public class SikuliCommands {
             sleep(250);
             rv = true;
         }
-        log.info(pattern.getFilename() + (rv ? " exists and clicked" : " not exists and not clicked"));
+        log.info(removePath(pattern.getFilename()) + (rv ? " exists and clicked" : " not exists and not clicked"));
         return rv;
     }
 
     public static Pattern pattern(String filename) {
         Image img = Image.create(filename);
         return new Pattern(img);
+    }
+
+    private String removePath(String filename) {
+        if (filename == null || filename.isEmpty()) {
+            return "";
+        }
+        return filename.substring(filename.lastIndexOf(File.separatorChar));
     }
 
     boolean click(Pattern filename) {

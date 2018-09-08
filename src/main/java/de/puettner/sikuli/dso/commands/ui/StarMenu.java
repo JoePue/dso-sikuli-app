@@ -52,19 +52,32 @@ public class StarMenu extends DsoMenu {
 
     public boolean openStarMenu(Optional<StarMenuFilter> menuFilter) {
         log.info("openStarMenu()" + (menuFilter == null ? "" : "menuFilter: " + menuFilter));
+        boolean rv = true;
         if (!isStarMenuOpen()) {
-            islandCmds.clickStarButton();
-            islandCmds.sleep();
+            if (islandCmds.clickStarButton()) {
+                islandCmds.sleep();
+            } else {
+                log.severe("Required click failed");
+            }
         }
-        if (menuFilter.isPresent()) {
-            islandCmds.clickIfExists(StarMenuButtons.ZOOM_ICON.pattern, menuRegion);
-            islandCmds.sleep();
-            islandCmds.type("a", Key.CTRL);
-            islandCmds.sleep();
-            islandCmds.paste(menuFilter.get().filterString);
+        if (isStarMenuOpen()) {
+            if (menuFilter.isPresent()) {
+                if (islandCmds.clickIfExists(StarMenuButtons.ZOOM_ICON.pattern, menuRegion)) {
+                    islandCmds.sleep();
+                    islandCmds.type("a", Key.CTRL);
+                    islandCmds.sleep();
+                    islandCmds.paste(menuFilter.get().filterString);
+                } else {
+                    log.severe("filter could not set");
+                    rv = false;
+                }
+            }
+        } else {
+            log.severe("Required 'open star menu' is missing");
+            rv = false;
         }
         islandCmds.parkMouse();
-        return true;
+        return rv;
     }
 
     public <PSI> boolean launchExplorer(Match match, Region searchRegion) {
