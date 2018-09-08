@@ -72,6 +72,7 @@ public class DSOService {
                 }
             }
         }
+        closeChat();
         sleep();
     }
 
@@ -81,6 +82,16 @@ public class DSOService {
             this.goToSector(sector);
         }
         goToSector(Sector.S1);
+    }
+
+    boolean closeChat() {
+        boolean rv = islandCmds.closeChat();
+        if (!rv) {
+            log.severe("closeChat failed");
+        } else {
+            islandCmds.parkMouse();
+        }
+        return rv;
     }
 
     void sleep() {

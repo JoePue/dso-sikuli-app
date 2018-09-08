@@ -128,4 +128,9 @@ public class DSOServiceTest extends BaseServiceTest {
     public void solveGuildQuest() {
         dsoService.solveGuildQuest();
     }
+
+    @Test
+    public void closeChat() {
+        dsoService.closeChat();
+    }
 }
