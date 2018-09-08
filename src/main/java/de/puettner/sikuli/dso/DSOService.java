@@ -21,9 +21,12 @@ public class DSOService {
     private final BookbinderMenu bookbinderMenu;
     private final BuildQueueMenu buildQueueMenu;
     private final QuestBookMenu questBookCmds;
+    private final MessageBoxMenu messageboxMenu;
+
 
     DSOService(WindowsPlatform winCommand, IslandCommands islandCmds, BuildMenu buildMenu, StarMenu starMenu,
-               BookbinderMenu bookbinderMenu, BuildQueueMenu buildQueueMenu, QuestBookMenu questBookCmds) {
+               BookbinderMenu bookbinderMenu, BuildQueueMenu buildQueueMenu, QuestBookMenu questBookCmds,
+               MessageBoxMenu messageboxMenu) {
         this.winCommand = winCommand;
         this.islandCmds = islandCmds;
         this.buildMenu = buildMenu;
@@ -31,6 +34,7 @@ public class DSOService {
         this.bookbinderMenu = bookbinderMenu;
         this.buildQueueMenu = buildQueueMenu;
         this.questBookCmds = questBookCmds;
+        this.messageboxMenu = messageboxMenu;
     }
 
     public void startDsoApp() {
@@ -429,5 +433,16 @@ public class DSOService {
         starMenu.hover();
         buildQueueMenu.hover();
         islandCmds.typeESC();
+    }
+
+    public void fetchRewardMessages() {
+        log.info("fetchRewardMessages");
+        if (starMenu.openMessageBox()) {
+            int msgCount = messageboxMenu.fetchRewardMessages();
+            log.info("Fetched reward messages: " + msgCount);
+            messageboxMenu.closeMenu();
+        } else {
+            log.severe("Failed to open message box");
+        }
     }
 }

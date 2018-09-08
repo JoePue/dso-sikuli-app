@@ -17,6 +17,8 @@ public class MenuBuilder {
     private static StarMenu starMenu;
     private static BookbinderMenu bookbinderMenu;
     private static QuestBookMenu questBookCmds;
+    private static MessageBoxMenu messageBoxMenu;
+
 
     private final Region dsoAppRegion;
 
@@ -110,4 +112,14 @@ public class MenuBuilder {
         return questBookCmds;
     }
 
+    public MessageBoxMenu buildMessageBoxMenu() {
+        if (messageBoxMenu == null) {
+            Region region = calculateStarMenuRegion();
+            region.y = region.y - 150;
+            region.x = region.x - 50;
+            region.w = region.w + 100;
+            messageBoxMenu = new MessageBoxMenu(region, buildIslandCommand());
+        }
+        return messageBoxMenu;
+    }
 }

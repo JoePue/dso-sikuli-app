@@ -17,7 +17,7 @@ public class BookbinderMenu extends DsoMenu {
     }
 
     public boolean clickOkButtonBookbinder() {
-        return islandCmds.clickOkButton(3);
+        return islandCmds.clickOkButton(OkButton.BOOKBINDER_OK);
     }
 
     /**

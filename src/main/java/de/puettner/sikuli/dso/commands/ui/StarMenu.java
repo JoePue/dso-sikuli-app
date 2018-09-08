@@ -173,4 +173,28 @@ public class StarMenu extends DsoMenu {
         }
         return rv;
     }
+
+    public boolean openMessageBox() {
+        log.info("openMessageBox()");
+        boolean rv = true;
+        rv = clickMessageBoxButton();
+        if (rv) {
+            islandCmds.parkMouse();
+            islandCmds.sleepX(5);
+        }
+        return rv;
+    }
+
+    public boolean clickMessageBoxButton() {
+        log.info("clickStarButton");
+        return islandCmds.clickIfExists(pattern("Message-Box-Button.png").similar(0.90).targetOffset(-1, -6), menuRegion);
+    }
+
+    public boolean clickOkBuildingButton() {
+        return islandCmds.clickOkButton(MessageBoxButton.OK_BUILDING);
+    }
+
+    public boolean clickOkStarButton() {
+        return islandCmds.clickOkButton(MessageBoxButton.OK_STAR);
+    }
 }

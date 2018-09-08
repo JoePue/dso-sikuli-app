@@ -33,36 +33,33 @@ public class IslandCommands extends SikuliCommands {
     }
 
     public boolean clickSmallOkButton() {
-        return this.clickOkButton(0);
+        return this.clickOkButton(OkButton.SMALL_OK);
     }
 
-    protected boolean clickOkButton(Integer buttonId) {
+    protected boolean clickOkButton(MenuButton okButton) {
         boolean rv = false;
-        String buttonFilename = null;
-        if (buttonId >= 0 && buttonId < okButtonList.length) {
-            buttonFilename = okButtonList[buttonId];
-        } else {
+        if (okButton == null || okButton.getPattern() == null) {
             throw new IllegalArgumentException();
         }
-        Match match = appRegion.exists(buttonFilename);
+        Match match = appRegion.exists(okButton.getPattern());
         if (match != null) {
             match.hover();
             match.click();
             sleep();
             rv = true;
-            log.info("clickSmallOkButton[" + buttonFilename + "]" + (rv ? " Clicked" : " not found"));
+            log.info("clickSmallOkButton[" + removePath(okButton.getPattern().getFilename()) + "]" + (rv ? " Clicked" : " not found"));
         } else {
-            log.log(Level.SEVERE, "Missing OkButton_" + buttonId);
+            log.log(Level.SEVERE, "Missing OkButton_" + removePath(okButton.getPattern().getFilename()));
         }
         return rv;
     }
 
     public boolean clickBigOkButton() {
-        return clickOkButton(1);
+        return clickOkButton(OkButton.BIG_OK);
     }
 
     public boolean clickLoginBonusButton() {
-        return clickOkButton(2);
+        return clickOkButton(OkButton.LOGIN_OK);
     }
 
     public boolean clickStarButton() {
@@ -109,4 +106,6 @@ public class IslandCommands extends SikuliCommands {
     public boolean closeChat() {
         return clickIfExists(pattern("Chat-Close-Icon.png").similar(0.95).targetOffset(0, -8), appRegion);
     }
+
+
 }

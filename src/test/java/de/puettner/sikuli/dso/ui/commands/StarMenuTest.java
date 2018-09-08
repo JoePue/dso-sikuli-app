@@ -1,16 +1,14 @@
 package de.puettner.sikuli.dso.ui.commands;
 
 import de.puettner.sikuli.dso.commands.ui.MenuBuilder;
-import de.puettner.sikuli.dso.commands.ui.SikuliCommands;
 import de.puettner.sikuli.dso.commands.ui.StarMenu;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.util.Optional;
 
-public class StarMenuTest {
+public class StarMenuTest extends MenuTest {
 
-    private final SikuliCommands sikuliCmd = MenuBuilder.build().buildIslandCommand();
     private final StarMenu starMenu = MenuBuilder.build().buildStarMenuCommands();
 
     @Before
@@ -21,6 +19,11 @@ public class StarMenuTest {
     @Test
     public void openStarMenu() {
         starMenu.openStarMenu(Optional.empty());
+    }
+
+    @Test
+    public void openMessageBox() {
+        starMenu.openMessageBox();
     }
 
 }

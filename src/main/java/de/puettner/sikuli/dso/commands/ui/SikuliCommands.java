@@ -81,6 +81,9 @@ public class SikuliCommands {
         return this.findAll(pattern, appRegion);
     }
 
+    /**
+     * Findet alle Treffer zum Startzeitpunkt der Suche!
+     */
     Iterator<Match> findAll(Pattern pattern, Region searchRegion) {
         log.info("findAll");
         if (pattern == null || searchRegion == null) {
@@ -88,17 +91,9 @@ public class SikuliCommands {
         }
         try {
             return searchRegion.findAll(pattern);
-            //            Match match = searchRegion.find(pattern);
-            //            if (match == null) {
-            //                log.info("Nothing found.");
-            //            } else {
-            //                log.info("Found");
-            //            }
-            //            return Collections.emptyListIterator();
         } catch (FindFailed e) {
             throw new RuntimeException(e);
         }
-        //        return Collections.emptyListIterator();
     }
 
     private String str(Object o) {
@@ -149,7 +144,7 @@ public class SikuliCommands {
         return new Pattern(img);
     }
 
-    private String removePath(String filename) {
+    protected String removePath(String filename) {
         if (filename == null || filename.isEmpty()) {
             return "";
         }

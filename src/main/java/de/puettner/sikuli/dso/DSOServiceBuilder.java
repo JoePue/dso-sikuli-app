@@ -13,7 +13,7 @@ public class DSOServiceBuilder {
         if (dsoService == null) {
             dsoService = new DSOService(winPlatfom, menuBuilder.buildIslandCommand(), menuBuilder.buildBuildMenuCommands(), menuBuilder
                     .buildStarMenuCommands(), menuBuilder.buildBookbinderMenuCommands(), menuBuilder.buildBuildQueueMenuCommands(),
-                    menuBuilder.buildQuestBookMenuCommands());
+                    menuBuilder.buildQuestBookMenuCommands(), menuBuilder.buildMessageBoxMenu());
         }
         return dsoService;
     }
