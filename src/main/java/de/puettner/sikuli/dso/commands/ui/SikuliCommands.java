@@ -42,7 +42,7 @@ public class SikuliCommands {
     /**
      * @param ms milliseconds
      */
-    public void sleep(int ms) {
+    private void sleep(int ms) {
         try {
             if (ms > DEFAULT_WAITING) {
                 log.info("sleep() for " + ms + " ms");
@@ -62,6 +62,10 @@ public class SikuliCommands {
             return appRegion.type(text.toString());
         }
         return appRegion.type(text.toString(), modifiers);
+    }
+
+    public void sleepX(int x) {
+        sleep(DEFAULT_WAITING * x);
     }
 
     public int typeKeyDown() {

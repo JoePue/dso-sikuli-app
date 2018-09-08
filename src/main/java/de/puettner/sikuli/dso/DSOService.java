@@ -58,12 +58,12 @@ public class DSOService {
         int timeout = 300;
         int okButtonTimeout = 3;
         while (timeout > 0) {
-            islandCmds.sleep(3000);
+            islandCmds.sleepX(6);
             timeout -= 1;
             if (islandCmds.existsAvatar()) {
                 okButtonTimeout -= 1;
                 if (okButtonTimeout < 0 || islandCmds.clickSmallOkButton()) {
-                    islandCmds.sleep();
+                    islandCmds.sleepX(4);
                     timeout = 0;
                     // Login Bonus
                     if (islandCmds.clickLoginBonusButton()) {
@@ -98,11 +98,11 @@ public class DSOService {
                 islandCmds.dragNdrop(200, -750);
             }
         }
-        this.sleep(1000);
+        this.sleepX(2);
     }
 
-    void sleep(int ms) {
-        islandCmds.sleep(ms);
+    void sleepX(int ms) {
+        islandCmds.sleepX(ms);
     }
 
     public boolean solveDailyQuest() {
@@ -114,7 +114,7 @@ public class DSOService {
                 sleep();
                 if (islandCmds.clickSmallOkButton()) {
                     sleep();
-                    islandCmds.sleep(20000);
+                    islandCmds.sleepX(40);
                     if (islandCmds.clickSmallOkButton()) {
                         rv = true;
                     }
@@ -137,9 +137,9 @@ public class DSOService {
             if (questBookCmds.clickButton(QuestBookMenuButtons.GuildQuestMenuItem)) {
                 sleep();
                 if (islandCmds.clickSmallOkButton()) {
-                    islandCmds.sleep(20000);
+                    islandCmds.sleepX(20);
                     if (islandCmds.clickSmallOkButton()) {
-                        islandCmds.sleep(3000);
+                        islandCmds.sleepX(6);
                         rv = true;
                     }
                 }
@@ -169,7 +169,7 @@ public class DSOService {
                         log.info("Sammelgegenstand gefunden. " + match);
                         match.doubleClick();
                         islandCmds.parkMouse();
-                        islandCmds.sleep(4000);
+                        islandCmds.sleepX(8);
                         islandCmds.typeESC();
                     }
                 } else {
@@ -238,10 +238,10 @@ public class DSOService {
         islandCmds.parkMouse();
         this.goToSector(Sector.S3);
         if (islandCmds.clickBookbinderBuilding()) {
-            islandCmds.sleep(2000);
+            islandCmds.sleepX(4);
             if (islandCmds.clickBigOkButton()) {
                 // Assumes production is ready
-                islandCmds.sleep(15000);
+                islandCmds.sleepX(15);
             }
             bookbinderMenu.clickButton(BookbinderMenuButtons.Kompendium);
             islandCmds.sleep();
@@ -259,7 +259,7 @@ public class DSOService {
         log.info("exitDso()");
         islandCmds.typeESC();
         islandCmds.clickExitButton();
-        sleep(5000);
+        sleepX(10);
     }
 
     private int buildMines(int limit, MaterialType material, BuildMenuButtons mineButton) {

@@ -17,11 +17,11 @@ public class BraveTailorAdv extends Adventure {
 
     public void zoomOut() {
         islandCmds.type("-");
-        islandCmds.sleep(100);
+        islandCmds.sleepX(1);
         islandCmds.type("-");
-        islandCmds.sleep(100);
+        islandCmds.sleepX(1);
         islandCmds.type("-");
-        islandCmds.sleep(100);
+        islandCmds.sleepX(1);
     }
 
     public void gotoPosOne() {
