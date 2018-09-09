@@ -1,5 +1,6 @@
 package de.puettner.sikuli.dso.commands.ui;
 
+import de.puettner.sikuli.dso.adv.GeneralMenu;
 import de.puettner.sikuli.dso.commands.os.WindowsPlatform;
 import org.sikuli.basics.Debug;
 import org.sikuli.script.App;
@@ -18,7 +19,7 @@ public class MenuBuilder {
     private static BookbinderMenu bookbinderMenu;
     private static QuestBookMenu questBookCmds;
     private static MessageBoxMenu messageBoxMenu;
-
+    private static GeneralMenu generalMenu;
 
     private final Region dsoAppRegion;
 
@@ -49,7 +50,7 @@ public class MenuBuilder {
         if (islandCmds == null) {
             ImagePath.add("../dso_1.sikuli");
             Debug.setDebugLevel(0);
-            islandCmds = new IslandCommands(new App(CHROME_EXE), dsoAppRegion, this.calculateGeologicSearchRegion(dsoAppRegion));
+            islandCmds = new IslandCommands(new App(CHROME_EXE), dsoAppRegion);
         }
         return islandCmds;
     }
@@ -121,5 +122,16 @@ public class MenuBuilder {
             messageBoxMenu = new MessageBoxMenu(region, buildIslandCommand());
         }
         return messageBoxMenu;
+    }
+
+    public GeneralMenu buildGeneralMenu() {
+        if (generalMenu == null) {
+            Region region = calculateStarMenuRegion();
+            region.y = region.y - 150;
+            region.x = region.x - 50;
+            region.w = region.w + 100;
+            generalMenu = new GeneralMenu(region, buildIslandCommand());
+        }
+        return generalMenu;
     }
 }

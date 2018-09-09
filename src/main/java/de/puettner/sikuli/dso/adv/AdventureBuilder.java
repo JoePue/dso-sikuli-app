@@ -2,16 +2,12 @@ package de.puettner.sikuli.dso.adv;
 
 import de.puettner.sikuli.dso.commands.os.WindowsPlatform;
 import de.puettner.sikuli.dso.commands.ui.IslandCommands;
-import org.sikuli.basics.Debug;
-import org.sikuli.script.App;
-import org.sikuli.script.ImagePath;
+import de.puettner.sikuli.dso.commands.ui.MenuBuilder;
 import org.sikuli.script.Region;
-
-import static de.puettner.sikuli.dso.commands.os.WindowsPlatform.CHROME_EXE;
-import static de.puettner.sikuli.dso.commands.ui.MenuBuilder.calculateGeologicSearchRegion;
 
 public class AdventureBuilder {
 
+    private MenuBuilder menuBuilder = MenuBuilder.build();
     private static AdventureBuilder advBuilder;
     private static IslandCommands islandCmds;
     private static BraveTailorAdv braveTailorAdv;
@@ -36,18 +32,9 @@ public class AdventureBuilder {
 
     public BraveTailorAdv buildTapferesSchneiderleinAT() {
         if (braveTailorAdv == null) {
-            braveTailorAdv = new BraveTailorAdv(buildIslandCommand());
+            braveTailorAdv = new BraveTailorAdv(menuBuilder.buildIslandCommand(), menuBuilder.buildStarMenuCommands());
         }
         return braveTailorAdv;
-    }
-
-    public IslandCommands buildIslandCommand() {
-        if (islandCmds == null) {
-            ImagePath.add("../dso_1.sikuli");
-            Debug.setDebugLevel(5);
-            islandCmds = new IslandCommands(new App(CHROME_EXE), dsoAppRegion, calculateGeologicSearchRegion(dsoAppRegion));
-        }
-        return islandCmds;
     }
 
 }

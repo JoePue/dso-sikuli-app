@@ -10,6 +10,7 @@ import java.util.Optional;
 
 import static de.puettner.sikuli.dso.commands.ui.SikuliCommands.pattern;
 import static java.awt.event.KeyEvent.VK_ENTER;
+import static org.junit.Assert.assertEquals;
 
 public class SikuliCommandsTest {
 
@@ -19,19 +20,33 @@ public class SikuliCommandsTest {
 
     @Before
     public void before() {
-        islandCmds.focusBrowser();
+        //        islandCmds.focusBrowser();
     }
 
     @Test
-    public void dragNdrop() {
+    public void dragNDrop() {
         int[] sectors = {1, 2, 3};
         for (int sector : sectors) {
             islandCmds.type("" + sector, null);
             islandCmds.sleep();
-            islandCmds.dragNdrop(200, -750);
+            islandCmds.dragDrop(200, -750);
         }
-
     }
+
+    @Test
+    public void calculateSourceLocation() {
+        Location result = islandCmds.calculateSourceLocation(200, -750, islandCmds.getIslandRegion());
+        assertEquals(1234, result.x);
+        assertEquals(865, result.y);
+        result = islandCmds.calculateSourceLocation(0, -100, islandCmds.getIslandRegion());
+        assertEquals(1234, result.x);
+        assertEquals(865, result.y);
+        //        new Location(-200, 0)
+        result = islandCmds.calculateSourceLocation(-500, 0, islandCmds.getIslandRegion());
+        assertEquals(115, result.x);
+        assertEquals(865, result.y);
+    }
+
 
     @Test
     public void openStarMenu() {

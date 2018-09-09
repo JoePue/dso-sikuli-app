@@ -143,7 +143,8 @@ public class DsoSikuliApp {
                 .add(GeologicType.Conscientious, GR, 2)
         ;
         dsoService.launchGeologics(launchs);
-
+        dsoService.buildAllMines();
+        dsoService.fetchRewardMessages();
         dsoService.exitDso();
     }
 
@@ -151,16 +152,12 @@ public class DsoSikuliApp {
         dsoService.startDsoApp();
         dsoService.closeWelcomeDialog();
         dsoService.buildAllMines();
+        dsoService.solveDailyQuest();
+        dsoService.solveGuildQuest();
 
         // Ausgangspunkt: 6 verfügbare Geos
         GeologicLaunchs launchs = GeologicLaunchs.builder().build()
-                .add(GeologicType.Happy, GO, 2)
-                .add(GeologicType.Happy, MA, 6)
-                .add(GeologicType.Happy, EI, 2)
-                .add(GeologicType.Normal, GR, 1)
-                .add(GeologicType.Normal, KO, 1)
-                .add(GeologicType.Normal, EI, 1)
-                .add(GeologicType.Conscientious, GR, 2);
+                .add(GeologicType.Happy, GR, 6);
         dsoService.launchGeologics(launchs);
 
         dsoService.buildAllMines();

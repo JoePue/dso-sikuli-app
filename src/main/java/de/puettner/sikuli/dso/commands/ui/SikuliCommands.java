@@ -127,7 +127,7 @@ public class SikuliCommands {
         return this.clickIfExists(pattern("Close-icon.png"), appRegion);
     }
 
-    boolean clickIfExists(Pattern pattern, Region searchRegion) {
+    public boolean clickIfExists(Pattern pattern, Region searchRegion) {
         final Match match = searchRegion.exists(pattern);
         boolean rv = false;
         if (match != null) {
@@ -159,10 +159,6 @@ public class SikuliCommands {
         return false;
     }
 
-    public void focusApp() {
-        app.focus(1);
-    }
-
     boolean exists(Pattern filename) {
         return this.exists(filename, appRegion);
     }
@@ -183,21 +179,43 @@ public class SikuliCommands {
         appRegion.highlight(2, "green");
     }
 
-    public void dragNdrop(int xOffset, int yOffset) {
-        int xSource = appRegion.w - 100, ySource = appRegion.h - 100;
+    public static Location calculateSourceLocation(int xOffset, int yOffset, Region region) {
+        int xSource = region.w - 100, ySource = region.h - 100;
         if (yOffset < 0) {
-            ySource = appRegion.h - 100;
+            ySource = region.h - 100;
         }
         if (xOffset < 0) {
-            xSource = appRegion.w - 100;
+            xSource = region.x + 100;
         }
         Location sourceLocation = new Location(xSource, ySource);
+        return sourceLocation;
+    }
+
+    public static Location calculateTargetLocation(int xOffset, int yOffset, Location sourceLocation) {
         Location targetLocation = new Location(sourceLocation.x - xOffset, sourceLocation.y + yOffset);
+        return targetLocation;
+    }
+
+    public void dragDrop(int xOffset, int yOffset) {
+        Location sourceLocation = calculateSourceLocation(xOffset, yOffset, appRegion);
+        Location targetLocation = calculateTargetLocation(xOffset, yOffset, sourceLocation);
         try {
+            appRegion.hover(sourceLocation);
+            appRegion.hover(targetLocation);
             appRegion.dragDrop(sourceLocation, targetLocation);
         } catch (FindFailed e) {
             log.log(Level.SEVERE, e.getMessage(), e);
         }
     }
 
+    public boolean click(Match match) {
+        if (match == null) {
+            throw new IllegalArgumentException("match must not be null");
+        }
+        if (1 == match.click()) {
+            return true;
+        }
+        log.severe("Click was not successful.");
+        return false;
+    }
 }

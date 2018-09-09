@@ -13,11 +13,9 @@ public class IslandCommands extends SikuliCommands {
 
     protected final String[] okButtonList = {"Ok-Button-0.png", "Ok-Button-1.png", "Ok-Button-2.png", "Ok-Button-3-Bookbinder.png"};
     protected final Pattern LetsPlayButton = pattern("LetsPlay-Button.png").similar(0.8f);
-    private final Region geologicSearchRegion;
 
-    public IslandCommands(App app, Region dsoAppRegion, Region geologicSearchRegion) {
-        super(app, dsoAppRegion);
-        this.geologicSearchRegion = geologicSearchRegion;
+    public IslandCommands(App app, Region islandRegion) {
+        super(app, islandRegion);
     }
 
     public boolean clickLetsPlayButton() {
@@ -92,11 +90,6 @@ public class IslandCommands extends SikuliCommands {
         return clickIfExists(pattern("BuildCancelButton.png").similar(0.80f), appRegion);
     }
 
-    public void hightlightRegions() {
-        super.hightlightRegions();
-        this.geologicSearchRegion.highlight(2, "green");
-    }
-
     public void typeKeyDown(int count) {
         for (int i = 0; i < count; ++i) {
             super.typeKeyDown();
@@ -107,5 +100,7 @@ public class IslandCommands extends SikuliCommands {
         return clickIfExists(pattern("Chat-Close-Icon.png").similar(0.95).targetOffset(0, -8), appRegion);
     }
 
-
+    public Region getIslandRegion() {
+        return new Region(super.appRegion);
+    }
 }

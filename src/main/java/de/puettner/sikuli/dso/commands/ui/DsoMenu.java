@@ -1,5 +1,6 @@
 package de.puettner.sikuli.dso.commands.ui;
 
+import org.sikuli.script.Pattern;
 import org.sikuli.script.Region;
 
 import static de.puettner.sikuli.dso.commands.ui.SikuliCommands.initRegion;
@@ -21,6 +22,14 @@ public class DsoMenu {
 
     public int hover() {
         return this.menuRegion.hover();
+    }
+
+    public Region getMenuRegion() {
+        return menuRegion;
+    }
+
+    protected boolean clickIfExists(Pattern pattern) {
+        return islandCmds.clickIfExists(pattern, menuRegion);
     }
 
 }
