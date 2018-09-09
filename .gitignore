@@ -1,3 +1,8 @@
 .idea/
 target/
-dist/
+maven-archiver/
+dso_1.sikuli/
+maven-status/
+bins/
+
+*.log

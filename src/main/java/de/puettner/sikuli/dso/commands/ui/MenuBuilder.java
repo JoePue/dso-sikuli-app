@@ -2,13 +2,16 @@ package de.puettner.sikuli.dso.commands.ui;
 
 import de.puettner.sikuli.dso.adv.GeneralMenu;
 import de.puettner.sikuli.dso.commands.os.WindowsPlatform;
+import lombok.extern.java.Log;
 import org.sikuli.basics.Debug;
 import org.sikuli.script.App;
 import org.sikuli.script.ImagePath;
 import org.sikuli.script.Region;
 
 import static de.puettner.sikuli.dso.commands.os.WindowsPlatform.CHROME_EXE;
+import static de.puettner.sikuli.dso.commands.ui.IslandButtons.Avatar;
 
+@Log
 public class MenuBuilder {
 
     private static IslandCommands islandCmds;
@@ -58,8 +61,21 @@ public class MenuBuilder {
 
     public IslandCommands buildIslandCommand() {
         if (islandCmds == null) {
-            ImagePath.add("../dso_1.sikuli");
-            ImagePath.add("../../dso_1.sikuli");// vom dist-Ordner aus
+            String path = "../dso_1.sikuli";
+            boolean result = ImagePath.add(path);
+            if (!result) {
+                throw new IllegalArgumentException("invalid path: " + path);
+            }
+            path = "./dso_1.sikuli";
+            result = ImagePath.add(path);// vom dist-Ordner aus
+            if (!result) {
+                throw new IllegalArgumentException("invalid path: " + path);
+            }
+            log.fine("Avatar-getFilename: " + Avatar.getPattern().getFilename());
+            log.fine("Avatar-getImage: " + Avatar.getPattern().getImage().get());
+            if (Avatar.getPattern().getImage().get() == null) {
+                throw new IllegalStateException("Avatar image must exists");
+            }
             Debug.setDebugLevel(0);
             islandCmds = new IslandCommands(new App(CHROME_EXE), dsoAppRegion);
         }

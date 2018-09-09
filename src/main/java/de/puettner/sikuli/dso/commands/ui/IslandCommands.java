@@ -8,6 +8,8 @@ import org.sikuli.script.Region;
 
 import java.util.logging.Level;
 
+import static de.puettner.sikuli.dso.commands.ui.IslandButtons.Avatar;
+
 @Log
 public class IslandCommands extends SikuliCommands {
 
@@ -27,7 +29,7 @@ public class IslandCommands extends SikuliCommands {
     }
 
     public boolean existsAvatar() {
-        return this.exists(pattern("Avatar.png").similar(0.80f));
+        return this.exists(Avatar.getPattern());
     }
 
     public boolean clickSmallOkButton() {

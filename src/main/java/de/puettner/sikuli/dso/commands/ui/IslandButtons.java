@@ -9,7 +9,8 @@ public enum IslandButtons implements MenuButton {
     CollectableIconOne(pattern("CollectablePinkyIcon_1.png").targetOffset(0, 0)),
     //    CollectableIconTwo(pattern("CollectablePinkyIcon_2.png").similar(052f).targetOffset(0, 0)),
     CollectableIconThree(pattern("CollectablePinkyIcon_3.png").targetOffset(0, 0)),
-    BookbinderBuilding(pattern("BookBinderBuilding.png").similar(0.80f));
+    BookbinderBuilding(pattern("BookBinderBuilding.png").similar(0.80f)),
+    Avatar(pattern("Avatar.png").similar(0.80f));
 
     public final Pattern pattern;
 

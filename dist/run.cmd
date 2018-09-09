@@ -5,13 +5,15 @@ SET START_DIR=D:\sikuli\workspace\dso_1-sikuli-idea\dist
 cd %START_DIR%
 REM del *.jar
 
+ECHO Baue Jar
 cd ..
-xcopy bins dist\bins /Y
+xcopy /Y bins dist\bins
 call mvn -o clean package -DskipTests=true
 
 REM ls && pwd && pause
+ECHO Kopiere Jar
 cd target
-xcopy *.jar ../dist /Y
+xcopy /Y *.jar ..\dist
 
 cd ../dist
 REM ls && pwd && pause
