@@ -151,6 +151,10 @@ public class SikuliCommands {
         return filename.substring(filename.lastIndexOf(File.separatorChar));
     }
 
+    public boolean clickIfExists(MenuButton menuButton, Region searchRegion) {
+        return this.clickIfExists(menuButton.getPattern(), searchRegion);
+    }
+
     boolean click(Pattern filename) {
         if (clickIfExists(filename, appRegion)) {
             return true;

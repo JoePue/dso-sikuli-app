@@ -8,7 +8,7 @@ import org.sikuli.script.Region;
 
 import java.util.logging.Level;
 
-import static de.puettner.sikuli.dso.commands.ui.IslandButtons.Avatar;
+import static de.puettner.sikuli.dso.commands.ui.IslandButtons.*;
 
 @Log
 public class IslandCommands extends SikuliCommands {
@@ -64,12 +64,12 @@ public class IslandCommands extends SikuliCommands {
 
     public boolean clickStarButton() {
         log.info("clickStarButton");
-        return clickIfExists(pattern("StarButton.png").targetOffset(-2, -25), appRegion);
+        return clickIfExists(StarButton, appRegion);
     }
 
     public boolean openQuestBook() {
         log.info("openQuestBook");
-        return clickIfExists(pattern("Questbook-icon.png"), appRegion);
+        return clickIfExists(QuestBookIcon, appRegion);
     }
 
     public boolean clickDailyQuestMenuItem() {
