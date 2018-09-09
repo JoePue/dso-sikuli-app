@@ -46,6 +46,7 @@ public class DSOService {
         islandCmds.clickDsoTab();
         if (islandCmds.clickLetsPlayButton()) {
             this.closeWelcomeDialog();
+            closeChat();
         } else {
             log.info("expected a running DSO app");
         }
@@ -62,7 +63,7 @@ public class DSOService {
         int timeout = 300;
         int okButtonTimeout = 3;
         while (timeout > 0) {
-            islandCmds.sleepX(6);
+            islandCmds.sleepX(20);
             timeout -= 1;
             if (islandCmds.existsAvatar()) {
                 okButtonTimeout -= 1;
@@ -70,22 +71,14 @@ public class DSOService {
                     islandCmds.sleepX(10);
                     timeout = 0;
                     // Login Bonus
-                    if (islandCmds.clickLoginBonusButton()) {
-                        this.visitAllSectors();
+                    if (!islandCmds.clickLoginBonusButton()) {
+                        log.warning("LoginBonus not found");
                     }
+                    this.visitAllSectors();
                 }
             }
         }
-        closeChat();
         sleep();
-    }
-
-    private void visitAllSectors() {
-        log.info("visitAllSectors()");
-        for (Sector sector : Sector.values()) {
-            this.goToSector(sector);
-        }
-        goToSector(Sector.S1);
     }
 
     boolean closeChat() {
@@ -96,6 +89,14 @@ public class DSOService {
             islandCmds.parkMouse();
         }
         return rv;
+    }
+
+    private void visitAllSectors() {
+        log.info("visitAllSectors()");
+        for (Sector sector : Sector.values()) {
+            this.goToSector(sector);
+        }
+        goToSector(Sector.S1);
     }
 
     void sleep() {
@@ -242,7 +243,8 @@ public class DSOService {
             islandCmds.typeESC();
             islandCmds.sleep();
         } else {
-            log.warning("Missing open star menu.");
+            log.severe("Missing open star menu.");
+            throw new IllegalStateException("Missing open star menu.");
         }
         return rv;
     }
@@ -308,13 +310,13 @@ public class DSOService {
                                 log.warning("Cancel build");
                                 break outerloop;
                             }
-                            if (!buildMenu.prepareBuildMenu(mineButton.tab)) {
-                                log.warning("Cancel build");
-                                break outerloop;
+                            if (!buildMenu.prepareBuildMenuTab(mineButton.tab)) {
+                                log.fine("Maybe menu is already prepared");
                             }
+                            islandCmds.parkMouse();
                         }
                         if (!starMenu.openBuildMenu()) {
-                            log.warning("Cancel build");
+                            log.severe("Cancel build");
                             break outerloop;
                         }
                         if (!buildMenu.buildMine(matches.next(), mineButton)) {

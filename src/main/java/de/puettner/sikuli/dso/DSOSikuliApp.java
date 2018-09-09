@@ -111,7 +111,6 @@ public class DsoSikuliApp {
 
     private static void firstDailyRun(DSOService dsoService) {
         dsoService.startDsoApp();
-        dsoService.closeWelcomeDialog();
         dsoService.highlightRegions();
         dsoService.buildAllMines();
         dsoService.prepareStarMenu();
@@ -150,11 +149,11 @@ public class DsoSikuliApp {
 
     private static void secondDailyRun(DSOService dsoService) {
         dsoService.startDsoApp();
-        dsoService.closeWelcomeDialog();
         dsoService.buildAllMines();
         dsoService.solveDailyQuest();
         dsoService.solveGuildQuest();
-
+        dsoService.prepareStarMenu();
+        
         // Ausgangspunkt: 6 verfügbare Geos
         GeologicLaunchs launchs = GeologicLaunchs.builder().build()
                 .add(GeologicType.Happy, GR, 6);

@@ -14,8 +14,8 @@ public class BuildMenu extends DsoMenu {
     /**
      * Assumes a open build menu.
      */
-    public boolean prepareBuildMenu(MenuButton buildingType) {
-        log.info("prepareBuildMenu");
+    public boolean prepareBuildMenuTab(MenuButton buildingType) {
+        log.info("prepareBuildMenuTab");
         boolean rv = this.clickButton(buildingType);
         if (!rv) {
             log.warning("... preparation was not successfull.");

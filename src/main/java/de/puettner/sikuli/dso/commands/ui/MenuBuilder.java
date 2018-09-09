@@ -39,6 +39,16 @@ public class MenuBuilder {
         return menuBuilder;
     }
 
+    public static Region calculateGeologicSearchRegion(Region dsoAppRegion) {
+        final int menuWidth = dsoAppRegion.w - 50, menuHeight = dsoAppRegion.h - 200;
+        Region region = new Region(0, 0, 0, 0);
+        region.x = dsoAppRegion.x + (dsoAppRegion.w / 2) - (menuWidth / 2);
+        region.y = dsoAppRegion.y + (dsoAppRegion.h / 2) - (menuHeight / 2) - 50;
+        region.w = menuWidth;
+        region.h = menuHeight;
+        return region;
+    }
+
     public BuildMenu buildBuildMenuCommands() {
         if (buildMenu == null) {
             buildMenu = new BuildMenu(dsoAppRegion, buildIslandCommand());
@@ -49,20 +59,11 @@ public class MenuBuilder {
     public IslandCommands buildIslandCommand() {
         if (islandCmds == null) {
             ImagePath.add("../dso_1.sikuli");
+            ImagePath.add("../../dso_1.sikuli");// vom dist-Ordner aus
             Debug.setDebugLevel(0);
             islandCmds = new IslandCommands(new App(CHROME_EXE), dsoAppRegion);
         }
         return islandCmds;
-    }
-
-    public static Region calculateGeologicSearchRegion(Region dsoAppRegion) {
-        final int menuWidth = dsoAppRegion.w - 50, menuHeight = dsoAppRegion.h - 200;
-        Region region = new Region(0, 0, 0, 0);
-        region.x = dsoAppRegion.x + (dsoAppRegion.w / 2) - (menuWidth / 2);
-        region.y = dsoAppRegion.y + (dsoAppRegion.h / 2) - (menuHeight / 2) - 50;
-        region.w = menuWidth;
-        region.h = menuHeight;
-        return region;
     }
 
     public BuildQueueMenu buildBuildQueueMenuCommands() {

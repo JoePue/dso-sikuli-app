@@ -7,7 +7,7 @@ REM del *.jar
 
 cd ..
 xcopy bins dist\bins /Y
-REM call mvn -o clean package -DskipTests=true
+call mvn -o clean package -DskipTests=true
 
 REM ls && pwd && pause
 cd target

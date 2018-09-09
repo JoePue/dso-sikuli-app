@@ -155,7 +155,7 @@ public class SikuliCommands {
         if (clickIfExists(filename, appRegion)) {
             return true;
         }
-        log.log(Level.SEVERE, "Missing element");
+        log.log(Level.SEVERE, "Missing pattern");
         return false;
     }
 
@@ -179,6 +179,18 @@ public class SikuliCommands {
         appRegion.highlight(2, "green");
     }
 
+    public void dragDrop(int xOffset, int yOffset) {
+        Location sourceLocation = calculateSourceLocation(xOffset, yOffset, appRegion);
+        Location targetLocation = calculateTargetLocation(xOffset, yOffset, sourceLocation);
+        try {
+            appRegion.hover(sourceLocation);
+            appRegion.hover(targetLocation);
+            appRegion.dragDrop(sourceLocation, targetLocation);
+        } catch (FindFailed e) {
+            log.log(Level.SEVERE, e.getMessage(), e);
+        }
+    }
+
     public static Location calculateSourceLocation(int xOffset, int yOffset, Region region) {
         int xSource = region.w - 100, ySource = region.h - 100;
         if (yOffset < 0) {
@@ -194,18 +206,6 @@ public class SikuliCommands {
     public static Location calculateTargetLocation(int xOffset, int yOffset, Location sourceLocation) {
         Location targetLocation = new Location(sourceLocation.x - xOffset, sourceLocation.y + yOffset);
         return targetLocation;
-    }
-
-    public void dragDrop(int xOffset, int yOffset) {
-        Location sourceLocation = calculateSourceLocation(xOffset, yOffset, appRegion);
-        Location targetLocation = calculateTargetLocation(xOffset, yOffset, sourceLocation);
-        try {
-            appRegion.hover(sourceLocation);
-            appRegion.hover(targetLocation);
-            appRegion.dragDrop(sourceLocation, targetLocation);
-        } catch (FindFailed e) {
-            log.log(Level.SEVERE, e.getMessage(), e);
-        }
     }
 
     public boolean click(Match match) {
