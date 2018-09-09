@@ -55,14 +55,14 @@ public class StarMenu extends DsoMenu {
         boolean rv = true;
         if (!isStarMenuOpen()) {
             if (islandCmds.clickStarButton()) {
-                islandCmds.sleep();
+                waitUntilExists(this::isStarMenuOpen);
             } else {
                 log.severe("Required click failed");
             }
         }
         if (isStarMenuOpen()) {
             if (menuFilter.isPresent()) {
-                if (islandCmds.clickIfExists(StarMenuButtons.ZOOM_ICON.pattern, menuRegion)) {
+                if (super.clickIfExists(StarMenuButtons.ZOOM_ICON)) {
                     islandCmds.sleep();
                     islandCmds.type("a", Key.CTRL);
                     islandCmds.sleep();

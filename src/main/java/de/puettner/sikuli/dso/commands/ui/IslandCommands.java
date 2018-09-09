@@ -6,6 +6,7 @@ import org.sikuli.script.Match;
 import org.sikuli.script.Pattern;
 import org.sikuli.script.Region;
 
+import java.util.function.BooleanSupplier;
 import java.util.logging.Level;
 
 import static de.puettner.sikuli.dso.commands.ui.IslandButtons.*;
@@ -104,5 +105,16 @@ public class IslandCommands extends SikuliCommands {
 
     public Region getIslandRegion() {
         return new Region(super.appRegion);
+    }
+
+    protected boolean waitUntilExists(BooleanSupplier supplier) {
+        for (int i = 0; i < 10; ++i) {
+            if (supplier.getAsBoolean()) {
+                return true;
+            } else {
+                sleep();
+            }
+        }
+        return false;
     }
 }
