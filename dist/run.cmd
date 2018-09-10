@@ -5,6 +5,8 @@ SET START_DIR=D:\sikuli\workspace\dso_1-sikuli-idea\dist
 cd %START_DIR%
 REM del *.jar
 
+xcopy /Y D:\sikuli\workspace\dso_1.sikuli D:\sikuli\workspace\dso_1-sikuli-idea\dist\dso_1.sikuli
+
 ECHO Baue Jar
 cd ..
 xcopy /Y bins dist\bins
@@ -18,15 +20,15 @@ xcopy /Y *.jar ..\dist
 cd ../dist
 REM ls && pwd && pause
 for %%i in (*-jar-with-dependencies.jar) DO (
-  java -jar %%i firstDailyRun
+  java -cp ".;./;./dso_1.sikuli" -jar %%i firstDailyRun
   
   for /L %%k in (1, 1, 12) DO (
     echo #%%k Loop
-    java -jar %%i preventScreensaver
+    java -cp ".;./;./dso_1.sikuli" -jar %%i preventScreensaver
     sleep 120
   )
   
-  java -jar %%i secondDailyRun
+  java -cp ".;./;./dso_1.sikuli" -jar %%i secondDailyRun
   
   REM java -jar %%i standby
 )
