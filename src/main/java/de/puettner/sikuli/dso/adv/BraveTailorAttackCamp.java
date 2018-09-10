@@ -11,9 +11,17 @@ public enum BraveTailorAttackCamp implements AttackCamp {
     CAMP_1(pattern("Brave-Tailor-Camp-1-2.png").exact().targetOffset(-88, 107), null),
     CAMP_2(pattern("Brave-Tailor-Camp-2.png").exact().targetOffset(-5, 69), new Location(-500, 0)),
     CAMP_3(pattern("Brave-Tailor-Camp-3.png").exact().targetOffset(-17, 17), new Location(-500, 0)),
-    CAMP_4(pattern("Brave-Tailor-Camp-4.png").exact(), new Location(-700, 0)),
-    CAMP_5(pattern("Brave-Tailor-Camp-5.png").exact(), new Location(-700, 0));
-    // Rek(200), Kan(85),
+    CAMP_4(pattern("Brave-Tailor-Camp-4.png").similar(0.85), new Location(-700, 0)),
+    CAMP_5(pattern("Brave-Tailor-Camp-5.png").similar(0.85), new Location(-700, 0)),
+    // Hauptlager
+    CAMP_6(pattern("Brave-Tailor-Camp-6.png").similar(0.85), new Location(-700, 0)),
+    // Sektor 2
+    MOVE_POINT_1(pattern("move-ref-point-sector2.png").similar(0.90), new Location(-700, 0)),
+    CAMP_7(pattern("Brave-Tailor-Camp-7.png").similar(0.85).targetOffset(65, 26), null),
+    CAMP_8(pattern("Brave-Tailor-Camp-8.png").similar(0.85).targetOffset(-165, 9), new Location(0, 500)),
+    CAMP_9(pattern("Brave-Tailor-Camp-9.png").similar(0.85), new Location(0, 300)),;
+
+
     private final Pattern pattern;
     private final Location dragNDrop;
 

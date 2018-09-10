@@ -235,7 +235,7 @@ public class DSOService {
         return this.prepareStarMenu(StarMenuFilter.ENTDDECK_KUNDSCH_GEOLO);
     }
 
-    private boolean prepareStarMenu(StarMenuFilter filter) {
+    public boolean prepareStarMenu(StarMenuFilter filter) {
         log.info("prepareStarMenu() filter: " + filter);
         boolean rv = starMenu.openStarMenu(Optional.of(filter));
         if (rv) {

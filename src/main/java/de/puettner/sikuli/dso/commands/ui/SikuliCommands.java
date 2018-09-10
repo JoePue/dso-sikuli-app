@@ -183,12 +183,17 @@ public class SikuliCommands {
         appRegion.highlight(2, "green");
     }
 
+    public void dragDrop(Location location) {
+        this.dragDrop(location.x, location.y);
+        this.sleep();
+    }
+
     public void dragDrop(int xOffset, int yOffset) {
         Location sourceLocation = calculateSourceLocation(xOffset, yOffset, appRegion);
         Location targetLocation = calculateTargetLocation(xOffset, yOffset, sourceLocation);
         try {
-            appRegion.hover(sourceLocation);
-            appRegion.hover(targetLocation);
+            //            appRegion.hover(sourceLocation);
+            //            appRegion.hover(targetLocation);
             appRegion.dragDrop(sourceLocation, targetLocation);
         } catch (FindFailed e) {
             log.log(Level.SEVERE, e.getMessage(), e);
@@ -221,5 +226,29 @@ public class SikuliCommands {
         }
         log.severe("Click was not successful.");
         return false;
+    }
+
+    public void hover(Location location) {
+        try {
+            appRegion.hover(location);
+        } catch (FindFailed findFailed) {
+            throw new RuntimeException(findFailed);
+        }
+    }
+
+    public void click(Location moveLocation) {
+        try {
+            appRegion.click(moveLocation);
+        } catch (FindFailed findFailed) {
+            throw new RuntimeException(findFailed);
+        }
+    }
+
+    public void doubleClick(Location moveLocation) {
+        try {
+            appRegion.doubleClick(moveLocation);
+        } catch (FindFailed findFailed) {
+            throw new RuntimeException(findFailed);
+        }
     }
 }

@@ -40,15 +40,27 @@ public class GeneralMenu extends DsoMenu {
             rv = false;
         }
         // todo impl setup check
-        islandCmds.sleepX(10);
+        islandCmds.sleepX(30); // Das Speichern der Aufstellung kann lange dauern.
         return rv;
     }
 
-    private boolean unsetAllUnits() {
-        return clickIfExists(GeneralMenuButton.ReleaseUnits.pattern);
+    protected boolean unsetAllUnits() {
+        boolean rv = clickIfExists(GeneralMenuButton.ReleaseUnits.pattern);
+        if (rv) {
+            islandCmds.sleepX(5);
+        }
+        return rv;
     }
 
     public boolean clickAttackBtn() {
         return clickIfExists(GeneralMenuButton.Attack.pattern);
+    }
+
+    public boolean clickMoveBtn() {
+        boolean rv = clickIfExists(GeneralMenuButton.Move.pattern);
+        if (rv) {
+            islandCmds.sleepX(5);
+        }
+        return rv;
     }
 }
