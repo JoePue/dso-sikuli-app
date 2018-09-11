@@ -11,6 +11,7 @@ import java.util.logging.Level;
 public class SikuliCommands {
 
     public static final int DEFAULT_WAITING = 500;
+    public static final int dragDropBoundary = 200;
     // !!! Kein static bei Pattern-Properties !!!
     private final App app;
     protected Region appRegion;
@@ -189,11 +190,13 @@ public class SikuliCommands {
     }
 
     public void dragDrop(int xOffset, int yOffset) {
+        yOffset = yOffset * -1;
+        xOffset = xOffset * -1;
         Location sourceLocation = calculateSourceLocation(xOffset, yOffset, appRegion);
         Location targetLocation = calculateTargetLocation(xOffset, yOffset, sourceLocation);
         try {
-            //            appRegion.hover(sourceLocation);
-            //            appRegion.hover(targetLocation);
+            appRegion.hover(sourceLocation);
+            appRegion.hover(targetLocation);
             appRegion.dragDrop(sourceLocation, targetLocation);
         } catch (FindFailed e) {
             log.log(Level.SEVERE, e.getMessage(), e);
@@ -201,19 +204,19 @@ public class SikuliCommands {
     }
 
     public static Location calculateSourceLocation(int xOffset, int yOffset, Region region) {
-        int xSource = region.w - 100, ySource = region.h - 100;
-        if (yOffset < 0) {
-            ySource = region.h - 100;
+        int xSource = region.w - dragDropBoundary, ySource = region.h - dragDropBoundary;
+        if (xOffset > 0) {
+            xSource = region.x + dragDropBoundary;
         }
-        if (xOffset < 0) {
-            xSource = region.x + 100;
+        if (yOffset > 0) {
+            ySource = region.y + dragDropBoundary;
         }
         Location sourceLocation = new Location(xSource, ySource);
         return sourceLocation;
     }
 
     public static Location calculateTargetLocation(int xOffset, int yOffset, Location sourceLocation) {
-        Location targetLocation = new Location(sourceLocation.x - xOffset, sourceLocation.y + yOffset);
+        Location targetLocation = new Location(sourceLocation.x + xOffset, sourceLocation.y + yOffset);
         return targetLocation;
     }
 

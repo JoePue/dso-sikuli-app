@@ -22,4 +22,11 @@ public class IslandCommandsTest {
     public void parkMouse() {
         islandCmds.parkMouse();
     }
+
+    @Test
+    public void dragDrop() {
+        islandCmds.dragDrop(200, 750);
+    }
+
+
 }

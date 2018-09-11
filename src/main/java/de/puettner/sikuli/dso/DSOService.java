@@ -91,7 +91,7 @@ public class DSOService {
         return rv;
     }
 
-    private void visitAllSectors() {
+    public void visitAllSectors() {
         log.info("visitAllSectors()");
         for (Sector sector : Sector.values()) {
             this.goToSector(sector);
@@ -109,9 +109,9 @@ public class DSOService {
         if (i >= 0 && i <= 9) {
             islandCmds.type(i);
         } else {
-            islandCmds.type(i - 10);
+            islandCmds.type(i - 9);
             if (i >= 10 && i <= 12) {
-                islandCmds.dragDrop(200, -750);
+                islandCmds.dragDrop(300, 750);
             }
         }
         this.sleepX(2);
@@ -172,7 +172,7 @@ public class DSOService {
         for (Sector sector : sectors) {
             this.goToSector(sector);
             if (Sector.S3.equals(sector)) {
-                islandCmds.dragDrop(0, -100);
+                islandCmds.dragDrop(0, 100);
             }
             islandCmds.parkMouse();
             IslandButtons[] collectableIcons = {/*IslandButtons.CollectableIconTwo,*/ IslandButtons.CollectableIconOne, IslandButtons

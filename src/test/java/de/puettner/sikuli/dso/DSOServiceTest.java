@@ -32,6 +32,7 @@ public class DSOServiceTest extends BaseServiceTest {
 
     @Test
     public void goToSector() {
+        dsoService.goToSector(Sector.S1);
         dsoService.goToSector(Sector.S10);
     }
 
@@ -133,4 +134,10 @@ public class DSOServiceTest extends BaseServiceTest {
     public void closeChat() {
         dsoService.closeChat();
     }
+
+    @Test
+    public void visitAllSectors() {
+        dsoService.visitAllSectors();
+    }
+
 }
