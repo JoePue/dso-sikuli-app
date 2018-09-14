@@ -24,14 +24,14 @@ public class MenuBuilder {
     private static MessageBoxMenu messageBoxMenu;
     private static GeneralMenu generalMenu;
 
-    private final Region dsoAppRegion;
+    private final Region appRegion;
 
     private MenuBuilder(Region chromeAppRegion) {
-        this.dsoAppRegion = chromeAppRegion;
-        this.dsoAppRegion.x = chromeAppRegion.x + 10; // without scrollbar
-        this.dsoAppRegion.y = chromeAppRegion.y + 115; // without chrome menu bar
-        this.dsoAppRegion.w = chromeAppRegion.w - 40;
-        this.dsoAppRegion.h = chromeAppRegion.h - 115;
+        this.appRegion = chromeAppRegion;
+        this.appRegion.x = chromeAppRegion.x + 10; // without scrollbar
+        this.appRegion.y = chromeAppRegion.y + 115; // without chrome menu bar
+        this.appRegion.w = chromeAppRegion.w - 40;
+        this.appRegion.h = chromeAppRegion.h - 115;
     }
 
     public static MenuBuilder build() {
@@ -54,7 +54,7 @@ public class MenuBuilder {
 
     public BuildMenu buildBuildMenuCommands() {
         if (buildMenu == null) {
-            buildMenu = new BuildMenu(dsoAppRegion, buildIslandCommand());
+            buildMenu = new BuildMenu(appRegion, buildIslandCommand());
         }
         return buildMenu;
     }
@@ -77,7 +77,7 @@ public class MenuBuilder {
                 throw new IllegalStateException("Avatar image must exists");
             }
             Debug.setDebugLevel(0);
-            islandCmds = new IslandCommands(new App(CHROME_EXE), dsoAppRegion);
+            islandCmds = new IslandCommands(new App(CHROME_EXE), appRegion);
         }
         return islandCmds;
     }
@@ -92,8 +92,8 @@ public class MenuBuilder {
     public Region calculateBuildQueueRegion() {
         final int menuWidth = 150, menuHeight = 400;
         Region region = new Region(0, 0, 0, 0);
-        region.x = dsoAppRegion.x + dsoAppRegion.w - menuWidth;
-        region.y = dsoAppRegion.y;
+        region.x = appRegion.x + appRegion.w - menuWidth;
+        region.y = appRegion.y;
         region.w = menuWidth;
         region.h = menuHeight;
         return region;
@@ -109,8 +109,8 @@ public class MenuBuilder {
     public Region calculateStarMenuRegion() {
         final int menuWidth = 650, menuHeight = 600;
         Region region = new Region(0, 0, 0, 0);
-        region.x = dsoAppRegion.x + (dsoAppRegion.w / 2) - (menuWidth / 2);
-        region.y = dsoAppRegion.y + (dsoAppRegion.h / 2) - (menuHeight / 2) + 100;
+        region.x = appRegion.x + (appRegion.w / 2) - (menuWidth / 2);
+        region.y = appRegion.y + (appRegion.h / 2) - (menuHeight / 2) + 100;
         region.w = menuWidth;
         region.h = menuHeight;
         return region;
@@ -118,14 +118,14 @@ public class MenuBuilder {
 
     public BookbinderMenu buildBookbinderMenuCommands() {
         if (bookbinderMenu == null) {
-            bookbinderMenu = new BookbinderMenu(dsoAppRegion, buildIslandCommand());
+            bookbinderMenu = new BookbinderMenu(appRegion, buildIslandCommand());
         }
         return bookbinderMenu;
     }
 
     public QuestBookMenu buildQuestBookMenuCommands() {
         if (questBookCmds == null) {
-            questBookCmds = new QuestBookMenu(dsoAppRegion, buildIslandCommand());
+            questBookCmds = new QuestBookMenu(appRegion, buildIslandCommand());
         }
         return questBookCmds;
     }

@@ -17,8 +17,8 @@ public class IslandCommands extends SikuliCommands {
     protected final String[] okButtonList = {"Ok-Button-0.png", "Ok-Button-1.png", "Ok-Button-2.png", "Ok-Button-3-Bookbinder.png"};
     protected final Pattern LetsPlayButton = pattern("LetsPlay-Button.png").similar(0.8f);
 
-    public IslandCommands(App app, Region islandRegion) {
-        super(app, islandRegion);
+    public IslandCommands(App app, Region appRegion) {
+        super(app, appRegion);
     }
 
     public boolean clickLetsPlayButton() {
