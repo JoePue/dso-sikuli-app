@@ -140,4 +140,10 @@ public class DSOServiceTest extends BaseServiceTest {
         dsoService.visitAllSectors();
     }
 
+    @Test
+    public void fetchRewardMessages() {
+        dsoService.fetchRewardMessages();
+    }
+
+
 }
