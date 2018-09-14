@@ -96,11 +96,11 @@ public class DsoSikuliApp {
                 }
             }
         } finally {
-            platform.restoreBrowserWindow();
+            // platform.restoreBrowserWindow();
+            log.info("App ends normally.");
+            // Currently some Sikuli-Threads prevent termination of the java process
+            System.exit(0);
         }
-        log.info("App ends normally.");
-        // Currently some Sikuli-Threads prevent termination of the java process
-        System.exit(0);
     }
 
     private static void logSettings() {
@@ -153,13 +153,18 @@ public class DsoSikuliApp {
         dsoService.solveDailyQuest();
         dsoService.solveGuildQuest();
         dsoService.prepareStarMenu();
-        
+
         // Ausgangspunkt: 6 verfügbare Geos
         GeologicLaunchs launchs = GeologicLaunchs.builder().build()
-                .add(GeologicType.Happy, GR, 6);
+                .add(GeologicType.Happy, GR, 6)
+                .add(GeologicType.Happy, KO, 1)
+                .add(GeologicType.Happy, EI, 3)
+                .add(GeologicType.Conscientious, GR, 2);
         dsoService.launchGeologics(launchs);
 
         dsoService.buildAllMines();
+        dsoService.findAllCollectables();
+        dsoService.fetchBookbinderItem();
         dsoService.exitDso();
     }
 
@@ -178,7 +183,7 @@ public class DsoSikuliApp {
         dsoService.launchGeologics(launchs);
 
         dsoService.buildAllMines();
-
+        dsoService.findAllCollectables();
         dsoService.exitDso();
     }
 

@@ -70,6 +70,7 @@ public class DSOService {
                 if (okButtonTimeout < 0 || islandCmds.clickSmallOkButton()) {
                     islandCmds.sleepX(10);
                     timeout = 0;
+                    islandCmds.sleepX(5);
                     // Login Bonus
                     if (!islandCmds.clickLoginBonusButton()) {
                         log.warning("LoginBonus not found");
