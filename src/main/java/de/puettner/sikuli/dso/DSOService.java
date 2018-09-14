@@ -386,7 +386,7 @@ public class DSOService {
 
     public void highlightRegions() {
         log.info("highlightRegions()");
-        islandCmds.hightlightRegions();
+        islandCmds.hightlightRegion();
         buildMenu.highlightMenuRegion();
         starMenu.highlightMenuRegion();
         bookbinderMenu.highlightMenuRegion();

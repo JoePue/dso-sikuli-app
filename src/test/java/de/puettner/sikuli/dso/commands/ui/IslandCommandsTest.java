@@ -15,7 +15,7 @@ public class IslandCommandsTest {
 
     @Test
     public void hightlightRegions() {
-        islandCmds.hightlightRegions();
+        islandCmds.hightlightRegion();
     }
 
     @Test

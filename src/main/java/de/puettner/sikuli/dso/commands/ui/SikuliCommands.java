@@ -180,7 +180,7 @@ public class SikuliCommands {
         return match;
     }
 
-    public void hightlightRegions() {
+    public void hightlightRegion() {
         appRegion.highlight(2, "green");
     }
 
