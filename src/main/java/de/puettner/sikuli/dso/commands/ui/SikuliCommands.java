@@ -2,7 +2,9 @@ package de.puettner.sikuli.dso.commands.ui;
 
 import lombok.extern.java.Log;
 import org.sikuli.script.*;
+import org.sikuli.script.Image;
 
+import java.awt.*;
 import java.io.File;
 import java.util.Iterator;
 import java.util.logging.Level;
@@ -184,8 +186,8 @@ public class SikuliCommands {
         appRegion.highlight(2, "green");
     }
 
-    public void dragDrop(Location location) {
-        this.dragDrop(location.x, location.y);
+    public void dragDrop(Dimension location) {
+        this.dragDrop(location.width, location.height);
         this.sleep();
     }
 
@@ -218,6 +220,12 @@ public class SikuliCommands {
     public static Location calculateTargetLocation(int xOffset, int yOffset, Location sourceLocation) {
         Location targetLocation = new Location(sourceLocation.x + xOffset, sourceLocation.y + yOffset);
         return targetLocation;
+    }
+
+    @Deprecated
+    public void dragDrop(Location location) {
+        this.dragDrop(location.x, location.y);
+        this.sleep();
     }
 
     public boolean click(Match match) {
