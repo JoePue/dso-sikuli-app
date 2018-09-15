@@ -15,10 +15,6 @@ public class BraveTailorAdvTest extends MenuTest {
         sikuliCmd.focusBrowser();
     }
 
-    @Test
-    public void saveBraveTailorInitState() {
-        adventure.saveBraveTailorInitState();
-    }
 
     @Test
     public void saveState() {
@@ -31,7 +27,13 @@ public class BraveTailorAdvTest extends MenuTest {
     }
 
     @Test
+    public void saveBraveTailorInitState() {
+        adventure.saveBraveTailorInitState();
+    }
+
+    @Test
     public void play() {
+        adventure.saveBraveTailorInitState();
         adventure.play();
     }
 

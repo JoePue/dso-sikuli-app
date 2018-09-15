@@ -49,11 +49,6 @@ public class BraveTailorAdv extends Adventure {
     }
 
     @Override
-    public List<NavigationPoint> getNavigationPoints() {
-        return navPoints;
-    }
-
-    @Override
     public void route(NavigationPoint startingPoint, NavigationPoint destinationPoint) {
         log.info("route()");
         Objects.requireNonNull(startingPoint, "startingPoint is null");
@@ -70,10 +65,16 @@ public class BraveTailorAdv extends Adventure {
         }
     }
 
+    @Override
+    public List<NavigationPoint> getNavigationPoints() {
+        return navPoints;
+    }
+
     private void prepareStarMenu() {
         super.prepareStarMenu(StarMenuFilter.BraveTailor);
     }
 
+    @Deprecated
     public void saveBraveTailorInitState() {
         List<AdventureAttackStep> adventureSteps = new ArrayList<>();
         // sektor 1

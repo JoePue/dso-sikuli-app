@@ -27,9 +27,9 @@ public abstract class Adventure {
     private static final ObjectMapper objectMapper = new ObjectMapper();
     protected final Region region;
     protected final List<NavigationPoint> navPoints = new ArrayList<>();
-    protected final List<AdventureAttackStep> adventureSteps;
     private final StarMenu starMenu;
     private final DSOService dsoService;
+    protected List<AdventureAttackStep> adventureSteps;
     protected IslandCommands islandCmds;
     protected GeneralMenu generalMenu;
 
@@ -39,44 +39,62 @@ public abstract class Adventure {
         this.generalMenu = MenuBuilder.build().buildGeneralMenu();
         this.region = islandCmds.getIslandRegion();
         this.dsoService = dsoService;
-        this.adventureSteps = restoreState();
         SimpleModule module = new SimpleModule();
         module.addDeserializer(AttackCamp.class, new AttackCampDeserializer());
         objectMapper.registerModule(module);
         objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
     }
 
-    public List<AdventureAttackStep> restoreState() {
-        List<AdventureAttackStep> list = new ArrayList<>();
-        try {
-            //            objectMapper.enableDefaultTyping();
-            //            TypeReference typeRef = new TypeReference<ArrayList<AdventureAttackStep>>() {};
-            AdventureState state = objectMapper.readValue(getFilename(), AdventureState.class);
-            //            list = state.getAdventureSteps();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-            //            e.printStackTrace();
-        }
-        //        list.forEach(item -> log.info(item.toString()));
-        return list;
-    }
-
-    protected abstract File getFilename();
-
     protected abstract void buildNavigationPoints();
 
     public void play() {
+        log.info("play");
         this.restoreState();
         try {
             for (AdventureAttackStep step : this.adventureSteps) {
                 System.out.println(step.getState());
+                if (AdventureStepState.PENDING.equals(step.getState())) {
+                    if (StepType.ATTACK.equals(step.getStepType())) {
+
+                    } else {
+                        throw new IllegalStateException("Unsupported type: " + step.getStepType());
+                    }
+                }
+                if (AdventureStepState.OPEN.equals(step.getState())) {
+                    if (StepType.ATTACK.equals(step.getStepType())) {
+
+                    } else {
+                        throw new IllegalStateException("Unsupported type: " + step.getStepType());
+                    }
+                }
             }
+            log.info("End of Adventure reached");
         } finally {
             saveState();
         }
     }
 
+    public void restoreState() {
+        log.info("restoreState()");
+        List<AdventureAttackStep> list;
+        try {
+            //            objectMapper.enableDefaultTyping();
+            //            TypeReference typeRef = new TypeReference<ArrayList<AdventureAttackStep>>() {};
+            AdventureState state = objectMapper.readValue(getFilename(), AdventureState.class);
+            list = state.getAdventureSteps();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        if (list == null) {
+            list = new ArrayList<>();
+        } else {
+            list.forEach(item -> log.info(item.toString()));
+        }
+        this.adventureSteps = list;
+    }
+
     public void saveState() {
+        log.info("saveState()");
         try {
             AdventureState state = new AdventureState();
             state.setAdventureSteps(this.adventureSteps);
@@ -85,6 +103,8 @@ public abstract class Adventure {
             throw new RuntimeException(e);
         }
     }
+
+    protected abstract File getFilename();
 
     /**
      * @return
@@ -167,7 +187,6 @@ public abstract class Adventure {
             Location navPointLocation = new Location(match.x, match.y);
             navPointLocation.x = match.x + (match.w / 2);
             navPointLocation.y = match.y + (match.h / 2);
-            // System.out.println("navPointLocation: " + navPointLocation);
             Location regionCenterLocation = regionCenterLocation();
             // System.out.println("match: x=" + match.x + ", y=" + match.y + ", w=" + match.w + ", h=" + match.h);
             Dimension dimension = new Dimension(navPointLocation.x - regionCenterLocation.x, navPointLocation.y - regionCenterLocation.y);
