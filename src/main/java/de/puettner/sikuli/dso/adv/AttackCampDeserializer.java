@@ -15,12 +15,9 @@ public class AttackCampDeserializer extends StdDeserializer<AttackCamp> {
         super(AttackCamp.class);
     }
 
-    //    protected AttackCampDeserializer(Class<?> vc) {
-    //        super(vc);
-    //    }
-
     @Override
     public AttackCamp deserialize(JsonParser p, DeserializationContext ctxt) throws IOException, JsonProcessingException {
+        // TODO JPU quick and dirty
         return BraveTailorAttackCamp.valueOf(p.getText());
     }
 }

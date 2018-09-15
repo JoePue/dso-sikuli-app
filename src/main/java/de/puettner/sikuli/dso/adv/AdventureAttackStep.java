@@ -19,6 +19,7 @@ public class AdventureAttackStep {
     /** Delay before attack */
     private AttackUnit[] units;
     private NavigationPoint startNavPoint;
+    /** Diese Property ist nur bei 'stepType == MOVE' gesetzt. */
     private NavigationPoint targetNavPoint;
 
     protected AdventureAttackStep() {

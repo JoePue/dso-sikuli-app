@@ -12,6 +12,7 @@ import lombok.extern.java.Log;
 import org.sikuli.script.Location;
 import org.sikuli.script.Match;
 import org.sikuli.script.Region;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.awt.*;
 import java.io.File;
@@ -19,7 +20,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
 
 @Log
 public abstract class Adventure {
@@ -29,7 +29,7 @@ public abstract class Adventure {
     protected final List<NavigationPoint> navPoints = new ArrayList<>();
     private final StarMenu starMenu;
     private final DSOService dsoService;
-    protected List<AdventureAttackStep> adventureSteps;
+    protected List<AdventureAttackStep> adventureSteps = new ArrayList<>();
     protected IslandCommands islandCmds;
     protected GeneralMenu generalMenu;
 
@@ -39,30 +39,41 @@ public abstract class Adventure {
         this.generalMenu = MenuBuilder.build().buildGeneralMenu();
         this.region = islandCmds.getIslandRegion();
         this.dsoService = dsoService;
+
+        this.fillNavigationPointsList();
+
         SimpleModule module = new SimpleModule();
         module.addDeserializer(AttackCamp.class, new AttackCampDeserializer());
         objectMapper.registerModule(module);
         objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
     }
 
-    protected abstract void buildNavigationPoints();
+    protected abstract void fillNavigationPointsList();
+
+    public abstract void route(NavigationPoint startingPoint, NavigationPoint destinationPoint);
+
+    public abstract List<NavigationPoint> getNavigationPoints();
+
+    protected abstract File getFilename();
 
     public void play() {
         log.info("play");
         this.restoreState();
         try {
             for (AdventureAttackStep step : this.adventureSteps) {
-                System.out.println(step.getState());
                 if (AdventureStepState.PENDING.equals(step.getState())) {
                     if (StepType.ATTACK.equals(step.getStepType())) {
-
+                        throw new NotImplementedException();
                     } else {
                         throw new IllegalStateException("Unsupported type: " + step.getStepType());
                     }
                 }
                 if (AdventureStepState.OPEN.equals(step.getState())) {
                     if (StepType.ATTACK.equals(step.getStepType())) {
-
+                        log.info(step.toString());
+                        if (attack(step)) {
+                            saveState(step, AdventureStepState.PENDING);
+                        }
                     } else {
                         throw new IllegalStateException("Unsupported type: " + step.getStepType());
                     }
@@ -72,6 +83,22 @@ public abstract class Adventure {
         } finally {
             saveState();
         }
+    }
+
+    private boolean attack(AdventureAttackStep step) {
+        boolean rv = false;
+        rv = prepareAttack(step.getCamp(), step.getGeneral(), step.getGeneralName(), step.getUnits());
+        if (rv) {
+            rv = clickAttackButton();
+            islandCmds.sleep();
+        }
+        if (rv) {
+            moveToCamp(step.getCamp(), step.getStartNavPoint());
+        }
+        if (rv) {
+            rv = clickAttackCamp(step.getCamp());
+        }
+        return rv;
     }
 
     public void restoreState() {
@@ -87,10 +114,13 @@ public abstract class Adventure {
         }
         if (list == null) {
             list = new ArrayList<>();
-        } else {
-            list.forEach(item -> log.info(item.toString()));
         }
         this.adventureSteps = list;
+    }
+
+    private void saveState(AdventureAttackStep step, AdventureStepState state) {
+        step.setState(state);
+        this.saveState();
     }
 
     public void saveState() {
@@ -104,55 +134,22 @@ public abstract class Adventure {
         }
     }
 
-    protected abstract File getFilename();
-
     /**
      * @return
      */
-    protected boolean prepareAttack(AttackCamp camp, GeneralType general, AttackUnit... units) {
+    protected boolean prepareAttack(AttackCamp camp, GeneralType general, String generalName, AttackUnit[] units) {
         log.info("prepareAttack() " + camp);
         boolean rv = false;
         gotoPosOneAndZoomOut();
-        if (openGeneralMenu(general)) {
+        if (openGeneralMenu(general, generalName)) {
             rv = setupGeneral(units);
             // TODO JPU Implement a method to check the setup
         }
         return rv;
     }
 
-    public void gotoPosOneAndZoomOut() {
-        islandCmds.type("0");
-        zoomOut();
-    }
-
-    public boolean openGeneralMenu(GeneralType general) {
-        boolean rv = false;
-        starMenu.openStarMenu(Optional.empty());
-        Match match = islandCmds.find(general.getPattern(), starMenu.getMenuRegion());
-        if (match != null) {
-            islandCmds.sleep();
-            if (match.click() == 1) {
-                rv = true;
-            } else {
-                log.severe("Click was not successfull");
-            }
-        } else {
-            log.severe("General not found");
-        }
-        return rv;
-    }
-
     private boolean setupGeneral(AttackUnit[] units) {
         return generalMenu.setupAttackUnits(units);
-    }
-
-    public void zoomOut() {
-        islandCmds.type("-");
-        //        islandCmds.sleep();
-        //        islandCmds.stepType("-");
-        //        islandCmds.sleep();
-        //        islandCmds.stepType("-");
-        //        islandCmds.sleep();
     }
 
     private boolean campExists(AttackCamp camp) {
@@ -210,6 +207,7 @@ public abstract class Adventure {
      * This method assumes a General in Attack-Mode.
      */
     protected boolean clickAttackCamp(AttackCamp camp) {
+        log.info("clickAttackCamp");
         boolean rv = false;
         islandCmds.parkMouse();
         Match match = islandCmds.find(camp.getPattern(), region);
@@ -228,17 +226,20 @@ public abstract class Adventure {
     /**
      * This method assumes a General in Attack-Mode.
      */
-    protected void moveToCamp(AttackCamp camp) {
+    protected void moveToCamp(AttackCamp camp, NavigationPoint expectedStartNavPoint) {
         Objects.requireNonNull(camp, "Missing camp");
         Objects.requireNonNull(camp.getNavigationPoint(), "Missing destination");
 
-        NavigationPoint startNavPoint = whereIam();
-        Objects.requireNonNull(startNavPoint, "Failed to identify starting point");
-
-        route(startNavPoint, camp.getNavigationPoint());
+        NavigationPoint currentNavPoint = whereIam();
+        Objects.requireNonNull(currentNavPoint, "Failed to identify starting point");
+        if (!expectedStartNavPoint.equals(currentNavPoint)) {
+            throw new IllegalStateException("Required starting navigation point not given. expectedStartNavPoint:" +
+                    expectedStartNavPoint + ", currentNavPoint: " + currentNavPoint);
+        }
+        route(currentNavPoint, camp.getNavigationPoint());
     }
 
-    private NavigationPoint whereIam() {
+    NavigationPoint whereIam() {
         List<NavigationPoint> navPoints = getNavigationPoints();
         Match match = null;
         for (NavigationPoint navPoint : navPoints) {
@@ -250,13 +251,9 @@ public abstract class Adventure {
         throw new IllegalStateException("The current position is unknown.");
     }
 
-    public abstract void route(NavigationPoint startingPoint, NavigationPoint destinationPoint);
-
-    public abstract List<NavigationPoint> getNavigationPoints();
-
-    void moveGeneral(GeneralType general, NavigationPoint navPoint, Location moveOffset) {
+    void moveGeneral(GeneralType general, String generalName, NavigationPoint navPoint, Location moveOffset) {
         gotoPosOneAndZoomOut();
-        if (openGeneralMenu(general)) {
+        if (openGeneralMenu(general, generalName)) {
             islandCmds.sleepX(5);
             // unsetAllUnits();
             if (generalMenu.clickMoveBtn()) {
@@ -282,6 +279,39 @@ public abstract class Adventure {
         } else {
             log.severe("Open menu failed");
         }
+    }
+
+    public void gotoPosOneAndZoomOut() {
+        islandCmds.type("0");
+        zoomOut();
+    }
+
+    public boolean openGeneralMenu(GeneralType general, String generalName) {
+        boolean rv = false;
+        if (!starMenu.openStarMenu(generalName)) {
+            return rv;
+        }
+        Match match = islandCmds.find(general.getPattern(), starMenu.getMenuRegion());
+        if (match != null) {
+            islandCmds.sleep();
+            if (match.click() == 1) {
+                rv = true;
+            } else {
+                log.severe("Click was not successfull");
+            }
+        } else {
+            log.severe("General not found");
+        }
+        return rv;
+    }
+
+    public void zoomOut() {
+        islandCmds.type("-");
+        //        islandCmds.sleep();
+        //        islandCmds.stepType("-");
+        //        islandCmds.sleep();
+        //        islandCmds.stepType("-");
+        //        islandCmds.sleep();
     }
 
     private boolean unsetAllUnits() {

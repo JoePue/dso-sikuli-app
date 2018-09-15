@@ -51,33 +51,11 @@ public class StarMenu extends DsoMenu {
     }
 
     public boolean openStarMenu(Optional<StarMenuFilter> menuFilter) {
-        log.info("openStarMenu()" + (menuFilter == null ? "" : "menuFilter: " + menuFilter));
-        boolean rv = true;
-        if (!isStarMenuOpen()) {
-            if (islandCmds.clickStarButton()) {
-                waitUntilExists(this::isStarMenuOpen);
-            } else {
-                log.severe("Required click failed");
-            }
+        String str = null;
+        if (menuFilter.isPresent()) {
+            str = menuFilter.get().filterString;
         }
-        if (isStarMenuOpen()) {
-            if (menuFilter.isPresent()) {
-                if (super.clickIfExists(StarMenuButtons.ZOOM_ICON)) {
-                    islandCmds.sleep();
-                    islandCmds.type("a", Key.CTRL);
-                    islandCmds.sleep();
-                    islandCmds.paste(menuFilter.get().filterString);
-                } else {
-                    log.severe("filter could not set");
-                    rv = false;
-                }
-            }
-        } else {
-            log.severe("Required 'open star menu' is missing");
-            rv = false;
-        }
-        islandCmds.parkMouse();
-        return rv;
+        return this.openStarMenu(str);
     }
 
     public <PSI> boolean launchExplorer(Match match, Region searchRegion) {
@@ -96,6 +74,39 @@ public class StarMenu extends DsoMenu {
             return false;
         }
         return true;
+    }
+
+    public boolean openStarMenu(String menuFilter) {
+        log.info("openStarMenu()" + (menuFilter == null ? "" : "menuFilter: " + menuFilter));
+        boolean rv = true;
+        if (!isStarMenuOpen()) {
+            if (islandCmds.clickStarButton()) {
+                waitUntilExists(this::isStarMenuOpen);
+            } else {
+                log.severe("Required click failed");
+            }
+        }
+        if (isStarMenuOpen()) {
+            // Zur Sicherheit immer das Stern-Tab anklicken
+            super.clickIfExists(StarMenuButtons.StarMenuStarTab);
+
+            if (menuFilter != null) {
+                if (super.clickIfExists(StarMenuButtons.ZOOM_ICON)) {
+                    islandCmds.sleep();
+                    islandCmds.type("a", Key.CTRL);
+                    islandCmds.sleep();
+                    islandCmds.paste(menuFilter);
+                } else {
+                    log.severe("filter could not set");
+                    rv = false;
+                }
+            }
+        } else {
+            log.severe("Required 'open star menu' is missing");
+            rv = false;
+        }
+        islandCmds.parkMouse();
+        return rv;
     }
 
     public boolean isStarMenuOpen() {

@@ -47,7 +47,7 @@ public class GeneralMenu extends DsoMenu {
     protected boolean unsetAllUnits() {
         boolean rv = clickIfExists(GeneralMenuButton.ReleaseUnits.pattern);
         if (rv) {
-            islandCmds.sleepX(5);
+            islandCmds.sleepX(2);
         }
         return rv;
     }

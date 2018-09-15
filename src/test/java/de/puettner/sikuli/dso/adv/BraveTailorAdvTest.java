@@ -15,6 +15,12 @@ public class BraveTailorAdvTest extends MenuTest {
         sikuliCmd.focusBrowser();
     }
 
+    @Test
+    public void play() {
+        adventure.saveBraveTailorInitState();
+        adventure.play();
+    }
+
 
     @Test
     public void saveState() {
@@ -32,14 +38,13 @@ public class BraveTailorAdvTest extends MenuTest {
     }
 
     @Test
-    public void play() {
-        adventure.saveBraveTailorInitState();
-        adventure.play();
+    public void hoverRegionCenter() {
+        adventure.hoverRegionCenter();
     }
 
     @Test
-    public void hoverRegionCenter() {
-        adventure.hoverRegionCenter();
+    public void whereIam() {
+        adventure.whereIam();
     }
 
 }

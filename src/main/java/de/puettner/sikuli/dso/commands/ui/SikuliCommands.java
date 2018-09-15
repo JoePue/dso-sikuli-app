@@ -193,13 +193,14 @@ public class SikuliCommands {
     }
 
     public void dragDrop(int xOffset, int yOffset) {
+        // Das drag-n-drop muss in umgekehrter Richtung erfolgen.
         yOffset = yOffset * -1;
         xOffset = xOffset * -1;
         Location sourceLocation = LocationMath.calculateSourceLocation(xOffset, yOffset, appRegion);
         Location targetLocation = LocationMath.calculateTargetLocation(xOffset, yOffset, sourceLocation);
         try {
-            appRegion.hover(sourceLocation);
-            appRegion.hover(targetLocation);
+            // appRegion.hover(sourceLocation);
+            // appRegion.hover(targetLocation);
             appRegion.dragDrop(sourceLocation, targetLocation);
         } catch (FindFailed e) {
             log.log(Level.SEVERE, e.getMessage(), e);

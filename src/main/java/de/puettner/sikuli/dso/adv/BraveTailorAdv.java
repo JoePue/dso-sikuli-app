@@ -37,15 +37,11 @@ public class BraveTailorAdv extends Adventure {
     }
 
     @Override
-    protected void buildNavigationPoints() {
+    protected void fillNavigationPointsList() {
+        log.info("fillNavigationPointsList()");
         for (NavigationPoint np : BraveTailorNavPoints.values()) {
             navPoints.add(np);
         }
-    }
-
-    @Override
-    protected File getFilename() {
-        return stateFile;
     }
 
     @Override
@@ -68,6 +64,11 @@ public class BraveTailorAdv extends Adventure {
     @Override
     public List<NavigationPoint> getNavigationPoints() {
         return navPoints;
+    }
+
+    @Override
+    protected File getFilename() {
+        return stateFile;
     }
 
     private void prepareStarMenu() {

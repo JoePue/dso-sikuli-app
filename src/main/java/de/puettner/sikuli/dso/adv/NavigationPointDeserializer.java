@@ -17,6 +17,7 @@ public class NavigationPointDeserializer extends StdDeserializer<NavigationPoint
 
     @Override
     public NavigationPoint deserialize(JsonParser p, DeserializationContext ctxt) throws IOException, JsonProcessingException {
+        // TODO JPU quick and dirty
         return BraveTailorNavPoints.valueOf(p.getText());
     }
 }
