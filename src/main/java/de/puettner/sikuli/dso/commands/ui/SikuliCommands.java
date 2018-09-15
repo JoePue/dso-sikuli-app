@@ -1,5 +1,6 @@
 package de.puettner.sikuli.dso.commands.ui;
 
+import de.puettner.sikuli.dso.LocationMath;
 import lombok.extern.java.Log;
 import org.sikuli.script.*;
 import org.sikuli.script.Image;
@@ -194,8 +195,8 @@ public class SikuliCommands {
     public void dragDrop(int xOffset, int yOffset) {
         yOffset = yOffset * -1;
         xOffset = xOffset * -1;
-        Location sourceLocation = calculateSourceLocation(xOffset, yOffset, appRegion);
-        Location targetLocation = calculateTargetLocation(xOffset, yOffset, sourceLocation);
+        Location sourceLocation = LocationMath.calculateSourceLocation(xOffset, yOffset, appRegion);
+        Location targetLocation = LocationMath.calculateTargetLocation(xOffset, yOffset, sourceLocation);
         try {
             appRegion.hover(sourceLocation);
             appRegion.hover(targetLocation);
@@ -203,23 +204,6 @@ public class SikuliCommands {
         } catch (FindFailed e) {
             log.log(Level.SEVERE, e.getMessage(), e);
         }
-    }
-
-    public static Location calculateSourceLocation(int xOffset, int yOffset, Region region) {
-        int xSource = region.w - dragDropBoundary, ySource = region.h - dragDropBoundary;
-        if (xOffset > 0) {
-            xSource = region.x + dragDropBoundary;
-        }
-        if (yOffset > 0) {
-            ySource = region.y + dragDropBoundary;
-        }
-        Location sourceLocation = new Location(xSource, ySource);
-        return sourceLocation;
-    }
-
-    public static Location calculateTargetLocation(int xOffset, int yOffset, Location sourceLocation) {
-        Location targetLocation = new Location(sourceLocation.x + xOffset, sourceLocation.y + yOffset);
-        return targetLocation;
     }
 
     @Deprecated
