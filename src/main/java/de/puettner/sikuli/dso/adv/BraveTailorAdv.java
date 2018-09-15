@@ -4,58 +4,103 @@ import de.puettner.sikuli.dso.DSOService;
 import de.puettner.sikuli.dso.commands.ui.IslandCommands;
 import de.puettner.sikuli.dso.commands.ui.StarMenu;
 import de.puettner.sikuli.dso.commands.ui.StarMenuFilter;
-import org.sikuli.script.Location;
+import lombok.extern.java.Log;
 
+import java.awt.*;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+
+import static de.puettner.sikuli.dso.adv.AdventureAttackStep.buildAttackStep;
+import static de.puettner.sikuli.dso.adv.AdventureStepState.DONE;
+import static de.puettner.sikuli.dso.adv.AdventureStepState.OPEN;
+import static de.puettner.sikuli.dso.adv.AttackUnit.*;
 import static de.puettner.sikuli.dso.adv.BraveTailorAttackCamp.*;
+import static de.puettner.sikuli.dso.adv.BraveTailorNavPoints.NP_1;
+import static de.puettner.sikuli.dso.adv.BraveTailorNavPoints.NP_2;
+import static de.puettner.sikuli.dso.adv.GeneralType.*;
 
 /**
  * brave tailor = tapferes Schneiderlein
  */
+@Log
 public class BraveTailorAdv extends Adventure {
 
+    private final File stateFile = new File("dso-sikuli-brave-tailor-adventure.json");
+
+    /**
+     * C'tor
+     */
     protected BraveTailorAdv(IslandCommands islandCmds, StarMenu starMenu, DSOService dsoService) {
         super(islandCmds, starMenu, dsoService);
     }
 
-    public void play() {
-        prepareStarMenu();
-        // Sektor 1
-        attack(CAMP_1, GeneralType.Vargus, Rek(120), Kan(75));
-        islandCmds.sleepX(10);
-        attack(CAMP_2, GeneralType.Nusala, Rek(65), Cav(100));
-        islandCmds.sleepX(10);
-        attack(CAMP_3, GeneralType.Generalmajor, Rek(200), Kan(85));
+    @Override
+    protected void buildNavigationPoints() {
+        for (NavigationPoint np : BraveTailorNavPoints.values()) {
+            navPoints.add(np);
+        }
+    }
 
-        // *** Verfügbarkeit abwarten ***
+    @Override
+    protected File getFilename() {
+        return stateFile;
+    }
 
-        islandCmds.sleepX(10);
-        attackCamp4();
-        islandCmds.sleepX(30);
-        attackCamp5();
-        // islandCmds.sleepX(30);
-        attackCamp6();
+    @Override
+    public List<NavigationPoint> getNavigationPoints() {
+        return navPoints;
+    }
 
-        moveToSector2();
+    @Override
+    public void route(NavigationPoint startingPoint, NavigationPoint destinationPoint) {
+        log.info("route()");
+        Objects.requireNonNull(startingPoint, "startingPoint is null");
+        Objects.requireNonNull(destinationPoint, "destinationPoint is null");
+
+        centerNavigationPoint(startingPoint);
+        if (startingPoint.getId().equals(2) && destinationPoint.getId().equals(3) || destinationPoint.getId().equals(4)) {
+            islandCmds.dragDrop(new Dimension(0, -700));
+            centerNavigationPoint(destinationPoint);
+            islandCmds.dragDrop(new Dimension(-200, 200));
+        } else {
+            throw new IllegalStateException("Navigation from " + startingPoint.getId() + " to " + destinationPoint.getId() + " is not " +
+                    "possible");
+        }
     }
 
     private void prepareStarMenu() {
         super.prepareStarMenu(StarMenuFilter.BraveTailor);
     }
 
-    protected void attackCamp4() {attack(CAMP_4, GeneralType.Vargus, Rek(140), Sol(30), Kan(25));}
+    public void saveBraveTailorInitState() {
+        List<AdventureAttackStep> adventureSteps = new ArrayList<>();
+        // sektor 1
+        adventureSteps.add(buildAttackStep(NP_1, CAMP_1, Vargus, null, 0, DONE, Rek(120), Kan(75)));
+        adventureSteps.add(buildAttackStep(NP_1, CAMP_2, Nusala, null, 10, DONE, Rek(65), Cav(100)));
+        adventureSteps.add(buildAttackStep(NP_1, CAMP_3, Generalmajor, null, 10, DONE, Rek(200), Kan(85)));
+        adventureSteps.add(buildAttackStep(NP_1, CAMP_4, Vargus, null, 10, DONE, Rek(140), Sol(30), Kan(25)));
 
-    protected void attackCamp5() {
-        attack(CAMP_5, GeneralType.MdK, Rek(1));
-        attack(CAMP_5, GeneralType.MdK, Rek(1));
-        attack(CAMP_5, GeneralType.MdK, Rek(1));
-        islandCmds.sleepX(30);
-        attack(CAMP_5, GeneralType.Mary, Bos(160), Kan(55));
-    }
+        adventureSteps.add(buildAttackStep(NP_1, CAMP_5, MdK, "MDK 1", 1, DONE, Rek(1)));
+        adventureSteps.add(buildAttackStep(NP_1, CAMP_5, MdK, "MDK 2", 1, DONE, Rek(1)));
+        adventureSteps.add(buildAttackStep(NP_1, CAMP_5, MdK, "MDK 3", 1, DONE, Rek(1)));
+        adventureSteps.add(buildAttackStep(NP_1, CAMP_5, Mary, null, 30, DONE, Bos(160), Kan(55)));
+        // Hauptlager Sektor 1
+        adventureSteps.add(buildAttackStep(NP_1, CAMP_6, Nusala, null, 30, DONE, Rek(145)));
+        adventureSteps.add(buildAttackStep(NP_1, CAMP_6, Generalmajor, "GM 2", 30, DONE, Rek(70), Sol(10), Kan(205)));
+        // *** move from sector 1 to 2 ***
+        // TODO Define moving steps
+        //adventureSteps.add(buildMoveStep(NP_1, NP_2, Generalmajor, "GM 1", 0));
+        // adventureSteps.add(buildMoveStep(NP, NP, , "", 0));
+        // *** sector 2 ***
+        adventureSteps.add(buildAttackStep(NP_2, CAMP_7, Generalmajor, "GM 1", 30, DONE, Rek(160), Bos(60), Kan(65)));
+        adventureSteps.add(buildAttackStep(NP_2, CAMP_8, Generalmajor, "GM 1", 0, OPEN, Rek(135), Cav(30), Kan(120)));
 
-    protected void attackCamp6() {
-        attack(CAMP_6, GeneralType.Nusala, Rek(145));
-        islandCmds.sleepX(30);
-        attack(CAMP_6, GeneralType.Generalmajor, Rek(70), Sol(10), Kan(205));
+        super.adventureSteps.clear();
+        adventureSteps.forEach(item -> super.adventureSteps.add(item));
+        super.saveState();
+        super.restoreState();
     }
 
     void moveToSector2() {
@@ -64,26 +109,7 @@ public class BraveTailorAdv extends Adventure {
         // moveGeneral(GeneralType.Anselm, MOVE_POINT_1, new Location(-15, 241));
         //        moveGeneral(GeneralType.MdK, MOVE_POINT_1, new Location(-10, 178));
         //        moveGeneral(GeneralType.MdK, MOVE_POINT_1, new Location(182, 158));
-        moveGeneral(GeneralType.Mary, MOVE_POINT_1, new Location(144, 129));
+        //moveGeneral(GeneralType.Mary, MOVE_POINT_1.getNavigationPoint(), new Location(144, 129));
     }
 
-    protected void attackCamp7ofSector2() {
-        attack(CAMP_7, GeneralType.Generalmajor, Rek(160), Bos(60), Kan(65));
-    }
-
-    protected void attackCamp8ofSector2() {
-        attack(CAMP_8, GeneralType.Generalmajor, Rek(135), Cav(30), Kan(120));
-    }
-
-    protected void attackCamp9ofSector2() {
-
-    }
-
-    protected void attackCamp10ofSector2() {
-
-    }
-
-    protected void attackCamp11ofSector2() {
-
-    }
 }

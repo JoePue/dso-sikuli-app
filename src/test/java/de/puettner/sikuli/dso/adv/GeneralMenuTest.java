@@ -8,7 +8,7 @@ import org.sikuli.script.FindFailed;
 import org.sikuli.script.Location;
 import org.sikuli.script.Match;
 
-import static de.puettner.sikuli.dso.adv.Adventure.*;
+import static de.puettner.sikuli.dso.adv.AttackUnit.*;
 
 @Log
 public class GeneralMenuTest extends MenuTest {

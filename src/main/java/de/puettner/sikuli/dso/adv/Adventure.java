@@ -1,5 +1,8 @@
 package de.puettner.sikuli.dso.adv;
 
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.module.SimpleModule;
 import de.puettner.sikuli.dso.DSOService;
 import de.puettner.sikuli.dso.commands.ui.IslandCommands;
 import de.puettner.sikuli.dso.commands.ui.MenuBuilder;
@@ -10,14 +13,21 @@ import org.sikuli.script.Location;
 import org.sikuli.script.Match;
 import org.sikuli.script.Region;
 
+import java.awt.*;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
-import static de.puettner.sikuli.dso.adv.AttackUnitType.*;
-
 @Log
-public class Adventure {
+public abstract class Adventure {
 
+    private static final ObjectMapper objectMapper = new ObjectMapper();
     protected final Region region;
+    protected final List<NavigationPoint> navPoints = new ArrayList<>();
+    protected final List<AdventureAttackStep> adventureSteps;
     private final StarMenu starMenu;
     private final DSOService dsoService;
     protected IslandCommands islandCmds;
@@ -29,53 +39,63 @@ public class Adventure {
         this.generalMenu = MenuBuilder.build().buildGeneralMenu();
         this.region = islandCmds.getIslandRegion();
         this.dsoService = dsoService;
+        this.adventureSteps = restoreState();
+        SimpleModule module = new SimpleModule();
+        module.addDeserializer(AttackCamp.class, new AttackCampDeserializer());
+        objectMapper.registerModule(module);
+        objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
     }
 
-    public static AttackUnit Rek(int i) {
-        return AttackUnit.builder().type(Rek).quantity(i).build();
+    public List<AdventureAttackStep> restoreState() {
+        List<AdventureAttackStep> list = new ArrayList<>();
+        try {
+            //            objectMapper.enableDefaultTyping();
+            //            TypeReference typeRef = new TypeReference<ArrayList<AdventureAttackStep>>() {};
+            AdventureState state = objectMapper.readValue(getFilename(), AdventureState.class);
+            //            list = state.getAdventureSteps();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+            //            e.printStackTrace();
+        }
+        //        list.forEach(item -> log.info(item.toString()));
+        return list;
     }
 
-    public static AttackUnit Bos(int i) {
-        return AttackUnit.builder().type(Bos).quantity(i).build();
+    protected abstract File getFilename();
+
+    protected abstract void buildNavigationPoints();
+
+    public void play() {
+        this.restoreState();
+        try {
+            for (AdventureAttackStep step : this.adventureSteps) {
+                System.out.println(step.getState());
+            }
+        } finally {
+            saveState();
+        }
     }
 
-    public static AttackUnit Cav(int i) {
-        return AttackUnit.builder().type(Cav).quantity(i).build();
+    public void saveState() {
+        try {
+            AdventureState state = new AdventureState();
+            state.setAdventureSteps(this.adventureSteps);
+            objectMapper.writeValue(getFilename(), state);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
-    public static AttackUnit Lnb(int i) {
-        return AttackUnit.builder().type(Lnb).quantity(i).build();
-    }
-
-    public static AttackUnit Sol(int i) {
-        return AttackUnit.builder().type(Sol).quantity(i).build();
-    }
-
-    public static AttackUnit Arm(int i) {
-        return AttackUnit.builder().type(Arm).quantity(i).build();
-    }
-
-    public static AttackUnit Kan(int i) {
-        return AttackUnit.builder().type(Kan).quantity(i).build();
-    }
-
-    protected boolean attack(AttackCamp camp, GeneralType general, AttackUnit... units) {
+    /**
+     * @return
+     */
+    protected boolean prepareAttack(AttackCamp camp, GeneralType general, AttackUnit... units) {
+        log.info("prepareAttack() " + camp);
         boolean rv = false;
         gotoPosOneAndZoomOut();
-        if (campExists(camp)) {
-            log.info("Camp found: " + camp);
-            if (openGeneralMenu(general)) {
-                setupGeneral(units);
-                if (attack(camp)) {
-
-                }
-                if (islandCmds.clickBuildCancelButton()) {
-                    log.severe("Cancel-Button must not exists.");
-                    return false;
-                }
-            }
-        } else {
-            log.info("camp not found. camp: " + camp);
+        if (openGeneralMenu(general)) {
+            rv = setupGeneral(units);
+            // TODO JPU Implement a method to check the setup
         }
         return rv;
     }
@@ -83,18 +103,6 @@ public class Adventure {
     public void gotoPosOneAndZoomOut() {
         islandCmds.type("0");
         zoomOut();
-    }
-
-    private boolean campExists(AttackCamp camp) {
-        if (camp.getDragNDrop() != null) {
-            islandCmds.dragDrop(camp.getDragNDrop());
-        }
-        Match match = islandCmds.find(camp.getPattern(), region);
-        if (match == null) {
-            return false;
-        }
-        match.hover();
-        return true;
     }
 
     public boolean openGeneralMenu(GeneralType general) {
@@ -118,46 +126,116 @@ public class Adventure {
         return generalMenu.setupAttackUnits(units);
     }
 
+    public void zoomOut() {
+        islandCmds.type("-");
+        //        islandCmds.sleep();
+        //        islandCmds.stepType("-");
+        //        islandCmds.sleep();
+        //        islandCmds.stepType("-");
+        //        islandCmds.sleep();
+    }
+
+    private boolean campExists(AttackCamp camp) {
+        //        if (camp.getDragNDrop() != null) {
+        //            islandCmds.dragDrop(camp.getDragNDrop());
+        //        }
+        Match match = islandCmds.find(camp.getPattern(), region);
+        if (match == null) {
+            return false;
+        }
+        match.hover();
+        return true;
+    }
+
     /**
      * This method assumes a open general menu.
      */
-    protected boolean attack(AttackCamp camp) {
+    protected boolean clickAttackButton() {
         boolean rv = false;
         if (generalMenu.clickAttackBtn()) {
-            if (camp.getDragNDrop() != null) {
-                this.gotoPosOneAndZoomOut();
-                islandCmds.dragDrop(camp.getDragNDrop());
-                islandCmds.sleepX(5);
-            }
-            Match match = islandCmds.find(camp.getPattern(), region);
-            if (match != null) {
-                match.hover();
-                islandCmds.sleepX(5);
-                match.doubleClick(); // Angriff starten
-                islandCmds.sleepX(2);
-            } else {
-                log.severe("Camp not found: " + camp);
-            }
             rv = true;
         } else {
             log.severe("Missing Attack Btn");
         }
-
-        return false;
+        return rv;
     }
 
-    public void zoomOut() {
-        islandCmds.type("0");
-        islandCmds.sleep();
-        //        islandCmds.type("-");
-        //        islandCmds.sleep();
-        //        islandCmds.type("-");
-        //        islandCmds.sleep();
-        //        islandCmds.type("-");
-        //        islandCmds.sleep();
+    protected boolean centerNavigationPoint(NavigationPoint navPoint) {
+        boolean rv = false;
+        Match match = islandCmds.find(navPoint.getPattern(), region);
+        if (match != null) {
+            Location navPointLocation = new Location(match.x, match.y);
+            navPointLocation.x = match.x + (match.w / 2);
+            navPointLocation.y = match.y + (match.h / 2);
+            // System.out.println("navPointLocation: " + navPointLocation);
+            Location regionCenterLocation = regionCenterLocation();
+            // System.out.println("match: x=" + match.x + ", y=" + match.y + ", w=" + match.w + ", h=" + match.h);
+            Dimension dimension = new Dimension(navPointLocation.x - regionCenterLocation.x, navPointLocation.y - regionCenterLocation.y);
+            islandCmds.dragDrop(dimension);
+            rv = true;
+        } else {
+            throw new IllegalStateException("Navigation point is missing");
+        }
+        return rv;
     }
 
-    void moveGeneral(GeneralType general, BraveTailorAttackCamp movePoint, Location moveOffset) {
+    protected Location regionCenterLocation() {
+        return new Location(region.x + (region.w / 2), region.y + (region.h / 2));
+    }
+
+    public void hoverRegionCenter() {
+        islandCmds.hover(regionCenterLocation());
+    }
+
+    /**
+     * This method assumes a General in Attack-Mode.
+     */
+    protected boolean clickAttackCamp(AttackCamp camp) {
+        boolean rv = false;
+        islandCmds.parkMouse();
+        Match match = islandCmds.find(camp.getPattern(), region);
+        if (match != null) {
+            match.hover();
+            islandCmds.sleepX(5);
+            match.doubleClick(); // Angriff starten
+            islandCmds.sleepX(2);
+            rv = true;
+        } else {
+            log.severe("Camp not found: " + camp);
+        }
+        return rv;
+    }
+
+    /**
+     * This method assumes a General in Attack-Mode.
+     */
+    protected void moveToCamp(AttackCamp camp) {
+        Objects.requireNonNull(camp, "Missing camp");
+        Objects.requireNonNull(camp.getNavigationPoint(), "Missing destination");
+
+        NavigationPoint startNavPoint = whereIam();
+        Objects.requireNonNull(startNavPoint, "Failed to identify starting point");
+
+        route(startNavPoint, camp.getNavigationPoint());
+    }
+
+    private NavigationPoint whereIam() {
+        List<NavigationPoint> navPoints = getNavigationPoints();
+        Match match = null;
+        for (NavigationPoint navPoint : navPoints) {
+            match = islandCmds.find(navPoint.getPattern(), region);
+            if (match != null) {
+                return navPoint;
+            }
+        }
+        throw new IllegalStateException("The current position is unknown.");
+    }
+
+    public abstract void route(NavigationPoint startingPoint, NavigationPoint destinationPoint);
+
+    public abstract List<NavigationPoint> getNavigationPoints();
+
+    void moveGeneral(GeneralType general, NavigationPoint navPoint, Location moveOffset) {
         gotoPosOneAndZoomOut();
         if (openGeneralMenu(general)) {
             islandCmds.sleepX(5);
@@ -165,14 +243,14 @@ public class Adventure {
             if (generalMenu.clickMoveBtn()) {
                 gotoPosOneAndZoomOut();
 
-                islandCmds.dragDrop(movePoint.getDragNDrop());
+                // islandCmds.dragDrop(navPoint.getDragNDrop());
                 // Find ref point and place Gen
-                Match match = islandCmds.find(movePoint.getPattern(), region);
+                Match match = islandCmds.find(navPoint.getPattern(), region);
                 if (match == null) {
                     log.warning("Move point not found");
                     islandCmds.sleepX(10);
                 }
-                match = islandCmds.find(movePoint.getPattern(), region);
+                match = islandCmds.find(navPoint.getPattern(), region);
                 if (match == null) {
                     throw new IllegalStateException("Move point not found");
                 }

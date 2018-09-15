@@ -216,7 +216,7 @@ public class DSOService {
             } else if (GeologicType.Conscientious.equals(launch.getType())) {
                 starMenuButton = StarMenuButtons.ConscientiousGeologic;
             } else {
-                throw new IllegalArgumentException("Unknown type: " + launch);
+                throw new IllegalArgumentException("Unknown stepType: " + launch);
             }
             launchCount += starMenu.launchAllGeologicsByImage(starMenuButton, launch.getMaterial(), launch.getLaunchLimit());
         }

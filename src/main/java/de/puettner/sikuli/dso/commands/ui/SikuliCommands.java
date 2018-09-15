@@ -59,7 +59,7 @@ public class SikuliCommands {
     }
 
     /**
-     * Using type() with Special Characters or non QWERTY US keyboards https://answers.launchpad.net/sikuli/+faq/933
+     * Using stepType() with Special Characters or non QWERTY US keyboards https://answers.launchpad.net/sikuli/+faq/933
      */
     public int type(String text, String modifiers) {
         String str = text.toString().replace(':', ' ').replace('|', ' ');

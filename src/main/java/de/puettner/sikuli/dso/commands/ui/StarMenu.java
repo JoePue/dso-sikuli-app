@@ -154,7 +154,7 @@ public class StarMenu extends DsoMenu {
             } else if (MaterialType.KO.equals(material)) {
                 islandCmds.clickIfExists(pattern("Material-Cole-Button.png").similar(0.80f), menuRegion);
             } else {
-                throw new IllegalArgumentException("Unsupported type: " + material);
+                throw new IllegalArgumentException("Unsupported stepType: " + material);
             }
             islandCmds.sleep();
             return islandCmds.clickSmallOkButton();
