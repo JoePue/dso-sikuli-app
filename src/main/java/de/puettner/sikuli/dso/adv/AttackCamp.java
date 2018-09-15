@@ -10,6 +10,4 @@ public interface AttackCamp extends MenuButton {
     Pattern getPattern();
 
     NavigationPoint getNavigationPoint();
-
-    AttackSequence getAttackSequence();
 }

@@ -48,8 +48,4 @@ public enum BraveTailorAttackCamp implements AttackCamp {
         return navPoint;
     }
 
-    @Override
-    public AttackSequence getAttackSequence() {
-        return null;
-    }
 }
