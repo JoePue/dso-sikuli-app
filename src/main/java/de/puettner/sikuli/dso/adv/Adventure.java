@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 import de.puettner.sikuli.dso.DSOService;
+import de.puettner.sikuli.dso.LocationMath;
 import de.puettner.sikuli.dso.commands.ui.IslandCommands;
 import de.puettner.sikuli.dso.commands.ui.MenuBuilder;
 import de.puettner.sikuli.dso.commands.ui.StarMenu;
@@ -68,6 +69,8 @@ public abstract class Adventure {
                         throw new IllegalStateException("Unsupported type: " + step.getStepType());
                     }
                 }
+            }
+            for (AdventureAttackStep step : this.adventureSteps) {
                 if (AdventureStepState.OPEN.equals(step.getState())) {
                     if (StepType.ATTACK.equals(step.getStepType())) {
                         log.info(step.toString());
@@ -86,6 +89,7 @@ public abstract class Adventure {
     }
 
     private boolean attack(AdventureAttackStep step) {
+        log.info("attack()");
         boolean rv = false;
         rv = prepareAttack(step.getCamp(), step.getGeneral(), step.getGeneralName(), step.getUnits());
         if (rv) {
@@ -142,17 +146,19 @@ public abstract class Adventure {
         boolean rv = false;
         gotoPosOneAndZoomOut();
         if (openGeneralMenu(general, generalName)) {
-            rv = setupGeneral(units);
+            // rv = setupGeneral(units);
             // TODO JPU Implement a method to check the setup
         }
         return rv;
     }
 
     private boolean setupGeneral(AttackUnit[] units) {
+        log.info("setupGeneral");
         return generalMenu.setupAttackUnits(units);
     }
 
     private boolean campExists(AttackCamp camp) {
+        log.info("campExists()");
         //        if (camp.getDragNDrop() != null) {
         //            islandCmds.dragDrop(camp.getDragNDrop());
         //        }
@@ -168,6 +174,7 @@ public abstract class Adventure {
      * This method assumes a open general menu.
      */
     protected boolean clickAttackButton() {
+        log.info("clickAttackButton()");
         boolean rv = false;
         if (generalMenu.clickAttackBtn()) {
             rv = true;
@@ -178,13 +185,14 @@ public abstract class Adventure {
     }
 
     protected boolean centerNavigationPoint(NavigationPoint navPoint) {
+        log.info("centerNavigationPoint()");
         boolean rv = false;
         Match match = islandCmds.find(navPoint.getPattern(), region);
         if (match != null) {
             Location navPointLocation = new Location(match.x, match.y);
             navPointLocation.x = match.x + (match.w / 2);
             navPointLocation.y = match.y + (match.h / 2);
-            Location regionCenterLocation = regionCenterLocation();
+            Location regionCenterLocation = getMidpoint();
             // System.out.println("match: x=" + match.x + ", y=" + match.y + ", w=" + match.w + ", h=" + match.h);
             Dimension dimension = new Dimension(navPointLocation.x - regionCenterLocation.x, navPointLocation.y - regionCenterLocation.y);
             islandCmds.dragDrop(dimension);
@@ -195,12 +203,12 @@ public abstract class Adventure {
         return rv;
     }
 
-    protected Location regionCenterLocation() {
-        return new Location(region.x + (region.w / 2), region.y + (region.h / 2));
+    protected Location getMidpoint() {
+        return LocationMath.getMidpointLocation(region);
     }
 
     public void hoverRegionCenter() {
-        islandCmds.hover(regionCenterLocation());
+        islandCmds.hover(getMidpoint());
     }
 
     /**

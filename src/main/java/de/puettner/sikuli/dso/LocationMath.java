@@ -24,4 +24,8 @@ public abstract class LocationMath {
         Location targetLocation = new Location(sourceLocation.x + xOffset, sourceLocation.y + yOffset);
         return targetLocation;
     }
+
+    public static Location getMidpointLocation(Region region) {
+        return new Location(region.x + (region.w / 2), region.y + (region.h / 2));
+    }
 }
