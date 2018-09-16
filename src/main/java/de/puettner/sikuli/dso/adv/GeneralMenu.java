@@ -13,6 +13,7 @@ public class GeneralMenu extends DsoMenu {
     }
 
     public boolean setupAttackUnits(AttackUnit[] units) {
+        log.info("setupAttackUnits()");
         boolean rv = true;
         islandCmds.sleepX(5);
         Match match = islandCmds.find(GeneralMenuButton.RookieIcon.pattern, menuRegion);
@@ -45,6 +46,7 @@ public class GeneralMenu extends DsoMenu {
     }
 
     protected boolean unsetAllUnits() {
+        log.info("unsetAllUnits");
         boolean rv = clickIfExists(GeneralMenuButton.ReleaseUnits.pattern);
         if (rv) {
             islandCmds.sleepX(2);
@@ -53,10 +55,12 @@ public class GeneralMenu extends DsoMenu {
     }
 
     public boolean clickAttackBtn() {
+        log.info("clickAttackBtn");
         return clickIfExists(GeneralMenuButton.Attack.pattern);
     }
 
     public boolean clickMoveBtn() {
+        log.info("clickMoveBtn");
         boolean rv = clickIfExists(GeneralMenuButton.Move.pattern);
         if (rv) {
             islandCmds.sleepX(5);
