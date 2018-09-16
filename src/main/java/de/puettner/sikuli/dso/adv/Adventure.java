@@ -22,6 +22,8 @@ import java.util.List;
 import java.util.Objects;
 import java.util.logging.Level;
 
+import static de.puettner.sikuli.dso.commands.ui.SikuliCommands.pattern;
+
 @Log
 public abstract class Adventure {
 
@@ -65,34 +67,41 @@ public abstract class Adventure {
             AdventureStep step;
             for (int i = 0; i < this.adventureSteps.size(); ++i) {
                 step = this.adventureSteps.get(i);
-                if (AdventureStepState.PENDING.equals(step.getState())) {
-                    if (StepType.ATTACK.equals(step.getStepType())) {
+                // *** MOVE ***
+                if (StepType.MOVE.equals(step.getStepType())) {
+                    Objects.requireNonNull(step.getTargetNavPoint());
+                    // Objects.requireNonNull(step.getTargetOffset());
+                    if (AdventureStepState.OPEN.equals(step.getState())) {
+                        step.setTargetOffset(new Dimension(1, 1));
+                        moveGeneral(step);
+                        // saveState(step, AdventureStepState.DONE);
+                    }
+                }
+                // *** ATTACK ***
+                if (StepType.ATTACK.equals(step.getStepType())) {
+                    // prepareAttack
+                    if (AdventureStepState.PENDING.equals(step.getState())) {
                         if (waitUntilGeneralIsAvailable(step.getGeneral(), step.getGeneralName())) {
                             saveState(step, AdventureStepState.DONE);
                         } else {
                             throw new IllegalStateException("Missing available general " + step.getGeneral() + ", " + step.getGeneralName
                                     ());
                         }
-                    } else {
-                        throw new IllegalStateException("Unsupported type: " + step.getStepType());
                     }
-                }
-            }
-            for (int i = 0; i < this.adventureSteps.size(); ++i) {
-                step = this.adventureSteps.get(i);
-                if (StepType.ATTACK.equals(step.getStepType())) {
-                    // prepareAttack
                     if (AdventureStepState.OPEN.equals(step.getState())) {
-                        this.prepareAttack(step);
-                        saveState(step, AdventureStepState.PREPARED);
-                        islandCmds.typeESC();
+                        if (this.prepareAttack(step)) {
+                            saveState(step, AdventureStepState.PREPARED);
+                            islandCmds.typeESC();
+                        } else {
+                            throw new IllegalStateException("Attack preparation failed");
+                        }
                     }
                     if (AdventureStepState.PREPARED.equals(step.getState())) {
                         log.info(step.toString());
                         int errorCode = attack(step);
 
                         if (errorCode == 0) {
-                            saveState(step, AdventureStepState.PENDING);
+                            saveState(step, AdventureStepState.DONE);
                             markPreviousStepsAsDone(step, i);
                         } else if (errorCode == 5) {
                             // Camp nicht gefunden, so gilt es als schon besiegt.
@@ -344,28 +353,36 @@ public abstract class Adventure {
         throw new IllegalStateException("The current position is unknown.");
     }
 
-    void moveGeneral(GeneralType general, String generalName, NavigationPoint navPoint, Location moveOffset) {
-        gotoPosOneAndZoomOut();
+    void moveGeneral(AdventureStep step) {
+        GeneralType general = step.getGeneral();
+        String generalName = step.getGeneralName();
+        NavigationPoint navPoint = step.getTargetNavPoint();
         if (openGeneralMenu(general, generalName)) {
             islandCmds.sleepX(5);
             // unsetAllUnits();
             if (generalMenu.clickMoveBtn()) {
-                gotoPosOneAndZoomOut();
-
-                // islandCmds.dragDrop(navPoint.getDragNDrop());
-                // Find ref point and place Gen
-                Match match = islandCmds.find(navPoint.getPattern(), region);
-                if (match == null) {
-                    log.warning("Move point not found");
-                    islandCmds.sleepX(10);
+                route(step.getStartNavPoint(), step.getTargetNavPoint(), null);
+                Match match = islandCmds.find(pattern("Move-Overlay-1.png").similar(0.70), region);
+                if (match != null) {
+                    match.doubleClick();
+                } else {
+                    throw new IllegalStateException("No free place");
                 }
-                match = islandCmds.find(navPoint.getPattern(), region);
-                if (match == null) {
-                    throw new IllegalStateException("Move point not found");
-                }
-                Location moveLocation = new Location(match.x + (match.w / 2) + moveOffset.x, match.y + (match.h / 2) + moveOffset.y);
-                islandCmds.hover(moveLocation);
-                islandCmds.click(moveLocation);
+                //                // islandCmds.dragDrop(navPoint.getDragNDrop());
+                //                // Find ref point and place Gen
+                //                Match match = islandCmds.find(navPoint.getPattern(), region);
+                //                if (match == null) {
+                //                    log.warning("Move point not found");
+                //                    islandCmds.sleepX(10);
+                //                }
+                //                match = islandCmds.find(navPoint.getPattern(), region);
+                //                if (match == null) {
+                //                    throw new IllegalStateException("Move point not found");
+                //                }
+                //                Location moveLocation = new Location(match.x + (match.w / 2) + moveOffset.x, match.y + (match.h / 2) +
+                // moveOffset.y);
+                //                islandCmds.hover(moveLocation);
+                //                islandCmds.click(moveLocation);
             } else {
                 log.severe("Failed to click moveGeneral button");
             }

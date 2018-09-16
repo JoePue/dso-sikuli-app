@@ -2,12 +2,15 @@ package de.puettner.sikuli.dso.adv;
 
 import lombok.Data;
 
+import java.awt.*;
 import java.util.Objects;
 
 @Data
 //@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS, include = JsonTypeInfo.As.PROPERTY, property = "className")
 public class AdventureStep {
 
+    /** Diese Property ist nur bei 'stepType == MOVE' gesetzt. */
+    Dimension targetOffset = new Dimension(1, 1);
     private StepType stepType;
     private AdventureStepState state;
     /** Delay before step execution attack */
@@ -23,7 +26,7 @@ public class AdventureStep {
     private NavigationPoint targetNavPoint;
 
     protected AdventureStep() {
-
+        targetOffset = new Dimension(1, 1);
     }
 
     public AdventureStep(StepType stepType, NavigationPoint startNavPoint, NavigationPoint targetNavPoint, AttackCamp camp,

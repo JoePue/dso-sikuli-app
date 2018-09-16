@@ -1,5 +1,5 @@
 {
-  "adventu reSteps": [
+  "adventureSteps": [
     {
       "stepType": "ATTACK",
       "state": "DONE",
@@ -450,7 +450,7 @@
     },
     {
       "stepType": "MOVE",
-      "state": "OPEN",
+      "state": "DONE",
       "delay": 1,
       "camp": null,
       "generalName": "GM 2",
@@ -458,7 +458,70 @@
       "units": [],
       "startNavPoint": "NP_2",
       "targetNavPoint": "NP_3",
-      "targetOffset": null
+      "targetOffset": {
+        "width": 1.0,
+        "height": 1.0
+      }
+    },
+    {
+      "stepType": "MOVE",
+      "state": "OPEN",
+      "delay": 1,
+      "camp": null,
+      "generalName": "GM 1",
+      "general": "Generalmajor",
+      "units": [],
+      "startNavPoint": "NP_2",
+      "targetNavPoint": "NP_3",
+      "targetOffset": {
+        "width": 1.0,
+        "height": 1.0
+      }
+    },
+    {
+      "stepType": "MOVE",
+      "state": "OPEN",
+      "delay": 1,
+      "camp": null,
+      "generalName": "Vargus",
+      "general": "Vargus",
+      "units": [],
+      "startNavPoint": "NP_2",
+      "targetNavPoint": "NP_3",
+      "targetOffset": {
+        "width": 1.0,
+        "height": 1.0
+      }
+    },
+    {
+      "stepType": "MOVE",
+      "state": "OPEN",
+      "delay": 1,
+      "camp": null,
+      "generalName": "Anslem",
+      "general": "Anslem",
+      "units": [],
+      "startNavPoint": "NP_2",
+      "targetNavPoint": "NP_3",
+      "targetOffset": {
+        "width": 1.0,
+        "height": 1.0
+      }
+    },
+    {
+      "stepType": "MOVE",
+      "state": "OPEN",
+      "delay": 1,
+      "camp": null,
+      "generalName": "Mary",
+      "general": "Mary",
+      "units": [],
+      "startNavPoint": "NP_2",
+      "targetNavPoint": "NP_3",
+      "targetOffset": {
+        "width": 1.0,
+        "height": 1.0
+      }
     }
   ]
 }

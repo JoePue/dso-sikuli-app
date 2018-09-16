@@ -64,13 +64,6 @@ public class BraveTailorAdv extends Adventure {
         }
     }
 
-    private void navigate(NavigationPoint startingPoint, NavigationPoint targetPoint, Dimension dragDrop, Dimension targetOffset) {
-        log.info("navigate()");
-        centerNavigationPoint(startingPoint);
-        islandCmds.dragDrop(dragDrop);
-        centerNavigationPoint(targetPoint, targetOffset);
-    }
-
     @Override
     public List<NavigationPoint> getNavigationPoints() {
         return navPoints;
@@ -79,6 +72,19 @@ public class BraveTailorAdv extends Adventure {
     @Override
     protected File getFilename() {
         return stateFile;
+    }
+
+    /**
+     * @param startingPoint
+     * @param targetPoint
+     * @param dragDrop      Verschiebung um von NP-0 zu NP-1 zu gelangen.
+     * @param targetOffset
+     */
+    private void navigate(NavigationPoint startingPoint, NavigationPoint targetPoint, Dimension dragDrop, Dimension targetOffset) {
+        log.info("navigate()");
+        centerNavigationPoint(startingPoint);
+        islandCmds.dragDrop(dragDrop);
+        centerNavigationPoint(targetPoint, targetOffset);
     }
 
     private void prepareStarMenu() {
