@@ -52,7 +52,8 @@ public class BraveTailorAdv extends Adventure {
         log.info("route() Dimension: " + targetOffset);
 
         if (startingPoint.getId().equals(targetPoint.getId())) {
-            // nothing to do
+            centerNavigationPoint(targetPoint);
+            // nothing else to do
         } else if (startingPoint.getId().equals(2) && targetPoint.getId().equals(3)) {
             navigate(startingPoint, targetPoint, new Dimension(0, -600), targetOffset);
         } else if (startingPoint.getId().equals(3) && targetPoint.getId().equals(2)) {
