@@ -1,0 +1,244 @@
+{
+  "adventureSteps": [
+    {
+      "stepType": "ATTACK",
+      "state": "DONE",
+      "delay": 0,
+      "camp": "CAMP_1",
+      "generalName": null,
+      "general": "Vargus",
+      "units": [
+        {
+          "type": "Rek",
+          "quantity": 120
+        },
+        {
+          "type": "Kan",
+          "quantity": 75
+        }
+      ],
+      "startNavPoint": "NP_1",
+      "targetNavPoint": null
+    },
+    {
+      "stepType": "ATTACK",
+      "state": "DONE",
+      "delay": 10,
+      "camp": "CAMP_2",
+      "generalName": null,
+      "general": "Nusala",
+      "units": [
+        {
+          "type": "Rek",
+          "quantity": 65
+        },
+        {
+          "type": "Cav",
+          "quantity": 100
+        }
+      ],
+      "startNavPoint": "NP_1",
+      "targetNavPoint": null
+    },
+    {
+      "stepType": "ATTACK",
+      "state": "DONE",
+      "delay": 10,
+      "camp": "CAMP_3",
+      "generalName": null,
+      "general": "Generalmajor",
+      "units": [
+        {
+          "type": "Rek",
+          "quantity": 200
+        },
+        {
+          "type": "Kan",
+          "quantity": 85
+        }
+      ],
+      "startNavPoint": "NP_1",
+      "targetNavPoint": null
+    },
+    {
+      "stepType": "ATTACK",
+      "state": "DONE",
+      "delay": 10,
+      "camp": "CAMP_4",
+      "generalName": null,
+      "general": "Vargus",
+      "units": [
+        {
+          "type": "Rek",
+          "quantity": 140
+        },
+        {
+          "type": "Sol",
+          "quantity": 30
+        },
+        {
+          "type": "Kan",
+          "quantity": 25
+        }
+      ],
+      "startNavPoint": "NP_1",
+      "targetNavPoint": null
+    },
+    {
+      "stepType": "ATTACK",
+      "state": "DONE",
+      "delay": 1,
+      "camp": "CAMP_5",
+      "generalName": "MDK 1",
+      "general": "MdK",
+      "units": [
+        {
+          "type": "Rek",
+          "quantity": 1
+        }
+      ],
+      "startNavPoint": "NP_1",
+      "targetNavPoint": null
+    },
+    {
+      "stepType": "ATTACK",
+      "state": "DONE",
+      "delay": 1,
+      "camp": "CAMP_5",
+      "generalName": "MDK 2",
+      "general": "MdK",
+      "units": [
+        {
+          "type": "Rek",
+          "quantity": 1
+        }
+      ],
+      "startNavPoint": "NP_1",
+      "targetNavPoint": null
+    },
+    {
+      "stepType": "ATTACK",
+      "state": "DONE",
+      "delay": 1,
+      "camp": "CAMP_5",
+      "generalName": "MDK 3",
+      "general": "MdK",
+      "units": [
+        {
+          "type": "Rek",
+          "quantity": 1
+        }
+      ],
+      "startNavPoint": "NP_1",
+      "targetNavPoint": null
+    },
+    {
+      "stepType": "ATTACK",
+      "state": "DONE",
+      "delay": 30,
+      "camp": "CAMP_5",
+      "generalName": null,
+      "general": "Mary",
+      "units": [
+        {
+          "type": "Bos",
+          "quantity": 160
+        },
+        {
+          "type": "Kan",
+          "quantity": 55
+        }
+      ],
+      "startNavPoint": "NP_1",
+      "targetNavPoint": null
+    },
+    {
+      "stepType": "ATTACK",
+      "state": "DONE",
+      "delay": 30,
+      "camp": "CAMP_6",
+      "generalName": null,
+      "general": "Nusala",
+      "units": [
+        {
+          "type": "Rek",
+          "quantity": 145
+        }
+      ],
+      "startNavPoint": "NP_1",
+      "targetNavPoint": null
+    },
+    {
+      "stepType": "ATTACK",
+      "state": "DONE",
+      "delay": 30,
+      "camp": "CAMP_6",
+      "generalName": "GM 2",
+      "general": "Generalmajor",
+      "units": [
+        {
+          "type": "Rek",
+          "quantity": 70
+        },
+        {
+          "type": "Sol",
+          "quantity": 10
+        },
+        {
+          "type": "Kan",
+          "quantity": 205
+        }
+      ],
+      "startNavPoint": "NP_1",
+      "targetNavPoint": null
+    },
+    {
+      "stepType": "ATTACK",
+      "state": "DONE",
+      "delay": 30,
+      "camp": "CAMP_7",
+      "generalName": "GM 1",
+      "general": "Generalmajor",
+      "units": [
+        {
+          "type": "Rek",
+          "quantity": 160
+        },
+        {
+          "type": "Bos",
+          "quantity": 60
+        },
+        {
+          "type": "Kan",
+          "quantity": 65
+        }
+      ],
+      "startNavPoint": "NP_2",
+      "targetNavPoint": null
+    },
+    {
+      "stepType": "ATTACK",
+      "state": "OPEN",
+      "delay": 0,
+      "camp": "CAMP_8",
+      "generalName": "GM 1",
+      "general": "Generalmajor",
+      "units": [
+        {
+          "type": "Rek",
+          "quantity": 135
+        },
+        {
+          "type": "Cav",
+          "quantity": 30
+        },
+        {
+          "type": "Kan",
+          "quantity": 120
+        }
+      ],
+      "startNavPoint": "NP_2",
+      "targetNavPoint": null
+    }
+  ]
+}
