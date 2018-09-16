@@ -89,39 +89,39 @@
       "state": "DONE",
       "delay": 1,
       "camp": "CAMP_5",
-      "generalName": "MDK 1",
-      "general": "MdK",
-      "units": [
-        {
-          "type": "Rek",
-          "quantity": 1
-        }
-      ],
-      "startNavPoint": "NP_1",
-      "targetNavPoint": null
-    },
-    {
-      "stepType": "ATTACK",
-      "state": "DONE",
-      "delay": 1,
-      "camp": "CAMP_5",
-      "generalName": "MDK 2",
-      "general": "MdK",
-      "units": [
-        {
-          "type": "Rek",
-          "quantity": 1
-        }
-      ],
-      "startNavPoint": "NP_1",
-      "targetNavPoint": null
-    },
-    {
-      "stepType": "ATTACK",
-      "state": "DONE",
-      "delay": 1,
-      "camp": "CAMP_5",
       "generalName": "MDK 3",
+      "general": "MdK",
+      "units": [
+        {
+          "type": "Rek",
+          "quantity": 1
+        }
+      ],
+      "startNavPoint": "NP_1",
+      "targetNavPoint": null
+    },
+    {
+      "stepType": "ATTACK",
+      "state": "DONE",
+      "delay": 1,
+      "camp": "CAMP_5",
+      "generalName": "MDK 4",
+      "general": "MdK",
+      "units": [
+        {
+          "type": "Rek",
+          "quantity": 1
+        }
+      ],
+      "startNavPoint": "NP_1",
+      "targetNavPoint": null
+    },
+    {
+      "stepType": "ATTACK",
+      "state": "DONE",
+      "delay": 1,
+      "camp": "CAMP_5",
+      "generalName": "MDK 5",
       "general": "MdK",
       "units": [
         {
@@ -218,7 +218,7 @@
     },
     {
       "stepType": "ATTACK",
-      "state": "OPEN",
+      "state": "DONE",
       "delay": 0,
       "camp": "CAMP_8",
       "generalName": "GM 1",
@@ -235,6 +235,138 @@
         {
           "type": "Kan",
           "quantity": 120
+        }
+      ],
+      "startNavPoint": "NP_2",
+      "targetNavPoint": null
+    },
+    {
+      "stepType": "ATTACK",
+      "state": "PENDING",
+      "delay": 10,
+      "camp": "CAMP_9",
+      "generalName": "GM 1",
+      "general": "Generalmajor",
+      "units": [
+        {
+          "type": "Rek",
+          "quantity": 160
+        },
+        {
+          "type": "Sol",
+          "quantity": 40
+        },
+        {
+          "type": "Kan",
+          "quantity": 85
+        }
+      ],
+      "startNavPoint": "NP_2",
+      "targetNavPoint": null
+    },
+    {
+      "stepType": "ATTACK",
+      "state": "OPEN",
+      "delay": 10,
+      "camp": "CAMP_10",
+      "generalName": "Anslem",
+      "general": "Anslem",
+      "units": [
+        {
+          "type": "Rek",
+          "quantity": 90
+        },
+        {
+          "type": "Kan",
+          "quantity": 75
+        }
+      ],
+      "startNavPoint": "NP_2",
+      "targetNavPoint": null
+    },
+    {
+      "stepType": "ATTACK",
+      "state": "OPEN",
+      "delay": 11,
+      "camp": "CAMP_10",
+      "generalName": "MdK 3",
+      "general": "MdK",
+      "units": [
+        {
+          "type": "Rek",
+          "quantity": 1
+        }
+      ],
+      "startNavPoint": "NP_2",
+      "targetNavPoint": null
+    },
+    {
+      "stepType": "ATTACK",
+      "state": "OPEN",
+      "delay": 0,
+      "camp": "CAMP_11",
+      "generalName": "MdK 4",
+      "general": "MdK",
+      "units": [
+        {
+          "type": "Rek",
+          "quantity": 1
+        }
+      ],
+      "startNavPoint": "NP_2",
+      "targetNavPoint": null
+    },
+    {
+      "stepType": "ATTACK",
+      "state": "OPEN",
+      "delay": 0,
+      "camp": "CAMP_11",
+      "generalName": "MdK 5",
+      "general": "MdK",
+      "units": [
+        {
+          "type": "Rek",
+          "quantity": 1
+        }
+      ],
+      "startNavPoint": "NP_2",
+      "targetNavPoint": null
+    },
+    {
+      "stepType": "ATTACK",
+      "state": "OPEN",
+      "delay": 2,
+      "camp": "CAMP_11",
+      "generalName": "SM 1",
+      "general": "Sensenmann",
+      "units": [
+        {
+          "type": "Bos",
+          "quantity": 200
+        }
+      ],
+      "startNavPoint": "NP_2",
+      "targetNavPoint": null
+    },
+    {
+      "stepType": "ATTACK",
+      "state": "OPEN",
+      "delay": 2,
+      "camp": "CAMP_11",
+      "generalName": "GM 2",
+      "general": "Generalmajor",
+      "units": [
+        {
+          "type": "Rek",
+          "quantity": 140
+        },
+        {
+          "type": "Sol",
+          "quantity": 60
+        },
+        {
+          "type": "Kan",
+          "quantity": 85
         }
       ],
       "startNavPoint": "NP_2",
