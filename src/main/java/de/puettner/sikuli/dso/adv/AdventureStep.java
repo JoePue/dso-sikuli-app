@@ -6,7 +6,7 @@ import java.util.Objects;
 
 @Data
 //@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS, include = JsonTypeInfo.As.PROPERTY, property = "className")
-public class AdventureAttackStep {
+public class AdventureStep {
 
     private StepType stepType;
     private AdventureStepState state;
@@ -22,13 +22,13 @@ public class AdventureAttackStep {
     /** Diese Property ist nur bei 'stepType == MOVE' gesetzt. */
     private NavigationPoint targetNavPoint;
 
-    protected AdventureAttackStep() {
+    protected AdventureStep() {
 
     }
 
-    public AdventureAttackStep(StepType stepType, NavigationPoint startNavPoint, NavigationPoint targetNavPoint, AttackCamp camp,
-                               GeneralType general, String generalName, int delay,
-                               AdventureStepState state, AttackUnit[] units) {
+    public AdventureStep(StepType stepType, NavigationPoint startNavPoint, NavigationPoint targetNavPoint, AttackCamp camp,
+                         GeneralType general, String generalName, int delay,
+                         AdventureStepState state, AttackUnit[] units) {
         this.stepType = stepType;
         this.delay = delay;
         state = AdventureStepState.OPEN;
@@ -40,21 +40,21 @@ public class AdventureAttackStep {
         this.targetNavPoint = targetNavPoint;
     }
 
-    public static AdventureAttackStep buildAttackStep(NavigationPoint startNavPoint, AttackCamp camp, GeneralType general, String
+    public static AdventureStep buildAttackStep(NavigationPoint startNavPoint, AttackCamp camp, GeneralType general, String
             generalName, int delay, AdventureStepState state, AttackUnit... units) {
         Objects.requireNonNull(general);
         Objects.requireNonNull(units);
-        AdventureAttackStep step = new AdventureAttackStep(StepType.ATTACK, startNavPoint, null, camp, general, generalName, delay,
+        AdventureStep step = new AdventureStep(StepType.ATTACK, startNavPoint, null, camp, general, generalName, delay,
                 state, units);
         step.setState(state);
         return step;
     }
 
-    public static AdventureAttackStep buildMoveStep(NavigationPoint startNavPoint, NavigationPoint targetNavPoint, GeneralType general,
-                                                    String generalName, int delay, AdventureStepState state) {
+    public static AdventureStep buildMoveStep(NavigationPoint startNavPoint, NavigationPoint targetNavPoint, GeneralType general,
+                                              String generalName, int delay, AdventureStepState state) {
         Objects.requireNonNull(startNavPoint);
         Objects.requireNonNull(targetNavPoint);
         Objects.requireNonNull(general);
-        return new AdventureAttackStep(StepType.MOVE, startNavPoint, targetNavPoint, null, general, generalName, delay, state, null);
+        return new AdventureStep(StepType.MOVE, startNavPoint, targetNavPoint, null, general, generalName, delay, state, null);
     }
 }

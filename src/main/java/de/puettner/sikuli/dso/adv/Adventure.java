@@ -30,7 +30,7 @@ public abstract class Adventure {
     protected final List<NavigationPoint> navPoints = new ArrayList<>();
     private final StarMenu starMenu;
     private final DSOService dsoService;
-    protected List<AdventureAttackStep> adventureSteps = new ArrayList<>();
+    protected List<AdventureStep> adventureSteps = new ArrayList<>();
     protected IslandCommands islandCmds;
     protected GeneralMenu generalMenu;
 
@@ -62,7 +62,7 @@ public abstract class Adventure {
         this.restoreState();
         islandCmds.typeESC();
         try {
-            AdventureAttackStep step;
+            AdventureStep step;
             for (int i = 0; i < this.adventureSteps.size(); ++i) {
                 step = this.adventureSteps.get(i);
                 if (AdventureStepState.PENDING.equals(step.getState())) {
@@ -126,8 +126,8 @@ public abstract class Adventure {
         return rv;
     }
 
-    private void markPreviousStepsAsDone(AdventureAttackStep baseStep, int maxIndex) {
-        AdventureAttackStep step;
+    private void markPreviousStepsAsDone(AdventureStep baseStep, int maxIndex) {
+        AdventureStep step;
         for (int i = 0; i < maxIndex; ++i) {
             step = this.adventureSteps.get(i);
             if (baseStep.getGeneral().equals(step.getGeneral()) && baseStep.getGeneralName() != null && baseStep.getGeneralName().equals
@@ -149,7 +149,7 @@ public abstract class Adventure {
      * 4 : Clicking the attack button failed
      * 5 : Clicking attack camp failed
      */
-    private int attack(AdventureAttackStep step) {
+    private int attack(AdventureStep step) {
         log.info("attack()");
         int rv = 0;
         NavigationPoint navPoint = whereIam();
@@ -177,10 +177,10 @@ public abstract class Adventure {
 
     public void restoreState() {
         log.info("restoreState()");
-        List<AdventureAttackStep> list;
+        List<AdventureStep> list;
         try {
             //            objectMapper.enableDefaultTyping();
-            //            TypeReference typeRef = new TypeReference<ArrayList<AdventureAttackStep>>() {};
+            //            TypeReference typeRef = new TypeReference<ArrayList<AdventureStep>>() {};
             AdventureState state = objectMapper.readValue(getFilename(), AdventureState.class);
             list = state.getAdventureSteps();
         } catch (IOException e) {
@@ -192,7 +192,7 @@ public abstract class Adventure {
         this.adventureSteps = list;
     }
 
-    private void saveState(AdventureAttackStep step, AdventureStepState state) {
+    private void saveState(AdventureStep step, AdventureStepState state) {
         step.setState(state);
         this.saveState();
     }
@@ -211,7 +211,7 @@ public abstract class Adventure {
     /**
      * @return
      */
-    protected boolean prepareAttack(AdventureAttackStep step) {
+    protected boolean prepareAttack(AdventureStep step) {
         AttackCamp camp = step.getCamp();
         GeneralType general = step.getGeneral();
         String generalName = step.getGeneralName();

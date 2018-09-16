@@ -7,5 +7,5 @@ import java.util.List;
 //@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS, include = JsonTypeInfo.As.PROPERTY, property = "className")
 @Data
 public class AdventureState {
-    private List<AdventureAttackStep> adventureSteps;
+    private List<AdventureStep> adventureSteps;
 }

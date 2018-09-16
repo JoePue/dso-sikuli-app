@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-import static de.puettner.sikuli.dso.adv.AdventureAttackStep.buildAttackStep;
+import static de.puettner.sikuli.dso.adv.AdventureStep.buildAttackStep;
 import static de.puettner.sikuli.dso.adv.AdventureStepState.DONE;
 import static de.puettner.sikuli.dso.adv.AdventureStepState.OPEN;
 import static de.puettner.sikuli.dso.adv.AttackUnit.*;
@@ -87,7 +87,7 @@ public class BraveTailorAdv extends Adventure {
 
     @Deprecated
     public void saveBraveTailorInitState() {
-        List<AdventureAttackStep> adventureSteps = new ArrayList<>();
+        List<AdventureStep> adventureSteps = new ArrayList<>();
         // sektor 1
         adventureSteps.add(buildAttackStep(NP_1, CAMP_1, Vargus, null, 0, DONE, Rek(120), Kan(75)));
         adventureSteps.add(buildAttackStep(NP_1, CAMP_2, Nusala, null, 10, DONE, Rek(65), Cav(100)));
