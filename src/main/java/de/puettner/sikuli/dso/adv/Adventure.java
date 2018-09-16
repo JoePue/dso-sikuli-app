@@ -76,6 +76,8 @@ public abstract class Adventure {
                         log.info(step.toString());
                         if (attack(step)) {
                             saveState(step, AdventureStepState.PENDING);
+                        } else {
+                            throw new IllegalStateException("attack step failed");
                         }
                     } else {
                         throw new IllegalStateException("Unsupported type: " + step.getStepType());
@@ -95,12 +97,18 @@ public abstract class Adventure {
         if (rv) {
             rv = clickAttackButton();
             islandCmds.sleep();
-        }
-        if (rv) {
-            moveToCamp(step.getCamp(), step.getStartNavPoint());
-        }
-        if (rv) {
-            rv = clickAttackCamp(step.getCamp());
+            if (rv) {
+                moveToCamp(step.getCamp(), step.getStartNavPoint());
+                if (rv) {
+                    rv = clickAttackCamp(step.getCamp());
+                } else {
+                    log.severe("Clicking attack camp failed");
+                }
+            } else {
+                log.severe("Clicking the attack button failed");
+            }
+        } else {
+            log.severe("attack preparation failed");
         }
         return rv;
     }
@@ -144,9 +152,9 @@ public abstract class Adventure {
     protected boolean prepareAttack(AttackCamp camp, GeneralType general, String generalName, AttackUnit[] units) {
         log.info("prepareAttack() " + camp);
         boolean rv = false;
-        gotoPosOneAndZoomOut();
+        // gotoPosOneAndZoomOut();
         if (openGeneralMenu(general, generalName)) {
-            // rv = setupGeneral(units);
+            rv = setupGeneral(units);
             // TODO JPU Implement a method to check the setup
         }
         return rv;
