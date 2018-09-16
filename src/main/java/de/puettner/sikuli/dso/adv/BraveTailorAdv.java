@@ -27,7 +27,7 @@ import static de.puettner.sikuli.dso.adv.GeneralType.*;
 @Log
 public class BraveTailorAdv extends Adventure {
 
-    private final File stateFile = new File("dso-sikuli-brave-tailor-adventure.json");
+    private final File stateFile = new File("brave-tailor-adventure.json");
 
     /**
      * C'tor
@@ -45,19 +45,31 @@ public class BraveTailorAdv extends Adventure {
     }
 
     @Override
-    public void route(NavigationPoint startingPoint, NavigationPoint destinationPoint) {
-        log.info("route()");
+    public void route(NavigationPoint startingPoint, NavigationPoint targetPoint, Dimension targetOffset) {
+        log.info("route() " + startingPoint + " -> " + targetPoint);
         Objects.requireNonNull(startingPoint, "startingPoint is null");
-        Objects.requireNonNull(destinationPoint, "destinationPoint is null");
+        Objects.requireNonNull(targetPoint, "targetPoint is null");
+        log.info("route() startingPoint: " + startingPoint);
+        log.info("route() targetPoint: " + targetPoint);
+        log.info("route() Dimension: " + targetOffset);
 
         centerNavigationPoint(startingPoint);
-        if (startingPoint.getId().equals(2) && destinationPoint.getId().equals(3) || destinationPoint.getId().equals(4)) {
-            islandCmds.dragDrop(new Dimension(0, -700));
-            centerNavigationPoint(destinationPoint);
-            islandCmds.dragDrop(new Dimension(-200, 200));
+        if (startingPoint.getId().equals(2) && targetPoint.getId().equals(3)) {
+            navigate(targetPoint, new Dimension(0, -600), targetOffset);
+        } else if (startingPoint.getId().equals(3) && targetPoint.getId().equals(2)) {
+            navigate(targetPoint, new Dimension(0, 600), targetOffset);
         } else {
-            throw new IllegalStateException("Navigation from " + startingPoint.getId() + " to " + destinationPoint.getId() + " is not " +
+            throw new IllegalStateException("Navigation from " + startingPoint.getId() + " to " + targetPoint.getId() + " is not " +
                     "possible");
+        }
+    }
+
+    private void navigate(NavigationPoint destinationPoint, Dimension target, Dimension targetOffset) {
+        log.info("navigate()");
+        islandCmds.dragDrop(target);
+        centerNavigationPoint(destinationPoint);
+        if (targetOffset != null) {
+            islandCmds.dragDrop(new Dimension(targetOffset.width, targetOffset.height));
         }
     }
 
@@ -108,7 +120,7 @@ public class BraveTailorAdv extends Adventure {
     void moveToSector2() {
         //        GM1, ### GM1 ### S1, S2, T1 ### A ### M1 + M2 ### Mary ### GM2 ###
         // moveGeneral(GeneralType.Generalmajor, MOVE_POINT_1, new Location(-50, 220));
-        // moveGeneral(GeneralType.Anselm, MOVE_POINT_1, new Location(-15, 241));
+        // moveGeneral(GeneralType.Anslem, MOVE_POINT_1, new Location(-15, 241));
         //        moveGeneral(GeneralType.MdK, MOVE_POINT_1, new Location(-10, 178));
         //        moveGeneral(GeneralType.MdK, MOVE_POINT_1, new Location(182, 158));
         //moveGeneral(GeneralType.Mary, MOVE_POINT_1.getNavigationPoint(), new Location(144, 129));

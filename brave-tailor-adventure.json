@@ -242,7 +242,7 @@
     },
     {
       "stepType": "ATTACK",
-      "state": "PENDING",
+      "state": "DONE",
       "delay": 10,
       "camp": "CAMP_9",
       "generalName": "GM 1",
@@ -266,7 +266,7 @@
     },
     {
       "stepType": "ATTACK",
-      "state": "OPEN",
+      "state": "PENDING",
       "delay": 10,
       "camp": "CAMP_10",
       "generalName": "Anslem",
@@ -286,9 +286,9 @@
     },
     {
       "stepType": "ATTACK",
-      "state": "OPEN",
-      "delay": 11,
-      "camp": "CAMP_10",
+      "state": "PENDING",
+      "delay": 0,
+      "camp": "CAMP_11",
       "generalName": "MdK 3",
       "general": "MdK",
       "units": [
@@ -302,7 +302,7 @@
     },
     {
       "stepType": "ATTACK",
-      "state": "OPEN",
+      "state": "PENDING",
       "delay": 0,
       "camp": "CAMP_11",
       "generalName": "MdK 4",
@@ -318,7 +318,7 @@
     },
     {
       "stepType": "ATTACK",
-      "state": "OPEN",
+      "state": "PENDING",
       "delay": 0,
       "camp": "CAMP_11",
       "generalName": "MdK 5",
@@ -334,7 +334,7 @@
     },
     {
       "stepType": "ATTACK",
-      "state": "OPEN",
+      "state": "PENDING",
       "delay": 2,
       "camp": "CAMP_11",
       "generalName": "SM 1",
@@ -350,7 +350,7 @@
     },
     {
       "stepType": "ATTACK",
-      "state": "OPEN",
+      "state": "DONE",
       "delay": 2,
       "camp": "CAMP_11",
       "generalName": "GM 2",

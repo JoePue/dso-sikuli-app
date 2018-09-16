@@ -20,9 +20,10 @@ public enum BraveTailorAttackCamp implements AttackCamp {
     // Sektor 2
     //    MOVE_POINT_1(pattern("move-ref-point-sector2.png").similar(0.90), null, null),
     CAMP_7(pattern("Brave-Tailor-Camp-7.png").similar(0.95).targetOffset(65, 26), null, null),
-    CAMP_8(pattern("Brave-Tailor-Camp-8-zoom1.png").similar(0.95), NP_3, new Dimension(-200, 200)),
-    CAMP_9(pattern("Brave-Tailor-Camp-9-zoom1.png").similar(0.95), NP_3, new Dimension(-200, 0)),
-    CAMP_10(pattern("Brave-Tailor-Camp-10-zoom1.png").similar(0.95), NP_3, new Dimension(-200, -200));
+    CAMP_8(pattern("Brave-Tailor-Camp-8-zoom1.png").similar(0.96), NP_3, new Dimension(-200, 200)),
+    CAMP_9(pattern("Brave-Tailor-Camp-9-am-zoom1").similar(0.99), NP_3, new Dimension(-200, 0)),
+    CAMP_10(pattern("Brave-Tailor-Camp-10-zoom1.png").similar(0.90).targetOffset(-13, 18), NP_3, new Dimension(-100, -100)),
+    CAMP_11(pattern("Brave-Tailor-Camp-10-zoom1.png").similar(0.90).targetOffset(17, -25), NP_3, new Dimension(-100, -100));
 
 
     /** pattern of camp */
@@ -30,11 +31,11 @@ public enum BraveTailorAttackCamp implements AttackCamp {
     /* the target camp is near by this navigation point */
     private final NavigationPoint navPoint;
     /* dragDrop from navPoint to attack camp */
-    private final Dimension dragDrop;
+    private final Dimension targetOffset;
 
-    BraveTailorAttackCamp(Pattern pattern, NavigationPoint navPoint, Dimension dragDrop) {
+    BraveTailorAttackCamp(Pattern pattern, NavigationPoint navPoint, Dimension targetOffset) {
         this.pattern = pattern;
-        this.dragDrop = dragDrop;
+        this.targetOffset = targetOffset;
         this.navPoint = navPoint;
     }
 
@@ -46,6 +47,11 @@ public enum BraveTailorAttackCamp implements AttackCamp {
     @Override
     public NavigationPoint getNavigationPoint() {
         return navPoint;
+    }
+
+    @Override
+    public Dimension getTargetOffset() {
+        return targetOffset;
     }
 
 }

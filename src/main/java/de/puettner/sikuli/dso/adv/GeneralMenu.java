@@ -41,7 +41,7 @@ public class GeneralMenu extends DsoMenu {
             rv = false;
         }
         // todo impl setup check
-        islandCmds.sleepX(30); // Das Speichern der Aufstellung kann lange dauern.
+        islandCmds.sleepX(20); // Das Speichern der Aufstellung kann lange dauern.
         return rv;
     }
 

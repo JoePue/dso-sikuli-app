@@ -5,6 +5,8 @@ import lombok.extern.java.Log;
 import org.junit.Before;
 import org.junit.Test;
 
+import static de.puettner.sikuli.dso.adv.BraveTailorNavPoints.NP_2;
+
 @Log
 public class BraveTailorAdvTest extends MenuTest {
 
@@ -17,7 +19,7 @@ public class BraveTailorAdvTest extends MenuTest {
 
     @Test
     public void play() {
-        adventure.saveBraveTailorInitState();
+        // adventure.saveBraveTailorInitState(); // NO NO NO !!!
         adventure.play();
     }
 
@@ -45,6 +47,16 @@ public class BraveTailorAdvTest extends MenuTest {
     @Test
     public void whereIam() {
         adventure.whereIam();
+    }
+
+    @Test
+    public void clickAttackCamp() {
+        adventure.clickAttackCamp(BraveTailorAttackCamp.CAMP_11);
+    }
+
+    @Test
+    public void moveToCamp() {
+        adventure.moveToCamp(BraveTailorAttackCamp.CAMP_10, NP_2);
     }
 
 }

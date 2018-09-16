@@ -6,7 +6,7 @@ import org.sikuli.script.Pattern;
 import static de.puettner.sikuli.dso.commands.ui.SikuliCommands.pattern;
 
 public enum GeneralType implements MenuButton {
-    Anselm(pattern("Anselm.png").similar(0.90)),
+    Anslem(pattern("Anslem.png").similar(0.90)),
     Nusala(pattern("Nusala.png").similar(0.90)),
     Vargus(pattern("Vargus.png").similar(0.90)),
     Dracul(pattern("Dracul.png").similar(0.90)),
