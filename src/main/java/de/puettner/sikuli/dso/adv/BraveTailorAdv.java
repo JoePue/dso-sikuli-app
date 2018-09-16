@@ -51,26 +51,23 @@ public class BraveTailorAdv extends Adventure {
         Objects.requireNonNull(targetPoint, "targetPoint is null");
         log.info("route() Dimension: " + targetOffset);
 
-        centerNavigationPoint(startingPoint);
         if (startingPoint.getId().equals(targetPoint.getId())) {
             // nothing to do
         } else if (startingPoint.getId().equals(2) && targetPoint.getId().equals(3)) {
-            navigate(targetPoint, new Dimension(0, -600), targetOffset);
+            navigate(startingPoint, targetPoint, new Dimension(0, -600), targetOffset);
         } else if (startingPoint.getId().equals(3) && targetPoint.getId().equals(2)) {
-            navigate(targetPoint, new Dimension(0, 600), targetOffset);
+            navigate(startingPoint, targetPoint, new Dimension(0, 600), targetOffset);
         } else {
             throw new IllegalStateException("Navigation from " + startingPoint.getId() + " to " + targetPoint.getId() + " is not " +
                     "possible");
         }
     }
 
-    private void navigate(NavigationPoint destinationPoint, Dimension target, Dimension targetOffset) {
+    private void navigate(NavigationPoint startingPoint, NavigationPoint targetPoint, Dimension dragDrop, Dimension targetOffset) {
         log.info("navigate()");
-        islandCmds.dragDrop(target);
-        centerNavigationPoint(destinationPoint);
-        if (targetOffset != null) {
-            islandCmds.dragDrop(new Dimension(targetOffset.width, targetOffset.height));
-        }
+        centerNavigationPoint(startingPoint);
+        islandCmds.dragDrop(dragDrop);
+        centerNavigationPoint(targetPoint, targetOffset);
     }
 
     @Override

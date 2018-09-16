@@ -256,6 +256,10 @@ public abstract class Adventure {
     }
 
     protected boolean centerNavigationPoint(NavigationPoint navPoint) {
+        return centerNavigationPoint(navPoint, null);
+    }
+
+    protected boolean centerNavigationPoint(NavigationPoint navPoint, Dimension targetOffset) {
         log.info("centerNavigationPoint()");
         log.info("centerNavigationPoint() navPoint: " + navPoint);
         boolean rv = false;
@@ -265,8 +269,11 @@ public abstract class Adventure {
             navPointLocation.x = match.x + (match.w / 2);
             navPointLocation.y = match.y + (match.h / 2);
             Location regionCenterLocation = getMidpoint();
-            // System.out.println("match: x=" + match.x + ", y=" + match.y + ", w=" + match.w + ", h=" + match.h);
             Dimension dimension = new Dimension(navPointLocation.x - regionCenterLocation.x, navPointLocation.y - regionCenterLocation.y);
+            if (targetOffset != null) {
+                dimension.width = dimension.width + targetOffset.width;
+                dimension.height = dimension.height + targetOffset.height;
+            }
             islandCmds.dragDrop(dimension);
             rv = true;
         } else {
