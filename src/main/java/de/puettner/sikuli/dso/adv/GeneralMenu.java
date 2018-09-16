@@ -19,7 +19,7 @@ public class GeneralMenu extends DsoMenu {
         Match match = islandCmds.find(GeneralMenuButton.RookieIcon.pattern, menuRegion);
         if (match != null) {
             if (unsetAllUnits()) {
-                islandCmds.sleepX(3);
+                islandCmds.sleepX(1);
             }
             for (AttackUnit unit : units) {
                 try {
@@ -37,11 +37,11 @@ public class GeneralMenu extends DsoMenu {
             log.severe("Rookie Icon not found.");
             rv = false;
         }
-        if (!islandCmds.clickSmallOkButton()) {
+        if (!islandCmds.clickBigOkButtonAndWait()) {
             rv = false;
         }
         // todo impl setup check
-        islandCmds.sleepX(20); // Das Speichern der Aufstellung kann lange dauern.
+        // islandCmds.sleepX(20); // Das Speichern der Aufstellung kann lange dauern.
         return rv;
     }
 

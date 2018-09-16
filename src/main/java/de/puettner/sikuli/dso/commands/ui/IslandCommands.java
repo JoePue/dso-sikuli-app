@@ -59,6 +59,35 @@ public class IslandCommands extends SikuliCommands {
         return clickOkButton(OkButton.BIG_OK);
     }
 
+    /**
+     * Click den Button wenn er exisitert und warte solange bis er wieder existiert.
+     *
+     * @return
+     */
+    public boolean clickBigOkButtonAndWait() {
+        boolean rv = clickOkButton(OkButton.BIG_OK);
+        if (rv) {
+            sleepX(1);
+            rv = waitUntilExists(this::existsBigOkButton);
+        }
+        return rv;
+    }
+
+    protected boolean waitUntilExists(BooleanSupplier supplier) {
+        for (int i = 0; i < 60; ++i) {
+            if (supplier.getAsBoolean()) {
+                return true;
+            } else {
+                sleep();
+            }
+        }
+        return false;
+    }
+
+    public boolean existsBigOkButton() {
+        return exists(OkButton.BIG_OK.getPattern());
+    }
+
     public boolean clickLoginBonusButton() {
         return clickOkButton(OkButton.LOGIN_OK);
     }
@@ -105,16 +134,5 @@ public class IslandCommands extends SikuliCommands {
 
     public Region getIslandRegion() {
         return new Region(super.appRegion);
-    }
-
-    protected boolean waitUntilExists(BooleanSupplier supplier) {
-        for (int i = 0; i < 10; ++i) {
-            if (supplier.getAsBoolean()) {
-                return true;
-            } else {
-                sleep();
-            }
-        }
-        return false;
     }
 }
