@@ -1,13 +1,13 @@
 @ECHO OFF
 TITLE dso_1-sikuli-idea
-SET START_DIR=D:\sikuli\workspace\dso_1-sikuli-idea\dist
+SET START_DIR=D:\dev-tools\sikuli\workspace\dso-sikuli-app-idea\dist
 
 cd %START_DIR%
 REM del *.jar
 
 start sikuliStandby.cmd
 
-xcopy /Y D:\sikuli\workspace\dso_1.sikuli D:\sikuli\workspace\dso_1-sikuli-idea\dist\dso_1.sikuli
+xcopy /Y D:\sikuli\workspace\dso-sikuli-app.sikuli D:\sikuli\workspace\dso_1-sikuli-idea\dist\dso-sikuli-app.sikuli
 
 ECHO Baue Jar
 cd ..
@@ -22,15 +22,15 @@ xcopy /Y *.jar ..\dist
 cd ../dist
 REM ls && pwd && pause
 for %%i in (*-jar-with-dependencies.jar) DO (
-  java -cp ".;./;./dso_1.sikuli" -jar %%i firstDailyRun
+  java -cp ".;./;./dso-sikuli-app.sikuli" -jar %%i firstDailyRun
   
   for /L %%k in (1, 1, 5) DO (
     echo #%%k Loop
-    java -cp ".;./;./dso_1.sikuli" -jar %%i preventScreensaver
+    java -cp ".;./;./dso-sikuli-app.sikuli" -jar %%i preventScreensaver
     sleep 120
   )
   
-  java -cp ".;./;./dso_1.sikuli" -jar %%i secondDailyRun
+  java -cp ".;./;./dso-sikuli-app.sikuli" -jar %%i secondDailyRun
   
   REM java -jar %%i standby
 )

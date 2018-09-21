@@ -61,13 +61,13 @@ public class MenuBuilder {
 
     public IslandCommands buildIslandCommand() {
         if (islandCmds == null) {
-            String path = "../dso_1.sikuli";
+            String path = "../dso-sikuli-app.sikuli";
             boolean result = ImagePath.add(path);
             if (!result) {
                 throw new IllegalArgumentException("invalid path: " + path);
             }
-            path = "./dso_1.sikuli";
-            result = ImagePath.add(path);// vom dist-Ordner aus
+            path = "./dso-sikuli-app.sikuli";
+            result = ImagePath.add(path); // from dist-folder
             if (!result) {
                 throw new IllegalArgumentException("invalid path: " + path);
             }
