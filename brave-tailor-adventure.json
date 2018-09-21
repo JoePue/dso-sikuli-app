@@ -1,19 +1,20 @@
 {
   "adventureSteps": [
     {
+      "stepType": "BACK_TO_STAR_MENU",
+      "state": "DONE",
+      "delay": 960
+    },
+    {
+      "stepType": "INITIAL_MOVE",
+      "state": "OPEN",
+      "delay": 1,
+      "generalName": null,
+      "general": "Vargus",
       "targetOffset": {
         "width": 1.0,
         "height": 1.0
-      },
-      "stepType": "BACK_TO_STAR_MENU",
-      "state": null,
-      "delay": 0,
-      "camp": null,
-      "generalName": null,
-      "general": null,
-      "units": null,
-      "startNavPoint": null,
-      "targetNavPoint": null
+      }
     },
     {
       "targetOffset": {

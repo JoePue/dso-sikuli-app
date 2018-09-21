@@ -67,4 +67,14 @@ public class GeneralMenu extends DsoMenu {
         }
         return rv;
     }
+
+    public boolean putBackToStarMenu() {
+        log.info("putBackToStarMenu");
+        boolean rv = clickIfExists(GeneralMenuButton.PutBackToStarMenu.pattern);
+        if (rv) {
+            islandCmds.sleep();
+            rv = islandCmds.clickSmallOkButton();
+        }
+        return rv;
+    }
 }

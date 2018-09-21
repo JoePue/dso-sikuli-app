@@ -74,6 +74,11 @@ public class BraveTailorAdv extends Adventure {
         return stateFile;
     }
 
+    @Override
+    protected NavigationPoint getFirstNavigationPoint() {
+        return BraveTailorNavPoints.NP_1;
+    }
+
     /**
      * @param startingPoint
      * @param targetPoint
@@ -129,5 +134,4 @@ public class BraveTailorAdv extends Adventure {
         //        moveGeneral(GeneralType.MdK, MOVE_POINT_1, new Location(182, 158));
         //moveGeneral(GeneralType.Mary, MOVE_POINT_1.getNavigationPoint(), new Location(144, 129));
     }
-
 }

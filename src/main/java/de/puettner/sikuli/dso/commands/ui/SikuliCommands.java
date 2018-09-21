@@ -8,6 +8,7 @@ import org.sikuli.script.Image;
 import java.awt.*;
 import java.io.File;
 import java.util.Iterator;
+import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 
 @Log
@@ -115,6 +116,13 @@ public class SikuliCommands {
 
     public void sleep() {
         this.sleep(DEFAULT_WAITING);
+    }
+
+    public void sleep(int value, TimeUnit tu) {
+        if (!TimeUnit.SECONDS.equals(tu)) {
+            throw new IllegalArgumentException("Unsupported time unit");
+        }
+        this.sleep(value * 1000);
     }
 
     public Location clickDsoTab() {

@@ -18,10 +18,12 @@ import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
 import java.util.logging.Level;
 
+import static de.puettner.sikuli.dso.adv.AdventureStepState.OPEN;
 import static de.puettner.sikuli.dso.commands.ui.SikuliCommands.pattern;
 
 @Log
@@ -68,10 +70,17 @@ public abstract class Adventure {
             for (int i = 0; i < this.adventureSteps.size(); ++i) {
                 step = this.adventureSteps.get(i);
                 // *** MOVE ***
+                if (StepType.BACK_TO_STAR_MENU.equals(step.getStepType()) && OPEN.equals(step.getState())) {
+                    if (step.getDelay() > 0) {
+                        islandCmds.sleep();
+                    }
+                    putAllGeneralsBackToStarMenu();
+                    saveState(step, AdventureStepState.DONE);
+                }
                 if (StepType.MOVE.equals(step.getStepType())) {
                     Objects.requireNonNull(step.getTargetNavPoint());
                     // Objects.requireNonNull(step.getTargetOffset());
-                    if (AdventureStepState.OPEN.equals(step.getState())) {
+                    if (OPEN.equals(step.getState())) {
                         step.setTargetOffset(new Dimension(1, 1));
                         moveGeneral(step);
                         // saveState(step, AdventureStepState.DONE);
@@ -88,7 +97,7 @@ public abstract class Adventure {
                                     ());
                         }
                     }
-                    if (AdventureStepState.OPEN.equals(step.getState())) {
+                    if (OPEN.equals(step.getState())) {
                         if (this.prepareAttack(step)) {
                             saveState(step, AdventureStepState.PREPARED);
                             islandCmds.typeESC();
@@ -121,6 +130,40 @@ public abstract class Adventure {
             saveState();
         }
     }
+
+    public void putAllGeneralsBackToStarMenu() {
+        centerNavigationPoint(getFirstNavigationPoint());
+        islandCmds.parkMouse();
+        List<Match> matchList;
+        int maxLoop = 3, loopCounter = 0;
+        while ((matchList = findAllReadyGenerals()).size() > 0) {
+            for (Match match : matchList) {
+                log.info("match: " + match);
+                match.hover();
+                match.doubleClick();
+                islandCmds.sleepX(3);
+                // now we have a open General Menu
+                generalMenu.putBackToStarMenu();
+            }
+            ++loopCounter;
+        }
+    }
+
+    protected abstract NavigationPoint getFirstNavigationPoint();
+
+    protected List<Match> findAllReadyGenerals() {
+        List<Match> list = new ArrayList<>();
+        Iterator<Match> it = islandCmds.findAll(pattern("ready-general-flag.png").similar(0.80).targetOffset(0, 20));
+        if (it != null) {
+            while (it.hasNext()) {
+                list.add(it.next());
+            }
+        } else {
+            log.info("No ready general. Realy?");
+        }
+        return list;
+    }
+
 
     private boolean waitUntilGeneralIsAvailable(GeneralType general, String generalName) {
         boolean rv = true;
@@ -291,12 +334,12 @@ public abstract class Adventure {
         return rv;
     }
 
-    protected Location getMidpoint() {
-        return LocationMath.getMidpointLocation(region);
-    }
-
     public void hoverRegionCenter() {
         islandCmds.hover(getMidpoint());
+    }
+
+    protected Location getMidpoint() {
+        return LocationMath.getMidpointLocation(region);
     }
 
     /**
