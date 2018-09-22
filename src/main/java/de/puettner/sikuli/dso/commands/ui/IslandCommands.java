@@ -1,10 +1,7 @@
 package de.puettner.sikuli.dso.commands.ui;
 
 import lombok.extern.java.Log;
-import org.sikuli.script.App;
-import org.sikuli.script.Match;
-import org.sikuli.script.Pattern;
-import org.sikuli.script.Region;
+import org.sikuli.script.*;
 
 import java.util.function.BooleanSupplier;
 import java.util.logging.Level;
@@ -46,6 +43,11 @@ public class IslandCommands extends SikuliCommands {
         if (match != null) {
             match.hover();
             match.click();
+            try {
+                match.hover(new Location(match.x, match.y - 30));
+            } catch (FindFailed findFailed) {
+                log.log(Level.SEVERE, "", findFailed);
+            }
             sleep();
             rv = true;
             log.info("clickSmallOkButton[" + removePath(okButton.getPattern().getFilename()) + "]" + (rv ? " Clicked" : " not found"));
@@ -60,11 +62,12 @@ public class IslandCommands extends SikuliCommands {
     }
 
     /**
-     * Click den Button wenn er exisitert und warte solange bis er wieder existiert.
+     * Klickt den Button wenn er existiert und wartet solange bis er wieder existiert.
      *
      * @return
      */
     public boolean clickBigOkButtonAndWait() {
+        log.info("clickBigOkButtonAndWait()");
         boolean rv = clickOkButton(OkButton.BIG_OK);
         if (rv) {
             sleepX(1);
@@ -75,6 +78,7 @@ public class IslandCommands extends SikuliCommands {
 
     protected boolean waitUntilExists(BooleanSupplier supplier) {
         for (int i = 0; i < 60; ++i) {
+            log.info("waitUntilExists() i: " + i);
             if (supplier.getAsBoolean()) {
                 return true;
             } else {
