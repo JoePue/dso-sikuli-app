@@ -9,7 +9,8 @@
       "stepType": "LAND",
       "state": "DONE",
       "delay": 0,
-      "general": "Vargus"
+      "general": "Vargus",
+      "comment": "Es stehen nur 9 Landeplätze für Genies zur Verfügung (einer wird nicht erkannt.)"
     },
     {
       "stepType": "LAND",
@@ -30,6 +31,12 @@
       "state": "DONE",
       "delay": 0,
       "general": "Anslem"
+    },
+    {
+      "stepType": "LAND",
+      "state": "DONE",
+      "delay": 0,
+      "general": "Nusala"
     },
     {
       "stepType": "LAND",
@@ -56,14 +63,120 @@
       "stepType": "LAND",
       "state": "DONE",
       "delay": 0,
-      "generalName": "MdK 4",
-      "general": "MdK"
+      "general": "Mary"
     },
     {
-      "stepType": "LAND",
+      "stepType": "MOVE",
       "state": "DONE",
-      "delay": 0,
-      "general": "Mary"
+      "delay": 1,
+      "general": "Vargus",
+      "startNavPoint": "NP_1",
+      "targetNavPoint": "NP_1",
+      "targetNavPointClickOffset": {
+        "width": 337.0,
+        "height": -116.0
+    }
+    },
+    {
+      "stepType": "MOVE",
+      "state": "DONE",
+      "delay": 1,
+      "generalName": "GM 2",
+      "general": "Generalmajor",
+      "startNavPoint": "NP_1",
+      "targetNavPoint": "NP_1",
+      "targetNavPointClickOffset": {
+        "width": 197.0,
+        "height": -84.0
+      }
+    },
+    {
+      "stepType": "MOVE",
+      "state": "DONE",
+      "delay": 1,
+      "generalName": "GM 1",
+      "general": "Generalmajor",
+      "startNavPoint": "NP_1",
+      "targetNavPoint": "NP_1",
+      "targetNavPointClickOffset": {
+        "width": 111.0,
+        "height": -79.0
+      }
+    },
+    {
+      "stepType": "MOVE",
+      "state": "DONE",
+      "delay": 1,
+      "general": "Nusala",
+      "startNavPoint": "NP_1",
+      "targetNavPoint": "NP_1",
+      "targetNavPointClickOffset": {
+        "width": 319.0,
+        "height": -41.0
+      }
+    },
+    {
+      "stepType": "MOVE",
+      "state": "DONE",
+      "delay": 1,
+      "generalName": "MdK 1",
+      "general": "MdK",
+      "startNavPoint": "NP_1",
+      "targetNavPoint": "NP_1",
+      "targetNavPointClickOffset": {
+        "width": 321.0,
+        "height": 49.0
+      }
+    },
+    {
+      "stepType": "MOVE",
+      "state": "DONE",
+      "delay": 1,
+      "generalName": "MdK 2",
+      "general": "MdK",
+      "startNavPoint": "NP_1",
+      "targetNavPoint": "NP_1",
+      "targetNavPointClickOffset": {
+        "width": 372.0,
+        "height": 21.0
+      }
+    },
+    {
+      "stepType": "MOVE",
+      "state": "DONE",
+      "delay": 1,
+      "generalName": "MdK 3",
+      "general": "MdK",
+      "startNavPoint": "NP_1",
+      "targetNavPoint": "NP_1",
+      "targetNavPointClickOffset": {
+        "width": 414.0,
+        "height": -7.0
+      }
+    },
+    {
+      "stepType": "MOVE",
+      "state": "DONE",
+      "delay": 1,
+      "general": "Anslem",
+      "startNavPoint": "NP_1",
+      "targetNavPoint": "NP_1",
+      "targetNavPointClickOffset": {
+        "width": 96.0,
+        "height": -112.0
+      }
+    },
+    {
+      "stepType": "MOVE",
+      "state": "DONE",
+      "delay": 1,
+      "general": "Mary",
+      "startNavPoint": "NP_1",
+      "targetNavPoint": "NP_1",
+      "targetNavPointClickOffset": {
+        "width": -8.0,
+        "height": -121.0
+      }
     },
     {
       "stepType": "ATTACK",
@@ -81,7 +194,9 @@
           "quantity": 75
         }
       ],
-      "startNavPoint": "NP_1"
+      "startNavPoint": "NP_1",
+      "targetNavPoint": "NP_1",
+      "comment": "Sektor 1"
     },
     {
       "stepType": "ATTACK",
@@ -418,7 +533,6 @@
       "delay": 1,
       "generalName": "GM 2",
       "general": "Generalmajor",
-      "units": [],
       "startNavPoint": "NP_2",
       "targetNavPoint": "NP_3"
     },
@@ -428,7 +542,6 @@
       "delay": 1,
       "generalName": "GM 1",
       "general": "Generalmajor",
-      "units": [],
       "startNavPoint": "NP_2",
       "targetNavPoint": "NP_3"
     },
@@ -438,7 +551,6 @@
       "delay": 1,
       "generalName": "Vargus",
       "general": "Vargus",
-      "units": [],
       "startNavPoint": "NP_2",
       "targetNavPoint": "NP_3"
     },
@@ -448,7 +560,6 @@
       "delay": 1,
       "generalName": "Anslem",
       "general": "Anslem",
-      "units": [],
       "startNavPoint": "NP_2",
       "targetNavPoint": "NP_3"
     },
@@ -458,7 +569,6 @@
       "delay": 1,
       "generalName": "Mary",
       "general": "Mary",
-      "units": [],
       "startNavPoint": "NP_2",
       "targetNavPoint": "NP_3"
     }

@@ -45,19 +45,21 @@ public class BraveTailorAdv extends Adventure {
     }
 
     @Override
-    public void route(NavigationPoint startingPoint, NavigationPoint targetPoint, Dimension targetOffset) {
+    public void route(NavigationPoint startingPoint, NavigationPoint targetPoint, Dimension targetDragDropOffset, Dimension
+            targetClickOffset) {
         log.info("route() " + startingPoint + " -> " + targetPoint);
         Objects.requireNonNull(startingPoint, "startingPoint is null");
         Objects.requireNonNull(targetPoint, "targetPoint is null");
-        log.info("route() Dimension: " + targetOffset);
+        log.info("route() targetDragDropOffset: " + targetDragDropOffset);
+        log.info("route() targetClickOffset: " + targetClickOffset);
 
         if (startingPoint.getId().equals(targetPoint.getId())) {
-            centerNavigationPoint(targetPoint);
+            centerNavigationPoint(targetPoint, null, targetClickOffset);
             // nothing else to do
         } else if (startingPoint.getId().equals(2) && targetPoint.getId().equals(3)) {
-            navigate(startingPoint, targetPoint, new Dimension(0, -600), targetOffset);
+            navigate(startingPoint, targetPoint, new Dimension(0, -600), targetDragDropOffset);
         } else if (startingPoint.getId().equals(3) && targetPoint.getId().equals(2)) {
-            navigate(startingPoint, targetPoint, new Dimension(0, 600), targetOffset);
+            navigate(startingPoint, targetPoint, new Dimension(0, 600), targetDragDropOffset);
         } else {
             throw new IllegalStateException("Navigation from " + startingPoint.getId() + " to " + targetPoint.getId() + " is not " +
                     "possible");
@@ -82,14 +84,15 @@ public class BraveTailorAdv extends Adventure {
     /**
      * @param startingPoint
      * @param targetPoint
-     * @param dragDrop      Verschiebung um von NP-0 zu NP-1 zu gelangen.
-     * @param targetOffset
+     * @param targetDragDropOffset Verschiebung um von NP-0 zu NP-1 zu gelangen.
+     * @param targetClickOffset
      */
-    private void navigate(NavigationPoint startingPoint, NavigationPoint targetPoint, Dimension dragDrop, Dimension targetOffset) {
+    private void navigate(NavigationPoint startingPoint, NavigationPoint targetPoint, Dimension targetDragDropOffset, Dimension
+            targetClickOffset) {
         log.info("navigate()");
         centerNavigationPoint(startingPoint);
-        islandCmds.dragDrop(dragDrop);
-        centerNavigationPoint(targetPoint, targetOffset);
+        islandCmds.dragDrop(targetDragDropOffset);
+        centerNavigationPoint(targetPoint, targetDragDropOffset, targetClickOffset);
     }
 
     private void prepareStarMenu() {

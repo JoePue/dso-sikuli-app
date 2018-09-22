@@ -13,5 +13,5 @@ public interface AttackCamp extends MenuButton {
 
     NavigationPoint getNavigationPoint();
 
-    Dimension getTargetOffset();
+    Dimension getTargetDragDropOffset();
 }

@@ -11,25 +11,23 @@ import java.util.Objects;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class AdventureStep {
 
-    /** Diese Property ist nur bei 'stepType == MOVE' gesetzt. */
-    Dimension targetOffset = null;
     private StepType stepType;
     private AdventureStepState state;
-    /** Delay before step execution attack */
+    /** Delay before step execution */
     private int delay;
-    private AttackCamp camp;
+    private GeneralType general;
     /** name of the general used as search string in star menu */
     private String generalName;
-    private GeneralType general;
-    /** Delay before attack */
+    private AttackCamp camp;
     private AttackUnit[] units;
     private NavigationPoint startNavPoint;
     /** Diese Property ist nur bei 'stepType == MOVE' gesetzt. */
     private NavigationPoint targetNavPoint;
+    /** Diese Property ist nur bei 'stepType == MOVE' gesetzt. */
+    private Dimension targetNavPointClickOffset;
     private String comment;
 
     protected AdventureStep() {
-        targetOffset = null;
     }
 
     public AdventureStep(StepType stepType, NavigationPoint startNavPoint, NavigationPoint targetNavPoint, AttackCamp camp,

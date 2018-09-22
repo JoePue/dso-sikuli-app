@@ -55,7 +55,8 @@ public abstract class Adventure {
 
     protected abstract void fillNavigationPointsList();
 
-    public abstract void route(NavigationPoint startingPoint, NavigationPoint destinationPoint, Dimension targetOffset);
+    public abstract void route(NavigationPoint startingPoint, NavigationPoint targetPoint, Dimension targetOffset, Dimension
+            targetNavPointClickOffset);
 
     public abstract List<NavigationPoint> getNavigationPoints();
 
@@ -95,11 +96,10 @@ public abstract class Adventure {
                 if (StepType.MOVE.equals(step.getStepType())) {
                     supportedStep = true;
                     Objects.requireNonNull(step.getTargetNavPoint());
-                    // Objects.requireNonNull(step.getTargetOffset());
+                    // Objects.requireNonNull(step.getTargetDragDropOffset());
                     if (OPEN.equals(step.getState())) {
-                        step.setTargetOffset(new Dimension(1, 1));
                         moveGeneral(step);
-                        // saveState(step, AdventureStepState.DONE);
+                        saveState(step, AdventureStepState.DONE);
                     }
                 }
                 // *** ATTACK ***
@@ -283,8 +283,6 @@ public abstract class Adventure {
         log.info("restoreState()");
         List<AdventureStep> list;
         try {
-            //            objectMapper.enableDefaultTyping();
-            //            TypeReference typeRef = new TypeReference<ArrayList<AdventureStep>>() {};
             AdventureState state = objectMapper.readValue(getFilename(), AdventureState.class);
             list = state.getAdventureSteps();
         } catch (IOException e) {
@@ -360,30 +358,50 @@ public abstract class Adventure {
     }
 
     protected boolean centerNavigationPoint(NavigationPoint navPoint) {
-        return centerNavigationPoint(navPoint, null);
+        return centerNavigationPoint(navPoint, null, null);
     }
 
-    protected boolean centerNavigationPoint(NavigationPoint navPoint, Dimension targetOffset) {
-        log.info("centerNavigationPoint()");
+    protected boolean centerNavigationPoint(NavigationPoint navPoint, Dimension targetDragDropOffset, Dimension
+            targetClickOffset) {
         log.info("centerNavigationPoint() navPoint: " + navPoint);
         boolean rv = false;
         Match match = islandCmds.find(navPoint.getPattern(), region);
         if (match != null) {
-            Location navPointLocation = new Location(match.x, match.y);
-            navPointLocation.x = match.x + (match.w / 2);
-            navPointLocation.y = match.y + (match.h / 2);
+            Location navPointLocation = getNavPointLocation(match);
             Location regionCenterLocation = getMidpoint();
             Dimension dimension = new Dimension(navPointLocation.x - regionCenterLocation.x, navPointLocation.y - regionCenterLocation.y);
-            if (targetOffset != null) {
-                dimension.width = dimension.width + targetOffset.width;
-                dimension.height = dimension.height + targetOffset.height;
+            if (targetDragDropOffset != null) {
+                log.info("targetDragDropOffset: " + targetDragDropOffset);
+                dimension.width = dimension.width + targetDragDropOffset.width;
+                dimension.height = dimension.height + targetDragDropOffset.height;
             }
             islandCmds.dragDrop(dimension);
+            if (targetClickOffset != null) {
+                islandCmds.parkMouse();
+                // Nach DragDrop muss erneut gesucht werden.
+                match = islandCmds.find(navPoint.getPattern(), region);
+                if (match == null) {
+                    throw new IllegalStateException();
+                }
+                navPointLocation = getNavPointLocation(match);
+                log.info("targetClickOffset: " + targetClickOffset);
+                Location clickLocation = new Location(navPointLocation.x + targetClickOffset.width, navPointLocation.y +
+                        targetClickOffset.height);
+                islandCmds.hover(clickLocation);
+                islandCmds.doubleClick(clickLocation);
+            }
             rv = true;
         } else {
             throw new IllegalStateException("Navigation point not found");
         }
         return rv;
+    }
+
+    private Location getNavPointLocation(Match match) {
+        Location navPointLocation = new Location(match.x, match.y);
+        navPointLocation.x = match.x + (match.w / 2);
+        navPointLocation.y = match.y + (match.h / 2);
+        return navPointLocation;
     }
 
     public void hoverRegionCenter() {
@@ -426,14 +444,14 @@ public abstract class Adventure {
 
         if (!expectedStartNavPoint.equals(currentNavPoint)) {
             log.info("Go to expectedStartNavPoint ");
-            route(currentNavPoint, expectedStartNavPoint, null);
+            route(currentNavPoint, expectedStartNavPoint, null, null);
             currentNavPoint = whereIam();
         }
         if (!expectedStartNavPoint.equals(currentNavPoint)) {
             throw new IllegalStateException("Required starting navigation point not given. expectedStartNavPoint:" +
                     expectedStartNavPoint + ", currentNavPoint: " + currentNavPoint);
         }
-        route(currentNavPoint, camp.getNavigationPoint(), camp.getTargetOffset());
+        route(currentNavPoint, camp.getNavigationPoint(), camp.getTargetDragDropOffset(), null);
     }
 
     NavigationPoint whereIam() {
@@ -449,6 +467,7 @@ public abstract class Adventure {
     }
 
     void moveGeneral(AdventureStep step) {
+        log.info("moveGeneral()");
         GeneralType general = step.getGeneral();
         String generalName = step.getGeneralName();
         NavigationPoint navPoint = step.getTargetNavPoint();
@@ -456,28 +475,8 @@ public abstract class Adventure {
             islandCmds.sleepX(5);
             // unsetAllUnits();
             if (generalMenu.clickMoveBtn()) {
-                route(step.getStartNavPoint(), step.getTargetNavPoint(), null);
-                Match match = islandCmds.find(pattern("Move-Overlay-1.png").similar(0.70), region);
-                if (match != null) {
-                    match.doubleClick();
-                } else {
-                    throw new IllegalStateException("No free place");
-                }
-                //                // islandCmds.dragDrop(navPoint.getDragNDrop());
-                //                // Find ref point and place Gen
-                //                Match match = islandCmds.find(navPoint.getPattern(), region);
-                //                if (match == null) {
-                //                    log.warning("Move point not found");
-                //                    islandCmds.sleepX(10);
-                //                }
-                //                match = islandCmds.find(navPoint.getPattern(), region);
-                //                if (match == null) {
-                //                    throw new IllegalStateException("Move point not found");
-                //                }
-                //                Location moveLocation = new Location(match.x + (match.w / 2) + moveOffset.x, match.y + (match.h / 2) +
-                // moveOffset.y);
-                //                islandCmds.hover(moveLocation);
-                //                islandCmds.click(moveLocation);
+                Objects.requireNonNull(step.getTargetNavPointClickOffset());
+                route(step.getStartNavPoint(), step.getTargetNavPoint(), null, step.getTargetNavPointClickOffset());
             } else {
                 log.severe("Failed to click moveGeneral button");
             }

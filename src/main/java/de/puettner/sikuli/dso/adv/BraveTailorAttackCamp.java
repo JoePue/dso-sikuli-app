@@ -50,7 +50,7 @@ public enum BraveTailorAttackCamp implements AttackCamp {
     }
 
     @Override
-    public Dimension getTargetOffset() {
+    public Dimension getTargetDragDropOffset() {
         return targetOffset;
     }
 

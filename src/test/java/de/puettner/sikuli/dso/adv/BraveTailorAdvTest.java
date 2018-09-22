@@ -5,6 +5,9 @@ import lombok.extern.java.Log;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.awt.*;
+
+import static de.puettner.sikuli.dso.adv.BraveTailorNavPoints.NP_1;
 import static de.puettner.sikuli.dso.adv.BraveTailorNavPoints.NP_2;
 
 @Log
@@ -57,6 +60,11 @@ public class BraveTailorAdvTest extends MenuTest {
     @Test
     public void moveToCamp() {
         adventure.moveToCamp(BraveTailorAttackCamp.CAMP_10, NP_2);
+    }
+
+    @Test
+    public void route() {
+        adventure.route(NP_1, NP_1, null, new Dimension(337, -116));
     }
 
 }
