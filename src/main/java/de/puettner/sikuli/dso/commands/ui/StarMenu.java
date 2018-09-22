@@ -14,6 +14,8 @@ import static java.util.logging.Level.WARNING;
 @Log
 public class StarMenu extends DsoMenu {
 
+    private String lastFilterString = null;
+
     protected StarMenu(Region menuRegion, IslandCommands islandCmds) {
         super(menuRegion, islandCmds);
     }
@@ -76,8 +78,8 @@ public class StarMenu extends DsoMenu {
         return true;
     }
 
-    public boolean openStarMenu(String menuFilter) {
-        log.info("openStarMenu()" + (menuFilter == null ? "" : "menuFilter: " + menuFilter));
+    public boolean openStarMenu(String filterString) {
+        log.info("openStarMenu()" + (filterString == null ? "" : "menuFilter: " + filterString));
         boolean rv = true;
         if (!isStarMenuOpen()) {
             if (islandCmds.clickStarButton()) {
@@ -90,15 +92,21 @@ public class StarMenu extends DsoMenu {
             // Zur Sicherheit immer das Stern-Tab anklicken
             super.clickIfExists(StarMenuButtons.StarMenuStarTab);
 
-            if (menuFilter != null) {
-                if (super.clickIfExists(StarMenuButtons.ZOOM_ICON)) {
-                    islandCmds.sleep();
-                    islandCmds.type("a", Key.CTRL);
-                    islandCmds.sleep();
-                    islandCmds.paste(menuFilter);
+            if (filterString != null) {
+                if (lastFilterString == null || !lastFilterString.equals(filterString)) {
+                    lastFilterString = filterString;
+                    if (super.clickIfExists(StarMenuButtons.ZOOM_ICON)) {
+                        islandCmds.sleep();
+                        islandCmds.type("a", Key.CTRL);
+                        islandCmds.sleep();
+                        islandCmds.paste(filterString);
+                    } else {
+                        log.severe("filter could not set");
+                        rv = false;
+                    }
                 } else {
-                    log.severe("filter could not set");
-                    rv = false;
+                    log.info("Set no filter string because the current one '" + filterString + "' is equals to the last one '" +
+                            lastFilterString + "'");
                 }
             }
         } else {
