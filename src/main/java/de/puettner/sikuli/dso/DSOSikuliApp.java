@@ -54,7 +54,7 @@ public class DsoSikuliApp {
                 } else if ("getBuildQueueSize".equals(arg)) {
                     getBuildQueueSize(dsoService);
                 } else if ("buildAllMines".equals(arg)) {
-                    dsoService.buildAllMines();
+                    dsoService.buildAllMines(false);
                 } else if ("standby".equals(arg)) {
                     platform.standby();
                 } else if ("closeWelcomeDialog".equals(arg)) {
@@ -112,7 +112,7 @@ public class DsoSikuliApp {
     private static void firstDailyRun(DSOService dsoService) {
         dsoService.startDsoApp();
         dsoService.highlightRegions();
-        dsoService.buildAllMines();
+        dsoService.buildAllMines(true);
         dsoService.prepareStarMenu();
 
         // 10 Happy Geo / 3 Consic / 3 Normal
@@ -129,7 +129,7 @@ public class DsoSikuliApp {
         dsoService.solveGuildQuest();
 
         dsoService.findAllCollectables();
-        dsoService.buildAllMines();
+        dsoService.buildAllMines(false);
 
         // jetzt sollten alle Goes wieder verfügbar sein.
         launchs = GeologicLaunchs.builder().build()
@@ -142,14 +142,14 @@ public class DsoSikuliApp {
                 .add(GeologicType.Conscientious, GR, 2)
         ;
         dsoService.launchGeologics(launchs);
-        dsoService.buildAllMines();
+        dsoService.buildAllMines(false);
         dsoService.fetchRewardMessages();
         dsoService.exitDso();
     }
 
     private static void secondDailyRun(DSOService dsoService) {
         dsoService.startDsoApp();
-        dsoService.buildAllMines();
+        dsoService.buildAllMines(true);
         dsoService.solveDailyQuest();
         dsoService.solveGuildQuest();
         dsoService.prepareStarMenu();
@@ -162,7 +162,7 @@ public class DsoSikuliApp {
                 .add(GeologicType.Conscientious, GR, 2);
         dsoService.launchGeologics(launchs);
 
-        dsoService.buildAllMines();
+        dsoService.buildAllMines(false);
         dsoService.findAllCollectables();
         dsoService.fetchBookbinderItem();
         dsoService.exitDso();
@@ -182,7 +182,7 @@ public class DsoSikuliApp {
                 .add(GeologicType.Conscientious, GR, 2);
         dsoService.launchGeologics(launchs);
 
-        dsoService.buildAllMines();
+        dsoService.buildAllMines(false);
         dsoService.findAllCollectables();
         dsoService.exitDso();
     }

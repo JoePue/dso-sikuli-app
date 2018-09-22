@@ -21,7 +21,7 @@ public class DSOServiceTest extends BaseServiceTest {
 
     @Test
     public void buildAllMines() {
-        dsoService.buildAllMines();
+        dsoService.buildAllMines(true);
         dsoService.exitDso();
     }
 

@@ -6,8 +6,7 @@ import lombok.extern.java.Log;
 import org.sikuli.script.Match;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
-import java.util.Iterator;
-import java.util.Optional;
+import java.util.*;
 
 import static de.puettner.sikuli.dso.commands.ui.SikuliCommands.pattern;
 
@@ -364,23 +363,38 @@ public class DSOService {
         return buildQueueMenu.getBuildQueueSize();
     }
 
-    public void buildAllMines() {
+    /**
+     * @param fastFirst False means th following order to build mines: gold, cole, iron, copper. True means start with copper.
+     */
+    public void buildAllMines(boolean fastFirst) {
         log.info("buildAllMines()");
-        int buildCount = buildGoldMines(3);
-        if (buildCount > 5) {
-            return;
+        int buildCount = 0;
+        Integer[] orderIds = {1, 2, 3, 4};
+        if (fastFirst) {
+            List<Integer> list = Arrays.asList(orderIds);
+            Collections.reverse(list);
+            orderIds = list.toArray(new Integer[orderIds.length]);
         }
-        buildCount = buildCount + buildIronMines(3);
-        if (buildCount > 5) {
-            return;
-        }
-        buildCount = buildCount + buildColeMines(3);
-        if (buildCount > 5) {
-            return;
-        }
-        buildCount = buildCount + buildCopperMines(3);
-        if (buildCount > 5) {
-            return;
+        for (Integer order : orderIds) {
+            switch (order) {
+                case 1:
+                    buildCount = buildCount + buildGoldMines(3);
+                    break;
+                case 2:
+                    buildCount = buildCount + buildColeMines(3);
+                    break;
+                case 3:
+                    buildCount = buildCount + buildIronMines(3);
+                    break;
+                case 4:
+                    buildCount = buildCount + buildCopperMines(3);
+                    break;
+                default:
+                    throw new IllegalStateException("Unsupported order id: " + order);
+            }
+            if (buildCount > 5) {
+                return;
+            }
         }
     }
 
