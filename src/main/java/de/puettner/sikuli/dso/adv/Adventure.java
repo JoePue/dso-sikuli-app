@@ -126,7 +126,6 @@ public abstract class Adventure {
                     if (AdventureStepState.PREPARED.equals(step.getState())) {
                         supportedStep = true;
                         int errorCode = attack(step);
-
                         if (errorCode == 0) {
                             saveState(step, DONE);
                             markPreviousStepsAsDone(step, i);
@@ -256,7 +255,7 @@ public abstract class Adventure {
     private int attack(AdventureStep step) {
         log.info("attack()");
         int rv = 0;
-        NavigationPoint navPoint = whereIam();
+        // NavigationPoint navPoint = whereIam();
         if (openGeneralMenu(step.getGeneral(), step.getGeneralName())) {
             if (clickAttackButton()) {
                 islandCmds.sleep();
@@ -314,18 +313,22 @@ public abstract class Adventure {
      * @return
      */
     protected boolean prepareAttack(AdventureStep step) {
-        AttackCamp camp = step.getCamp();
+        log.info("prepareAttack() " + step.getCamp());
         GeneralType general = step.getGeneral();
         String generalName = step.getGeneralName();
         AttackUnit[] units = step.getUnits();
-        log.info("prepareAttack() " + camp);
         boolean rv = false;
         if (openGeneralMenu(general, generalName)) {
-            rv = generalMenu.setupAttackUnits(units);
-            // TODO JPU Implement a method to check the setup
+            islandCmds.sleep();
+            if (generalMenu.setupAttackUnits(units)) {
+                // TODO JPU Implement a method to check the setup
+                rv = true;
+
+            } else {
+                log.severe("Failed to setup attack units");
+            }
         } else {
             log.severe("Failed to open general menu");
-            rv = false;
         }
         return rv;
     }
