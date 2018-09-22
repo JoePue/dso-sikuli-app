@@ -1,6 +1,6 @@
 @ECHO OFF
 TITLE dso_1-sikuli-idea
-SET START_DIR=D:\sikuli\workspace\dso_1-sikuli-idea\dist
+SET START_DIR=D:\dev-tools\sikuli\workspace\dso-sikuli-app-idea\dist
 
 cd %START_DIR%
 
