@@ -306,7 +306,7 @@ public abstract class Adventure {
         try {
             AdventureState state = new AdventureState();
             state.setAdventureSteps(this.adventureSteps);
-            objectMapper.writeValue(getFilename(), state);
+            objectMapper.writerWithDefaultPrettyPrinter().writeValue(getFilename(), state);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
