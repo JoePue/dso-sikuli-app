@@ -15,7 +15,7 @@ public class GeneralMenu extends DsoMenu {
     public boolean setupAttackUnits(AttackUnit[] units) {
         log.info("setupAttackUnits()");
         boolean rv = true;
-        islandCmds.sleepX(5);
+        islandCmds.parkMouse();
         Match match = islandCmds.find(GeneralMenuButton.RookieIcon.pattern, menuRegion);
         if (match != null) {
             if (unsetAllUnits()) {
