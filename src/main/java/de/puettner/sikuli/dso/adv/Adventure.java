@@ -64,6 +64,7 @@ public abstract class Adventure {
     public void play() {
         log.info("play");
         this.restoreState();
+        this.initZoom();
         islandCmds.typeESC();
         islandCmds.closeChat();
         try {
@@ -485,11 +486,9 @@ public abstract class Adventure {
         }
     }
 
-    @Deprecated
-    public void gotoPosOneAndZoomOut() {
-        throw new IllegalStateException("Calling this method is not allowed");
-        //        islandCmds.type("0");
-        //        zoomOut();
+    public void initZoom() {
+        islandCmds.type("0");
+        zoomOut();
     }
 
     public boolean openGeneralMenu(GeneralType general, String generalName) {
