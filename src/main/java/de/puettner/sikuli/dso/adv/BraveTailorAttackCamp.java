@@ -4,17 +4,17 @@ import org.sikuli.script.Pattern;
 
 import java.awt.*;
 
-import static de.puettner.sikuli.dso.adv.BraveTailorNavPoints.NP_3;
+import static de.puettner.sikuli.dso.adv.BraveTailorNavPoints.*;
 import static de.puettner.sikuli.dso.commands.ui.SikuliCommands.pattern;
 
 public enum BraveTailorAttackCamp implements AttackCamp {
 
     // Die Camps müssen von Position zero sichtbar sein!!!
-    CAMP_1(pattern("Brave-Tailor-Camp-1-2.png").exact().targetOffset(-88, 107), null, null),
-    CAMP_2(pattern("Brave-Tailor-Camp-2.png").exact().targetOffset(-5, 69), null, null),
-    CAMP_3(pattern("Brave-Tailor-Camp-3.png").exact().targetOffset(-17, 17), null, null),
-    CAMP_4(pattern("Brave-Tailor-Camp-4.png").similar(0.85), null, null),
-    CAMP_5(pattern("Brave-Tailor-Camp-5.png").similar(0.85), null, null),
+    CAMP_1(pattern("Brave-Tailor-Camp-1-zoom1.png").similar(0.90), NP_1, null),
+    CAMP_2(pattern("Brave-Tailor-Camp-2-zoom1.png").similar(0.90), NP_1, null),
+    CAMP_3(pattern("Brave-Tailor-Camp-3.png").exact().targetOffset(-17, 17), NP_2, null),
+    CAMP_4(pattern("Brave-Tailor-Camp-4.png").similar(0.85), NP_2, null),
+    CAMP_5(pattern("Brave-Tailor-Camp-5.png").similar(0.85), NP_2, null),
     // Hauptlager
     CAMP_6(pattern("Brave-Tailor-Camp-6.png").similar(0.85), null, null),
     // Sektor 2

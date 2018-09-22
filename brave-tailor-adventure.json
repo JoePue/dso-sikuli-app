@@ -16,15 +16,15 @@
       "stepType": "LAND",
       "state": "DONE",
       "delay": 0,
-      "generalName": "GM 1",
-      "general": "Generalmajor"
+      "general": "Generalmajor",
+      "generalName": "GM 1"
     },
     {
       "stepType": "LAND",
       "state": "DONE",
       "delay": 0,
-      "generalName": "GM 2",
-      "general": "Generalmajor"
+      "general": "Generalmajor",
+      "generalName": "GM 2"
     },
     {
       "stepType": "LAND",
@@ -42,22 +42,22 @@
       "stepType": "LAND",
       "state": "DONE",
       "delay": 0,
-      "generalName": "MdK 1",
-      "general": "MdK"
+      "general": "MdK",
+      "generalName": "MdK 1"
     },
     {
       "stepType": "LAND",
       "state": "DONE",
       "delay": 0,
-      "generalName": "MdK 2",
-      "general": "MdK"
+      "general": "MdK",
+      "generalName": "MdK 2"
     },
     {
       "stepType": "LAND",
       "state": "DONE",
       "delay": 0,
-      "generalName": "MdK 3",
-      "general": "MdK"
+      "general": "MdK",
+      "generalName": "MdK 3"
     },
     {
       "stepType": "LAND",
@@ -81,21 +81,21 @@
       "stepType": "MOVE",
       "state": "DONE",
       "delay": 1,
-      "generalName": "GM 2",
       "general": "Generalmajor",
+      "generalName": "GM 2",
       "startNavPoint": "NP_1",
       "targetNavPoint": "NP_1",
       "targetNavPointClickOffset": {
         "width": 197.0,
         "height": -84.0
-      }
+    }
     },
     {
       "stepType": "MOVE",
       "state": "DONE",
       "delay": 1,
-      "generalName": "GM 1",
       "general": "Generalmajor",
+      "generalName": "GM 1",
       "startNavPoint": "NP_1",
       "targetNavPoint": "NP_1",
       "targetNavPointClickOffset": {
@@ -119,8 +119,8 @@
       "stepType": "MOVE",
       "state": "DONE",
       "delay": 1,
-      "generalName": "MdK 1",
       "general": "MdK",
+      "generalName": "MdK 1",
       "startNavPoint": "NP_1",
       "targetNavPoint": "NP_1",
       "targetNavPointClickOffset": {
@@ -132,8 +132,8 @@
       "stepType": "MOVE",
       "state": "DONE",
       "delay": 1,
-      "generalName": "MdK 2",
       "general": "MdK",
+      "generalName": "MdK 2",
       "startNavPoint": "NP_1",
       "targetNavPoint": "NP_1",
       "targetNavPointClickOffset": {
@@ -145,8 +145,8 @@
       "stepType": "MOVE",
       "state": "DONE",
       "delay": 1,
-      "generalName": "MdK 3",
       "general": "MdK",
+      "generalName": "MdK 3",
       "startNavPoint": "NP_1",
       "targetNavPoint": "NP_1",
       "targetNavPointClickOffset": {
@@ -182,8 +182,8 @@
       "stepType": "ATTACK",
       "state": "DONE",
       "delay": 0,
-      "camp": "CAMP_1",
       "general": "Vargus",
+      "camp": "CAMP_1",
       "units": [
         {
           "type": "Rek",
@@ -196,14 +196,14 @@
       ],
       "startNavPoint": "NP_1",
       "targetNavPoint": "NP_1",
-      "comment": "Sektor 1"
+      "comment": "#1 attack in sector 1"
     },
     {
       "stepType": "ATTACK",
       "state": "DONE",
       "delay": 10,
-      "camp": "CAMP_2",
       "general": "Nusala",
+      "camp": "CAMP_2",
       "units": [
         {
           "type": "Rek",
@@ -211,17 +211,18 @@
         },
         {
           "type": "Cav",
-          "quantity": 100
+          "quantity": 115
         }
       ],
-      "startNavPoint": "NP_1"
+      "startNavPoint": "NP_1",
+      "comment": "#2 attack in sector 1"
     },
     {
       "stepType": "ATTACK",
-      "state": "DONE",
+      "state": "PREPARED",
       "delay": 10,
-      "camp": "CAMP_3",
       "general": "Generalmajor",
+      "camp": "CAMP_3",
       "units": [
         {
           "type": "Rek",
@@ -238,8 +239,8 @@
       "stepType": "ATTACK",
       "state": "DONE",
       "delay": 10,
-      "camp": "CAMP_4",
       "general": "Vargus",
+      "camp": "CAMP_4",
       "units": [
         {
           "type": "Rek",
@@ -260,9 +261,9 @@
       "stepType": "ATTACK",
       "state": "DONE",
       "delay": 1,
-      "camp": "CAMP_5",
+      "general": "MdK",
       "generalName": "MDK 3",
-      "general": "MdK",
+      "camp": "CAMP_5",
       "units": [
         {
           "type": "Rek",
@@ -275,9 +276,9 @@
       "stepType": "ATTACK",
       "state": "DONE",
       "delay": 1,
-      "camp": "CAMP_5",
+      "general": "MdK",
       "generalName": "MDK 4",
-      "general": "MdK",
+      "camp": "CAMP_5",
       "units": [
         {
           "type": "Rek",
@@ -290,9 +291,9 @@
       "stepType": "ATTACK",
       "state": "DONE",
       "delay": 1,
-      "camp": "CAMP_5",
-      "generalName": "MDK 5",
       "general": "MdK",
+      "generalName": "MDK 5",
+      "camp": "CAMP_5",
       "units": [
         {
           "type": "Rek",
@@ -305,8 +306,8 @@
       "stepType": "ATTACK",
       "state": "DONE",
       "delay": 30,
-      "camp": "CAMP_5",
       "general": "Mary",
+      "camp": "CAMP_5",
       "units": [
         {
           "type": "Bos",
@@ -323,8 +324,8 @@
       "stepType": "ATTACK",
       "state": "DONE",
       "delay": 30,
-      "camp": "CAMP_6",
       "general": "Nusala",
+      "camp": "CAMP_6",
       "units": [
         {
           "type": "Rek",
@@ -337,9 +338,9 @@
       "stepType": "ATTACK",
       "state": "DONE",
       "delay": 30,
-      "camp": "CAMP_6",
-      "generalName": "GM 2",
       "general": "Generalmajor",
+      "generalName": "GM 2",
+      "camp": "CAMP_6",
       "units": [
         {
           "type": "Rek",
@@ -360,9 +361,9 @@
       "stepType": "ATTACK",
       "state": "DONE",
       "delay": 30,
-      "camp": "CAMP_7",
-      "generalName": "GM 1",
       "general": "Generalmajor",
+      "generalName": "GM 1",
+      "camp": "CAMP_7",
       "units": [
         {
           "type": "Rek",
@@ -383,9 +384,9 @@
       "stepType": "ATTACK",
       "state": "DONE",
       "delay": 0,
-      "camp": "CAMP_8",
-      "generalName": "GM 1",
       "general": "Generalmajor",
+      "generalName": "GM 1",
+      "camp": "CAMP_8",
       "units": [
         {
           "type": "Rek",
@@ -406,9 +407,9 @@
       "stepType": "ATTACK",
       "state": "DONE",
       "delay": 10,
-      "camp": "CAMP_9",
-      "generalName": "GM 1",
       "general": "Generalmajor",
+      "generalName": "GM 1",
+      "camp": "CAMP_9",
       "units": [
         {
           "type": "Rek",
@@ -429,9 +430,9 @@
       "stepType": "ATTACK",
       "state": "DONE",
       "delay": 10,
-      "camp": "CAMP_10",
-      "generalName": "Anslem",
       "general": "Anslem",
+      "generalName": "Anslem",
+      "camp": "CAMP_10",
       "units": [
         {
           "type": "Rek",
@@ -448,9 +449,9 @@
       "stepType": "ATTACK",
       "state": "DONE",
       "delay": 0,
-      "camp": "CAMP_11",
+      "general": "MdK",
       "generalName": "MdK 3",
-      "general": "MdK",
+      "camp": "CAMP_11",
       "units": [
         {
           "type": "Rek",
@@ -463,9 +464,9 @@
       "stepType": "ATTACK",
       "state": "DONE",
       "delay": 0,
-      "camp": "CAMP_11",
+      "general": "MdK",
       "generalName": "MdK 4",
-      "general": "MdK",
+      "camp": "CAMP_11",
       "units": [
         {
           "type": "Rek",
@@ -478,9 +479,9 @@
       "stepType": "ATTACK",
       "state": "DONE",
       "delay": 0,
-      "camp": "CAMP_11",
-      "generalName": "MdK 5",
       "general": "MdK",
+      "generalName": "MdK 5",
+      "camp": "CAMP_11",
       "units": [
         {
           "type": "Rek",
@@ -493,9 +494,9 @@
       "stepType": "ATTACK",
       "state": "DONE",
       "delay": 2,
-      "camp": "CAMP_11",
-      "generalName": "SM 1",
       "general": "Sensenmann",
+      "generalName": "SM 1",
+      "camp": "CAMP_11",
       "units": [
         {
           "type": "Bos",
@@ -508,9 +509,9 @@
       "stepType": "ATTACK",
       "state": "DONE",
       "delay": 2,
-      "camp": "CAMP_11",
-      "generalName": "GM 2",
       "general": "Generalmajor",
+      "generalName": "GM 2",
+      "camp": "CAMP_11",
       "units": [
         {
           "type": "Rek",
@@ -531,8 +532,8 @@
       "stepType": "MOVE",
       "state": "DONE",
       "delay": 1,
+      "general": "Generalmajor",
       "generalName": "GM 2",
-      "general": "Generalmajor",
       "startNavPoint": "NP_2",
       "targetNavPoint": "NP_3"
     },
@@ -540,8 +541,8 @@
       "stepType": "MOVE",
       "state": "DONE",
       "delay": 1,
+      "general": "Generalmajor",
       "generalName": "GM 1",
-      "general": "Generalmajor",
       "startNavPoint": "NP_2",
       "targetNavPoint": "NP_3"
     },
@@ -549,8 +550,8 @@
       "stepType": "MOVE",
       "state": "DONE",
       "delay": 1,
-      "generalName": "Vargus",
       "general": "Vargus",
+      "generalName": "Vargus",
       "startNavPoint": "NP_2",
       "targetNavPoint": "NP_3"
     },
@@ -558,8 +559,8 @@
       "stepType": "MOVE",
       "state": "DONE",
       "delay": 1,
-      "generalName": "Anslem",
       "general": "Anslem",
+      "generalName": "Anslem",
       "startNavPoint": "NP_2",
       "targetNavPoint": "NP_3"
     },
@@ -567,8 +568,8 @@
       "stepType": "MOVE",
       "state": "DONE",
       "delay": 1,
-      "generalName": "Mary",
       "general": "Mary",
+      "generalName": "Mary",
       "startNavPoint": "NP_2",
       "targetNavPoint": "NP_3"
     }
