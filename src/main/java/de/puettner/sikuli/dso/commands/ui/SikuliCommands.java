@@ -250,9 +250,9 @@ public class SikuliCommands {
         }
     }
 
-    public void doubleClick(Location moveLocation) {
+    public void doubleClick(Location location) {
         try {
-            appRegion.doubleClick(moveLocation);
+            appRegion.doubleClick(location);
         } catch (FindFailed findFailed) {
             throw new RuntimeException(findFailed);
         }
