@@ -400,7 +400,7 @@ public class DSOService {
 
     public void highlightRegions() {
         log.info("highlightRegions()");
-        islandCmds.hightlightRegion();
+        islandCmds.highlightRegion();
         buildMenu.highlightMenuRegion();
         starMenu.highlightMenuRegion();
         bookbinderMenu.highlightMenuRegion();

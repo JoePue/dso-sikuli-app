@@ -191,7 +191,7 @@ public class SikuliCommands {
         return match;
     }
 
-    public void hightlightRegion() {
+    public void highlightRegion() {
         appRegion.highlight(2, "green");
     }
 
