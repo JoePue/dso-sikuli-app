@@ -93,7 +93,7 @@ public class BraveTailorAdv extends Adventure {
     }
 
     private void prepareStarMenu() {
-        super.prepareStarMenu(StarMenuFilter.BraveTailor);
+        super.prepareStarMenu(StarMenuFilter.GeneralsFilterString);
     }
 
     @Deprecated

@@ -1,31 +1,75 @@
 {
   "adventureSteps": [
     {
-      "stepType": "BACK_TO_STAR_MENU",
+      "stepType": "ALL_BACK_TO_STAR_MENU",
       "state": "DONE",
       "delay": 960
     },
     {
-      "stepType": "INITIAL_MOVE",
-      "state": "OPEN",
-      "delay": 1,
-      "generalName": null,
-      "general": "Vargus",
-      "targetOffset": {
-        "width": 1.0,
-        "height": 1.0
-      }
+      "stepType": "LAND",
+      "state": "DONE",
+      "delay": 0,
+      "general": "Vargus"
     },
     {
-      "targetOffset": {
-        "width": 1.0,
-        "height": 1.0
-      },
+      "stepType": "LAND",
+      "state": "DONE",
+      "delay": 0,
+      "generalName": "GM 1",
+      "general": "Generalmajor"
+    },
+    {
+      "stepType": "LAND",
+      "state": "DONE",
+      "delay": 0,
+      "generalName": "GM 2",
+      "general": "Generalmajor"
+    },
+    {
+      "stepType": "LAND",
+      "state": "DONE",
+      "delay": 0,
+      "general": "Anslem"
+    },
+    {
+      "stepType": "LAND",
+      "state": "DONE",
+      "delay": 0,
+      "generalName": "MdK 1",
+      "general": "MdK"
+    },
+    {
+      "stepType": "LAND",
+      "state": "DONE",
+      "delay": 0,
+      "generalName": "MdK 2",
+      "general": "MdK"
+    },
+    {
+      "stepType": "LAND",
+      "state": "DONE",
+      "delay": 0,
+      "generalName": "MdK 3",
+      "general": "MdK"
+    },
+    {
+      "stepType": "LAND",
+      "state": "DONE",
+      "delay": 0,
+      "generalName": "MdK 4",
+      "general": "MdK"
+    },
+    {
+      "stepType": "LAND",
+      "state": "DONE",
+      "delay": 0,
+      "general": "Mary"
+    },
+    {
       "stepType": "ATTACK",
       "state": "DONE",
       "delay": 0,
       "camp": "CAMP_1",
-      "generalName": null,
       "general": "Vargus",
       "units": [
         {
@@ -37,19 +81,13 @@
           "quantity": 75
         }
       ],
-      "startNavPoint": "NP_1",
-      "targetNavPoint": null
+      "startNavPoint": "NP_1"
     },
     {
-      "targetOffset": {
-        "width": 1.0,
-        "height": 1.0
-      },
       "stepType": "ATTACK",
       "state": "DONE",
       "delay": 10,
       "camp": "CAMP_2",
-      "generalName": null,
       "general": "Nusala",
       "units": [
         {
@@ -61,19 +99,13 @@
           "quantity": 100
         }
       ],
-      "startNavPoint": "NP_1",
-      "targetNavPoint": null
+      "startNavPoint": "NP_1"
     },
     {
-      "targetOffset": {
-        "width": 1.0,
-        "height": 1.0
-      },
       "stepType": "ATTACK",
       "state": "DONE",
       "delay": 10,
       "camp": "CAMP_3",
-      "generalName": null,
       "general": "Generalmajor",
       "units": [
         {
@@ -85,19 +117,13 @@
           "quantity": 85
         }
       ],
-      "startNavPoint": "NP_1",
-      "targetNavPoint": null
+      "startNavPoint": "NP_1"
     },
     {
-      "targetOffset": {
-        "width": 1.0,
-        "height": 1.0
-      },
       "stepType": "ATTACK",
       "state": "DONE",
       "delay": 10,
       "camp": "CAMP_4",
-      "generalName": null,
       "general": "Vargus",
       "units": [
         {
@@ -113,14 +139,9 @@
           "quantity": 25
         }
       ],
-      "startNavPoint": "NP_1",
-      "targetNavPoint": null
+      "startNavPoint": "NP_1"
     },
     {
-      "targetOffset": {
-        "width": 1.0,
-        "height": 1.0
-      },
       "stepType": "ATTACK",
       "state": "DONE",
       "delay": 1,
@@ -133,14 +154,9 @@
           "quantity": 1
         }
       ],
-      "startNavPoint": "NP_1",
-      "targetNavPoint": null
+      "startNavPoint": "NP_1"
     },
     {
-      "targetOffset": {
-        "width": 1.0,
-        "height": 1.0
-      },
       "stepType": "ATTACK",
       "state": "DONE",
       "delay": 1,
@@ -153,14 +169,9 @@
           "quantity": 1
         }
       ],
-      "startNavPoint": "NP_1",
-      "targetNavPoint": null
+      "startNavPoint": "NP_1"
     },
     {
-      "targetOffset": {
-        "width": 1.0,
-        "height": 1.0
-      },
       "stepType": "ATTACK",
       "state": "DONE",
       "delay": 1,
@@ -173,19 +184,13 @@
           "quantity": 1
         }
       ],
-      "startNavPoint": "NP_1",
-      "targetNavPoint": null
+      "startNavPoint": "NP_1"
     },
     {
-      "targetOffset": {
-        "width": 1.0,
-        "height": 1.0
-      },
       "stepType": "ATTACK",
       "state": "DONE",
       "delay": 30,
       "camp": "CAMP_5",
-      "generalName": null,
       "general": "Mary",
       "units": [
         {
@@ -197,19 +202,13 @@
           "quantity": 55
         }
       ],
-      "startNavPoint": "NP_1",
-      "targetNavPoint": null
+      "startNavPoint": "NP_1"
     },
     {
-      "targetOffset": {
-        "width": 1.0,
-        "height": 1.0
-      },
       "stepType": "ATTACK",
       "state": "DONE",
       "delay": 30,
       "camp": "CAMP_6",
-      "generalName": null,
       "general": "Nusala",
       "units": [
         {
@@ -217,14 +216,9 @@
           "quantity": 145
         }
       ],
-      "startNavPoint": "NP_1",
-      "targetNavPoint": null
+      "startNavPoint": "NP_1"
     },
     {
-      "targetOffset": {
-        "width": 1.0,
-        "height": 1.0
-      },
       "stepType": "ATTACK",
       "state": "DONE",
       "delay": 30,
@@ -245,14 +239,9 @@
           "quantity": 205
         }
       ],
-      "startNavPoint": "NP_1",
-      "targetNavPoint": null
+      "startNavPoint": "NP_1"
     },
     {
-      "targetOffset": {
-        "width": 1.0,
-        "height": 1.0
-      },
       "stepType": "ATTACK",
       "state": "DONE",
       "delay": 30,
@@ -273,14 +262,9 @@
           "quantity": 65
         }
       ],
-      "startNavPoint": "NP_2",
-      "targetNavPoint": null
+      "startNavPoint": "NP_2"
     },
     {
-      "targetOffset": {
-        "width": 1.0,
-        "height": 1.0
-      },
       "stepType": "ATTACK",
       "state": "DONE",
       "delay": 0,
@@ -301,14 +285,9 @@
           "quantity": 120
         }
       ],
-      "startNavPoint": "NP_2",
-      "targetNavPoint": null
+      "startNavPoint": "NP_2"
     },
     {
-      "targetOffset": {
-        "width": 1.0,
-        "height": 1.0
-      },
       "stepType": "ATTACK",
       "state": "DONE",
       "delay": 10,
@@ -329,14 +308,9 @@
           "quantity": 85
         }
       ],
-      "startNavPoint": "NP_2",
-      "targetNavPoint": null
+      "startNavPoint": "NP_2"
     },
     {
-      "targetOffset": {
-        "width": 1.0,
-        "height": 1.0
-      },
       "stepType": "ATTACK",
       "state": "DONE",
       "delay": 10,
@@ -353,14 +327,9 @@
           "quantity": 75
         }
       ],
-      "startNavPoint": "NP_2",
-      "targetNavPoint": null
+      "startNavPoint": "NP_2"
     },
     {
-      "targetOffset": {
-        "width": 1.0,
-        "height": 1.0
-      },
       "stepType": "ATTACK",
       "state": "DONE",
       "delay": 0,
@@ -373,14 +342,9 @@
           "quantity": 1
         }
       ],
-      "startNavPoint": "NP_2",
-      "targetNavPoint": null
+      "startNavPoint": "NP_2"
     },
     {
-      "targetOffset": {
-        "width": 1.0,
-        "height": 1.0
-      },
       "stepType": "ATTACK",
       "state": "DONE",
       "delay": 0,
@@ -393,14 +357,9 @@
           "quantity": 1
         }
       ],
-      "startNavPoint": "NP_2",
-      "targetNavPoint": null
+      "startNavPoint": "NP_2"
     },
     {
-      "targetOffset": {
-        "width": 1.0,
-        "height": 1.0
-      },
       "stepType": "ATTACK",
       "state": "DONE",
       "delay": 0,
@@ -413,14 +372,9 @@
           "quantity": 1
         }
       ],
-      "startNavPoint": "NP_2",
-      "targetNavPoint": null
+      "startNavPoint": "NP_2"
     },
     {
-      "targetOffset": {
-        "width": 1.0,
-        "height": 1.0
-      },
       "stepType": "ATTACK",
       "state": "DONE",
       "delay": 2,
@@ -433,14 +387,9 @@
           "quantity": 200
         }
       ],
-      "startNavPoint": "NP_2",
-      "targetNavPoint": null
+      "startNavPoint": "NP_2"
     },
     {
-      "targetOffset": {
-        "width": 1.0,
-        "height": 1.0
-      },
       "stepType": "ATTACK",
       "state": "DONE",
       "delay": 2,
@@ -461,18 +410,12 @@
           "quantity": 85
         }
       ],
-      "startNavPoint": "NP_2",
-      "targetNavPoint": null
+      "startNavPoint": "NP_2"
     },
     {
-      "targetOffset": {
-        "width": 1.0,
-        "height": 1.0
-      },
       "stepType": "MOVE",
       "state": "DONE",
       "delay": 1,
-      "camp": null,
       "generalName": "GM 2",
       "general": "Generalmajor",
       "units": [],
@@ -480,14 +423,9 @@
       "targetNavPoint": "NP_3"
     },
     {
-      "targetOffset": {
-        "width": 1.0,
-        "height": 1.0
-      },
       "stepType": "MOVE",
       "state": "DONE",
       "delay": 1,
-      "camp": null,
       "generalName": "GM 1",
       "general": "Generalmajor",
       "units": [],
@@ -495,14 +433,9 @@
       "targetNavPoint": "NP_3"
     },
     {
-      "targetOffset": {
-        "width": 1.0,
-        "height": 1.0
-      },
       "stepType": "MOVE",
       "state": "DONE",
       "delay": 1,
-      "camp": null,
       "generalName": "Vargus",
       "general": "Vargus",
       "units": [],
@@ -510,14 +443,9 @@
       "targetNavPoint": "NP_3"
     },
     {
-      "targetOffset": {
-        "width": 1.0,
-        "height": 1.0
-      },
       "stepType": "MOVE",
       "state": "DONE",
       "delay": 1,
-      "camp": null,
       "generalName": "Anslem",
       "general": "Anslem",
       "units": [],
@@ -525,14 +453,9 @@
       "targetNavPoint": "NP_3"
     },
     {
-      "targetOffset": {
-        "width": 1.0,
-        "height": 1.0
-      },
       "stepType": "MOVE",
       "state": "DONE",
       "delay": 1,
-      "camp": null,
       "generalName": "Mary",
       "general": "Mary",
       "units": [],

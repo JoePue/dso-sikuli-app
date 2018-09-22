@@ -1,5 +1,6 @@
 package de.puettner.sikuli.dso.adv;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 
 import java.awt.*;
@@ -7,10 +8,11 @@ import java.util.Objects;
 
 @Data
 //@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS, include = JsonTypeInfo.As.PROPERTY, property = "className")
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class AdventureStep {
 
     /** Diese Property ist nur bei 'stepType == MOVE' gesetzt. */
-    Dimension targetOffset = new Dimension(1, 1);
+    Dimension targetOffset = null;
     private StepType stepType;
     private AdventureStepState state;
     /** Delay before step execution attack */
@@ -24,9 +26,10 @@ public class AdventureStep {
     private NavigationPoint startNavPoint;
     /** Diese Property ist nur bei 'stepType == MOVE' gesetzt. */
     private NavigationPoint targetNavPoint;
+    private String comment;
 
     protected AdventureStep() {
-        targetOffset = new Dimension(1, 1);
+        targetOffset = null;
     }
 
     public AdventureStep(StepType stepType, NavigationPoint startNavPoint, NavigationPoint targetNavPoint, AttackCamp camp,
