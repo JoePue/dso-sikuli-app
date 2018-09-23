@@ -173,7 +173,7 @@
       "targetNavPointClickOffset": {
         "width": 96.0,
         "height": -112.0
-      }
+    }
     },
     {
       "no": 19,
@@ -383,7 +383,7 @@
       "no": 29,
       "stepType": "SOLVE_QUEST",
       "state": "DONE",
-      "comment": "#Sector-1 is solved. ########################################################"
+      "comment": "#Sector-1 is solved. ------------------------------------------------"
     },
     {
       "no": 30,
@@ -485,7 +485,6 @@
       "no": 38,
       "stepType": "ATTACK",
       "state": "DONE",
-      "delay": 30,
       "general": "Generalmajor",
       "generalName": "GM 1",
       "camp": "CAMP_7",
@@ -505,12 +504,12 @@
       ],
       "startNavPoint": "NP_2",
       "targetNavPoint": "NP_2",
-      "comment": "#Sector-2 #1 attack"
+      "comment": "#Sector-2 #1 attack ------------------------------------------------------"
     },
     {
       "no": 39,
       "stepType": "ATTACK",
-      "state": "DONE",
+      "state": "PREPARED",
       "general": "Generalmajor",
       "generalName": "GM 1",
       "camp": "CAMP_8",

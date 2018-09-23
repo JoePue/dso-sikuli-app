@@ -123,17 +123,17 @@ public abstract class Adventure {
                     }
                     // *** OPEN - SOLVE_QUEST ***
                     if (StepType.SOLVE_QUEST.equals(step.getStepType())) {
-                        if (processSolveQuestStep(step)) {
-                            saveState(step, DONE);
-                        }
-                    }
-                    // *** OPEN - SOLVE_QUEST ***
-                    if (StepType.UNSET_UNITS.equals(step.getStepType())) {
-                        if (processUnsetUnitsStep(step)) {
-                            saveState(step, DONE);
-                        } else {
+                        if (!processSolveQuestStep(step)) {
                             throw new IllegalStateException("step processing failed");
                         }
+                        saveState(step, DONE);
+                    }
+                    // *** OPEN - UNSET_UNITS ***
+                    if (StepType.UNSET_UNITS.equals(step.getStepType())) {
+                        if (!processUnsetUnitsStep(step)) {
+                            throw new IllegalStateException("step processing failed");
+                        }
+                        saveState(step, DONE);
                     }
                 }
                 if (PREPARED.equals(step.getState())) {
