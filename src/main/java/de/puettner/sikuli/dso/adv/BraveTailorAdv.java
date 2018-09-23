@@ -46,9 +46,13 @@ public class BraveTailorAdv extends Adventure {
         log.info("routeCheck()");
         for (AdventureStep step : this.adventureSteps) {
             if (StepType.ATTACK.equals(step.getStepType()) || StepType.MOVE.equals(step.getStepType())) {
-                log.info("routeCheck: " + step);
-                this.route(step.getStartNavPoint(), step.getTargetNavPoint(), step.getTargetDragDropOffset(), step
-                        .getTargetNavPointClickOffset(), true);
+                try {
+                    this.route(step.getStartNavPoint(), step.getTargetNavPoint(), step.getTargetDragDropOffset(), step
+                            .getTargetNavPointClickOffset(), true);
+                } catch (Exception e) {
+                    log.info("routeCheck: " + step);
+                    throw e;
+                }
             }
         }
     }
@@ -87,22 +91,36 @@ public class BraveTailorAdv extends Adventure {
             if (isRouteCheck) {
                 return;
             }
-            navigate(startingPoint, targetPoint, new Dimension(-800, -100), targetDragDropOffset, targetClickOffset);
+            navigate(startingPoint, targetPoint, new Dimension(-800, -100), targetDragDropOffset, targetClickOffset, true, true);
         } else if (startingPoint.getId().equals(2) && targetPoint.getId().equals(1)) {
             if (isRouteCheck) {
                 return;
             }
-            navigate(startingPoint, targetPoint, new Dimension(800, 0), targetDragDropOffset, targetClickOffset);
+            navigate(startingPoint, targetPoint, new Dimension(800, 0), targetDragDropOffset, targetClickOffset, true, true);
+        } else if (startingPoint.getId().equals(1) && targetPoint.getId().equals(3)) {
+            //  navigate() NP_1 -> NP_3
+            if (isRouteCheck) {
+                return;
+            }
+            navigate(startingPoint, targetPoint, new Dimension(-800, -300), targetDragDropOffset, targetClickOffset, true, false);
+            navigate(startingPoint, targetPoint, new Dimension(-600, -300), targetDragDropOffset, targetClickOffset, false, true);
+        } else if (startingPoint.getId().equals(3) && targetPoint.getId().equals(1)) {
+            //  navigate() NP_3 -> NP_1
+            if (isRouteCheck) {
+                return;
+            }
+            navigate(startingPoint, targetPoint, new Dimension(800, 300), targetDragDropOffset, targetClickOffset, true, false);
+            navigate(startingPoint, targetPoint, new Dimension(600, 300), targetDragDropOffset, targetClickOffset, false, true);
         } else if (startingPoint.getId().equals(2) && targetPoint.getId().equals(3)) {
             if (isRouteCheck) {
                 return;
             }
-            navigate(startingPoint, targetPoint, new Dimension(0, -600), targetDragDropOffset, targetClickOffset);
+            navigate(startingPoint, targetPoint, new Dimension(0, -600), targetDragDropOffset, targetClickOffset, true, true);
         } else if (startingPoint.getId().equals(3) && targetPoint.getId().equals(2)) {
             if (isRouteCheck) {
                 return;
             }
-            navigate(startingPoint, targetPoint, new Dimension(0, 600), targetDragDropOffset, targetClickOffset);
+            navigate(startingPoint, targetPoint, new Dimension(0, 600), targetDragDropOffset, targetClickOffset, true, true);
         } else {
             throw new IllegalStateException("Navigation from " + startingPoint.getId() + " to " + targetPoint.getId() + " is not " +
                     "possible");
@@ -117,12 +135,17 @@ public class BraveTailorAdv extends Adventure {
      * @param targetClickOffset
      */
     private void navigate(NavigationPoint startPoint, NavigationPoint targetPoint, Dimension navDragDropOffset, Dimension targetDragDropOffset, Dimension
-            targetClickOffset) {
+
+            targetClickOffset, boolean shouldCenterStart, boolean shouldCenterTarget) {
         log.info("navigate() " + startPoint + " -> " + targetPoint + ", navDragDropOffset: " + navDragDropOffset + ", " +
                 "targetDragDropOffset: " + targetDragDropOffset + ", targetClickOffset: " + targetClickOffset);
-        centerNavigationPoint(startPoint);
+        if (shouldCenterStart) {
+            centerNavigationPoint(startPoint);
+        }
         islandCmds.dragDrop(navDragDropOffset);
-        centerNavigationPoint(targetPoint, targetDragDropOffset, targetClickOffset);
+        if (shouldCenterTarget) {
+            centerNavigationPoint(targetPoint, targetDragDropOffset, targetClickOffset);
+        }
         islandCmds.parkMouse();
     }
 

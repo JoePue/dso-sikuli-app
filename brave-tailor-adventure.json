@@ -775,51 +775,366 @@
       "no": 59,
       "stepType": "MOVE",
       "state": "DONE",
-      "delay": 1,
-      "general": "Generalmajor",
-      "generalName": "GM 2",
+      "general": "Anslem",
       "startNavPoint": "NP_2",
-      "targetNavPoint": "NP_3"
+      "targetNavPoint": "NP_3",
+      "targetNavPointClickOffset": {
+        "width": -470.0,
+        "height": -215.0
+    }
     },
     {
       "no": 60,
       "stepType": "MOVE",
       "state": "DONE",
-      "delay": 1,
       "general": "Generalmajor",
-      "generalName": "GM 1",
-      "startNavPoint": "NP_2",
-      "targetNavPoint": "NP_3"
+      "generalName": "GM 2",
+      "startNavPoint": "NP_1",
+      "targetNavPoint": "NP_3",
+      "targetNavPointClickOffset": {
+        "width": -487.0,
+        "height": -174.0
+      }
     },
     {
       "no": 61,
       "stepType": "MOVE",
       "state": "DONE",
-      "delay": 1,
       "general": "Vargus",
-      "generalName": "Vargus",
       "startNavPoint": "NP_2",
-      "targetNavPoint": "NP_3"
+      "targetNavPoint": "NP_3",
+      "targetNavPointClickOffset": {
+        "width": -451.0,
+        "height": -148.0
+      }
     },
     {
       "no": 62,
       "stepType": "MOVE",
       "state": "DONE",
-      "delay": 1,
-      "general": "Anslem",
-      "generalName": "Anslem",
-      "startNavPoint": "NP_2",
-      "targetNavPoint": "NP_3"
+      "general": "MdK",
+      "generalName": "MdK 4",
+      "startNavPoint": "NP_1",
+      "targetNavPoint": "NP_3",
+      "targetNavPointClickOffset": {
+        "width": -393.0,
+        "height": -107.0
+      }
     },
     {
       "no": 63,
       "stepType": "MOVE",
       "state": "DONE",
-      "delay": 1,
-      "general": "Mary",
-      "generalName": "Mary",
+      "general": "MdK",
+      "generalName": "MdK 5",
+      "startNavPoint": "NP_1",
+      "targetNavPoint": "NP_3",
+      "targetNavPointClickOffset": {
+        "width": -324.0,
+        "height": -92.0
+      }
+    },
+    {
+      "no": 64,
+      "stepType": "MOVE",
+      "state": "DONE",
+      "general": "MdK",
+      "generalName": "MdK 6",
+      "startNavPoint": "NP_1",
+      "targetNavPoint": "NP_3",
+      "targetNavPointClickOffset": {
+        "width": -373.0,
+        "height": -72.0
+      }
+    },
+    {
+      "no": 65,
+      "stepType": "MOVE",
+      "state": "DONE",
+      "general": "MdK",
+      "generalName": "MdK 7",
+      "startNavPoint": "NP_1",
+      "targetNavPoint": "NP_3",
+      "targetNavPointClickOffset": {
+        "width": -291.0,
+        "height": -72.0
+      }
+    },
+    {
+      "no": 66,
+      "stepType": "MOVE",
+      "state": "DONE",
+      "general": "MdK",
+      "generalName": "MdK 8",
+      "startNavPoint": "NP_1",
+      "targetNavPoint": "NP_3",
+      "targetNavPointClickOffset": {
+        "width": -320.0,
+        "height": -47.0
+      }
+    },
+    {
+      "no": 67,
+      "stepType": "MOVE",
+      "state": "DONE",
+      "general": "Sensenmann",
+      "generalName": "SM 1",
+      "startNavPoint": "NP_1",
+      "targetNavPoint": "NP_3",
+      "targetNavPointClickOffset": {
+        "width": -357.0,
+        "height": 13.0
+      }
+    },
+    {
+      "no": 68,
+      "stepType": "MOVE",
+      "state": "DONE",
+      "general": "MdK",
+      "generalName": "MdK 3",
       "startNavPoint": "NP_2",
-      "targetNavPoint": "NP_3"
+      "targetNavPoint": "NP_3",
+      "targetNavPointClickOffset": {
+        "width": -290.0,
+        "height": -17.0
+      }
+    },
+    {
+      "no": 69,
+      "stepType": "ATTACK",
+      "state": "DONE",
+      "general": "Anslem",
+      "camp": "CAMP_12",
+      "units": [
+        {
+          "type": "Rek",
+          "quantity": 140
+        },
+        {
+          "type": "Kan",
+          "quantity": 25
+        }
+      ],
+      "startNavPoint": "NP_3",
+      "targetNavPoint": "NP_3",
+      "comment": "#Sector-3 #1 attack // --------------------------------------------------"
+    },
+    {
+      "no": 70,
+      "stepType": "ATTACK",
+      "state": "DONE",
+      "general": "Anslem",
+      "camp": "CAMP_13",
+      "units": [
+        {
+          "type": "Rek",
+          "quantity": 100
+        },
+        {
+          "type": "Kan",
+          "quantity": 65
+        }
+      ],
+      "startNavPoint": "NP_3",
+      "targetNavPoint": "NP_3",
+      "targetDragDropOffset": {
+        "width": 0.0,
+        "height": -400.0
+      }
+    },
+    {
+      "no": 71,
+      "stepType": "ATTACK",
+      "state": "DONE",
+      "general": "Generalmajor",
+      "generalName": "GM 2",
+      "camp": "CAMP_14",
+      "units": [
+        {
+          "type": "Rek",
+          "quantity": 120
+        },
+        {
+          "type": "Bos",
+          "quantity": 140
+        },
+        {
+          "type": "Kan",
+          "quantity": 25
+        }
+      ],
+      "startNavPoint": "NP_3",
+      "targetNavPoint": "NP_3",
+      "targetDragDropOffset": {
+        "width": 0.0,
+        "height": -400.0
+      }
+    },
+    {
+      "no": 72,
+      "stepType": "ATTACK",
+      "state": "DONE",
+      "general": "Anslem",
+      "camp": "CAMP_15",
+      "units": [
+        {
+          "type": "Rek",
+          "quantity": 60
+        },
+        {
+          "type": "Kan",
+          "quantity": 105
+        }
+      ],
+      "startNavPoint": "NP_3",
+      "targetNavPoint": "NP_3",
+      "targetDragDropOffset": {
+        "width": 0.0,
+        "height": -400.0
+      }
+    },
+    {
+      "no": 73,
+      "stepType": "ATTACK",
+      "state": "DONE",
+      "general": "MdK",
+      "generalName": "MdK 4",
+      "camp": "CAMP_17",
+      "units": [
+        {
+          "type": "Rek",
+          "quantity": 1
+        }
+      ],
+      "startNavPoint": "NP_3",
+      "targetNavPoint": "NP_3",
+      "targetDragDropOffset": {
+        "width": 0.0,
+        "height": -400.0
+      }
+    },
+    {
+      "no": 74,
+      "stepType": "ATTACK",
+      "state": "DONE",
+      "general": "MdK",
+      "generalName": "MdK 5",
+      "camp": "CAMP_17",
+      "units": [
+        {
+          "type": "Rek",
+          "quantity": 1
+        }
+      ],
+      "startNavPoint": "NP_3",
+      "targetNavPoint": "NP_3",
+      "targetDragDropOffset": {
+        "width": 0.0,
+        "height": -400.0
+      }
+    },
+    {
+      "no": 75,
+      "stepType": "ATTACK",
+      "state": "DONE",
+      "general": "MdK",
+      "generalName": "MdK 6",
+      "camp": "CAMP_17",
+      "units": [
+        {
+          "type": "Rek",
+          "quantity": 1
+        }
+      ],
+      "startNavPoint": "NP_3",
+      "targetNavPoint": "NP_3",
+      "targetDragDropOffset": {
+        "width": 0.0,
+        "height": -400.0
+      }
+    },
+    {
+      "no": 76,
+      "stepType": "ATTACK",
+      "state": "DONE",
+      "general": "MdK",
+      "generalName": "MdK 7",
+      "camp": "CAMP_17",
+      "units": [
+        {
+          "type": "Rek",
+          "quantity": 1
+        }
+      ],
+      "startNavPoint": "NP_3",
+      "targetNavPoint": "NP_3",
+      "targetDragDropOffset": {
+        "width": 0.0,
+        "height": -400.0
+      }
+    },
+    {
+      "no": 77,
+      "stepType": "ATTACK",
+      "state": "DONE",
+      "general": "MdK",
+      "generalName": "MdK 8",
+      "camp": "CAMP_17",
+      "units": [
+        {
+          "type": "Rek",
+          "quantity": 1
+        }
+      ],
+      "startNavPoint": "NP_3",
+      "targetNavPoint": "NP_3",
+      "targetDragDropOffset": {
+        "width": 0.0,
+        "height": -400.0
+      }
+    },
+    {
+      "no": 78,
+      "stepType": "ATTACK",
+      "state": "DONE",
+      "general": "Sensenmann",
+      "generalName": "SM 1",
+      "camp": "CAMP_17",
+      "units": [
+        {
+          "type": "Bos",
+          "quantity": 200
+        }
+      ],
+      "startNavPoint": "NP_3",
+      "targetNavPoint": "NP_3",
+      "targetDragDropOffset": {
+        "width": 0.0,
+        "height": -400.0
+      }
+    },
+    {
+      "no": 79,
+      "stepType": "ATTACK",
+      "state": "DONE",
+      "general": "Mary",
+      "camp": "CAMP_17",
+      "units": [
+        {
+          "type": "Rek",
+          "quantity": 80
+        },
+        {
+          "type": "Kan",
+          "quantity": 135
+        }
+      ],
+      "startNavPoint": "NP_3",
+      "targetNavPoint": "NP_3",
+      "targetDragDropOffset": {
+        "width": 0.0,
+        "height": -400.0
+      }
     }
   ]
 }
