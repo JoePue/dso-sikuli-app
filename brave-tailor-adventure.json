@@ -215,6 +215,7 @@
         }
       ],
       "startNavPoint": "NP_1",
+      "targetNavPoint": "NP_1",
       "comment": "#2 attack in sector 1"
     },
     {
@@ -261,7 +262,8 @@
           "quantity": 25
         }
       ],
-      "startNavPoint": "NP_1"
+      "startNavPoint": "NP_1",
+      "targetNavPoint": "NP_2"
     },
     {
       "stepType": "ATTACK",

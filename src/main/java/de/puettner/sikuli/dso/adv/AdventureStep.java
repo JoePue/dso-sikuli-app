@@ -25,6 +25,7 @@ public class AdventureStep {
     private NavigationPoint targetNavPoint;
     /** Diese Property ist nur bei 'stepType == MOVE' gesetzt. */
     private Dimension targetDragDropOffset;
+    /** Erforderlich für den MOVE-Step in Sektor 1 vom Landeplatz zur ersten Platzierung */
     private Dimension targetNavPointClickOffset;
     private String comment;
 

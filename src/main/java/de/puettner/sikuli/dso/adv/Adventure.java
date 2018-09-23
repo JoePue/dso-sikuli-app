@@ -58,6 +58,8 @@ public abstract class Adventure {
     public abstract void route(NavigationPoint startingPoint, NavigationPoint targetPoint, Dimension targetOffset, Dimension
             targetNavPointClickOffset);
 
+    public abstract void routeCheck();
+
     public abstract List<NavigationPoint> getNavigationPoints();
 
     protected abstract File getFilename();
@@ -65,6 +67,7 @@ public abstract class Adventure {
     public void play() {
         log.info("play");
         this.restoreState();
+        this.routeCheck();
         this.initZoom();
         islandCmds.typeESC();
         islandCmds.closeChat();
