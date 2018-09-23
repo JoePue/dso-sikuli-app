@@ -324,6 +324,10 @@ public abstract class Adventure {
         if (list == null) {
             list = new ArrayList<>();
         }
+        int i = 0;
+        for (AdventureStep item : list) {
+            item.setNo(++i);
+        }
         this.adventureSteps = list;
     }
 

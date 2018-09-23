@@ -11,6 +11,7 @@ import java.util.Objects;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class AdventureStep {
 
+    private int no;
     private StepType stepType;
     private AdventureStepState state;
     /** Delay before step execution */
