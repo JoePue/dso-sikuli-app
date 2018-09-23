@@ -179,10 +179,10 @@ public abstract class Adventure {
 
     private boolean landGeneral(AdventureStep step) {
         log.info("landGeneral");
+        route(whereIam(), getFirstNavigationPoint(), null, null);
         centerNavigationPoint(getFirstNavigationPoint());
         boolean rv = false;
         if (this.openGeneralMenu(step.getGeneral(), step.getGeneralName())) {
-            this.highlightRegion();
             islandCmds.sleep();
             Optional<Match> match = this.findLandingLocation();
             if (match.isPresent()) {
@@ -190,7 +190,13 @@ public abstract class Adventure {
                 match.get().doubleClick();
                 rv = true;
             } else {
-                throw new IllegalStateException("Missing landing location");
+                if (islandCmds.clickBuildCancelButton()) {
+                    throw new IllegalStateException("Missing landing location");
+                } else {
+                    generalMenu.closeMenu();
+                    log.info("General already landed.");
+                    rv = true;
+                }
             }
         }
         return rv;
@@ -368,7 +374,6 @@ public abstract class Adventure {
             if (generalMenu.setupAttackUnits(units)) {
                 // TODO JPU Implement a method to check the setup
                 rv = true;
-
             } else {
                 log.severe("Failed to setup attack units");
             }
@@ -585,6 +590,7 @@ public abstract class Adventure {
                 break;
             }
             islandCmds.closeQuestBook();
+            // todo click new quest
         }
         return rv;
     }
