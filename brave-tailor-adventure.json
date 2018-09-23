@@ -113,7 +113,7 @@
       "targetNavPointClickOffset": {
         "width": 319.0,
         "height": -41.0
-      }
+    }
     },
     {
       "stepType": "MOVE",
@@ -268,7 +268,7 @@
     },
     {
       "stepType": "ATTACK",
-      "state": "OPEN",
+      "state": "DONE",
       "delay": 1,
       "general": "MdK",
       "generalName": "MDK 1",
@@ -285,7 +285,7 @@
     },
     {
       "stepType": "ATTACK",
-      "state": "OPEN",
+      "state": "DONE",
       "delay": 1,
       "general": "MdK",
       "generalName": "MDK 2",
@@ -302,8 +302,8 @@
     },
     {
       "stepType": "ATTACK",
-      "state": "OPEN",
-      "delay": 30,
+      "state": "DONE",
+      "delay": 10,
       "general": "Mary",
       "camp": "CAMP_5",
       "units": [
@@ -323,7 +323,7 @@
     {
       "stepType": "ATTACK",
       "state": "DONE",
-      "delay": 30,
+      "delay": 5,
       "general": "Nusala",
       "camp": "CAMP_6",
       "units": [
@@ -339,7 +339,7 @@
     {
       "stepType": "ATTACK",
       "state": "DONE",
-      "delay": 30,
+      "delay": 5,
       "general": "Generalmajor",
       "generalName": "GM 2",
       "camp": "CAMP_6",
