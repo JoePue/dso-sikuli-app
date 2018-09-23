@@ -15,7 +15,7 @@ public class AdventureStep {
     private StepType stepType;
     private AdventureStepState state;
     /** Delay before step execution */
-    private int delay;
+    private Integer delay;
     private GeneralType general;
     /** name of the general used as search string in star menu */
     private String generalName;
@@ -34,7 +34,7 @@ public class AdventureStep {
     }
 
     public AdventureStep(StepType stepType, NavigationPoint startNavPoint, NavigationPoint targetNavPoint, AttackCamp camp,
-                         GeneralType general, String generalName, int delay,
+                         GeneralType general, String generalName, Integer delay,
                          AdventureStepState state, AttackUnit[] units) {
         this.stepType = stepType;
         this.delay = delay;

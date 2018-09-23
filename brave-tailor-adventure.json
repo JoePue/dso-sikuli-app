@@ -10,7 +10,6 @@
       "no": 2,
       "stepType": "LAND",
       "state": "DONE",
-      "delay": 0,
       "general": "Vargus",
       "comment": "Es stehen nur 9 Landeplätze für Genies zur Verfügung (einer wird nicht erkannt.)"
     },
@@ -18,7 +17,6 @@
       "no": 3,
       "stepType": "LAND",
       "state": "DONE",
-      "delay": 0,
       "general": "Generalmajor",
       "generalName": "GM 1"
     },
@@ -26,7 +24,6 @@
       "no": 4,
       "stepType": "LAND",
       "state": "DONE",
-      "delay": 0,
       "general": "Generalmajor",
       "generalName": "GM 2"
     },
@@ -34,21 +31,18 @@
       "no": 5,
       "stepType": "LAND",
       "state": "DONE",
-      "delay": 0,
       "general": "Anslem"
     },
     {
       "no": 6,
       "stepType": "LAND",
       "state": "DONE",
-      "delay": 0,
       "general": "Nusala"
     },
     {
       "no": 7,
       "stepType": "LAND",
       "state": "DONE",
-      "delay": 0,
       "general": "MdK",
       "generalName": "MdK 1"
     },
@@ -56,7 +50,6 @@
       "no": 8,
       "stepType": "LAND",
       "state": "DONE",
-      "delay": 0,
       "general": "MdK",
       "generalName": "MdK 2"
     },
@@ -64,7 +57,6 @@
       "no": 9,
       "stepType": "LAND",
       "state": "DONE",
-      "delay": 0,
       "general": "MdK",
       "generalName": "MdK 3"
     },
@@ -72,7 +64,6 @@
       "no": 10,
       "stepType": "LAND",
       "state": "DONE",
-      "delay": 0,
       "general": "Mary"
     },
     {
@@ -201,7 +192,6 @@
       "no": 20,
       "stepType": "ATTACK",
       "state": "DONE",
-      "delay": 0,
       "general": "Vargus",
       "camp": "CAMP_1",
       "units": [
@@ -393,7 +383,6 @@
       "no": 29,
       "stepType": "SOLVE_QUEST",
       "state": "DONE",
-      "delay": 0,
       "comment": "#Sector-1 is solved. ########################################################"
     },
     {
@@ -414,7 +403,6 @@
       "no": 31,
       "stepType": "MOVE",
       "state": "DONE",
-      "delay": 0,
       "general": "Vargus",
       "startNavPoint": "NP_1",
       "targetNavPoint": "NP_2",
@@ -427,7 +415,6 @@
       "no": 32,
       "stepType": "MOVE",
       "state": "DONE",
-      "delay": 0,
       "general": "MdK",
       "generalName": "MdK 1",
       "startNavPoint": "NP_1",
@@ -441,7 +428,6 @@
       "no": 33,
       "stepType": "MOVE",
       "state": "DONE",
-      "delay": 0,
       "general": "MdK",
       "generalName": "MdK 2",
       "startNavPoint": "NP_1",
@@ -455,7 +441,6 @@
       "no": 34,
       "stepType": "MOVE",
       "state": "DONE",
-      "delay": 0,
       "general": "MdK",
       "generalName": "MdK 3",
       "startNavPoint": "NP_1",
@@ -469,7 +454,6 @@
       "no": 35,
       "stepType": "MOVE",
       "state": "DONE",
-      "delay": 0,
       "general": "Anslem",
       "startNavPoint": "NP_1",
       "targetNavPoint": "NP_2",
@@ -508,7 +492,6 @@
       "no": 37,
       "stepType": "ATTACK",
       "state": "DONE",
-      "delay": 0,
       "general": "Generalmajor",
       "generalName": "GM 1",
       "camp": "CAMP_8",
@@ -582,7 +565,6 @@
       "no": 40,
       "stepType": "ATTACK",
       "state": "DONE",
-      "delay": 0,
       "general": "MdK",
       "generalName": "MdK 3",
       "camp": "CAMP_11",
@@ -600,7 +582,6 @@
       "no": 41,
       "stepType": "ATTACK",
       "state": "DONE",
-      "delay": 0,
       "general": "MdK",
       "generalName": "MdK 4",
       "camp": "CAMP_11",
@@ -618,7 +599,6 @@
       "no": 42,
       "stepType": "ATTACK",
       "state": "DONE",
-      "delay": 0,
       "general": "MdK",
       "generalName": "MdK 5",
       "camp": "CAMP_11",

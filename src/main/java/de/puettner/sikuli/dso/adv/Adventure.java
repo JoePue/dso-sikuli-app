@@ -87,9 +87,7 @@ public abstract class Adventure {
                     // *** OPEN - MOVE ***
                     if (StepType.ALL_BACK_TO_STAR_MENU.equals(step.getStepType())) {
                         supportedStep = true;
-                        if (step.getDelay() > 0) {
-                            islandCmds.sleep();
-                        }
+                        processStepDelay(step);
                         if (!putAllGeneralsBackToStarMenu()) {
                             throw new IllegalStateException("Failed to process step: " + step);
                         }
@@ -165,7 +163,7 @@ public abstract class Adventure {
     }
 
     private void processStepDelay(AdventureStep step) {
-        if (step.getDelay() > 0) {
+        if (step.getDelay() != null && step.getDelay() > 0) {
             log.info("processStepDelay()");
             islandCmds.sleep(step.getDelay(), TimeUnit.SECONDS);
         }
