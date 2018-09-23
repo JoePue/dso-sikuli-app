@@ -8,8 +8,4 @@ import org.sikuli.script.Pattern;
 public interface AttackCamp extends MenuButton {
 
     Pattern getPattern();
-
-    //    NavigationPoint getNavigationPoint();
-
-    //    Dimension getTargetDragDropOffset();
 }
