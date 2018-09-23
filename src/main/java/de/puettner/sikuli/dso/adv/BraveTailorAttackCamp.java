@@ -31,11 +31,11 @@ public enum BraveTailorAttackCamp implements AttackCamp {
     /* the target camp is near by this navigation point */
     //    private final NavigationPoint navPoint;
     /* dragDrop from navPoint to attack camp */
-    private final Dimension targetOffset;
+    // private final Dimension targetOffset;
 
     BraveTailorAttackCamp(Pattern pattern, NavigationPoint navPoint, Dimension targetOffset) {
         this.pattern = pattern;
-        this.targetOffset = targetOffset;
+        // this.targetOffset = targetOffset;
         //        this.navPoint = navPoint;
     }
 
