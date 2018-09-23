@@ -239,27 +239,28 @@ public abstract class Adventure {
     }
 
 
-    private boolean waitUntilGeneralIsAvailable(GeneralType general, String generalName) {
-        boolean rv = true;
-        for (int i = 0; i < 10; ++i) {
-            if (this.findGeneralInStarMenu(general, generalName) == null) {
-                islandCmds.sleepX(120);
-            } else {
-                break;
-            }
-        }
-        islandCmds.typeESC();
-        return rv;
-    }
-
-    public Match findGeneralInStarMenu(GeneralType general, String generalName) {
+    public Match findGeneralInStarMenu(GeneralType general, String generalName, boolean shouldWait) {
+        log.info("findGeneralInStarMenu() general: " + general + ", generalName: " + generalName + "m shouldWait: " + shouldWait);
         if (generalName == null || generalName.isEmpty()) {
             generalName = GeneralsFilterString.filterString;
         }
         if (!starMenu.openStarMenu(generalName)) {
             throw new IllegalStateException("Missing open star menu");
         }
-        return islandCmds.find(general.getPattern(), starMenu.getMenuRegion());
+        Match match = null;
+        int loops = (shouldWait ? 40 : 1);
+
+        for (int i = 0; i < loops; ++i) {
+            match = islandCmds.find(general.getPattern(), starMenu.getMenuRegion());
+            if (match == null) {
+                // wait until general is available through multiple loops
+                log.info("Waiting on general: " + general + "/" + generalName);
+                islandCmds.sleep(15, TimeUnit.SECONDS);
+            } else {
+                break;
+            }
+        }
+        return match;
     }
 
     private void markPreviousStepsAsDone(AdventureStep baseStep, int maxIndex) {
@@ -545,7 +546,7 @@ public abstract class Adventure {
     public boolean openGeneralMenu(GeneralType general, String generalName) {
         log.info("openGeneralMenu() general: " + general + ", generalName: " + generalName);
         boolean rv = false;
-        Match match = findGeneralInStarMenu(general, generalName);
+        Match match = findGeneralInStarMenu(general, generalName, true);
         if (match != null) {
             islandCmds.sleep();
             if (match.click() == 1) {
@@ -557,7 +558,7 @@ public abstract class Adventure {
         } else {
             log.severe("General not found");
         }
-        return true;
+        return rv;
     }
 
     public void zoomOut() {

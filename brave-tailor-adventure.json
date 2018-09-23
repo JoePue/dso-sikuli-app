@@ -186,7 +186,7 @@
       "targetNavPointClickOffset": {
         "width": -8.0,
         "height": -121.0
-      }
+    }
     },
     {
       "no": 20,
@@ -509,7 +509,7 @@
     {
       "no": 39,
       "stepType": "ATTACK",
-      "state": "PREPARED",
+      "state": "DONE",
       "general": "Generalmajor",
       "generalName": "GM 1",
       "camp": "CAMP_8",
@@ -535,7 +535,6 @@
       "no": 40,
       "stepType": "ATTACK",
       "state": "DONE",
-      "delay": 10,
       "general": "Generalmajor",
       "generalName": "GM 1",
       "camp": "CAMP_9",
@@ -554,13 +553,13 @@
         }
       ],
       "startNavPoint": "NP_2",
-      "targetNavPoint": "NP_2",
+      "targetNavPoint": "NP_3",
       "comment": "#Sector-2 #3 attack "
     },
     {
       "no": 41,
       "stepType": "ATTACK",
-      "state": "DONE",
+      "state": "PREPARED",
       "delay": 10,
       "general": "Anslem",
       "generalName": "Anslem",
@@ -576,7 +575,7 @@
         }
       ],
       "startNavPoint": "NP_2",
-      "targetNavPoint": "NP_2",
+      "targetNavPoint": "NP_3",
       "comment": "#Sector-2 #4 attack"
     },
     {
