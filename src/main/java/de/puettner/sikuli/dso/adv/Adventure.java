@@ -20,6 +20,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.*;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 
 import static de.puettner.sikuli.dso.adv.AdventureStepState.*;
@@ -80,6 +81,7 @@ public abstract class Adventure {
                 log.info(step.toString());
                 // *** OPEN ***
                 if (OPEN.equals(step.getState())) {
+                    processStepDelay(step);
                     // *** OPEN - MOVE ***
                     if (StepType.ALL_BACK_TO_STAR_MENU.equals(step.getStepType())) {
                         supportedStep = true;
@@ -121,6 +123,7 @@ public abstract class Adventure {
                     }
                 }
                 if (PREPARED.equals(step.getState())) {
+                    processStepDelay(step);
                     // *** PREPARED - ATTACK ***
                     if (StepType.ATTACK.equals(step.getStepType())) {
                         supportedStep = true;
@@ -150,6 +153,13 @@ public abstract class Adventure {
             // e.printStackTrace();
         } finally {
             saveState();
+        }
+    }
+
+    private void processStepDelay(AdventureStep step) {
+        if (step.getDelay() > 0) {
+            log.info("processStepDelay()");
+            islandCmds.sleep(step.getDelay(), TimeUnit.SECONDS);
         }
     }
 
