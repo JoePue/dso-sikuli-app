@@ -59,12 +59,17 @@ public class BraveTailorAdvTest extends MenuTest {
 
     @Test
     public void moveToCamp() {
-        adventure.moveToCamp(BraveTailorAttackCamp.CAMP_10, NP_2);
+        adventure.moveToCamp(BraveTailorAttackCamp.CAMP_10, NP_2, null);
     }
 
     @Test
     public void route() {
         adventure.route(NP_1, NP_1, null, new Dimension(337, -116));
+    }
+
+    @Test
+    public void centerNavigationPoint() {
+        adventure.centerNavigationPoint(NP_1, new Dimension(-400, -100), null);
     }
 
 }
