@@ -88,7 +88,7 @@ public abstract class Adventure {
                     if (StepType.ALL_BACK_TO_STAR_MENU.equals(step.getStepType())) {
                         supportedStep = true;
                         processStepDelay(step);
-                        if (!putAllGeneralsBackToStarMenu()) {
+                        if (!processAllGeneralsBackToStarMenuStep()) {
                             throw new IllegalStateException("Failed to process step: " + step);
                         }
                         saveState(step, DONE);
@@ -210,7 +210,7 @@ public abstract class Adventure {
         return Optional.ofNullable(islandCmds.find((pattern("landing-location-1-zoom1.png").similar(0.90)), region));
     }
 
-    public boolean putAllGeneralsBackToStarMenu() {
+    public boolean processAllGeneralsBackToStarMenuStep() {
         centerNavigationPoint(getFirstNavigationPoint());
         islandCmds.parkMouse();
         List<Match> matchList;
