@@ -38,11 +38,6 @@ public class BraveTailorAdvTest extends MenuTest {
     }
 
     @Test
-    public void saveBraveTailorInitState() {
-        adventure.saveBraveTailorInitState();
-    }
-
-    @Test
     public void hoverRegionCenter() {
         adventure.hoverRegionCenter();
     }
