@@ -29,7 +29,6 @@ public class GeneralMenu extends DsoMenu {
                     islandCmds.sleep();
                     islandCmds.paste(unit.getQuantity());
                 } catch (FindFailed findFailed) {
-                    rv = false;
                     throw new RuntimeException(findFailed);
                 }
             }
@@ -41,7 +40,6 @@ public class GeneralMenu extends DsoMenu {
             rv = false;
         }
         // todo impl setup check
-        // islandCmds.sleepX(20); // Das Speichern der Aufstellung kann lange dauern.
         return rv;
     }
 
