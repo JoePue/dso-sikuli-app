@@ -239,7 +239,7 @@
       "targetDragDropOffset": {
         "width": -400.0,
         "height": -100.0
-      },
+    },
       "comment": "#Sector-1 #3 attack"
     },
     {
@@ -369,7 +369,7 @@
     },
     {
       "stepType": "MOVE",
-      "state": "OPEN",
+      "state": "DONE",
       "delay": 1,
       "general": "Generalmajor",
       "generalName": "GM 1",
@@ -377,7 +377,70 @@
       "targetNavPoint": "NP_2",
       "targetNavPointClickOffset": {
         "width": -55.0,
-        "height": -204.0
+        "height": 204.0
+    }
+    },
+    {
+      "stepType": "MOVE",
+      "state": "DONE",
+      "delay": 0,
+      "general": "Vargus",
+      "startNavPoint": "NP_1",
+      "targetNavPoint": "NP_2",
+      "targetNavPointClickOffset": {
+        "width": -22.0,
+        "height": 226.0
+      }
+    },
+    {
+      "stepType": "MOVE",
+      "state": "DONE",
+      "delay": 0,
+      "general": "MdK",
+      "generalName": "MdK 1",
+      "startNavPoint": "NP_1",
+      "targetNavPoint": "NP_2",
+      "targetNavPointClickOffset": {
+        "width": 165.0,
+        "height": 95.0
+      }
+    },
+    {
+      "stepType": "MOVE",
+      "state": "DONE",
+      "delay": 0,
+      "general": "MdK",
+      "generalName": "MdK 2",
+      "startNavPoint": "NP_1",
+      "targetNavPoint": "NP_2",
+      "targetNavPointClickOffset": {
+        "width": 202.0,
+        "height": 74.0
+      }
+    },
+    {
+      "stepType": "MOVE",
+      "state": "DONE",
+      "delay": 0,
+      "general": "MdK",
+      "generalName": "MdK 3",
+      "startNavPoint": "NP_1",
+      "targetNavPoint": "NP_2",
+      "targetNavPointClickOffset": {
+        "width": 262.0,
+        "height": 33.0
+      }
+    },
+    {
+      "stepType": "MOVE",
+      "state": "DONE",
+      "delay": 0,
+      "general": "Anslem",
+      "startNavPoint": "NP_1",
+      "targetNavPoint": "NP_2",
+      "targetNavPointClickOffset": {
+        "width": 298.0,
+        "height": 12.0
       }
     },
     {

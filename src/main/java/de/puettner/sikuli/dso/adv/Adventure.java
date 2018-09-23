@@ -56,7 +56,7 @@ public abstract class Adventure {
 
     protected abstract void fillNavigationPointsList();
 
-    public abstract void route(NavigationPoint startingPoint, NavigationPoint targetPoint, Dimension targetOffset, Dimension
+    public abstract void route(NavigationPoint startingPoint, NavigationPoint targetPoint, Dimension targetDragDropOffset, Dimension
             targetNavPointClickOffset);
 
     public abstract void routeCheck();
@@ -78,7 +78,9 @@ public abstract class Adventure {
             for (int i = 0; i < this.adventureSteps.size(); ++i) {
                 step = this.adventureSteps.get(i);
                 supportedStep = false;
-                log.info(step.toString());
+                if (!DONE.equals(step.getState())) {
+                    log.info(step.toString());
+                }
                 // *** OPEN ***
                 if (OPEN.equals(step.getState())) {
                     processStepDelay(step);
@@ -107,7 +109,7 @@ public abstract class Adventure {
                         Objects.requireNonNull(step.getTargetNavPoint());
                         // Objects.requireNonNull(step.getTargetDragDropOffset());
                         if (OPEN.equals(step.getState())) {
-                            moveGeneral(step);
+                            processMoveStep(step);
                             saveState(step, AdventureStepState.DONE);
                         }
                     }
@@ -287,9 +289,7 @@ public abstract class Adventure {
                 moveToCamp(step.getStartNavPoint(), step.getTargetNavPoint(), step.getTargetDragDropOffset());
                 if (clickAttackCamp(step.getCamp())) {
                     islandCmds.sleepX(2);
-                    if (islandCmds.clickBuildCancelButton()) {
-                        throw new IllegalStateException("Attack failed because cancel button exists");
-                    }
+                    failIfBuildCancelButtonExists();
                 } else {
                     rv = 5;
                     log.severe("Clicking attack camp failed");
@@ -304,6 +304,12 @@ public abstract class Adventure {
             rv = 3;
         }
         return rv;
+    }
+
+    private void failIfBuildCancelButtonExists() {
+        if (islandCmds.clickBuildCancelButton()) {
+            throw new IllegalStateException("Attack failed because cancel button exists");
+        }
     }
 
     public void restoreState() {
@@ -411,6 +417,7 @@ public abstract class Adventure {
                 islandCmds.parkMouse();
                 // Nach DragDrop muss erneut gesucht werden.
                 match = islandCmds.find(navPoint.getPattern(), region);
+                log.info("match: " + match);
                 if (match == null) {
                     throw new IllegalStateException();
                 }
@@ -498,8 +505,8 @@ public abstract class Adventure {
         throw new IllegalStateException("The current position is unknown.");
     }
 
-    void moveGeneral(AdventureStep step) {
-        log.info("moveGeneral()");
+    void processMoveStep(AdventureStep step) {
+        log.info("processMoveStep()");
         GeneralType general = step.getGeneral();
         String generalName = step.getGeneralName();
         NavigationPoint navPoint = step.getTargetNavPoint();
@@ -508,13 +515,15 @@ public abstract class Adventure {
             // unsetAllUnits();
             if (generalMenu.clickMoveBtn()) {
                 Objects.requireNonNull(step.getTargetNavPointClickOffset());
-                route(step.getStartNavPoint(), step.getTargetNavPoint(), null, step.getTargetNavPointClickOffset());
+                route(step.getStartNavPoint(), step.getTargetNavPoint(), step.getTargetDragDropOffset(), step
+                        .getTargetNavPointClickOffset());
             } else {
-                log.severe("Failed to click moveGeneral button");
+                log.severe("Failed to click processMoveStep button");
             }
         } else {
             log.severe("Open menu failed");
         }
+        failIfBuildCancelButtonExists();
     }
 
     public void initZoom() {
