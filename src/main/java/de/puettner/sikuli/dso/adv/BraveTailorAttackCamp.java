@@ -16,8 +16,8 @@ public enum BraveTailorAttackCamp implements AttackCamp {
     CAMP_6(pattern("Brave-Tailor-Camp-6.png").similar(0.85)),
     // Sektor 2
     //    MOVE_POINT_1(pattern("move-ref-point-sector2.png").similar(0.90)),
-    CAMP_7(pattern("Brave-Tailor-Camp-7.png").similar(0.95).targetOffset(65, 26)),
-    CAMP_8(pattern("Brave-Tailor-Camp-8-zoom1.png").similar(0.96)),
+    CAMP_7(pattern("Brave-Tailor-Camp-7-zoom1.png").similar(0.80).targetOffset(50, 0)),
+    CAMP_8(pattern("Brave-Tailor-Camp-8-zoom1.png").similar(0.80)),
     CAMP_9(pattern("Brave-Tailor-Camp-9-am-zoom1").similar(0.99)),
     CAMP_10(pattern("Brave-Tailor-Camp-10-zoom1.png").similar(0.90).targetOffset(-13, 18)),
     CAMP_11(pattern("Brave-Tailor-Camp-10-zoom1.png").similar(0.90).targetOffset(17, -25));
