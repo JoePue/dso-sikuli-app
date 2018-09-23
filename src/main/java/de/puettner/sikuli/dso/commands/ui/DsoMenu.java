@@ -42,7 +42,7 @@ public class DsoMenu {
         return islandCmds.waitUntilExists(supplier);
     }
 
-    protected void closeMenu() {
+    public void closeMenu() {
         islandCmds.typeESC();
         islandCmds.sleep();
     }
