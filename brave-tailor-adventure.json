@@ -219,7 +219,7 @@
     },
     {
       "stepType": "ATTACK",
-      "state": "PREPARED",
+      "state": "DONE",
       "delay": 10,
       "general": "Generalmajor",
       "camp": "CAMP_3",
@@ -233,7 +233,13 @@
           "quantity": 85
         }
       ],
-      "startNavPoint": "NP_1"
+      "startNavPoint": "NP_1",
+      "targetNavPoint": "NP_1",
+      "targetDragDropOffset": {
+        "width": -400.0,
+        "height": -100.0
+      },
+      "comment": "#3 attack in sector 1"
     },
     {
       "stepType": "ATTACK",
