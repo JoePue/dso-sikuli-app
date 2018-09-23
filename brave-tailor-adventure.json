@@ -160,7 +160,7 @@
       "targetNavPointClickOffset": {
         "width": 414.0,
         "height": -7.0
-      }
+    }
     },
     {
       "no": 18,
@@ -415,6 +415,18 @@
       "no": 32,
       "stepType": "MOVE",
       "state": "DONE",
+      "general": "Mary",
+      "startNavPoint": "NP_1",
+      "targetNavPoint": "NP_2",
+      "targetNavPointClickOffset": {
+        "width": -24.0,
+        "height": 168.0
+      }
+    },
+    {
+      "no": 33,
+      "stepType": "MOVE",
+      "state": "DONE",
       "general": "MdK",
       "generalName": "MdK 1",
       "startNavPoint": "NP_1",
@@ -425,7 +437,7 @@
       }
     },
     {
-      "no": 33,
+      "no": 34,
       "stepType": "MOVE",
       "state": "DONE",
       "general": "MdK",
@@ -438,7 +450,7 @@
       }
     },
     {
-      "no": 34,
+      "no": 35,
       "stepType": "MOVE",
       "state": "DONE",
       "general": "MdK",
@@ -451,7 +463,7 @@
       }
     },
     {
-      "no": 35,
+      "no": 36,
       "stepType": "MOVE",
       "state": "DONE",
       "general": "Anslem",
@@ -463,7 +475,14 @@
       }
     },
     {
-      "no": 36,
+      "no": 37,
+      "stepType": "UNSET_UNITS",
+      "state": "DONE",
+      "general": "Generalmajor",
+      "generalName": "GM 2"
+    },
+    {
+      "no": 38,
       "stepType": "ATTACK",
       "state": "DONE",
       "delay": 30,
@@ -489,7 +508,7 @@
       "comment": "#Sector-2 #1 attack"
     },
     {
-      "no": 37,
+      "no": 39,
       "stepType": "ATTACK",
       "state": "DONE",
       "general": "Generalmajor",
@@ -514,7 +533,7 @@
       "comment": "#Sector-2 #2 attack"
     },
     {
-      "no": 38,
+      "no": 40,
       "stepType": "ATTACK",
       "state": "DONE",
       "delay": 10,
@@ -540,7 +559,7 @@
       "comment": "#Sector-2 #3 attack "
     },
     {
-      "no": 39,
+      "no": 41,
       "stepType": "ATTACK",
       "state": "DONE",
       "delay": 10,
@@ -562,7 +581,7 @@
       "comment": "#Sector-2 #4 attack"
     },
     {
-      "no": 40,
+      "no": 42,
       "stepType": "ATTACK",
       "state": "DONE",
       "general": "MdK",
@@ -579,7 +598,7 @@
       "comment": "#Sector-2 #4.1 attack"
     },
     {
-      "no": 41,
+      "no": 43,
       "stepType": "ATTACK",
       "state": "DONE",
       "general": "MdK",
@@ -596,7 +615,7 @@
       "comment": "#Sector-2 #4.2 attack"
     },
     {
-      "no": 42,
+      "no": 44,
       "stepType": "ATTACK",
       "state": "DONE",
       "general": "MdK",
@@ -613,7 +632,7 @@
       "comment": "#Sector-2 #4.3 attack"
     },
     {
-      "no": 43,
+      "no": 45,
       "stepType": "ATTACK",
       "state": "DONE",
       "delay": 2,
@@ -631,7 +650,7 @@
       "comment": "#Sector-2 #4.3 attack"
     },
     {
-      "no": 44,
+      "no": 46,
       "stepType": "ATTACK",
       "state": "DONE",
       "delay": 2,
@@ -657,7 +676,7 @@
       "comment": "#Sector-2 #4.4 attack"
     },
     {
-      "no": 45,
+      "no": 47,
       "stepType": "MOVE",
       "state": "DONE",
       "delay": 1,
@@ -667,7 +686,7 @@
       "targetNavPoint": "NP_3"
     },
     {
-      "no": 46,
+      "no": 48,
       "stepType": "MOVE",
       "state": "DONE",
       "delay": 1,
@@ -677,7 +696,7 @@
       "targetNavPoint": "NP_3"
     },
     {
-      "no": 47,
+      "no": 49,
       "stepType": "MOVE",
       "state": "DONE",
       "delay": 1,
@@ -687,7 +706,7 @@
       "targetNavPoint": "NP_3"
     },
     {
-      "no": 48,
+      "no": 50,
       "stepType": "MOVE",
       "state": "DONE",
       "delay": 1,
@@ -697,7 +716,7 @@
       "targetNavPoint": "NP_3"
     },
     {
-      "no": 49,
+      "no": 51,
       "stepType": "MOVE",
       "state": "DONE",
       "delay": 1,

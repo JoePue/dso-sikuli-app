@@ -121,10 +121,18 @@ public abstract class Adventure {
                             throw new IllegalStateException("Attack preparation failed");
                         }
                     }
-                    // *** OPEN - ATTACK ***
+                    // *** OPEN - SOLVE_QUEST ***
                     if (StepType.SOLVE_QUEST.equals(step.getStepType())) {
                         if (processSolveQuestStep(step)) {
                             saveState(step, DONE);
+                        }
+                    }
+                    // *** OPEN - SOLVE_QUEST ***
+                    if (StepType.UNSET_UNITS.equals(step.getStepType())) {
+                        if (processUnsetUnitsStep(step)) {
+                            saveState(step, DONE);
+                        } else {
+                            throw new IllegalStateException("step processing failed");
                         }
                     }
                 }
@@ -404,6 +412,7 @@ public abstract class Adventure {
             targetClickOffset) {
         log.info("centerNavigationPoint() navPoint: " + navPoint);
         boolean rv = false;
+        islandCmds.hover(new Location(region.w, region.h));
         Match match = islandCmds.find(navPoint.getPattern(), region);
         if (match != null) {
             Location navPointLocation = getNavPointLocation(match);
@@ -514,7 +523,7 @@ public abstract class Adventure {
         NavigationPoint navPoint = step.getTargetNavPoint();
         if (openGeneralMenu(general, generalName)) {
             islandCmds.sleepX(5);
-            // unsetAllUnits();
+            // clickUnsetUnitButton();
             if (generalMenu.clickMoveBtn()) {
                 Objects.requireNonNull(step.getTargetNavPointClickOffset());
                 route(step.getStartNavPoint(), step.getTargetNavPoint(), step.getTargetDragDropOffset(), step
@@ -555,10 +564,6 @@ public abstract class Adventure {
         islandCmds.type("-");
     }
 
-    private boolean unsetAllUnits() {
-        return generalMenu.unsetAllUnits();
-    }
-
     public void prepareStarMenu(StarMenuFilter filter) {
         dsoService.prepareStarMenu(filter);
     }
@@ -579,6 +584,15 @@ public abstract class Adventure {
                 break;
             }
             islandCmds.closeQuestBook();
+        }
+        return rv;
+    }
+
+    private boolean processUnsetUnitsStep(AdventureStep step) {
+        log.info("processUnsetUnitsStep()");
+        boolean rv = false;
+        if (openGeneralMenu(step.getGeneral(), step.getGeneralName())) {
+            rv = generalMenu.unsetUnits();
         }
         return rv;
     }
