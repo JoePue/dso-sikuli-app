@@ -96,7 +96,7 @@ public abstract class Adventure {
                     // *** OPEN - LAND ***
                     if (StepType.LAND.equals(step.getStepType()) && OPEN.equals(step.getState())) {
                         supportedStep = true;
-                        if (!landGeneral(step)) {
+                        if (!processLandStep(step)) {
                             throw new IllegalStateException("Failed to process step: " + step);
                         }
                         saveState(step, DONE);
@@ -177,8 +177,8 @@ public abstract class Adventure {
         }
     }
 
-    private boolean landGeneral(AdventureStep step) {
-        log.info("landGeneral");
+    private boolean processLandStep(AdventureStep step) {
+        log.info("processLandStep");
         route(whereIam(), getFirstNavigationPoint(), null, null);
         centerNavigationPoint(getFirstNavigationPoint());
         boolean rv = false;
