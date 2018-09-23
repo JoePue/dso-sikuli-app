@@ -87,22 +87,22 @@ public class BraveTailorAdv extends Adventure {
             if (isRouteCheck) {
                 return;
             }
-            navigate(startingPoint, targetPoint, new Dimension(-800, -100), targetDragDropOffset, null);
+            navigate(startingPoint, targetPoint, new Dimension(-800, -100), targetDragDropOffset, targetClickOffset);
         } else if (startingPoint.getId().equals(2) && targetPoint.getId().equals(1)) {
             if (isRouteCheck) {
                 return;
             }
-            navigate(startingPoint, targetPoint, new Dimension(800, 0), targetDragDropOffset, null);
+            navigate(startingPoint, targetPoint, new Dimension(800, 0), targetDragDropOffset, targetClickOffset);
         } else if (startingPoint.getId().equals(2) && targetPoint.getId().equals(3)) {
             if (isRouteCheck) {
                 return;
             }
-            navigate(startingPoint, targetPoint, new Dimension(0, -600), targetDragDropOffset, null);
+            navigate(startingPoint, targetPoint, new Dimension(0, -600), targetDragDropOffset, targetClickOffset);
         } else if (startingPoint.getId().equals(3) && targetPoint.getId().equals(2)) {
             if (isRouteCheck) {
                 return;
             }
-            navigate(startingPoint, targetPoint, new Dimension(0, 600), targetDragDropOffset, null);
+            navigate(startingPoint, targetPoint, new Dimension(0, 600), targetDragDropOffset, targetClickOffset);
         } else {
             throw new IllegalStateException("Navigation from " + startingPoint.getId() + " to " + targetPoint.getId() + " is not " +
                     "possible");

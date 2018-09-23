@@ -66,7 +66,7 @@ public class BraveTailorAdvTest extends MenuTest {
 
     @Test
     public void centerNavigationPoint() {
-        adventure.centerNavigationPoint(NP_1, new Dimension(-400, -100), null);
+        adventure.centerNavigationPoint(NP_2, new Dimension(-55, 204), null);
     }
 
 }
