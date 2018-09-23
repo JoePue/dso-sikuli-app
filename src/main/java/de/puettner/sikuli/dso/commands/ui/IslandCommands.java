@@ -106,6 +106,12 @@ public class IslandCommands extends SikuliCommands {
         return clickIfExists(QuestBookIcon, appRegion);
     }
 
+    public boolean closeQuestBook() {
+        log.info("closeQuestBook");
+        typeESC();
+        return true;
+    }
+
     public boolean clickDailyQuestMenuItem() {
         log.info("clickDailyQuestMenuItem");
         return clickIfExists(pattern("DailyQuestMenuItem-icon.png").targetOffset(-1, 29), appRegion);
