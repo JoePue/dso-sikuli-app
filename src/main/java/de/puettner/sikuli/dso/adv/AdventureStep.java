@@ -24,6 +24,7 @@ public class AdventureStep {
     /** Diese Property ist nur bei 'stepType == MOVE' gesetzt. */
     private NavigationPoint targetNavPoint;
     /** Diese Property ist nur bei 'stepType == MOVE' gesetzt. */
+    private Dimension targetDragDropOffset;
     private Dimension targetNavPointClickOffset;
     private String comment;
 
