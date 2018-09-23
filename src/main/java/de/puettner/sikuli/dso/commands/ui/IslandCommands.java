@@ -44,7 +44,7 @@ public class IslandCommands extends SikuliCommands {
             match.hover();
             match.click();
             try {
-                match.hover(new Location(match.x, match.y - 30));
+                match.hover(new Location(match.x + 50, match.y));
             } catch (FindFailed findFailed) {
                 log.log(Level.SEVERE, "", findFailed);
             }
