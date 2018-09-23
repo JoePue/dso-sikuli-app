@@ -6,6 +6,7 @@ import de.puettner.sikuli.dso.commands.ui.StarMenu;
 import de.puettner.sikuli.dso.commands.ui.StarMenuFilter;
 import lombok.extern.java.Log;
 
+import javax.annotation.Nullable;
 import java.awt.*;
 import java.io.File;
 import java.util.List;
@@ -52,50 +53,6 @@ public class BraveTailorAdv extends Adventure {
         }
     }
 
-    public void route(NavigationPoint startingPoint, NavigationPoint targetPoint, Dimension targetDragDropOffset, Dimension
-            targetClickOffset, boolean isRouteCheck) {
-        log.info("route() " + startingPoint + " -> " + targetPoint + "(isRouteCheck: " + isRouteCheck + ")");
-        Objects.requireNonNull(startingPoint, "startingPoint is null");
-        Objects.requireNonNull(targetPoint, "targetPoint is null");
-        log.info("route() targetDragDropOffset: " + targetDragDropOffset);
-        log.info("route() targetClickOffset: " + targetClickOffset);
-
-        if (startingPoint.getId().equals(targetPoint.getId())) {
-            if (isRouteCheck) {
-                return;
-            }
-            centerNavigationPoint(targetPoint, targetDragDropOffset, targetClickOffset);
-            // nothing else to do
-        } else if (startingPoint.getId().equals(2) && targetPoint.getId().equals(3)) {
-            if (isRouteCheck) {
-                return;
-            }
-            navigate(startingPoint, targetPoint, new Dimension(0, -600), targetDragDropOffset);
-        } else if (startingPoint.getId().equals(3) && targetPoint.getId().equals(2)) {
-            if (isRouteCheck) {
-                return;
-            }
-            navigate(startingPoint, targetPoint, new Dimension(0, 600), targetDragDropOffset);
-        } else {
-            throw new IllegalStateException("Navigation from " + startingPoint.getId() + " to " + targetPoint.getId() + " is not " +
-                    "possible");
-        }
-    }
-
-    /**
-     * @param startingPoint
-     * @param targetPoint
-     * @param targetDragDropOffset Verschiebung um von NP-0 zu NP-1 zu gelangen.
-     * @param targetClickOffset
-     */
-    private void navigate(NavigationPoint startingPoint, NavigationPoint targetPoint, Dimension targetDragDropOffset, Dimension
-            targetClickOffset) {
-        log.info("navigate()");
-        centerNavigationPoint(startingPoint);
-        islandCmds.dragDrop(targetDragDropOffset);
-        centerNavigationPoint(targetPoint, targetDragDropOffset, targetClickOffset);
-    }
-
     @Override
     public List<NavigationPoint> getNavigationPoints() {
         return navPoints;
@@ -109,6 +66,64 @@ public class BraveTailorAdv extends Adventure {
     @Override
     protected NavigationPoint getFirstNavigationPoint() {
         return BraveTailorNavPoints.NP_1;
+    }
+
+    public void route(NavigationPoint startingPoint, NavigationPoint targetPoint, @Nullable Dimension targetDragDropOffset, @Nullable
+            Dimension
+            targetClickOffset, boolean isRouteCheck) {
+        log.info("route() " + startingPoint + " -> " + targetPoint + "(isRouteCheck: " + isRouteCheck + ")");
+        Objects.requireNonNull(startingPoint, "startingPoint is null");
+        Objects.requireNonNull(targetPoint, "targetPoint is null");
+        log.info("route() targetDragDropOffset: " + targetDragDropOffset);
+        log.info("route() targetClickOffset: " + targetClickOffset);
+
+        if (startingPoint.getId().equals(targetPoint.getId())) {
+            if (isRouteCheck) {
+                return;
+            }
+            centerNavigationPoint(targetPoint, targetDragDropOffset, targetClickOffset);
+            // nothing else to do
+        } else if (startingPoint.getId().equals(1) && targetPoint.getId().equals(2)) {
+            if (isRouteCheck) {
+                return;
+            }
+            navigate(startingPoint, targetPoint, new Dimension(-800, -100), targetDragDropOffset, null);
+        } else if (startingPoint.getId().equals(2) && targetPoint.getId().equals(1)) {
+            if (isRouteCheck) {
+                return;
+            }
+            navigate(startingPoint, targetPoint, new Dimension(800, 0), targetDragDropOffset, null);
+        } else if (startingPoint.getId().equals(2) && targetPoint.getId().equals(3)) {
+            if (isRouteCheck) {
+                return;
+            }
+            navigate(startingPoint, targetPoint, new Dimension(0, -600), targetDragDropOffset, null);
+        } else if (startingPoint.getId().equals(3) && targetPoint.getId().equals(2)) {
+            if (isRouteCheck) {
+                return;
+            }
+            navigate(startingPoint, targetPoint, new Dimension(0, 600), targetDragDropOffset, null);
+        } else {
+            throw new IllegalStateException("Navigation from " + startingPoint.getId() + " to " + targetPoint.getId() + " is not " +
+                    "possible");
+        }
+    }
+
+    /**
+     * @param startPoint
+     * @param targetPoint
+     * @param navDragDropOffset Verschiebung um von NP-0 zu NP-1 zu gelangen.
+     * @param targetDragDropOffset
+     * @param targetClickOffset
+     */
+    private void navigate(NavigationPoint startPoint, NavigationPoint targetPoint, Dimension navDragDropOffset, Dimension targetDragDropOffset, Dimension
+            targetClickOffset) {
+        log.info("navigate() " + startPoint + " -> " + targetPoint + ", navDragDropOffset: " + navDragDropOffset + ", " +
+                "targetDragDropOffset: " + targetDragDropOffset + ", targetClickOffset: " + targetClickOffset);
+        centerNavigationPoint(startPoint);
+        islandCmds.dragDrop(navDragDropOffset);
+        centerNavigationPoint(targetPoint, targetDragDropOffset, targetClickOffset);
+        islandCmds.parkMouse();
     }
 
     private void prepareStarMenu() {

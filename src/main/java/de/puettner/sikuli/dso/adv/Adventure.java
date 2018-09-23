@@ -14,6 +14,7 @@ import org.sikuli.script.Location;
 import org.sikuli.script.Match;
 import org.sikuli.script.Region;
 
+import javax.annotation.Nullable;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
@@ -370,7 +371,7 @@ public abstract class Adventure {
         return centerNavigationPoint(navPoint, null, null);
     }
 
-    protected boolean centerNavigationPoint(NavigationPoint navPoint, Dimension targetDragDropOffset, Dimension
+    protected boolean centerNavigationPoint(NavigationPoint navPoint, @Nullable Dimension targetDragDropOffset, @Nullable Dimension
             targetClickOffset) {
         log.info("centerNavigationPoint() navPoint: " + navPoint);
         boolean rv = false;
