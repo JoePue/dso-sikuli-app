@@ -4,14 +4,12 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import de.puettner.sikuli.dso.commands.ui.MenuButton;
 import org.sikuli.script.Pattern;
 
-import java.awt.*;
-
 @JsonDeserialize(using = AttackCampDeserializer.class)
 public interface AttackCamp extends MenuButton {
 
     Pattern getPattern();
 
-    NavigationPoint getNavigationPoint();
+    //    NavigationPoint getNavigationPoint();
 
-    Dimension getTargetDragDropOffset();
+    //    Dimension getTargetDragDropOffset();
 }
