@@ -49,12 +49,12 @@ public class BraveTailorAdvTest extends MenuTest {
 
     @Test
     public void clickAttackCamp() {
-        adventure.clickAttackCamp(BraveTailorAttackCamp.CAMP_11);
+        adventure.clickAttackCamp(BraveTailorAttackCamp.CAMP_4);
     }
 
     @Test
     public void moveToCamp() {
-        adventure.moveToCamp(BraveTailorAttackCamp.CAMP_10, NP_2, null);
+        adventure.moveToCamp(NP_1, NP_2, null);
     }
 
     @Test

@@ -263,7 +263,7 @@ public abstract class Adventure {
         if (openGeneralMenu(step.getGeneral(), step.getGeneralName())) {
             if (clickAttackButton()) {
                 islandCmds.sleep();
-                moveToCamp(step.getCamp(), step.getStartNavPoint(), step.getTargetDragDropOffset());
+                moveToCamp(step.getStartNavPoint(), step.getTargetNavPoint(), step.getTargetDragDropOffset());
                 if (clickAttackCamp(step.getCamp())) {
                     islandCmds.sleepX(2);
                     if (islandCmds.clickBuildCancelButton()) {
@@ -429,12 +429,13 @@ public abstract class Adventure {
         log.info("clickAttackCamp");
         boolean rv = false;
         islandCmds.parkMouse();
+        islandCmds.sleep();
         Match match = islandCmds.find(camp.getPattern(), region);
         if (match != null) {
             match.hover();
-            islandCmds.sleepX(2);
+            islandCmds.sleepX(1);
             match.doubleClick(); // Angriff starten
-            islandCmds.sleepX(2);
+            islandCmds.sleepX(1);
             rv = true;
         } else {
             log.severe("Camp not found: " + camp);
@@ -445,23 +446,23 @@ public abstract class Adventure {
     /**
      * This method assumes a General in Attack-Mode.
      */
-    protected void moveToCamp(AttackCamp camp, NavigationPoint expectedStartNavPoint, Dimension targetDragDropOffset) {
-        Objects.requireNonNull(camp, "Missing camp");
-        Objects.requireNonNull(expectedStartNavPoint, "Missing destination");
+    protected void moveToCamp(NavigationPoint startNavPoint, NavigationPoint targetNavPoint, Dimension targetDragDropOffset) {
+        Objects.requireNonNull(startNavPoint, "Missing startNavPoint");
+        Objects.requireNonNull(targetNavPoint, "Missing targetNavPoint");
 
         NavigationPoint currentNavPoint = whereIam();
         Objects.requireNonNull(currentNavPoint, "Failed to identify starting point");
 
-        if (!expectedStartNavPoint.equals(currentNavPoint)) {
+        if (!startNavPoint.equals(currentNavPoint)) {
             log.info("Go to expectedStartNavPoint ");
-            route(currentNavPoint, expectedStartNavPoint, null, null);
+            route(currentNavPoint, startNavPoint, null, null);
             currentNavPoint = whereIam();
         }
-        if (!expectedStartNavPoint.equals(currentNavPoint)) {
+        if (!startNavPoint.equals(currentNavPoint)) {
             throw new IllegalStateException("Required starting navigation point not given. expectedStartNavPoint:" +
-                    expectedStartNavPoint + ", currentNavPoint: " + currentNavPoint);
+                    startNavPoint + ", currentNavPoint: " + currentNavPoint);
         }
-        route(currentNavPoint, expectedStartNavPoint, targetDragDropOffset, null);
+        route(currentNavPoint, targetNavPoint, targetDragDropOffset, null);
     }
 
     NavigationPoint whereIam() {
