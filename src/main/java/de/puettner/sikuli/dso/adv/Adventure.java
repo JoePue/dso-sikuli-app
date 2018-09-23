@@ -259,9 +259,12 @@ public abstract class Adventure {
         if (openGeneralMenu(step.getGeneral(), step.getGeneralName())) {
             if (clickAttackButton()) {
                 islandCmds.sleep();
-                moveToCamp(step.getCamp(), step.getStartNavPoint());
+                moveToCamp(step.getCamp(), step.getStartNavPoint(), step.getTargetDragDropOffset());
                 if (clickAttackCamp(step.getCamp())) {
                     islandCmds.sleepX(2);
+                    if (islandCmds.clickBuildCancelButton()) {
+                        throw new IllegalStateException("Attack failed because cancel button exists");
+                    }
                 } else {
                     rv = 5;
                     log.severe("Clicking attack camp failed");
@@ -438,9 +441,9 @@ public abstract class Adventure {
     /**
      * This method assumes a General in Attack-Mode.
      */
-    protected void moveToCamp(AttackCamp camp, NavigationPoint expectedStartNavPoint) {
+    protected void moveToCamp(AttackCamp camp, NavigationPoint expectedStartNavPoint, Dimension targetDragDropOffset) {
         Objects.requireNonNull(camp, "Missing camp");
-        Objects.requireNonNull(camp.getNavigationPoint(), "Missing destination");
+        Objects.requireNonNull(expectedStartNavPoint, "Missing destination");
 
         NavigationPoint currentNavPoint = whereIam();
         Objects.requireNonNull(currentNavPoint, "Failed to identify starting point");
@@ -454,7 +457,7 @@ public abstract class Adventure {
             throw new IllegalStateException("Required starting navigation point not given. expectedStartNavPoint:" +
                     expectedStartNavPoint + ", currentNavPoint: " + currentNavPoint);
         }
-        route(currentNavPoint, camp.getNavigationPoint(), camp.getTargetDragDropOffset(), null);
+        route(currentNavPoint, expectedStartNavPoint, targetDragDropOffset, null);
     }
 
     NavigationPoint whereIam() {
