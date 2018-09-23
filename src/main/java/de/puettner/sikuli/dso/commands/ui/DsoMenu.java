@@ -41,4 +41,9 @@ public class DsoMenu {
     protected boolean waitUntilExists(BooleanSupplier supplier) {
         return islandCmds.waitUntilExists(supplier);
     }
+
+    protected void closeMenu() {
+        islandCmds.typeESC();
+        islandCmds.sleep();
+    }
 }
