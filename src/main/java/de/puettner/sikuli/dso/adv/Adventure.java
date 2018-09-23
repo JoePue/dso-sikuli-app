@@ -121,6 +121,12 @@ public abstract class Adventure {
                             throw new IllegalStateException("Attack preparation failed");
                         }
                     }
+                    // *** OPEN - ATTACK ***
+                    if (StepType.SOLVE_QUEST.equals(step.getStepType())) {
+                        if (processSolveQuestStep(step)) {
+                            saveState(step, DONE);
+                        }
+                    }
                 }
                 if (PREPARED.equals(step.getState())) {
                     processStepDelay(step);
@@ -544,5 +550,25 @@ public abstract class Adventure {
 
     public void prepareStarMenu(StarMenuFilter filter) {
         dsoService.prepareStarMenu(filter);
+    }
+
+    private boolean processSolveQuestStep(AdventureStep step) {
+        log.info("processSolveQuestStep()");
+        boolean rv = false;
+        int counter = 0;
+        for (int i = 0; i < 10; ++i) {
+            islandCmds.sleep(10, TimeUnit.SECONDS);
+            islandCmds.openQuestBook();
+            islandCmds.sleepX(2);
+            if (islandCmds.clickSmallOkButton()) {
+                ++counter;
+            }
+            if (counter > 0) {
+                rv = true;
+                break;
+            }
+            islandCmds.closeQuestBook();
+        }
+        return rv;
     }
 }

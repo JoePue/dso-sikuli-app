@@ -126,7 +126,7 @@
       "targetNavPointClickOffset": {
         "width": 321.0,
         "height": 49.0
-      }
+    }
     },
     {
       "stepType": "MOVE",
@@ -360,6 +360,25 @@
       "startNavPoint": "NP_1",
       "targetNavPoint": "NP_2",
       "comment": "#Sector-1 #6.2 attack"
+    },
+    {
+      "stepType": "SOLVE_QUEST",
+      "state": "DONE",
+      "delay": 0,
+      "comment": "#Sector-1 is solved. ########################################################"
+    },
+    {
+      "stepType": "MOVE",
+      "state": "OPEN",
+      "delay": 1,
+      "general": "Generalmajor",
+      "generalName": "GM 1",
+      "startNavPoint": "NP_1",
+      "targetNavPoint": "NP_2",
+      "targetNavPointClickOffset": {
+        "width": -55.0,
+        "height": -204.0
+      }
     },
     {
       "stepType": "ATTACK",
