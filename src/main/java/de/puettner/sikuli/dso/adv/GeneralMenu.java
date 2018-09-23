@@ -37,7 +37,9 @@ public class GeneralMenu extends DsoMenu {
             rv = false;
         }
         if (!islandCmds.clickBigOkButtonAndWait()) {
-            rv = false;
+            if (!islandCmds.clickBigOkButtonAndWait()) {
+                rv = false;
+            }
         }
         // todo impl setup check
         return rv;
