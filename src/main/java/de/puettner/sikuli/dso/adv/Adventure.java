@@ -22,8 +22,7 @@ import java.util.*;
 import java.util.List;
 import java.util.logging.Level;
 
-import static de.puettner.sikuli.dso.adv.AdventureStepState.DONE;
-import static de.puettner.sikuli.dso.adv.AdventureStepState.OPEN;
+import static de.puettner.sikuli.dso.adv.AdventureStepState.*;
 import static de.puettner.sikuli.dso.commands.ui.SikuliCommands.pattern;
 import static de.puettner.sikuli.dso.commands.ui.StarMenuFilter.GeneralsFilterString;
 
@@ -79,55 +78,51 @@ public abstract class Adventure {
                 step = this.adventureSteps.get(i);
                 supportedStep = false;
                 log.info(step.toString());
-                // *** MOVE ***
-                if (StepType.ALL_BACK_TO_STAR_MENU.equals(step.getStepType()) && OPEN.equals(step.getState())) {
-                    supportedStep = true;
-                    if (step.getDelay() > 0) {
-                        islandCmds.sleep();
-                    }
-                    if (!putAllGeneralsBackToStarMenu()) {
-                        throw new IllegalStateException("Failed to process step: " + step);
-                    }
-                    saveState(step, DONE);
-                }
-                if (StepType.LAND.equals(step.getStepType()) && OPEN.equals(step.getState())) {
-                    supportedStep = true;
-                    if (!landGeneral(step)) {
-                        throw new IllegalStateException("Failed to process step: " + step);
-                    }
-                    saveState(step, DONE);
-                }
-                if (StepType.MOVE.equals(step.getStepType())) {
-                    supportedStep = true;
-                    Objects.requireNonNull(step.getTargetNavPoint());
-                    // Objects.requireNonNull(step.getTargetDragDropOffset());
-                    if (OPEN.equals(step.getState())) {
-                        moveGeneral(step);
-                        saveState(step, AdventureStepState.DONE);
-                    }
-                }
-                // *** ATTACK ***
-                if (StepType.ATTACK.equals(step.getStepType())) {
-                    // prepareAttack
-                    if (AdventureStepState.PENDING.equals(step.getState())) {
+                // *** OPEN ***
+                if (OPEN.equals(step.getState())) {
+                    // *** OPEN - MOVE ***
+                    if (StepType.ALL_BACK_TO_STAR_MENU.equals(step.getStepType())) {
                         supportedStep = true;
-                        if (waitUntilGeneralIsAvailable(step.getGeneral(), step.getGeneralName())) {
-                            saveState(step, DONE);
-                        } else {
-                            throw new IllegalStateException("Missing available general " + step.getGeneral() + ", " + step.getGeneralName
-                                    ());
+                        if (step.getDelay() > 0) {
+                            islandCmds.sleep();
+                        }
+                        if (!putAllGeneralsBackToStarMenu()) {
+                            throw new IllegalStateException("Failed to process step: " + step);
+                        }
+                        saveState(step, DONE);
+                    }
+                    // *** OPEN - LAND ***
+                    if (StepType.LAND.equals(step.getStepType()) && OPEN.equals(step.getState())) {
+                        supportedStep = true;
+                        if (!landGeneral(step)) {
+                            throw new IllegalStateException("Failed to process step: " + step);
+                        }
+                        saveState(step, DONE);
+                    }
+                    // *** MOVE ***
+                    if (StepType.MOVE.equals(step.getStepType())) {
+                        supportedStep = true;
+                        Objects.requireNonNull(step.getTargetNavPoint());
+                        // Objects.requireNonNull(step.getTargetDragDropOffset());
+                        if (OPEN.equals(step.getState())) {
+                            moveGeneral(step);
+                            saveState(step, AdventureStepState.DONE);
                         }
                     }
-                    if (OPEN.equals(step.getState())) {
+                    // *** OPEN - ATTACK ***
+                    if (StepType.ATTACK.equals(step.getStepType())) {
                         supportedStep = true;
                         if (this.prepareAttack(step)) {
-                            saveState(step, AdventureStepState.PREPARED);
+                            saveState(step, PREPARED);
                             islandCmds.typeESC();
                         } else {
                             throw new IllegalStateException("Attack preparation failed");
                         }
                     }
-                    if (AdventureStepState.PREPARED.equals(step.getState())) {
+                }
+                if (PREPARED.equals(step.getState())) {
+                    // *** PREPARED - ATTACK ***
+                    if (StepType.ATTACK.equals(step.getStepType())) {
                         supportedStep = true;
                         int errorCode = attack(step);
                         if (errorCode == 0) {
@@ -231,6 +226,16 @@ public abstract class Adventure {
         }
         islandCmds.typeESC();
         return rv;
+    }
+
+    public Match findGeneralInStarMenu(GeneralType general, String generalName) {
+        if (generalName == null || generalName.isEmpty()) {
+            generalName = GeneralsFilterString.filterString;
+        }
+        if (!starMenu.openStarMenu(generalName)) {
+            throw new IllegalStateException("Missing open star menu");
+        }
+        return islandCmds.find(general.getPattern(), starMenu.getMenuRegion());
     }
 
     private void markPreviousStepsAsDone(AdventureStep baseStep, int maxIndex) {
@@ -517,16 +522,6 @@ public abstract class Adventure {
             log.severe("General not found");
         }
         return true;
-    }
-
-    public Match findGeneralInStarMenu(GeneralType general, String generalName) {
-        if (generalName == null || generalName.isEmpty()) {
-            generalName = GeneralsFilterString.filterString;
-        }
-        if (!starMenu.openStarMenu(generalName)) {
-            throw new IllegalStateException("Missing open star menu");
-        }
-        return islandCmds.find(general.getPattern(), starMenu.getMenuRegion());
     }
 
     public void zoomOut() {
