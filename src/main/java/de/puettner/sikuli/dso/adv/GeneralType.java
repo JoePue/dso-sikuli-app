@@ -9,7 +9,7 @@ public enum GeneralType implements MenuButton {
     Anslem(pattern("Anslem.png").similar(0.98)),
     Nusala(pattern("Nusala.png").similar(0.98)),
     Vargus(pattern("Vargus.png").similar(0.98)),
-    Dracul(pattern("Dracul.png").similar(0.98)),
+    Dracul(pattern("Dracul.png").similar(0.90)),
     Generalmajor(pattern("Generalmajor.png").similar(0.98)),
     MdK(pattern("MdK.png").similar(0.98)),
     Mary(pattern("Mary.png").similar(0.98)),
