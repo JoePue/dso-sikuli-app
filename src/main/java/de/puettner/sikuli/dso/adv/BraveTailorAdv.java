@@ -121,6 +121,43 @@ public class BraveTailorAdv extends Adventure {
                 return;
             }
             navigate(startingPoint, targetPoint, new Dimension(0, 600), targetDragDropOffset, targetClickOffset, true, true);
+        } else if (startingPoint.getId().equals(3) && targetPoint.getId().equals(4)) {
+            if (isRouteCheck) {
+                return;
+            }
+            navigate(startingPoint, targetPoint, new Dimension(600, -450), targetDragDropOffset, targetClickOffset, true, true);
+        } else if (startingPoint.getId().equals(4) && targetPoint.getId().equals(3)) {
+            if (isRouteCheck) {
+                return;
+            }
+            navigate(startingPoint, targetPoint, new Dimension(-600, 450), targetDragDropOffset, targetClickOffset, true, true);
+        } else if (startingPoint.getId().equals(2) && targetPoint.getId().equals(4)) {
+            if (isRouteCheck) {
+                return;
+            }
+            navigate(startingPoint, targetPoint, new Dimension(250, -600), targetDragDropOffset, targetClickOffset, true, false);
+            navigate(startingPoint, targetPoint, new Dimension(250, -400), targetDragDropOffset, targetClickOffset, false, true);
+        } else if (startingPoint.getId().equals(4) && targetPoint.getId().equals(2)) {
+            //  NP_4 -> NP_2
+            if (isRouteCheck) {
+                return;
+            }
+            navigate(startingPoint, targetPoint, new Dimension(-250, 600), targetDragDropOffset, targetClickOffset, true, false);
+            navigate(startingPoint, targetPoint, new Dimension(-250, 400), targetDragDropOffset, targetClickOffset, false, true);
+        } else if (startingPoint.getId().equals(1) && targetPoint.getId().equals(4)) {
+            //  NP_1 -> NP_4
+            if (isRouteCheck) {
+                return;
+            }
+            navigate(startingPoint, targetPoint, new Dimension(-350, -600), targetDragDropOffset, targetClickOffset, true, false);
+            navigate(startingPoint, targetPoint, new Dimension(-350, -400), targetDragDropOffset, targetClickOffset, false, true);
+        } else if (startingPoint.getId().equals(4) && targetPoint.getId().equals(1)) {
+            //  NP_1 -> NP_1
+            if (isRouteCheck) {
+                return;
+            }
+            navigate(startingPoint, targetPoint, new Dimension(350, 600), targetDragDropOffset, targetClickOffset, true, false);
+            navigate(startingPoint, targetPoint, new Dimension(350, 400), targetDragDropOffset, targetClickOffset, false, true);
         } else {
             throw new IllegalStateException("Navigation from " + startingPoint.getId() + " to " + targetPoint.getId() + " is not " +
                     "possible");
