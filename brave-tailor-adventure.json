@@ -1135,6 +1135,228 @@
         "width": 0.0,
         "height": -400.0
       }
+    },
+    {
+      "no": 80,
+      "stepType": "SOLVE_QUEST",
+      "state": "DONE",
+      "comment": "#Sector-3 is solved. ------------------------------------------------"
+    },
+    {
+      "no": 81,
+      "stepType": "MOVE",
+      "state": "DONE",
+      "general": "Generalmajor",
+      "generalName": "GM 1",
+      "startNavPoint": "NP_2",
+      "targetNavPoint": "NP_4",
+      "targetNavPointClickOffset": {
+        "width": -8.0,
+        "height": -109.0
+      }
+    },
+    {
+      "no": 82,
+      "stepType": "MOVE",
+      "state": "DONE",
+      "general": "Generalmajor",
+      "generalName": "GM 2",
+      "startNavPoint": "NP_3",
+      "targetNavPoint": "NP_4",
+      "targetNavPointClickOffset": {
+        "width": -49.0,
+        "height": -137.0
+      }
+    },
+    {
+      "no": 83,
+      "stepType": "MOVE",
+      "state": "DONE",
+      "general": "Veteran",
+      "startNavPoint": "NP_1",
+      "targetNavPoint": "NP_4",
+      "targetNavPointClickOffset": {
+        "width": -209.0,
+        "height": -292.0
+      }
+    },
+    {
+      "no": 84,
+      "stepType": "MOVE",
+      "state": "DONE",
+      "general": "Sensenmann",
+      "generalName": "SM 1",
+      "startNavPoint": "NP_3",
+      "targetNavPoint": "NP_4",
+      "targetNavPointClickOffset": {
+        "width": -245.0,
+        "height": -261.0
+      }
+    },
+    {
+      "no": 85,
+      "stepType": "MOVE",
+      "state": "DONE",
+      "general": "Sensenmann",
+      "generalName": "SM 2",
+      "startNavPoint": "NP_1",
+      "targetNavPoint": "NP_4",
+      "targetNavPointClickOffset": {
+        "width": -298.0,
+        "height": -288.0
+      }
+    },
+    {
+      "no": 86,
+      "stepType": "MOVE",
+      "state": "DONE",
+      "general": "Dracul",
+      "generalName": "Draci 1",
+      "startNavPoint": "NP_1",
+      "targetNavPoint": "NP_4",
+      "targetNavPointClickOffset": {
+        "width": -91.0,
+        "height": -164.0
+      }
+    },
+    {
+      "no": 87,
+      "stepType": "MOVE",
+      "state": "DONE",
+      "general": "Dracul",
+      "generalName": "Draci 2",
+      "startNavPoint": "NP_1",
+      "targetNavPoint": "NP_4",
+      "targetNavPointClickOffset": {
+        "width": -22.0,
+        "height": -190.0
+      }
+    },
+    {
+      "no": 88,
+      "stepType": "UNSET_UNITS",
+      "state": "DONE",
+      "general": "Vargus"
+    },
+    {
+      "no": 89,
+      "stepType": "UNSET_UNITS",
+      "state": "DONE",
+      "general": "Anslem"
+    },
+    {
+      "no": 90,
+      "stepType": "MOVE",
+      "state": "DONE",
+      "general": "Anslem",
+      "startNavPoint": "NP_3",
+      "targetNavPoint": "NP_4",
+      "targetNavPointClickOffset": {
+        "width": -320.0,
+        "height": -237.0
+      }
+    },
+    {
+      "no": 91,
+      "stepType": "MOVE",
+      "state": "DONE",
+      "general": "Vargus",
+      "startNavPoint": "NP_3",
+      "targetNavPoint": "NP_4",
+      "targetNavPointClickOffset": {
+        "width": -291.0,
+        "height": -217.0
+      }
+    },
+    {
+      "no": 92,
+      "stepType": "MOVE",
+      "state": "DONE",
+      "general": "Nusala",
+      "startNavPoint": "NP_1",
+      "targetNavPoint": "NP_4",
+      "targetNavPointClickOffset": {
+        "width": -341.0,
+        "height": -196.0
+      }
+    },
+    {
+      "no": 93,
+      "stepType": "MOVE",
+      "state": "DONE",
+      "general": "MdK",
+      "generalName": "MdK 3",
+      "startNavPoint": "NP_3",
+      "targetNavPoint": "NP_4",
+      "targetNavPointClickOffset": {
+        "width": -301.0,
+        "height": -174.0
+      }
+    },
+    {
+      "no": 94,
+      "stepType": "MOVE",
+      "state": "DONE",
+      "general": "MdK",
+      "generalName": "MdK 4",
+      "startNavPoint": "NP_3",
+      "targetNavPoint": "NP_4",
+      "targetNavPointClickOffset": {
+        "width": -250.0,
+        "height": -138.0
+      }
+    },
+    {
+      "no": 95,
+      "stepType": "MOVE",
+      "state": "DONE",
+      "general": "MdK",
+      "generalName": "MdK 5",
+      "startNavPoint": "NP_3",
+      "targetNavPoint": "NP_4",
+      "targetNavPointClickOffset": {
+        "width": -246.0,
+        "height": -77.0
+      }
+    },
+    {
+      "no": 96,
+      "stepType": "MOVE",
+      "state": "DONE",
+      "general": "MdK",
+      "generalName": "MdK 6",
+      "startNavPoint": "NP_3",
+      "targetNavPoint": "NP_4",
+      "targetNavPointClickOffset": {
+        "width": -212.0,
+        "height": -53.0
+      }
+    },
+    {
+      "no": 97,
+      "stepType": "MOVE",
+      "state": "DONE",
+      "general": "MdK",
+      "generalName": "MdK 7",
+      "startNavPoint": "NP_3",
+      "targetNavPoint": "NP_4",
+      "targetNavPointClickOffset": {
+        "width": -176.0,
+        "height": -1.0
+      }
+    },
+    {
+      "no": 98,
+      "stepType": "MOVE",
+      "state": "DONE",
+      "general": "MdK",
+      "generalName": "MdK 8",
+      "startNavPoint": "NP_3",
+      "targetNavPoint": "NP_4",
+      "targetNavPointClickOffset": {
+        "width": -194.0,
+        "height": 43.0
+      }
     }
   ]
 }
