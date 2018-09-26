@@ -418,7 +418,7 @@ public abstract class Adventure {
             targetClickOffset) {
         log.info("centerNavigationPoint() navPoint: " + navPoint);
         boolean rv = false;
-        islandCmds.hover(new Location(region.w, region.h));
+        islandCmds.parkMouseForMove();
         Match match = islandCmds.find(navPoint.getPattern(), region);
         if (match != null) {
             Location navPointLocation = getNavPointLocation(match);
@@ -431,7 +431,7 @@ public abstract class Adventure {
             }
             islandCmds.dragDrop(dimension);
             if (targetClickOffset != null) {
-                islandCmds.parkMouse();
+                islandCmds.parkMouseForMove();
                 // Nach DragDrop muss erneut gesucht werden.
                 match = islandCmds.find(navPoint.getPattern(), region);
                 log.info("match: " + match);
@@ -451,6 +451,7 @@ public abstract class Adventure {
         }
         return rv;
     }
+
 
     private Location getNavPointLocation(Match match) {
         Location navPointLocation = new Location(match.x, match.y);

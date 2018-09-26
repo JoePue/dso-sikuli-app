@@ -135,6 +135,18 @@ public class SikuliCommands {
         return org.sikuli.script.Commands.hover(new Location(appRegion.w / 2, appRegion.h + 50));
     }
 
+    public void parkMouseForMove() {
+        hover(new Location(appRegion.x, appRegion.y));
+    }
+
+    public void hover(Location location) {
+        try {
+            appRegion.hover(location);
+        } catch (FindFailed findFailed) {
+            throw new RuntimeException(findFailed);
+        }
+    }
+
     public boolean closeMenu() {
         return this.clickIfExists(pattern("Close-icon.png"), appRegion);
     }
@@ -232,14 +244,6 @@ public class SikuliCommands {
         }
         log.severe("Click was not successful.");
         return false;
-    }
-
-    public void hover(Location location) {
-        try {
-            appRegion.hover(location);
-        } catch (FindFailed findFailed) {
-            throw new RuntimeException(findFailed);
-        }
     }
 
     public void click(Location moveLocation) {
