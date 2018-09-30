@@ -9,6 +9,7 @@ import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 import java.util.*;
 
 import static de.puettner.sikuli.dso.commands.ui.SikuliCommands.pattern;
+import static java.util.concurrent.TimeUnit.SECONDS;
 
 @Log
 public class DSOService {
@@ -465,6 +466,16 @@ public class DSOService {
             messageboxMenu.closeMenu();
         } else {
             log.severe("Failed to open message box");
+        }
+    }
+
+    public void confirmSolvedQuest() {
+        log.info("confirmSolvedQuest");
+        if (islandCmds.clickSolvedQuestArrow()) {
+            islandCmds.sleep(10, SECONDS);
+            if (!islandCmds.clickSmallOkButton()) {
+                log.severe("Missing ok button");
+            }
         }
     }
 }

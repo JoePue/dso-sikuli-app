@@ -145,5 +145,10 @@ public class DSOServiceTest extends BaseServiceTest {
         dsoService.fetchRewardMessages();
     }
 
+    @Test
+    public void confirmSolvedQuest() {
+        dsoService.confirmSolvedQuest();
+    }
+
 
 }
