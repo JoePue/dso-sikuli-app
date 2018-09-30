@@ -111,7 +111,7 @@ public class DsoSikuliApp {
 
     private static void firstDailyRun(DSOService dsoService) {
         dsoService.startDsoApp();
-        dsoService.highlightRegions();
+        // dsoService.highlightRegions();
         dsoService.buildAllMines(true);
         dsoService.prepareStarMenu();
 

@@ -2,6 +2,7 @@ package de.puettner.sikuli.dso.ui.commands;
 
 import de.puettner.sikuli.dso.commands.ui.MenuBuilder;
 import de.puettner.sikuli.dso.commands.ui.StarMenu;
+import de.puettner.sikuli.dso.commands.ui.StarMenuFilter;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -18,7 +19,8 @@ public class StarMenuTest extends MenuTest {
 
     @Test
     public void openStarMenu() {
-        starMenu.openStarMenu(Optional.empty());
+        // starMenu.openStarMenu(Optional.empty());
+        starMenu.openStarMenu(Optional.of(StarMenuFilter.EIGTH_PERCENT));
     }
 
     @Test

@@ -47,6 +47,7 @@ public class DSOService {
             this.closeWelcomeDialog();
             closeChat();
         } else {
+            islandCmds.clickSmallOkButton();
             log.info("expected a running DSO app");
         }
     }
@@ -59,26 +60,29 @@ public class DSOService {
 
     public void closeWelcomeDialog() {
         log.info("closeWelcomeDialog");
-        int timeout = 300;
-        int okButtonTimeout = 3;
-        while (timeout > 0) {
+        int loopCount = 10;
+        // Jubiläums-Btn, Welcome-Btn, Login-Bonus-Btn
+        int okButtonClickLimit = 3;
+        while (loopCount > 0) {
+            loopCount -= 1;
             islandCmds.sleepX(20);
-            timeout -= 1;
             if (islandCmds.existsAvatar()) {
-                okButtonTimeout -= 1;
-                if (okButtonTimeout < 0 || islandCmds.clickSmallOkButton()) {
-                    islandCmds.sleepX(10);
-                    timeout = 0;
-                    islandCmds.sleepX(5);
-                    // Login Bonus
-                    if (!islandCmds.clickLoginBonusButton()) {
-                        log.warning("LoginBonus not found");
-                    }
-                    this.visitAllSectors();
+                // Es nicht bestimmbar, wie viele OK-Dialoge am Anfang erscheinen.
+                islandCmds.sleepX(10);
+                islandCmds.clickSmallOkButton();
+                islandCmds.sleepX(10);
+                islandCmds.clickSmallOkButton();
+                islandCmds.sleepX(10);
+                islandCmds.clickSmallOkButton();
+                break;
+            } else {
+                if (islandCmds.clickSmallOkButton()) {
+                    // Es werden auch deaktivierte Ok-Buttons geklickt
+                    // --okButtonClickLimit;
                 }
             }
         }
-        sleep();
+        islandCmds.clickSmallOkButton();
     }
 
     boolean closeChat() {
@@ -97,10 +101,6 @@ public class DSOService {
             this.goToSector(sector);
         }
         goToSector(Sector.S1);
-    }
-
-    void sleep() {
-        islandCmds.sleep();
     }
 
     void goToSector(Sector sector) {
@@ -143,6 +143,10 @@ public class DSOService {
         islandCmds.typeESC();
         sleep();
         return rv;
+    }
+
+    void sleep() {
+        islandCmds.sleep();
     }
 
     public boolean solveGuildQuest() {
@@ -237,6 +241,7 @@ public class DSOService {
 
     public boolean prepareStarMenu(StarMenuFilter filter) {
         log.info("prepareStarMenu() filter: " + filter);
+        this.goToSector(Sector.S1);
         boolean rv = starMenu.openStarMenu(Optional.of(filter));
         if (rv) {
             islandCmds.sleep();
