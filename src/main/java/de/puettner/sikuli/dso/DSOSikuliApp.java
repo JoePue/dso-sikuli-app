@@ -95,6 +95,8 @@ public class DsoSikuliApp {
                     log.log(Level.WARNING, "Unknown argument: " + arg);
                 }
             }
+        } catch (Exception e) {
+            e.printStackTrace();
         } finally {
             // platform.restoreBrowserWindow();
             log.info("App ends normally.");
@@ -114,7 +116,8 @@ public class DsoSikuliApp {
         // dsoService.highlightRegions();
         dsoService.buildAllMines(true);
         dsoService.prepareStarMenu();
-
+        dsoService.confirmSolvedQuest();
+        dsoService.confirmNewQuest();
         // 10 Happy Geo / 3 Consic / 3 Normal
         GeologicLaunchs launchs = GeologicLaunchs.builder().build()
                 .add(GeologicType.Happy, KU, 6)
@@ -144,6 +147,8 @@ public class DsoSikuliApp {
         dsoService.launchGeologics(launchs);
         dsoService.buildAllMines(false);
         dsoService.fetchRewardMessages();
+        dsoService.confirmNewQuest();
+        dsoService.confirmSolvedQuest();
         dsoService.exitDso();
     }
 
@@ -152,6 +157,8 @@ public class DsoSikuliApp {
         dsoService.buildAllMines(true);
         dsoService.solveDailyQuest();
         dsoService.solveGuildQuest();
+        dsoService.confirmNewQuest();
+        dsoService.confirmSolvedQuest();
         dsoService.prepareStarMenu();
 
         // Ausgangspunkt: 6 verfügbare Geos
@@ -165,12 +172,13 @@ public class DsoSikuliApp {
         dsoService.buildAllMines(false);
         dsoService.findAllCollectables();
         dsoService.fetchBookbinderItem();
+        dsoService.confirmNewQuest();
+        dsoService.confirmSolvedQuest();
         dsoService.exitDso();
     }
 
     private static void thirdDailyRun(DSOService dsoService) {
         dsoService.startDsoApp();
-        dsoService.closeWelcomeDialog();
 
         dsoService.prepareStarMenuForGold();
         dsoService.launchGeologics(GeologicLaunchs.builder().build().add(GeologicType.Happy, GO, 2));

@@ -111,6 +111,11 @@ public class IslandCommands extends SikuliCommands {
         return clickIfExists(SolvedQuestArrow, appRegion);
     }
 
+    public boolean clickNewQuestArrow() {
+        log.info("clickNewQuestArrow");
+        return clickIfExists(NewQuestArrow, appRegion);
+    }
+
     public boolean closeQuestBook() {
         log.info("closeQuestBook");
         typeESC();

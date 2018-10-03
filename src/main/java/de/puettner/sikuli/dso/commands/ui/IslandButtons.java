@@ -13,7 +13,8 @@ public enum IslandButtons implements MenuButton {
     Avatar(pattern("Avatar.png").similar(0.80f)),
     StarButton(pattern("StarButton.png").targetOffset(-2, -25)),
     QuestBookIcon(pattern("Questbook-icon.png")),
-    SolvedQuestArrow(pattern("SolvedQuestArrow.png"));
+    SolvedQuestArrow(pattern("SolvedQuestArrow.png")),
+    NewQuestArrow(pattern("NewQuestArrow.png"));
 
     public final Pattern pattern;
 

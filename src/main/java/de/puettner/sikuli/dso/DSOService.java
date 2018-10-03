@@ -478,4 +478,14 @@ public class DSOService {
             }
         }
     }
+
+    public void confirmNewQuest() {
+        log.info("confirmNewdQuest");
+        if (islandCmds.clickNewQuestArrow()) {
+            islandCmds.sleep(10, SECONDS);
+            if (!islandCmds.clickSmallOkButton()) {
+                log.severe("Missing ok button");
+            }
+        }
+    }
 }
