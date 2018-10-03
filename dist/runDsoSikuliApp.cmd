@@ -3,11 +3,12 @@ TITLE dso_1-sikuli-idea
 SET START_DIR=D:\dev-tools\sikuli\workspace\dso-sikuli-app-idea\dist
 
 cd %START_DIR%
-REM del *.jar
 
+if "%1" EQU "run" GOTO RUN
 start sikuliStandby.cmd
+del *.jar
 
-xcopy /Y D:\sikuli\workspace\dso-sikuli-app.sikuli D:\sikuli\workspace\dso_1-sikuli-idea\dist\dso-sikuli-app.sikuli
+xcopy /Y D:\dev-tools\sikuli\workspace\dso-sikuli-app.sikuli D:\dev-tools\sikuli\workspace\dso-sikuli-app-idea\dist\dso-sikuli-app.sikuli
 
 ECHO Baue Jar
 cd ..
@@ -20,7 +21,8 @@ cd target
 xcopy /Y *.jar ..\dist
 
 cd ../dist
-REM ls && pwd && pause
+
+:RUN
 for %%i in (*-jar-with-dependencies.jar) DO (
   java -cp ".;./;./dso-sikuli-app.sikuli" -jar %%i firstDailyRun
   
@@ -31,15 +33,14 @@ for %%i in (*-jar-with-dependencies.jar) DO (
   )
   
   java -cp ".;./;./dso-sikuli-app.sikuli" -jar %%i secondDailyRun
-  
-  REM java -jar %%i standby
 )
 
 cd %START_DIR%
 REM java -jar dso-automation-0.0.1-SNAPSHOT-jar-with-dependencies.jar secondDailyRun
 
 shutdown -a
-sleep 1
+ECHO 10 Sekunden bis Standby
+sleep 10
 shutdown /h /f
 
 SET START_DIR=
