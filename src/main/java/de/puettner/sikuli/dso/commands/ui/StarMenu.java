@@ -101,8 +101,7 @@ public class StarMenu extends DsoMenu {
                         islandCmds.sleep();
                         islandCmds.paste(filterString);
                     } else {
-                        log.severe("filter could not set");
-                        rv = false;
+                        throw new IllegalStateException("Zoom Icon must exists.");
                     }
                 } else {
                     log.info("Set no filter string because the current one '" + filterString + "' is equals to the last one '" +
