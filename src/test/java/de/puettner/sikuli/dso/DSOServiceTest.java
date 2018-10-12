@@ -43,7 +43,7 @@ public class DSOServiceTest extends BaseServiceTest {
 
     @Test
     public void buildGoldMines() {
-        System.out.println(dsoService.buildGoldMines(3));
+        System.out.println(dsoService.buildGoldMines(1));
     }
 
     @Test

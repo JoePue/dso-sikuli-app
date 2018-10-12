@@ -3,6 +3,7 @@ package de.puettner.sikuli.dso;
 import de.puettner.sikuli.dso.commands.os.WindowsPlatform;
 import de.puettner.sikuli.dso.commands.ui.MenuBuilder;
 import de.puettner.sikuli.dso.commands.ui.SikuliCommands;
+import de.puettner.sikuli.dso.commands.ui.StarMenuFilter;
 import lombok.extern.java.Log;
 import org.sikuli.basics.Settings;
 import org.sikuli.script.FindFailed;
@@ -136,7 +137,7 @@ public class DsoSikuliApp {
 
         // jetzt sollten alle Goes wieder verfügbar sein.
         launchs = GeologicLaunchs.builder().build()
-                .add(GeologicType.Happy, GO, 2)
+                .add(GeologicType.Happy, GO, 2, StarMenuFilter.EIGTH_PERCENT)
                 .add(GeologicType.Happy, MA, 6)
                 .add(GeologicType.Happy, EI, 2)
                 .add(GeologicType.Normal, GR, 1)

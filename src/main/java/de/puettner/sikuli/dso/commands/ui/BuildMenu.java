@@ -20,7 +20,6 @@ public class BuildMenu extends DsoMenu {
         if (!rv) {
             log.warning("... preparation was not successfull.");
         }
-        islandCmds.typeESC();
         return rv;
     }
 

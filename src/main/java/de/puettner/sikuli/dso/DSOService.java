@@ -176,29 +176,50 @@ public class DSOService {
         Sector[] sectors = Sector.valuesFromS1ToS9();
         for (Sector sector : sectors) {
             this.goToSector(sector);
+            islandCmds.parkMouse();
+            clickCollectables();
             if (Sector.S3.equals(sector)) {
                 islandCmds.dragDrop(0, 100);
+                islandCmds.parkMouse();
+                clickCollectables();
+                islandCmds.dragDrop(0, -200);
+                islandCmds.parkMouse();
+                clickCollectables();
             }
-            islandCmds.parkMouse();
-            IslandButtons[] collectableIcons = {/*IslandButtons.CollectableIconTwo,*/ IslandButtons.CollectableIconOne, IslandButtons
-                    .CollectableIconThree};
-            for (IslandButtons collectableIcon : collectableIcons) {
-                Iterator<Match> iconIt = islandCmds.findAll(collectableIcon.pattern);
-                if (iconIt != null) {
-                    while (iconIt.hasNext()) {
-                        Match match = iconIt.next();
-                        log.info("Sammelgegenstand gefunden. " + match);
-                        match.doubleClick();
-                        islandCmds.parkMouse();
-                        islandCmds.sleepX(8);
-                        islandCmds.typeESC();
-                    }
-                } else {
-                    log.info("No Collectables found");
+            if (Sector.S6.equals(sector)) {
+                islandCmds.dragDrop(200, 0);
+                islandCmds.parkMouse();
+                clickCollectables();
+            }
+            if (Sector.S9.equals(sector)) {
+                islandCmds.dragDrop(400, 0);
+                islandCmds.parkMouse();
+                clickCollectables();
+            }
+
+        }
+        return true;
+    }
+
+    private void clickCollectables() {//            IslandButtons[] collectableIcons = {IslandButtons.CollectableIconOne, IslandButtons
+        // .CollectableIconThree};
+        IslandButtons[] collectableIcons = {IslandButtons.CollectableIconFour};
+
+        Match lastMatch = null;
+        Match match;
+        for (IslandButtons collectableIcon : collectableIcons) {
+            while ((match = islandCmds.find(collectableIcon.pattern)) != null) {
+                log.info("distance: " + AppMath.distance(match, lastMatch));
+                if (lastMatch == null || AppMath.distance(match, lastMatch) > 30) {
+                    log.info("Sammelgegenstand gefunden. " + match);
+                    match.doubleClick();
+                    islandCmds.parkMouse();
+                    // islandCmds.sleepX(8);
+                    islandCmds.typeESC();
+                    lastMatch = match;
                 }
             }
         }
-        return true;
     }
 
     @Deprecated
@@ -222,7 +243,7 @@ public class DSOService {
             } else {
                 throw new IllegalArgumentException("Unknown stepType: " + launch);
             }
-            launchCount += starMenu.launchAllGeologicsByImage(starMenuButton, launch.getMaterial(), launch.getLaunchLimit());
+            launchCount += starMenu.launchAllGeologicsByImage(starMenuButton, launch.getMaterial(), launch.getLaunchLimit(), launch.getFilter());
         }
         islandCmds.typeESC();
         islandCmds.sleep();
@@ -237,7 +258,7 @@ public class DSOService {
 
     public boolean prepareStarMenu() {
         log.info("prepareStarMenu()");
-        return this.prepareStarMenu(StarMenuFilter.ENTDDECK_KUNDSCH_GEOLO);
+        return this.prepareStarMenu(StarMenuFilter.ALL);
     }
 
     public boolean prepareStarMenu(StarMenuFilter filter) {
@@ -310,20 +331,16 @@ public class DSOService {
                             break outerloop;
                         }
                         islandCmds.typeESC();
+                        if (!starMenu.openBuildMenu()) {
+                            log.severe("Cancel build");
+                            break outerloop;
+                        }
                         if (!isBuildMenuPrepared) {
-                            isBuildMenuPrepared = true;
-                            if (!starMenu.openBuildMenu()) {
-                                log.warning("Cancel build");
-                                break outerloop;
-                            }
                             if (!buildMenu.prepareBuildMenuTab(mineButton.tab)) {
                                 log.fine("Maybe menu is already prepared");
                             }
                             islandCmds.parkMouse();
-                        }
-                        if (!starMenu.openBuildMenu()) {
-                            log.severe("Cancel build");
-                            break outerloop;
+                            isBuildMenuPrepared = true;
                         }
                         if (!buildMenu.buildMine(matches.next(), mineButton)) {
                             log.info("build of mine was not successful");

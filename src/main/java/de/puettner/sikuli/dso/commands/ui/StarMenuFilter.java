@@ -2,8 +2,9 @@ package de.puettner.sikuli.dso.commands.ui;
 
 public enum StarMenuFilter {
 
-    ENTDDECK_KUNDSCH_GEOLO("entd|kunds|geolo|steak|irma"),
+    ALL("entd|kunds|geolo|steak|irma"),
     EIGTH_PERCENT("8%"),
+    FAST_GRANIT(""),
     GeneralsFilterString("GM|Var|Ans|Nus|MdK|Mar|Vet|Sen|Dra");
 
     public final String filterString;

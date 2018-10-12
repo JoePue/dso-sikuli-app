@@ -26,7 +26,7 @@ cd ../dist
 for %%i in (*-jar-with-dependencies.jar) DO (
   java -cp ".;./;./dso-sikuli-app.sikuli" -jar %%i firstDailyRun
   
-  for /L %%k in (1, 1, 5) DO (
+  for /L %%k in (1, 1, 6) DO (
     echo #%%k Loop
     java -cp ".;./;./dso-sikuli-app.sikuli" -jar %%i preventScreensaver
     sleep 120

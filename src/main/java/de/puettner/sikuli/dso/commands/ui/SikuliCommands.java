@@ -203,6 +203,11 @@ public class SikuliCommands {
         return match;
     }
 
+    public Match find(Pattern filename) {
+        final Match match = appRegion.exists(filename);
+        return match;
+    }
+
     public void highlightRegion() {
         appRegion.highlight(2, "green");
     }

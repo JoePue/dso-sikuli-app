@@ -125,11 +125,11 @@ public class StarMenu extends DsoMenu {
         return false;
     }
 
-    public <PSI> int launchAllGeologicsByImage(MenuButton image, MaterialType material, int launchLimit) {
+    public <PSI> int launchAllGeologicsByImage(MenuButton image, MaterialType material, int launchLimit, StarMenuFilter filter) {
         log.info("launchAllGeologicsByImage");
         int launchCount = 0;
         for (int i = 0; i < launchLimit; ++i) {
-            if (!openStarMenu(Optional.empty())) {
+            if (!openStarMenu(Optional.ofNullable(filter))) {
                 break;
             }
             Match match = islandCmds.find(image.getPattern(), menuRegion);

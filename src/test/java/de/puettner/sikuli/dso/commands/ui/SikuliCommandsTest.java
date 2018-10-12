@@ -34,7 +34,7 @@ public class SikuliCommandsTest {
 
     @Test
     public void openStarMenu() {
-        starMenu.openStarMenu(Optional.of(StarMenuFilter.ENTDDECK_KUNDSCH_GEOLO));
+        starMenu.openStarMenu(Optional.of(StarMenuFilter.ALL));
     }
 
     @Test
