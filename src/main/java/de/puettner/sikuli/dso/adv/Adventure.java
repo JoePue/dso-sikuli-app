@@ -75,6 +75,7 @@ public abstract class Adventure {
         try {
             AdventureStep step;
             boolean supportedStep;
+            int processedCounter = 0;
             for (int i = 0; i < this.adventureSteps.size(); ++i) {
                 step = this.adventureSteps.get(i);
                 supportedStep = false;
@@ -83,11 +84,11 @@ public abstract class Adventure {
                 }
                 // *** OPEN ***
                 if (OPEN.equals(step.getState())) {
-                    processStepDelay(step);
+                    processStepDelay(step, processedCounter != 0);
                     // *** OPEN - MOVE ***
                     if (StepType.ALL_BACK_TO_STAR_MENU.equals(step.getStepType())) {
                         supportedStep = true;
-                        processStepDelay(step);
+                        processStepDelay(step, processedCounter != 0);
                         if (!processAllGeneralsBackToStarMenuStep()) {
                             throw new IllegalStateException("Failed to process step: " + step);
                         }
@@ -101,7 +102,7 @@ public abstract class Adventure {
                         }
                         saveState(step, DONE);
                     }
-                    // *** MOVE ***
+                    // *** OPEN > MOVE ***
                     if (StepType.MOVE.equals(step.getStepType())) {
                         supportedStep = true;
                         Objects.requireNonNull(step.getTargetNavPoint());
@@ -111,7 +112,7 @@ public abstract class Adventure {
                             saveState(step, AdventureStepState.DONE);
                         }
                     }
-                    // *** OPEN - ATTACK ***
+                    // *** OPEN > ATTACK ***
                     if (StepType.ATTACK.equals(step.getStepType())) {
                         supportedStep = true;
                         if (this.prepareAttack(step)) {
@@ -121,14 +122,14 @@ public abstract class Adventure {
                             throw new IllegalStateException("Attack preparation failed");
                         }
                     }
-                    // *** OPEN - SOLVE_QUEST ***
+                    // *** OPEN > SOLVE_QUEST ***
                     if (StepType.SOLVE_QUEST.equals(step.getStepType())) {
                         if (!processSolveQuestStep(step)) {
                             throw new IllegalStateException("step processing failed");
                         }
                         saveState(step, DONE);
                     }
-                    // *** OPEN - UNSET_UNITS ***
+                    // *** OPEN > UNSET_UNITS ***
                     if (StepType.UNSET_UNITS.equals(step.getStepType())) {
                         if (!processUnsetUnitsStep(step)) {
                             throw new IllegalStateException("step processing failed");
@@ -137,8 +138,8 @@ public abstract class Adventure {
                     }
                 }
                 if (PREPARED.equals(step.getState())) {
-                    processStepDelay(step);
-                    // *** PREPARED - ATTACK ***
+                    processStepDelay(step, processedCounter != 0);
+                    // *** PREPARED > ATTACK ***
                     if (StepType.ATTACK.equals(step.getStepType())) {
                         supportedStep = true;
                         int errorCode = attack(step);
@@ -146,8 +147,6 @@ public abstract class Adventure {
                             saveState(step, DONE);
                             markPreviousStepsAsDone(step, i);
                         } else if (errorCode == 5) {
-                            // Camp nicht gefunden, so gilt es als schon besiegt.
-                            // saveState(step, AdventureStepState.DONE);
                             throw new IllegalStateException("attack step failed");
                         } else {
                             throw new IllegalStateException("attack step failed");
@@ -159,6 +158,8 @@ public abstract class Adventure {
                 }
                 if (!supportedStep) {
                     throw new IllegalStateException("Unsupported adventure step: " + step);
+                } else {
+                    ++processedCounter;
                 }
             }
             log.info("All adventure steps processed");
@@ -170,8 +171,8 @@ public abstract class Adventure {
         }
     }
 
-    private void processStepDelay(AdventureStep step) {
-        if (step.getDelay() != null && step.getDelay() > 0) {
+    private void processStepDelay(AdventureStep step, boolean isNotFirst) {
+        if (isNotFirst && step.getDelay() != null && step.getDelay() > 0) {
             log.info("processStepDelay()");
             islandCmds.sleep(step.getDelay(), TimeUnit.SECONDS);
         }
@@ -385,9 +386,6 @@ public abstract class Adventure {
 
     private boolean campExists(AttackCamp camp) {
         log.info("campExists()");
-        //        if (camp.getDragNDrop() != null) {
-        //            islandCmds.dragDrop(camp.getDragNDrop());
-        //        }
         Match match = islandCmds.find(camp.getPattern(), region);
         if (match == null) {
             return false;

@@ -4,7 +4,9 @@ public enum StarMenuFilter {
 
     ALL("entd|kunds|geolo|steak|irma"),
     EIGTH_PERCENT("8%"),
-    FAST_GRANIT(""),
+    /** IRON Geologic */
+    GEO_1("Geo 1"),
+    GRANIT_GEOS("Geo 3|Geo 4|Geo 5|Geo 6|Geo 7|Geo 8"),
     GeneralsFilterString("GM|Var|Ans|Nus|MdK|Mar|Vet|Sen|Dra");
 
     public final String filterString;
