@@ -4,9 +4,6 @@ import org.junit.Test;
 
 import java.io.IOException;
 
-/**
- * Created by joerg.puettner on 13.10.2018.
- */
 public class JsonFileFormatterTest {
 
     @Test
