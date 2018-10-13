@@ -174,7 +174,7 @@
         {
           "type": "Rek",
           "quantity": 120
-        }, {
+    }, {
           "type": "Kan",
           "quantity": 75
         }
@@ -193,7 +193,7 @@
         {
           "type": "Rek",
           "quantity": 65
-        }, {
+    }, {
           "type": "Cav",
           "quantity": 115
         }
@@ -213,7 +213,7 @@
         {
           "type": "Rek",
           "quantity": 200
-        }, {
+    }, {
           "type": "Kan",
           "quantity": 85
         }
@@ -236,10 +236,10 @@
         {
           "type": "Rek",
           "quantity": 140
-        }, {
+    }, {
           "type": "Sol",
           "quantity": 30
-        }, {
+    }, {
           "type": "Kan",
           "quantity": 25
         }
@@ -292,7 +292,7 @@
         {
           "type": "Bos",
           "quantity": 160
-        }, {
+    }, {
           "type": "Kan",
           "quantity": 55
         }
@@ -328,10 +328,10 @@
         {
           "type": "Rek",
           "quantity": 70
-        }, {
+    }, {
           "type": "Sol",
           "quantity": 10
-        }, {
+    }, {
           "type": "Kan",
           "quantity": 205
         }
@@ -532,10 +532,10 @@
         {
           "type": "Rek",
           "quantity": 160
-        }, {
+    }, {
           "type": "Bos",
           "quantity": 60
-        }, {
+    }, {
           "type": "Kan",
           "quantity": 65
         }
@@ -554,10 +554,10 @@
         {
           "type": "Rek",
           "quantity": 135
-        }, {
+    }, {
           "type": "Cav",
           "quantity": 30
-        }, {
+    }, {
           "type": "Kan",
           "quantity": 120
         }
@@ -588,10 +588,10 @@
         {
           "type": "Rek",
           "quantity": 160
-        }, {
+    }, {
           "type": "Sol",
           "quantity": 40
-        }, {
+    }, {
           "type": "Kan",
           "quantity": 85
         }
@@ -610,7 +610,7 @@
         {
           "type": "Rek",
           "quantity": 90
-        }, {
+    }, {
           "type": "Kan",
           "quantity": 75
         }
@@ -714,7 +714,7 @@
         {
           "type": "Rek",
           "quantity": 140
-        }, {
+    }, {
           "type": "Sol",
           "quantity": 60
         }, {
@@ -862,7 +862,7 @@
         {
           "type": "Rek",
           "quantity": 140
-        }, {
+    }, {
           "type": "Kan",
           "quantity": 25
         }
@@ -892,7 +892,7 @@
         {
           "type": "Rek",
           "quantity": 100
-        }, {
+    }, {
           "type": "Kan",
           "quantity": 65
         }
@@ -927,10 +927,10 @@
         {
           "type": "Rek",
           "quantity": 120
-        }, {
+    }, {
           "type": "Bos",
           "quantity": 140
-        }, {
+    }, {
           "type": "Kan",
           "quantity": 25
         }
@@ -952,7 +952,7 @@
         {
           "type": "Rek",
           "quantity": 60
-        }, {
+    }, {
           "type": "Kan",
           "quantity": 105
         }
@@ -974,7 +974,7 @@
         {
           "type": "Bos",
           "quantity": 160
-        }, {
+    }, {
           "type": "Arm",
           "quantity": 35
         }
@@ -1112,10 +1112,10 @@
         {
           "type": "Rek",
           "quantity": 60
-        }, {
+    }, {
           "type": "Cav",
           "quantity": 60
-        }, {
+    }, {
           "type": "Kan",
           "quantity": 100
         }
@@ -1125,7 +1125,7 @@
       "targetDragDropOffset": {
         "width": 0.0,
         "height": -400.0
-      }
+    }
     }, {
       "no": 87,
       "stepType": "SOLVE_QUEST",
