@@ -9,7 +9,8 @@ public enum BraveTailorNavPoints implements NavigationPoint {
     NP_1(null, pattern("Brave-Tailor-NavPoint-1-zoom1").similar(0.90)),
     NP_2(null, pattern("Brave-Tailor-NavPoint-2-zoom1").similar(0.90)),
     NP_3(null, pattern("Brave-Tailor-NavPoint-3-zoom1").similar(0.90)),
-    NP_4(null, pattern("Brave-Tailor-NavPoint-4-zoom1").similar(0.99));
+    NP_4(null, pattern("Brave-Tailor-NavPoint-4-zoom1").similar(0.99)),
+    NP_5(null, pattern("Brave-Tailor-NavPoint-5-zoom1").similar(0.99));
 
     private final Integer id;
     private final Pattern pattern;
