@@ -155,4 +155,20 @@ public class IslandCommands extends SikuliCommands {
     public Region getIslandRegion() {
         return new Region(super.appRegion);
     }
+
+    public void parkMouseInLeftUpperCorner() {
+        hover(new Location(appRegion.x, appRegion.y));
+    }
+
+    public void parkMouseInLeftLowerCorner() {
+        hover(new Location(appRegion.x, appRegion.h));
+    }
+
+    public void parkMouseInRightUpperCorner() {
+        hover(new Location(appRegion.w, appRegion.y));
+    }
+
+    public void parkMouseInRightLowerCorner() {
+        hover(new Location(appRegion.w, appRegion.h));
+    }
 }
