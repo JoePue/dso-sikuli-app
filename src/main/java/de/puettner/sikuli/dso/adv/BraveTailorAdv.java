@@ -18,7 +18,7 @@ import java.util.Objects;
 @Log
 public class BraveTailorAdv extends Adventure {
 
-    private final File stateFile = new File("brave-tailor-adventure.json");
+    public static final File stateFile = new File("brave-tailor-adventure.json");
 
     /**
      * C'tor

@@ -25,6 +25,7 @@ public class BraveTailorAdvTest extends MenuTest {
 
     @Test
     public void saveState() {
+        adventure.restoreState();
         adventure.saveState();
     }
 
