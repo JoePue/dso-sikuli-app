@@ -51,7 +51,7 @@ public class BraveTailorAdvTest extends MenuTest {
 
     @Test
     public void moveToCamp() {
-        adventure.moveToCamp(NP_1, NP_2, null);
+        adventure.moveToCamp(NP_1, NP_2, null, null);
     }
 
     @Test

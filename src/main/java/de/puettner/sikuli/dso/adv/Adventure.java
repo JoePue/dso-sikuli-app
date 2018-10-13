@@ -306,7 +306,8 @@ public abstract class Adventure {
         if (openGeneralMenu(step.getGeneral(), step.getGeneralName())) {
             if (clickAttackButton()) {
                 islandCmds.sleep();
-                moveToCamp(step.getStartNavPoint(), step.getTargetNavPoint(), step.getTargetDragDropOffset());
+                moveToCamp(step.getStartNavPoint(), step.getTargetNavPoint(), step.getTargetDragDropOffset(), step
+                        .getInitialDragDropOffset());
                 if (clickAttackCamp(step.getCamp())) {
                     islandCmds.sleepX(2);
                     failIfBuildCancelButtonExists();
@@ -515,11 +516,19 @@ public abstract class Adventure {
 
     /**
      * This method assumes a General in Attack-Mode.
+     *
+     * @param startNavPoint Startpunkt
+     * @param targetNavPoint Zielpunkt
+     * @param targetDragDropOffset
+     * @param initialDragDropOffset Darf null sein, zum initialen verschieben hin zum Start NavPoint
      */
-    protected void moveToCamp(NavigationPoint startNavPoint, NavigationPoint targetNavPoint, Dimension targetDragDropOffset) {
+    protected void moveToCamp(NavigationPoint startNavPoint, NavigationPoint targetNavPoint, Dimension targetDragDropOffset, Dimension initialDragDropOffset) {
         Objects.requireNonNull(startNavPoint, "Missing startNavPoint");
         Objects.requireNonNull(targetNavPoint, "Missing targetNavPoint");
 
+        if (initialDragDropOffset != null) {
+            islandCmds.dragDrop(initialDragDropOffset);
+        }
         NavigationPoint currentNavPoint = whereIam();
         Objects.requireNonNull(currentNavPoint, "Failed to identify starting point");
 

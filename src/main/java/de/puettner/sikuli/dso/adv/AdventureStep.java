@@ -24,6 +24,8 @@ public class AdventureStep {
     private NavigationPoint startNavPoint;
     /** Diese Property ist nur bei 'stepType == MOVE' gesetzt. */
     private NavigationPoint targetNavPoint;
+    /** Mittels diesem Drag-n-Drop soll zum zugehörigen NavPoint sich bewegt werden */
+    private Dimension initialDragDropOffset;
     /** Diese Property ist nur bei 'stepType == MOVE' gesetzt. */
     private Dimension targetDragDropOffset;
     /** Erforderlich für den MOVE-Step in Sektor 1 vom Landeplatz zur ersten Platzierung */

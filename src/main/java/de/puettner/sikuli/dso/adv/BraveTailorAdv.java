@@ -73,8 +73,7 @@ public class BraveTailorAdv extends Adventure {
     }
 
     public void route(NavigationPoint startingPoint, NavigationPoint targetPoint, @Nullable Dimension targetDragDropOffset, @Nullable
-            Dimension
-            targetClickOffset, boolean isRouteCheck) {
+            Dimension targetClickOffset, boolean isRouteCheck) {
         log.info("route() " + startingPoint + " -> " + targetPoint + "(isRouteCheck: " + isRouteCheck + ")");
         Objects.requireNonNull(startingPoint, "startingPoint is null");
         Objects.requireNonNull(targetPoint, "targetPoint is null");
