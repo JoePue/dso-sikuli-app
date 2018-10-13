@@ -8,7 +8,6 @@ import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.*;
 
-import static de.puettner.sikuli.dso.commands.ui.Sector.S7;
 import static de.puettner.sikuli.dso.commands.ui.SikuliCommands.pattern;
 import static java.util.concurrent.TimeUnit.SECONDS;
 
@@ -174,7 +173,7 @@ public class DSOService {
 
     public boolean findAllCollectables() {
         log.info("findAllCollectables");
-        Sector[] sectors = {S7};//Sector.valuesFromS1ToS9()
+        Sector[] sectors = Sector.valuesFromS1ToS9();
         for (Sector sector : sectors) {
             this.goToSector(sector);
             islandCmds.parkMouse();
@@ -203,38 +202,21 @@ public class DSOService {
     }
 
     private void clickCollectables() {
-        //            IslandButtons[] collectableIcons = {IslandButtons.CollectableIconOne, IslandButtons
-        // .CollectableIconThree};
-        IslandButtons[] collectableIcons = {IslandButtons.CollectableIconFour};
-        final int minDistance = 50;
-        Match lastMatch;
+        islandCmds.parkMouse();
+        IslandButtons[] collectableIcons = {IslandButtons.CollectableIconOne, IslandButtons.CollectableIconThree};
         for (IslandButtons collectableIcon : collectableIcons) {
-            ArrayList<Match> matchesArray = new ArrayList<>();
-            Iterator<Match> matchIterator = islandCmds.findAll(collectableIcon.pattern);
-            for (; matchIterator.hasNext(); ) {
-                Match match = matchIterator.next();
-                matchesArray.add(match);
-            }
-            matchIterator = null;
-
-            log.info("matchesArray.size(): " + matchesArray.size() + " #####################");
-            Collections.sort(matchesArray, new MatchComparator());
-            lastMatch = null;
-            for (int i = 0; i < matchesArray.size(); ++i) {
-                Match match = matchesArray.get(i);
-                double distance = minDistance + 1;
-                if (lastMatch != null) {
-                    distance = AppMath.distance(match, lastMatch);
-                }
-                if (distance > minDistance) {
-                    log.info("distance: " + distance);
+            Iterator<Match> iconIt = islandCmds.findAll(collectableIcon.pattern);
+            if (iconIt != null) {
+                while (iconIt.hasNext()) {
+                    Match match = iconIt.next();
                     log.info("Sammelgegenstand gefunden. " + match);
                     match.doubleClick();
                     islandCmds.parkMouse();
-                    // islandCmds.sleepX(8);
+                    islandCmds.sleepX(8);
                     islandCmds.typeESC();
-                    lastMatch = match;
                 }
+            } else {
+                log.info("No Collectables found");
             }
         }
     }
