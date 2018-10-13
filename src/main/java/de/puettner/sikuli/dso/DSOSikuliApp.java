@@ -138,8 +138,8 @@ public class DsoSikuliApp {
         // jetzt sollten alle Goes wieder verfügbar sein.
         launchs = GeologicLaunchs.builder().build()
                 .add(GeologicType.Happy, GO, 2, StarMenuFilter.EIGTH_PERCENT)
-                .add(GeologicType.Happy, MA, 6)
-                .add(GeologicType.Happy, EI, 2)
+                .add(GeologicType.Happy, EI, 2, StarMenuFilter.GEO_1)
+                .add(GeologicType.Happy, MA, 6, StarMenuFilter.GRANIT_GEOS)
                 .add(GeologicType.Normal, GR, 1)
                 .add(GeologicType.Normal, KO, 1)
                 .add(GeologicType.Normal, EI, 1)
@@ -164,7 +164,7 @@ public class DsoSikuliApp {
 
         // Ausgangspunkt: 6 verfügbare Geos
         GeologicLaunchs launchs = GeologicLaunchs.builder().build()
-                .add(GeologicType.Happy, GR, 6)
+                .add(GeologicType.Happy, GR, 6, StarMenuFilter.GRANIT_GEOS)
                 .add(GeologicType.Happy, KO, 1)
                 .add(GeologicType.Happy, EI, 3)
                 .add(GeologicType.Conscientious, GR, 2);

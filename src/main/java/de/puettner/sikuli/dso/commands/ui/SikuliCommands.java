@@ -7,6 +7,7 @@ import org.sikuli.script.Image;
 
 import java.awt.*;
 import java.io.File;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
@@ -83,7 +84,11 @@ public class SikuliCommands {
     }
 
     public Iterator<Match> findAll(Pattern pattern) {
-        return this.findAll(pattern, appRegion);
+        Iterator<Match> result = this.findAll(pattern, appRegion);
+        if (result == null) {
+            result = Collections.emptyListIterator();
+        }
+        return result;
     }
 
     /**
@@ -136,7 +141,7 @@ public class SikuliCommands {
     }
 
     public void parkMouseForMove() {
-        hover(new Location(appRegion.x, appRegion.y));
+        hover(new Location(appRegion.w / 2, appRegion.h / 2));
     }
 
     public void hover(Location location) {
@@ -145,6 +150,22 @@ public class SikuliCommands {
         } catch (FindFailed findFailed) {
             throw new RuntimeException(findFailed);
         }
+    }
+
+    public void parkMouseInLeftUpperCorner() {
+        hover(new Location(appRegion.x, appRegion.y));
+    }
+
+    public void parkMouseInLeftLowerCorner() {
+        hover(new Location(appRegion.x, appRegion.h));
+    }
+
+    public void parkMouseInRightUpperCorner() {
+        hover(new Location(appRegion.w, appRegion.y));
+    }
+
+    public void parkMouseInRightLowerCorner() {
+        hover(new Location(appRegion.w, appRegion.h));
     }
 
     public boolean closeMenu() {

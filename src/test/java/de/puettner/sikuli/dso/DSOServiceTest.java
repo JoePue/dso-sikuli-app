@@ -150,5 +150,9 @@ public class DSOServiceTest extends BaseServiceTest {
         dsoService.confirmSolvedQuest();
     }
 
+    @Test
+    public void highlightRegions() {
+        dsoService.highlightRegions();
+    }
 
 }

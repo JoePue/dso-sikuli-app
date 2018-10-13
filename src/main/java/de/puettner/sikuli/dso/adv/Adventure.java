@@ -81,6 +81,7 @@ public abstract class Adventure {
                 supportedStep = false;
                 if (!DONE.equals(step.getState())) {
                     log.info(step.toString());
+                    confirmSolvedQuest();
                 }
                 // *** OPEN ***
                 if (OPEN.equals(step.getState())) {
@@ -169,6 +170,11 @@ public abstract class Adventure {
         } finally {
             saveState();
         }
+    }
+
+    private void confirmSolvedQuest() {
+        dsoService.confirmSolvedQuest();
+        dsoService.confirmNewQuest();
     }
 
     private void processStepDelay(AdventureStep step, boolean isNotFirst) {
@@ -322,7 +328,7 @@ public abstract class Adventure {
 
     private void failIfBuildCancelButtonExists() {
         if (islandCmds.clickBuildCancelButton()) {
-            throw new IllegalStateException("Attack failed because cancel button exists");
+            throw new IllegalStateException("cancel button must not exists");
         }
     }
 
@@ -417,7 +423,7 @@ public abstract class Adventure {
         log.info("centerNavigationPoint() navPoint: " + navPoint);
         boolean rv = false;
         islandCmds.parkMouseForMove();
-        Match match = islandCmds.find(navPoint.getPattern(), region);
+        Match match = findNavPoint(navPoint);
         if (match != null) {
             Location navPointLocation = getNavPointLocation(match);
             Location regionCenterLocation = getMidpoint();
@@ -429,13 +435,7 @@ public abstract class Adventure {
             }
             islandCmds.dragDrop(dimension);
             if (targetClickOffset != null) {
-                islandCmds.parkMouseForMove();
-                // Nach DragDrop muss erneut gesucht werden.
-                match = islandCmds.find(navPoint.getPattern(), region);
-                log.info("match: " + match);
-                if (match == null) {
-                    throw new IllegalStateException();
-                }
+                match = findNavPoint(navPoint);
                 navPointLocation = getNavPointLocation(match);
                 log.info("targetClickOffset: " + targetClickOffset);
                 Location clickLocation = new Location(navPointLocation.x + targetClickOffset.width, navPointLocation.y +
@@ -448,6 +448,31 @@ public abstract class Adventure {
             throw new IllegalStateException("Navigation point not found");
         }
         return rv;
+    }
+
+    private Match findNavPoint(NavigationPoint navPoint) {
+        Match match;
+        // Nach DragDrop muss erneut gesucht werden.
+        islandCmds.parkMouseInLeftUpperCorner();
+        match = islandCmds.find(navPoint.getPattern(), region);
+        if (match == null) {
+            islandCmds.parkMouseInLeftLowerCorner();
+            match = islandCmds.find(navPoint.getPattern(), region);
+        }
+        if (match == null) {
+            islandCmds.parkMouseInRightLowerCorner();
+            match = islandCmds.find(navPoint.getPattern(), region);
+        }
+        if (match == null) {
+            islandCmds.parkMouseInRightUpperCorner();
+            match = islandCmds.find(navPoint.getPattern(), region);
+        }
+
+        log.info("match: " + match);
+        if (match == null) {
+            throw new IllegalStateException();
+        }
+        return match;
     }
 
 
@@ -528,11 +553,11 @@ public abstract class Adventure {
         NavigationPoint navPoint = step.getTargetNavPoint();
         if (openGeneralMenu(general, generalName)) {
             islandCmds.sleepX(5);
-            // clickUnsetUnitButton();
             if (generalMenu.clickMoveBtn()) {
                 Objects.requireNonNull(step.getTargetNavPointClickOffset());
                 route(step.getStartNavPoint(), step.getTargetNavPoint(), step.getTargetDragDropOffset(), step
                         .getTargetNavPointClickOffset());
+                islandCmds.sleepX(1);
             } else {
                 log.severe("Failed to click processMoveStep button");
             }

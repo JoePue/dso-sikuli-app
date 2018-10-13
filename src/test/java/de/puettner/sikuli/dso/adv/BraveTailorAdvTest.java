@@ -19,7 +19,6 @@ public class BraveTailorAdvTest extends MenuTest {
 
     @Test
     public void play() {
-        // adventure.saveBraveTailorInitState(); // NO NO NO !!!
         adventure.play();
     }
 

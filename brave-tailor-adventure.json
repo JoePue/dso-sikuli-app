@@ -5,68 +5,58 @@
       "stepType": "ALL_BACK_TO_STAR_MENU",
       "state": "DONE",
       "delay": 960
-    },
-    {
+    }, {
       "no": 2,
       "stepType": "LAND",
       "state": "DONE",
       "general": "Vargus",
       "comment": "Es stehen nur 9 Landeplätze für Genies zur Verfügung (einer wird nicht erkannt.)"
-    },
-    {
+    }, {
       "no": 3,
       "stepType": "LAND",
       "state": "DONE",
       "general": "Generalmajor",
       "generalName": "GM 1"
-    },
-    {
+    }, {
       "no": 4,
       "stepType": "LAND",
       "state": "DONE",
       "general": "Generalmajor",
       "generalName": "GM 2"
-    },
-    {
+    }, {
       "no": 5,
       "stepType": "LAND",
       "state": "DONE",
       "general": "Anslem"
-    },
-    {
+    }, {
       "no": 6,
       "stepType": "LAND",
       "state": "DONE",
       "general": "Nusala"
-    },
-    {
+    }, {
       "no": 7,
       "stepType": "LAND",
       "state": "DONE",
       "general": "MdK",
       "generalName": "MdK 1"
-    },
-    {
+    }, {
       "no": 8,
       "stepType": "LAND",
       "state": "DONE",
       "general": "MdK",
       "generalName": "MdK 2"
-    },
-    {
+    }, {
       "no": 9,
       "stepType": "LAND",
       "state": "DONE",
       "general": "MdK",
       "generalName": "MdK 3"
-    },
-    {
+    }, {
       "no": 10,
       "stepType": "LAND",
       "state": "DONE",
       "general": "Mary"
-    },
-    {
+    }, {
       "no": 11,
       "stepType": "MOVE",
       "state": "DONE",
@@ -78,8 +68,7 @@
         "width": 337.0,
         "height": -116.0
       }
-    },
-    {
+    }, {
       "no": 12,
       "stepType": "MOVE",
       "state": "DONE",
@@ -92,8 +81,7 @@
         "width": 197.0,
         "height": -84.0
       }
-    },
-    {
+    }, {
       "no": 13,
       "stepType": "MOVE",
       "state": "DONE",
@@ -106,8 +94,7 @@
         "width": 111.0,
         "height": -79.0
       }
-    },
-    {
+    }, {
       "no": 14,
       "stepType": "MOVE",
       "state": "DONE",
@@ -119,8 +106,7 @@
         "width": 319.0,
         "height": -41.0
       }
-    },
-    {
+    }, {
       "no": 15,
       "stepType": "MOVE",
       "state": "DONE",
@@ -131,8 +117,7 @@
         "width": 321.0,
         "height": 49.0
       }
-    },
-    {
+    }, {
       "no": 16,
       "stepType": "MOVE",
       "state": "DONE",
@@ -140,9 +125,11 @@
       "generalName": "MdK 1",
       "startNavPoint": "NP_1",
       "targetNavPoint": "NP_1",
-      "targetNavPointClickOffset": {"width": 372.0, "height": 21.0}
-    },
-    {
+      "targetNavPointClickOffset": {
+        "width": 372.0,
+        "height": 21.0
+      }
+    }, {
       "no": 17,
       "stepType": "MOVE",
       "state": "DONE",
@@ -150,9 +137,11 @@
       "generalName": "MdK 2",
       "startNavPoint": "NP_1",
       "targetNavPoint": "NP_1",
-      "targetNavPointClickOffset": {"width": 414.0, "height": -7.0}
-    },
-    {
+      "targetNavPointClickOffset": {
+        "width": 414.0,
+        "height": -7.0
+      }
+    }, {
       "no": 18,
       "stepType": "MOVE",
       "state": "DONE",
@@ -160,9 +149,11 @@
       "generalName": "MdK 3",
       "startNavPoint": "NP_1",
       "targetNavPoint": "NP_1",
-      "targetNavPointClickOffset": {"width": 96.0, "height": -112.0}
-    },
-    {
+      "targetNavPointClickOffset": {
+        "width": 96.0,
+        "height": -112.0
+      }
+    }, {
       "no": 19,
       "stepType": "MOVE",
       "state": "DONE",
@@ -173,8 +164,7 @@
         "width": -8.0,
         "height": -121.0
       }
-    },
-    {
+    }, {
       "no": 20,
       "stepType": "ATTACK",
       "state": "DONE",
@@ -184,8 +174,7 @@
         {
           "type": "Rek",
           "quantity": 120
-        },
-        {
+        }, {
           "type": "Kan",
           "quantity": 75
         }
@@ -193,8 +182,7 @@
       "startNavPoint": "NP_1",
       "targetNavPoint": "NP_1",
       "comment": "#Sector-1 #1 attack"
-    },
-    {
+    }, {
       "no": 21,
       "stepType": "ATTACK",
       "state": "DONE",
@@ -205,8 +193,7 @@
         {
           "type": "Rek",
           "quantity": 65
-        },
-        {
+        }, {
           "type": "Cav",
           "quantity": 115
         }
@@ -214,20 +201,19 @@
       "startNavPoint": "NP_1",
       "targetNavPoint": "NP_1",
       "comment": "#Sector-1 #2 attack"
-    },
-    {
+    }, {
       "no": 22,
       "stepType": "ATTACK",
       "state": "DONE",
       "delay": 10,
       "general": "Generalmajor",
+      "generalName": "GM 1",
       "camp": "CAMP_3",
       "units": [
         {
           "type": "Rek",
           "quantity": 200
-        },
-        {
+        }, {
           "type": "Kan",
           "quantity": 85
         }
@@ -237,10 +223,9 @@
       "targetDragDropOffset": {
         "width": -400.0,
         "height": -100.0
-      },
-      "comment": "#Sector-1 #3 attack"
     },
-    {
+      "comment": "#Sector-1 #3 attack"
+    }, {
       "no": 23,
       "stepType": "ATTACK",
       "state": "DONE",
@@ -251,12 +236,10 @@
         {
           "type": "Rek",
           "quantity": 140
-        },
-        {
+        }, {
           "type": "Sol",
           "quantity": 30
-        },
-        {
+        }, {
           "type": "Kan",
           "quantity": 25
         }
@@ -264,8 +247,7 @@
       "startNavPoint": "NP_1",
       "targetNavPoint": "NP_2",
       "comment": "#Sector-1 #4 attack"
-    },
-    {
+    }, {
       "no": 24,
       "stepType": "ATTACK",
       "state": "DONE",
@@ -282,8 +264,7 @@
       "startNavPoint": "NP_1",
       "targetNavPoint": "NP_2",
       "comment": "#Sector-1 #5.1 attack"
-    },
-    {
+    }, {
       "no": 25,
       "stepType": "ATTACK",
       "state": "DONE",
@@ -300,8 +281,7 @@
       "startNavPoint": "NP_1",
       "targetNavPoint": "NP_2",
       "comment": "#Sector-1 #5.2 attack"
-    },
-    {
+    }, {
       "no": 26,
       "stepType": "ATTACK",
       "state": "DONE",
@@ -312,8 +292,7 @@
         {
           "type": "Bos",
           "quantity": 160
-        },
-        {
+        }, {
           "type": "Kan",
           "quantity": 55
         }
@@ -321,8 +300,7 @@
       "startNavPoint": "NP_1",
       "targetNavPoint": "NP_2",
       "comment": "#Sector-1 #5.3 attack"
-    },
-    {
+    }, {
       "no": 27,
       "stepType": "ATTACK",
       "state": "DONE",
@@ -338,8 +316,7 @@
       "startNavPoint": "NP_1",
       "targetNavPoint": "NP_2",
       "comment": "#Sector-1 #6.1 attack"
-    },
-    {
+    }, {
       "no": 28,
       "stepType": "ATTACK",
       "state": "DONE",
@@ -351,12 +328,10 @@
         {
           "type": "Rek",
           "quantity": 70
-        },
-        {
+        }, {
           "type": "Sol",
           "quantity": 10
-        },
-        {
+        }, {
           "type": "Kan",
           "quantity": 205
         }
@@ -364,84 +339,97 @@
       "startNavPoint": "NP_1",
       "targetNavPoint": "NP_2",
       "comment": "#Sector-1 #6.2 attack"
-    },
-    {
+    }, {
       "no": 29,
       "stepType": "LAND",
       "state": "DONE",
       "general": "Dracul",
       "generalName": "Draci 1"
-    },
-    {
+    }, {
       "no": 30,
       "stepType": "LAND",
       "state": "DONE",
       "general": "Sensenmann",
       "generalName": "SM 1"
-    },
-    {
+    }, {
       "no": 31,
       "stepType": "LAND",
       "state": "DONE",
       "general": "Veteran"
-    },
-    {
+    }, {
       "no": 32,
       "stepType": "LAND",
       "state": "DONE",
       "general": "MdK",
       "generalName": "MdK 4"
-    },
-    {
+    }, {
       "no": 33,
       "stepType": "LAND",
       "state": "DONE",
       "general": "MdK",
       "generalName": "MdK 5"
-    },
-    {
+    }, {
       "no": 34,
-      "stepType": "LAND",
+      "stepType": "MOVE",
       "state": "DONE",
-      "general": "MdK",
-      "generalName": "MdK 6"
-    },
-    {
+      "delay": 1,
+      "general": "Veteran",
+      "startNavPoint": "NP_1",
+      "targetNavPoint": "NP_1",
+      "targetNavPointClickOffset": {
+        "width": 345.0,
+        "height": 80.0
+      }
+    }, {
       "no": 35,
-      "stepType": "LAND",
+      "stepType": "MOVE",
       "state": "DONE",
-      "general": "MdK",
-      "generalName": "MdK 7"
-    },
-    {
+      "delay": 1,
+      "general": "Sensenmann",
+      "generalName": "SM 1",
+      "startNavPoint": "NP_1",
+      "targetNavPoint": "NP_1",
+      "targetNavPointClickOffset": {
+        "width": 289.0,
+        "height": 114.0
+      }
+    }, {
       "no": 36,
       "stepType": "LAND",
       "state": "DONE",
       "general": "MdK",
-      "generalName": "MdK 8"
-    },
-    {
+      "generalName": "MdK 6"
+    }, {
       "no": 37,
+      "stepType": "LAND",
+      "state": "DONE",
+      "general": "MdK",
+      "generalName": "MdK 7"
+    }, {
+      "no": 38,
+      "stepType": "LAND",
+      "state": "DONE",
+      "general": "MdK",
+      "generalName": "MdK 8"
+    }, {
+      "no": 39,
       "stepType": "LAND",
       "state": "DONE",
       "general": "Dracul",
       "generalName": "Draci 2"
-    },
-    {
-      "no": 38,
+    }, {
+      "no": 40,
       "stepType": "LAND",
       "state": "DONE",
       "general": "Sensenmann",
       "generalName": "SM 2"
-    },
-    {
-      "no": 39,
+    }, {
+      "no": 41,
       "stepType": "SOLVE_QUEST",
       "state": "DONE",
       "comment": "#Sector-1 is solved. ------------------------------------------------"
-    },
-    {
-      "no": 40,
+    }, {
+      "no": 42,
       "stepType": "MOVE",
       "state": "DONE",
       "delay": 1,
@@ -453,15 +441,13 @@
         "width": -55.0,
         "height": 204.0
       }
-    },
-    {
-      "no": 41,
+    }, {
+      "no": 43,
       "stepType": "UNSET_UNITS",
       "state": "DONE",
       "general": "Vargus"
-    },
-    {
-      "no": 42,
+    }, {
+      "no": 44,
       "stepType": "MOVE",
       "state": "DONE",
       "general": "Vargus",
@@ -471,9 +457,8 @@
         "width": -22.0,
         "height": 226.0
       }
-    },
-    {
-      "no": 43,
+    }, {
+      "no": 45,
       "stepType": "MOVE",
       "state": "DONE",
       "general": "Mary",
@@ -483,9 +468,8 @@
         "width": -24.0,
         "height": 168.0
       }
-    },
-    {
-      "no": 44,
+    }, {
+      "no": 46,
       "stepType": "MOVE",
       "state": "DONE",
       "general": "MdK",
@@ -496,9 +480,8 @@
         "width": 165.0,
         "height": 95.0
       }
-    },
-    {
-      "no": 45,
+    }, {
+      "no": 47,
       "stepType": "MOVE",
       "state": "DONE",
       "general": "MdK",
@@ -509,9 +492,8 @@
         "width": 202.0,
         "height": 74.0
       }
-    },
-    {
-      "no": 46,
+    }, {
+      "no": 48,
       "stepType": "MOVE",
       "state": "DONE",
       "general": "MdK",
@@ -522,9 +504,8 @@
         "width": 262.0,
         "height": 33.0
       }
-    },
-    {
-      "no": 47,
+    }, {
+      "no": 49,
       "stepType": "MOVE",
       "state": "DONE",
       "general": "Anslem",
@@ -534,16 +515,14 @@
         "width": 298.0,
         "height": 12.0
       }
-    },
-    {
-      "no": 48,
+    }, {
+      "no": 50,
       "stepType": "UNSET_UNITS",
       "state": "DONE",
       "general": "Generalmajor",
       "generalName": "GM 2"
-    },
-    {
-      "no": 49,
+    }, {
+      "no": 51,
       "stepType": "ATTACK",
       "state": "DONE",
       "general": "Generalmajor",
@@ -553,12 +532,10 @@
         {
           "type": "Rek",
           "quantity": 160
-        },
-        {
+        }, {
           "type": "Bos",
           "quantity": 60
-        },
-        {
+        }, {
           "type": "Kan",
           "quantity": 65
         }
@@ -566,9 +543,8 @@
       "startNavPoint": "NP_2",
       "targetNavPoint": "NP_2",
       "comment": "#Sector-2 #1 attack ------------------------------------------------------"
-    },
-    {
-      "no": 50,
+    }, {
+      "no": 52,
       "stepType": "ATTACK",
       "state": "DONE",
       "general": "Generalmajor",
@@ -578,12 +554,10 @@
         {
           "type": "Rek",
           "quantity": 135
-        },
-        {
+        }, {
           "type": "Cav",
           "quantity": 30
-        },
-        {
+        }, {
           "type": "Kan",
           "quantity": 120
         }
@@ -591,9 +565,20 @@
       "startNavPoint": "NP_2",
       "targetNavPoint": "NP_2",
       "comment": "#Sector-2 #2 attack"
-    },
-    {
-      "no": 51,
+    }, {
+      "no": 53,
+      "stepType": "MOVE",
+      "state": "DONE",
+      "general": "Generalmajor",
+      "generalName": "GM 2",
+      "startNavPoint": "NP_1",
+      "targetNavPoint": "NP_2",
+      "targetNavPointClickOffset": {
+        "width": 345.0,
+        "height": -33.0
+      }
+    }, {
+      "no": 54,
       "stepType": "ATTACK",
       "state": "DONE",
       "general": "Generalmajor",
@@ -603,12 +588,10 @@
         {
           "type": "Rek",
           "quantity": 160
-        },
-        {
+        }, {
           "type": "Sol",
           "quantity": 40
-        },
-        {
+        }, {
           "type": "Kan",
           "quantity": 85
         }
@@ -616,9 +599,8 @@
       "startNavPoint": "NP_2",
       "targetNavPoint": "NP_3",
       "comment": "#Sector-2 #3 attack "
-    },
-    {
-      "no": 52,
+    }, {
+      "no": 55,
       "stepType": "ATTACK",
       "state": "DONE",
       "general": "Anslem",
@@ -628,8 +610,7 @@
         {
           "type": "Rek",
           "quantity": 90
-        },
-        {
+        }, {
           "type": "Kan",
           "quantity": 75
         }
@@ -639,11 +620,10 @@
       "targetDragDropOffset": {
         "width": -200.0,
         "height": 0.0
-      },
-      "comment": "#Sector-2 #4 attack"
     },
-    {
-      "no": 53,
+      "comment": "#Sector-2 #4 attack"
+    }, {
+      "no": 56,
       "stepType": "ATTACK",
       "state": "DONE",
       "general": "MdK",
@@ -660,11 +640,10 @@
       "targetDragDropOffset": {
         "width": -200.0,
         "height": 0.0
-      },
-      "comment": "#Sector-2 #4.1 attack"
     },
-    {
-      "no": 54,
+      "comment": "#Sector-2 #4.1 attack"
+    }, {
+      "no": 57,
       "stepType": "ATTACK",
       "state": "DONE",
       "general": "MdK",
@@ -681,11 +660,10 @@
       "targetDragDropOffset": {
         "width": -200.0,
         "height": 0.0
-      },
-      "comment": "#Sector-2 #4.2 attack"
     },
-    {
-      "no": 55,
+      "comment": "#Sector-2 #4.2 attack"
+    }, {
+      "no": 58,
       "stepType": "ATTACK",
       "state": "DONE",
       "general": "MdK",
@@ -702,11 +680,10 @@
       "targetDragDropOffset": {
         "width": -200.0,
         "height": 0.0
-      },
-      "comment": "#Sector-2 #4.3 attack"
     },
-    {
-      "no": 56,
+      "comment": "#Sector-2 #4.3 attack"
+    }, {
+      "no": 59,
       "stepType": "ATTACK",
       "state": "DONE",
       "delay": 20,
@@ -723,11 +700,10 @@
       "targetDragDropOffset": {
         "width": -200.0,
         "height": 0.0
-      },
-      "comment": "#Sector-2 #4.3 attack"
     },
-    {
-      "no": 57,
+      "comment": "#Sector-2 #4.3 attack"
+    }, {
+      "no": 60,
       "stepType": "ATTACK",
       "state": "DONE",
       "delay": 10,
@@ -738,12 +714,10 @@
         {
           "type": "Rek",
           "quantity": 140
-        },
-        {
+        }, {
           "type": "Sol",
           "quantity": 60
-        },
-        {
+        }, {
           "type": "Kan",
           "quantity": 85
         }
@@ -753,17 +727,15 @@
       "targetDragDropOffset": {
         "width": -200.0,
         "height": 0.0
-      },
-      "comment": "#Sector-2 #4.4 attack"
     },
-    {
-      "no": 58,
+      "comment": "#Sector-2 #4.4 attack"
+    }, {
+      "no": 61,
       "stepType": "SOLVE_QUEST",
       "state": "DONE",
       "comment": "#Sector-2 is solved. ------------------------------------------------"
-    },
-    {
-      "no": 59,
+    }, {
+      "no": 62,
       "stepType": "MOVE",
       "state": "DONE",
       "general": "Anslem",
@@ -773,22 +745,20 @@
         "width": -470.0,
         "height": -215.0
       }
-    },
-    {
-      "no": 60,
+    }, {
+      "no": 63,
       "stepType": "MOVE",
       "state": "DONE",
       "general": "Generalmajor",
       "generalName": "GM 2",
-      "startNavPoint": "NP_1",
+      "startNavPoint": "NP_2",
       "targetNavPoint": "NP_3",
       "targetNavPointClickOffset": {
         "width": -487.0,
         "height": -174.0
       }
-    },
-    {
-      "no": 61,
+    }, {
+      "no": 64,
       "stepType": "MOVE",
       "state": "DONE",
       "general": "Vargus",
@@ -798,9 +768,8 @@
         "width": -451.0,
         "height": -148.0
       }
-    },
-    {
-      "no": 62,
+    }, {
+      "no": 65,
       "stepType": "MOVE",
       "state": "DONE",
       "general": "MdK",
@@ -811,9 +780,8 @@
         "width": -393.0,
         "height": -107.0
       }
-    },
-    {
-      "no": 63,
+    }, {
+      "no": 66,
       "stepType": "MOVE",
       "state": "DONE",
       "general": "MdK",
@@ -824,9 +792,8 @@
         "width": -324.0,
         "height": -92.0
       }
-    },
-    {
-      "no": 64,
+    }, {
+      "no": 67,
       "stepType": "MOVE",
       "state": "DONE",
       "general": "MdK",
@@ -837,9 +804,8 @@
         "width": -373.0,
         "height": -72.0
       }
-    },
-    {
-      "no": 65,
+    }, {
+      "no": 68,
       "stepType": "MOVE",
       "state": "DONE",
       "general": "MdK",
@@ -850,9 +816,8 @@
         "width": -291.0,
         "height": -72.0
       }
-    },
-    {
-      "no": 66,
+    }, {
+      "no": 69,
       "stepType": "MOVE",
       "state": "DONE",
       "general": "MdK",
@@ -863,9 +828,8 @@
         "width": -320.0,
         "height": -47.0
       }
-    },
-    {
-      "no": 67,
+    }, {
+      "no": 70,
       "stepType": "MOVE",
       "state": "DONE",
       "general": "Sensenmann",
@@ -876,9 +840,8 @@
         "width": -357.0,
         "height": 13.0
       }
-    },
-    {
-      "no": 68,
+    }, {
+      "no": 71,
       "stepType": "MOVE",
       "state": "DONE",
       "general": "MdK",
@@ -889,9 +852,8 @@
         "width": -290.0,
         "height": -17.0
       }
-    },
-    {
-      "no": 69,
+    }, {
+      "no": 72,
       "stepType": "ATTACK",
       "state": "DONE",
       "general": "Anslem",
@@ -900,8 +862,7 @@
         {
           "type": "Rek",
           "quantity": 140
-        },
-        {
+        }, {
           "type": "Kan",
           "quantity": 25
         }
@@ -909,9 +870,20 @@
       "startNavPoint": "NP_3",
       "targetNavPoint": "NP_3",
       "comment": "#Sector-3 #1 attack // --------------------------------------------------"
-    },
-    {
-      "no": 70,
+    }, {
+      "no": 73,
+      "stepType": "UNSET_UNITS",
+      "state": "DONE",
+      "general": "Generalmajor",
+      "generalName": "GM 1"
+    }, {
+      "no": 74,
+      "stepType": "UNSET_UNITS",
+      "state": "DONE",
+      "general": "Generalmajor",
+      "generalName": "GM 2"
+    }, {
+      "no": 75,
       "stepType": "ATTACK",
       "state": "DONE",
       "general": "Anslem",
@@ -920,8 +892,7 @@
         {
           "type": "Rek",
           "quantity": 100
-        },
-        {
+        }, {
           "type": "Kan",
           "quantity": 65
         }
@@ -931,10 +902,22 @@
       "targetDragDropOffset": {
         "width": 0.0,
         "height": -400.0
-      }
     },
-    {
-      "no": 71,
+      "comment": "#Sector-3 #2 attack // --------------------------------------------------"
+    }, {
+      "no": 76,
+      "stepType": "MOVE",
+      "state": "DONE",
+      "general": "Generalmajor",
+      "generalName": "GM 1",
+      "startNavPoint": "NP_2",
+      "targetNavPoint": "NP_3",
+      "targetNavPointClickOffset": {
+        "width": -389.0,
+        "height": 26.0
+      }
+    }, {
+      "no": 77,
       "stepType": "ATTACK",
       "state": "DONE",
       "general": "Generalmajor",
@@ -944,12 +927,10 @@
         {
           "type": "Rek",
           "quantity": 120
-        },
-        {
+        }, {
           "type": "Bos",
           "quantity": 140
-        },
-        {
+        }, {
           "type": "Kan",
           "quantity": 25
         }
@@ -959,10 +940,10 @@
       "targetDragDropOffset": {
         "width": 0.0,
         "height": -400.0
-      }
     },
-    {
-      "no": 72,
+      "comment": "#Sector-3 #3 attack "
+    }, {
+      "no": 78,
       "stepType": "ATTACK",
       "state": "DONE",
       "general": "Anslem",
@@ -971,8 +952,7 @@
         {
           "type": "Rek",
           "quantity": 60
-        },
-        {
+        }, {
           "type": "Kan",
           "quantity": 105
         }
@@ -982,10 +962,32 @@
       "targetDragDropOffset": {
         "width": 0.0,
         "height": -400.0
-      }
     },
-    {
-      "no": 73,
+      "comment": "#Sector-3 #4 attack "
+    }, {
+      "no": 79,
+      "stepType": "ATTACK",
+      "state": "DONE",
+      "general": "Vargus",
+      "camp": "CAMP_16",
+      "units": [
+        {
+          "type": "Bos",
+          "quantity": 160
+        }, {
+          "type": "Arm",
+          "quantity": 35
+        }
+      ],
+      "startNavPoint": "NP_3",
+      "targetNavPoint": "NP_3",
+      "targetDragDropOffset": {
+        "width": 0.0,
+        "height": -400.0
+    },
+      "comment": "#Sector-3 / #5 attack (att-no 16)"
+    }, {
+      "no": 80,
       "stepType": "ATTACK",
       "state": "DONE",
       "general": "MdK",
@@ -1002,10 +1004,9 @@
       "targetDragDropOffset": {
         "width": 0.0,
         "height": -400.0
-      }
-    },
-    {
-      "no": 74,
+    }
+    }, {
+      "no": 81,
       "stepType": "ATTACK",
       "state": "DONE",
       "general": "MdK",
@@ -1023,9 +1024,8 @@
         "width": 0.0,
         "height": -400.0
       }
-    },
-    {
-      "no": 75,
+    }, {
+      "no": 82,
       "stepType": "ATTACK",
       "state": "DONE",
       "general": "MdK",
@@ -1043,9 +1043,8 @@
         "width": 0.0,
         "height": -400.0
       }
-    },
-    {
-      "no": 76,
+    }, {
+      "no": 83,
       "stepType": "ATTACK",
       "state": "DONE",
       "general": "MdK",
@@ -1063,9 +1062,8 @@
         "width": 0.0,
         "height": -400.0
       }
-    },
-    {
-      "no": 77,
+    }, {
+      "no": 84,
       "stepType": "ATTACK",
       "state": "DONE",
       "general": "MdK",
@@ -1083,9 +1081,8 @@
         "width": 0.0,
         "height": -400.0
       }
-    },
-    {
-      "no": 78,
+    }, {
+      "no": 85,
       "stepType": "ATTACK",
       "state": "DONE",
       "general": "Sensenmann",
@@ -1103,21 +1100,24 @@
         "width": 0.0,
         "height": -400.0
       }
-    },
-    {
-      "no": 79,
+    }, {
+      "no": 86,
       "stepType": "ATTACK",
       "state": "DONE",
-      "general": "Mary",
+      "delay": 30,
+      "general": "MdK",
+      "generalName": "MdK 3",
       "camp": "CAMP_17",
       "units": [
         {
           "type": "Rek",
-          "quantity": 80
-        },
-        {
+          "quantity": 60
+        }, {
+          "type": "Cav",
+          "quantity": 60
+        }, {
           "type": "Kan",
-          "quantity": 135
+          "quantity": 100
         }
       ],
       "startNavPoint": "NP_3",
@@ -1126,17 +1126,15 @@
         "width": 0.0,
         "height": -400.0
       }
-    },
-    {
-      "no": 80,
+    }, {
+      "no": 87,
       "stepType": "SOLVE_QUEST",
       "state": "DONE",
       "comment": "#Sector-3 is solved. ------------------------------------------------"
-    },
-    {
-      "no": 81,
+    }, {
+      "no": 88,
       "stepType": "MOVE",
-      "state": "DONE",
+      "state": "OPEN",
       "general": "Generalmajor",
       "generalName": "GM 1",
       "startNavPoint": "NP_2",
@@ -1145,11 +1143,10 @@
         "width": -8.0,
         "height": -109.0
       }
-    },
-    {
-      "no": 82,
+    }, {
+      "no": 89,
       "stepType": "MOVE",
-      "state": "DONE",
+      "state": "OPEN",
       "general": "Generalmajor",
       "generalName": "GM 2",
       "startNavPoint": "NP_3",
@@ -1158,11 +1155,10 @@
         "width": -49.0,
         "height": -137.0
       }
-    },
-    {
-      "no": 83,
+    }, {
+      "no": 90,
       "stepType": "MOVE",
-      "state": "DONE",
+      "state": "OPEN",
       "general": "Veteran",
       "startNavPoint": "NP_1",
       "targetNavPoint": "NP_4",
@@ -1170,11 +1166,10 @@
         "width": -209.0,
         "height": -292.0
       }
-    },
-    {
-      "no": 84,
+    }, {
+      "no": 91,
       "stepType": "MOVE",
-      "state": "DONE",
+      "state": "OPEN",
       "general": "Sensenmann",
       "generalName": "SM 1",
       "startNavPoint": "NP_3",
@@ -1183,11 +1178,10 @@
         "width": -245.0,
         "height": -261.0
       }
-    },
-    {
-      "no": 85,
+    }, {
+      "no": 92,
       "stepType": "MOVE",
-      "state": "DONE",
+      "state": "OPEN",
       "general": "Sensenmann",
       "generalName": "SM 2",
       "startNavPoint": "NP_1",
@@ -1196,11 +1190,10 @@
         "width": -298.0,
         "height": -288.0
       }
-    },
-    {
-      "no": 86,
+    }, {
+      "no": 93,
       "stepType": "MOVE",
-      "state": "DONE",
+      "state": "OPEN",
       "general": "Dracul",
       "generalName": "Draci 1",
       "startNavPoint": "NP_1",
@@ -1209,11 +1202,10 @@
         "width": -91.0,
         "height": -164.0
       }
-    },
-    {
-      "no": 87,
+    }, {
+      "no": 94,
       "stepType": "MOVE",
-      "state": "DONE",
+      "state": "OPEN",
       "general": "Dracul",
       "generalName": "Draci 2",
       "startNavPoint": "NP_1",
@@ -1222,23 +1214,20 @@
         "width": -22.0,
         "height": -190.0
       }
-    },
-    {
-      "no": 88,
+    }, {
+      "no": 95,
       "stepType": "UNSET_UNITS",
-      "state": "DONE",
+      "state": "OPEN",
       "general": "Vargus"
-    },
-    {
-      "no": 89,
+    }, {
+      "no": 96,
       "stepType": "UNSET_UNITS",
-      "state": "DONE",
+      "state": "OPEN",
       "general": "Anslem"
-    },
-    {
-      "no": 90,
+    }, {
+      "no": 97,
       "stepType": "MOVE",
-      "state": "DONE",
+      "state": "OPEN",
       "general": "Anslem",
       "startNavPoint": "NP_3",
       "targetNavPoint": "NP_4",
@@ -1246,11 +1235,10 @@
         "width": -320.0,
         "height": -237.0
       }
-    },
-    {
-      "no": 91,
+    }, {
+      "no": 98,
       "stepType": "MOVE",
-      "state": "DONE",
+      "state": "OPEN",
       "general": "Vargus",
       "startNavPoint": "NP_3",
       "targetNavPoint": "NP_4",
@@ -1258,11 +1246,10 @@
         "width": -291.0,
         "height": -217.0
       }
-    },
-    {
-      "no": 92,
+    }, {
+      "no": 99,
       "stepType": "MOVE",
-      "state": "DONE",
+      "state": "OPEN",
       "general": "Nusala",
       "startNavPoint": "NP_1",
       "targetNavPoint": "NP_4",
@@ -1270,11 +1257,10 @@
         "width": -341.0,
         "height": -196.0
       }
-    },
-    {
-      "no": 93,
+    }, {
+      "no": 100,
       "stepType": "MOVE",
-      "state": "DONE",
+      "state": "OPEN",
       "general": "MdK",
       "generalName": "MdK 3",
       "startNavPoint": "NP_3",
@@ -1283,11 +1269,10 @@
         "width": -301.0,
         "height": -174.0
       }
-    },
-    {
-      "no": 94,
+    }, {
+      "no": 101,
       "stepType": "MOVE",
-      "state": "DONE",
+      "state": "OPEN",
       "general": "MdK",
       "generalName": "MdK 4",
       "startNavPoint": "NP_3",
@@ -1296,11 +1281,10 @@
         "width": -250.0,
         "height": -138.0
       }
-    },
-    {
-      "no": 95,
+    }, {
+      "no": 102,
       "stepType": "MOVE",
-      "state": "DONE",
+      "state": "OPEN",
       "general": "MdK",
       "generalName": "MdK 5",
       "startNavPoint": "NP_3",
@@ -1309,11 +1293,10 @@
         "width": -246.0,
         "height": -77.0
       }
-    },
-    {
-      "no": 96,
+    }, {
+      "no": 103,
       "stepType": "MOVE",
-      "state": "DONE",
+      "state": "OPEN",
       "general": "MdK",
       "generalName": "MdK 6",
       "startNavPoint": "NP_3",
@@ -1322,11 +1305,10 @@
         "width": -212.0,
         "height": -53.0
       }
-    },
-    {
-      "no": 97,
+    }, {
+      "no": 104,
       "stepType": "MOVE",
-      "state": "DONE",
+      "state": "OPEN",
       "general": "MdK",
       "generalName": "MdK 7",
       "startNavPoint": "NP_3",
@@ -1335,11 +1317,10 @@
         "width": -176.0,
         "height": -1.0
       }
-    },
-    {
-      "no": 98,
+    }, {
+      "no": 105,
       "stepType": "MOVE",
-      "state": "DONE",
+      "state": "OPEN",
       "general": "MdK",
       "generalName": "MdK 8",
       "startNavPoint": "NP_3",
