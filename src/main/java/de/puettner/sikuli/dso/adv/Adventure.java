@@ -85,7 +85,6 @@ public abstract class Adventure {
                 }
                 // *** OPEN ***
                 if (OPEN.equals(step.getState())) {
-                    processStepDelay(step, processedCounter != 0);
                     // *** OPEN - MOVE ***
                     if (StepType.ALL_BACK_TO_STAR_MENU.equals(step.getStepType())) {
                         supportedStep = true;
