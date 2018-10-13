@@ -361,7 +361,7 @@ public abstract class Adventure {
         try {
             AdventureState state = new AdventureState();
             state.setAdventureSteps(this.adventureSteps);
-            objectMapper.writer().writeValue(getFilename(), state);
+            objectMapper.writerWithDefaultPrettyPrinter().writeValue(getFilename(), state);
             JsonFileFormatter.format(getFilename());
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -536,15 +536,39 @@ public abstract class Adventure {
     }
 
     NavigationPoint whereIam() {
+        log.info("whereIam");
         List<NavigationPoint> navPoints = getNavigationPoints();
         Match match = null;
+        islandCmds.parkMouseInLeftUpperCorner();
+        NavigationPoint navPoint = findCurrentNavPointOnScreen(navPoints);
+        if (navPoint == null) {
+            islandCmds.parkMouseInLeftLowerCorner();
+            navPoint = findCurrentNavPointOnScreen(navPoints);
+        }
+        if (navPoint == null) {
+            islandCmds.parkMouseInRightUpperCorner();
+            navPoint = findCurrentNavPointOnScreen(navPoints);
+        }
+        if (navPoint == null) {
+            islandCmds.parkMouseInRightLowerCorner();
+            navPoint = findCurrentNavPointOnScreen(navPoints);
+        }
+        if (navPoint == null) {
+            throw new IllegalStateException("The current position is unknown.");
+        }
+        return navPoint;
+    }
+
+    private NavigationPoint findCurrentNavPointOnScreen(List<NavigationPoint> navPoints) {
+        log.info("findCurrentNavPointOnScreen()");
+        Match match;
         for (NavigationPoint navPoint : navPoints) {
             match = islandCmds.find(navPoint.getPattern(), region);
             if (match != null) {
                 return navPoint;
             }
         }
-        throw new IllegalStateException("The current position is unknown.");
+        return null;
     }
 
     void processMoveStep(AdventureStep step) {
