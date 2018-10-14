@@ -58,15 +58,6 @@ public class BraveTailorAdvTest extends MenuTest {
     public void route() {
         adventure.route(NP_1, NP_4, null, null);
         adventure.route(NP_4, NP_1, null, null);
-        //        adventure.route(NP_2, NP_4, null, null);
-        //        adventure.route(NP_4, NP_2, null, null);
-        //        adventure.route(NP_3, NP_4, null, null);
-        //        adventure.route(NP_4, NP_3, null, null);
-        // adventure.route(NP_1, NP_1, null, new Dimension(337, -116));
-        // adventure.route(NP_1, NP_2, null, null);
-        // adventure.route(NP_2, NP_1, null, null);
-        //adventure.route(NP_1, NP_3, null, null);
-        //adventure.route(NP_3, NP_1, null, null);
     }
 
     @Test

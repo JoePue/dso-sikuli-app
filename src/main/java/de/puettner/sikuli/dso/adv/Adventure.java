@@ -72,10 +72,28 @@ public abstract class Adventure {
         this.initZoom();
         islandCmds.typeESC();
         islandCmds.closeChat();
+
+        Set<Integer> failedStepsNo = new HashSet<>();
+        Optional<AdventureStep> rv;
+        while ((rv = processSteps()).isPresent()) {
+            int no = rv.get().getNo();
+            if (failedStepsNo.contains(no)) {
+                log.severe("Failed step already processed. no: " + no);
+                break;
+            } else {
+                log.severe("Failed step processing again. no: " + no);
+                islandCmds.sleep(120, TimeUnit.SECONDS);
+                failedStepsNo.add(no);
+            }
+        }
+    }
+
+    private Optional<AdventureStep> processSteps() {
+        Optional<AdventureStep> rv = Optional.empty();
+        AdventureStep step = null;
+        boolean supportedStep;
+        int processedCounter = 0;
         try {
-            AdventureStep step;
-            boolean supportedStep;
-            int processedCounter = 0;
             for (int i = 0; i < this.adventureSteps.size(); ++i) {
                 step = this.adventureSteps.get(i);
                 supportedStep = false;
@@ -136,6 +154,11 @@ public abstract class Adventure {
                         }
                         saveState(step, DONE);
                     }
+                    // *** OPEN > EXIT_DSO ***
+                    if (StepType.EXIT_DSO.equals(step.getStepType())) {
+                        saveState(step, DONE);
+                        dsoService.exitDso();
+                    }
                 }
                 if (PREPARED.equals(step.getState())) {
                     processStepDelay(step, processedCounter != 0);
@@ -164,11 +187,13 @@ public abstract class Adventure {
             }
             log.info("All adventure steps processed");
         } catch (Exception e) {
+            log.info("current stepNo: " + step.getNo());
             log.log(Level.SEVERE, e.getMessage(), e);
-            // e.printStackTrace();
+            rv = Optional.ofNullable(step);
         } finally {
             saveState();
         }
+        return rv;
     }
 
     private void confirmSolvedQuest() {
@@ -217,6 +242,7 @@ public abstract class Adventure {
     }
 
     public boolean processAllGeneralsBackToStarMenuStep() {
+        log.info("processAllGeneralsBackToStarMenuStep");
         centerNavigationPoint(getFirstNavigationPoint());
         islandCmds.parkMouse();
         List<Match> matchList;
@@ -239,7 +265,7 @@ public abstract class Adventure {
 
     protected List<Match> findAllReadyGenerals() {
         List<Match> list = new ArrayList<>();
-        Iterator<Match> it = islandCmds.findAll(pattern("ready-general-flag.png").similar(0.80).targetOffset(0, 20));
+        Iterator<Match> it = islandCmds.findAll(pattern("ready-general-flag.png").similar(0.72).targetOffset(0, 20));
         if (it != null) {
             while (it.hasNext()) {
                 list.add(it.next());
@@ -498,9 +524,7 @@ public abstract class Adventure {
     protected boolean clickAttackCamp(AttackCamp camp) {
         log.info("clickAttackCamp");
         boolean rv = false;
-        islandCmds.parkMouse();
-        islandCmds.sleep();
-        Match match = islandCmds.find(camp.getPattern(), region);
+        Match match = findCamp(camp);
         if (match != null) {
             match.hover();
             islandCmds.sleepX(1);
@@ -511,6 +535,25 @@ public abstract class Adventure {
             log.severe("Camp not found: " + camp);
         }
         return rv;
+    }
+
+    private Match findCamp(AttackCamp camp) {
+        Match match = null;
+        islandCmds.parkMouseInLeftUpperCorner();
+        match = islandCmds.find(camp.getPattern(), region);
+        if (match == null) {
+            islandCmds.parkMouseInLeftLowerCorner();
+            match = islandCmds.find(camp.getPattern(), region);
+        }
+        if (match == null) {
+            islandCmds.parkMouseInRightUpperCorner();
+            match = islandCmds.find(camp.getPattern(), region);
+        }
+        if (match == null) {
+            islandCmds.parkMouseInRightLowerCorner();
+            match = islandCmds.find(camp.getPattern(), region);
+        }
+        return match;
     }
 
     /**
@@ -633,23 +676,16 @@ public abstract class Adventure {
 
     private boolean processSolveQuestStep(AdventureStep step) {
         log.info("processSolveQuestStep()");
-        boolean rv = false;
-        int counter = 0;
-        for (int i = 0; i < 10; ++i) {
-            islandCmds.sleep(10, TimeUnit.SECONDS);
-            islandCmds.openQuestBook();
-            islandCmds.sleepX(2);
-            if (islandCmds.clickSmallOkButton()) {
-                ++counter;
-            }
-            if (counter > 0) {
-                rv = true;
+        for (int i = 0; i < 50; ++i) {
+            if (dsoService.confirmSolvedQuest()) {
+                islandCmds.sleepX(2);
+                dsoService.confirmNewQuest();
                 break;
+            } else {
+                islandCmds.sleep(15, TimeUnit.SECONDS);
             }
-            islandCmds.closeQuestBook();
-            // todo click new quest
         }
-        return rv;
+        return true;
     }
 
     private boolean processUnsetUnitsStep(AdventureStep step) {
