@@ -485,14 +485,17 @@ public class DSOService {
         }
     }
 
-    public void confirmSolvedQuest() {
+    public boolean confirmSolvedQuest() {
         log.info("confirmSolvedQuest");
+        boolean rv = false;
         if (islandCmds.clickSolvedQuestArrow()) {
-            islandCmds.sleep(10, SECONDS);
+            rv = true;
+            islandCmds.sleep(5, SECONDS);
             if (!islandCmds.clickSmallOkButton()) {
                 log.severe("Missing ok button");
             }
         }
+        return rv;
     }
 
     public void confirmNewQuest() {
