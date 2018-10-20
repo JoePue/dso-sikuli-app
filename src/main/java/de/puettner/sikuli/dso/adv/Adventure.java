@@ -631,6 +631,9 @@ public abstract class Adventure {
             islandCmds.sleepX(5);
             if (generalMenu.clickMoveBtn()) {
                 Objects.requireNonNull(step.getTargetNavPointClickOffset());
+                if (step.getInitialDragDropOffset() != null) {
+                    islandCmds.dragDrop(step.getInitialDragDropOffset());
+                }
                 route(step.getStartNavPoint(), step.getTargetNavPoint(), step.getTargetDragDropOffset(), step
                         .getTargetNavPointClickOffset());
                 islandCmds.sleepX(1);
