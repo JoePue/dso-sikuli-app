@@ -191,7 +191,7 @@
       "camp": "CAMP_6",
       "units": [
         {
-          "type": "Cav", "quantity": 145
+          "type": "Rek", "quantity": 145
         }
       ],
       "startNavPoint": "NP_1", "targetNavPoint": "NP_2",
@@ -953,7 +953,7 @@
       ],
       "startNavPoint": "NP_4", "targetNavPoint": "NP_5"
     }, {
-      "no": 116, "stepType": "ATTACK", "state": "DONE", "delay": 10,
+      "no": 116, "stepType": "ATTACK", "state": "OPEN", "delay": 10,
       "general": "Generalmajor", "generalName": "GM 2",
       "camp": "CAMP_22",
       "units": [
@@ -967,7 +967,7 @@
       ],
       "startNavPoint": "NP_4", "targetNavPoint": "NP_5"
     }, {
-      "no": 117, "stepType": "ATTACK", "state": "DONE", "delay": 10,
+      "no": 117, "stepType": "ATTACK", "state": "OPEN", "delay": 10,
       "general": "Generalmajor", "generalName": "GM 1",
       "camp": "CAMP_23",
       "units": [
@@ -977,7 +977,7 @@
       ],
       "startNavPoint": "NP_4", "targetNavPoint": "NP_5"
     }, {
-      "no": 118, "stepType": "ATTACK", "state": "DONE", "delay": 0,
+      "no": 118, "stepType": "ATTACK", "state": "OPEN", "delay": 0,
       "general": "MdK", "generalName": "MdK 3",
       "camp": "CAMP_24",
       "units": [
@@ -987,7 +987,7 @@
       ],
       "startNavPoint": "NP_4", "targetNavPoint": "NP_5"
     }, {
-      "no": 119, "stepType": "ATTACK", "state": "DONE", "delay": 0,
+      "no": 119, "stepType": "ATTACK", "state": "OPEN", "delay": 0,
       "general": "MdK", "generalName": "MdK 4",
       "camp": "CAMP_24",
       "units": [
@@ -997,7 +997,7 @@
       ],
       "startNavPoint": "NP_4", "targetNavPoint": "NP_5"
     }, {
-      "no": 120, "stepType": "ATTACK", "state": "DONE", "delay": 0,
+      "no": 120, "stepType": "ATTACK", "state": "OPEN", "delay": 0,
       "general": "MdK", "generalName": "MdK 5",
       "camp": "CAMP_24",
       "units": [
@@ -1007,7 +1007,7 @@
       ],
       "startNavPoint": "NP_4", "targetNavPoint": "NP_5"
     }, {
-      "no": 121, "stepType": "ATTACK", "state": "DONE", "delay": 0,
+      "no": 121, "stepType": "ATTACK", "state": "OPEN", "delay": 0,
       "general": "MdK", "generalName": "MdK 6",
       "camp": "CAMP_24",
       "units": [
@@ -1017,7 +1017,7 @@
       ],
       "startNavPoint": "NP_4", "targetNavPoint": "NP_5"
     }, {
-      "no": 122, "stepType": "ATTACK", "state": "DONE", "delay": 0,
+      "no": 122, "stepType": "ATTACK", "state": "OPEN", "delay": 0,
       "general": "MdK", "generalName": "MdK 7",
       "camp": "CAMP_24",
       "units": [
@@ -1027,7 +1027,7 @@
       ],
       "startNavPoint": "NP_4", "targetNavPoint": "NP_5"
     }, {
-      "no": 123, "stepType": "ATTACK", "state": "DONE", "delay": 0,
+      "no": 123, "stepType": "ATTACK", "state": "OPEN", "delay": 0,
       "general": "MdK", "generalName": "MdK 8",
       "camp": "CAMP_24",
       "units": [
@@ -1037,7 +1037,7 @@
       ],
       "startNavPoint": "NP_4", "targetNavPoint": "NP_5"
     }, {
-      "no": 124, "stepType": "ATTACK", "state": "DONE", "delay": 0,
+      "no": 124, "stepType": "ATTACK", "state": "OPEN", "delay": 0,
       "general": "Nusala",
       "camp": "CAMP_24",
       "units": [
@@ -1047,7 +1047,7 @@
       ],
       "startNavPoint": "NP_4", "targetNavPoint": "NP_5"
     }, {
-      "no": 125, "stepType": "ATTACK", "state": "DONE", "delay": 10,
+      "no": 125, "stepType": "ATTACK", "state": "OPEN", "delay": 10,
       "general": "Anslem",
       "camp": "CAMP_24",
       "units": [
@@ -1057,7 +1057,7 @@
       ],
       "startNavPoint": "NP_4", "targetNavPoint": "NP_5"
     }, {
-      "no": 126, "stepType": "ATTACK", "state": "DONE", "delay": 30,
+      "no": 126, "stepType": "ATTACK", "state": "OPEN", "delay": 30,
       "general": "Generalmajor", "generalName": "GM 2",
       "camp": "CAMP_24",
       "units": [
@@ -1071,7 +1071,7 @@
       ],
       "startNavPoint": "NP_4", "targetNavPoint": "NP_5"
     }, {
-      "no": 127, "stepType": "ATTACK", "state": "DONE", "delay": 0,
+      "no": 127, "stepType": "ATTACK", "state": "OPEN", "delay": 0,
       "general": "Dracul", "generalName": "Draci 1",
       "camp": "CAMP_25",
       "units": [
@@ -1081,7 +1081,7 @@
       ],
       "startNavPoint": "NP_4", "targetNavPoint": "NP_5"
     }, {
-      "no": 128, "stepType": "ATTACK", "state": "DONE", "delay": 0,
+      "no": 128, "stepType": "ATTACK", "state": "OPEN", "delay": 0,
       "general": "Dracul", "generalName": "Draci 2",
       "camp": "CAMP_25",
       "units": [
@@ -1091,7 +1091,7 @@
       ],
       "startNavPoint": "NP_4", "targetNavPoint": "NP_5"
     }, {
-      "no": 129, "stepType": "EXIT_DSO", "state": "DONE"
+      "no": 129, "stepType": "EXIT_DSO", "state": "OPEN"
     }
   ]
 }

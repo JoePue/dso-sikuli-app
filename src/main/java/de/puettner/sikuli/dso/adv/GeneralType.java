@@ -17,7 +17,8 @@ public enum GeneralType implements MenuButton {
     Sensenmann(pattern("Sensenmann.png").similar(0.98)),
     Kampfgestaehlte(pattern("Kampfgestaehlte.png").similar(0.98)),
     Verteidigungsmeister(pattern("Verteidigungsmeister.png").similar(0.98)),
-    Taverni(pattern("TavernenGeneral.png").similar(0.98));
+    Taverni(pattern("TavernenGeneral.png").similar(0.98)),
+    Sani(pattern("SaniGeneral.png").similar(0.98));;
 
     public final Pattern pattern;
 
