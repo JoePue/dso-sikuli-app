@@ -1,26 +1,18 @@
 package de.puettner.sikuli.dso;
 
+import de.puettner.sikuli.dso.adv.AdventureBuilder;
 import de.puettner.sikuli.dso.commands.os.WindowsPlatform;
 import de.puettner.sikuli.dso.commands.ui.MenuBuilder;
-import de.puettner.sikuli.dso.commands.ui.SikuliCommands;
 import de.puettner.sikuli.dso.commands.ui.StarMenuFilter;
 import lombok.extern.java.Log;
 import org.sikuli.basics.Settings;
-import org.sikuli.script.FindFailed;
-import org.sikuli.script.Match;
-import org.sikuli.script.Region;
 
-import java.util.Iterator;
 import java.util.logging.Level;
 
 import static de.puettner.sikuli.dso.commands.ui.MaterialType.*;
-import static de.puettner.sikuli.dso.commands.ui.SikuliCommands.pattern;
 
 // TODO Logging konfigurieren / fachliches Logging def. / Log-File
-// TODO Programmabstürze fixen (Ständig Endlosschleifen)
-// TODO Workaround für Programmabstürze finden
-// TODO Goldsuche impl.
-// TODO Kohlesuche impl. TODO Buffen Fkt. impl. für GoldTürm, Granitm., Gold, Eisen, (Stein, Marmor)
+// TODO Buffen Fkt. impl. für GoldTürm, Granitm., Gold, Eisen, (Stein, Marmor)
 @Log
 public class DsoSikuliApp {
 
@@ -35,9 +27,8 @@ public class DsoSikuliApp {
         log.info("App starting");
         WindowsPlatform platform = new WindowsPlatform();
         logSettings();
-        //platform.maximizeBrowserWindow(); // must the first stmt !!!
         MenuBuilder menuBuilder = MenuBuilder.build();
-        SikuliCommands sikuli = menuBuilder.buildIslandCommand();
+        // SikuliCommands sikuli = menuBuilder.buildIslandCommand();
         DSOService dsoService = DSOServiceBuilder.build();
         try {
             for (String arg : args) {
@@ -52,8 +43,6 @@ public class DsoSikuliApp {
                     dsoService.launchAllExplorer();
                 } else if ("launchAllExplorer".equals(arg)) {
                     dsoService.findAllCollectables();
-                } else if ("getBuildQueueSize".equals(arg)) {
-                    getBuildQueueSize(dsoService);
                 } else if ("buildAllMines".equals(arg)) {
                     dsoService.buildAllMines(false);
                 } else if ("standby".equals(arg)) {
@@ -92,6 +81,8 @@ public class DsoSikuliApp {
                     dsoService.preventScreensaver();
                 } else if ("maximizeBrowserWindow".equals(arg)) {
                     platform.maximizeBrowserWindow();
+                } else if ("playBraveTailorAdventure".equals(arg)) {
+                    AdventureBuilder.build().buildBraveTailorAdv().play();
                 } else {
                     log.log(Level.WARNING, "Unknown argument: " + arg);
                 }
@@ -99,7 +90,6 @@ public class DsoSikuliApp {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            // platform.restoreBrowserWindow();
             log.info("App ends normally.");
             // Currently some Sikuli-Threads prevent termination of the java process
             System.exit(0);
@@ -140,8 +130,8 @@ public class DsoSikuliApp {
                 .add(GeologicType.Happy, GO, 2, StarMenuFilter.EIGTH_PERCENT)
                 .add(GeologicType.Happy, EI, 2, StarMenuFilter.GEO_1)
                 .add(GeologicType.Happy, MA, 6, StarMenuFilter.GRANIT_GEOS)
+                .add(GeologicType.Normal, KO, 1, StarMenuFilter.GEO_2)
                 .add(GeologicType.Normal, GR, 1)
-                .add(GeologicType.Normal, KO, 1)
                 .add(GeologicType.Normal, EI, 1)
                 .add(GeologicType.Conscientious, GR, 2)
         ;
@@ -165,7 +155,7 @@ public class DsoSikuliApp {
         // Ausgangspunkt: 6 verfügbare Geos
         GeologicLaunchs launchs = GeologicLaunchs.builder().build()
                 .add(GeologicType.Happy, GR, 6, StarMenuFilter.GRANIT_GEOS)
-                .add(GeologicType.Happy, KO, 1)
+                .add(GeologicType.Happy, KO, 1, StarMenuFilter.GEO_2)
                 .add(GeologicType.Happy, EI, 3)
                 .add(GeologicType.Conscientious, GR, 2);
         dsoService.launchGeologics(launchs);
@@ -196,23 +186,4 @@ public class DsoSikuliApp {
         dsoService.exitDso();
     }
 
-    /**
-     * Test method for sikuli bug.
-     */
-    private static int getBuildQueueSize(DSOService dsoService) {
-        dsoService.focusBrowser();
-        int counter = 0;
-        Region searchRegion = Region.create(1213, 115, 150, 400);
-        Iterator<Match> it = null;
-        while (true) {
-            try {
-                it = searchRegion.findAll(pattern("BuildQueueEntry.png").similar(0.90f));
-                while (it.hasNext()) {
-                    counter++;
-                }
-            } catch (FindFailed findFailed) {
-                findFailed.printStackTrace();
-            }
-        }
-    }
 }
