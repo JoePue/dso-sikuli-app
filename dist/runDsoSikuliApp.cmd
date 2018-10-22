@@ -4,7 +4,7 @@ SET START_DIR=D:\dev-tools\sikuli\workspace\dso-sikuli-app-idea\dist
 
 cd %START_DIR%
 
-if "%1" EQU "run" GOTO RUN
+if "%1" EQU "nobuild" GOTO RUN
 start sikuliStandby.cmd
 del *.jar
 
