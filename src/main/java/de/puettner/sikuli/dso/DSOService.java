@@ -471,7 +471,7 @@ public class DSOService {
         islandCmds.hover();
         starMenu.hover();
         buildQueueMenu.hover();
-        islandCmds.typeESC();
+        // islandCmds.type(" NO type*() commands here"); !!!
     }
 
     public void fetchRewardMessages() {
