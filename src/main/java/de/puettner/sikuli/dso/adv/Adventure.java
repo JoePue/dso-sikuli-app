@@ -285,6 +285,10 @@ public abstract class Adventure {
         if (!starMenu.openStarMenu(generalName)) {
             throw new IllegalStateException("Missing open star menu");
         }
+        return waitForGeneral(general, generalName, shouldWait);
+    }
+
+    private Match waitForGeneral(GeneralType general, String generalName, boolean shouldWait) {
         Match match = null;
         int loops = (shouldWait ? 40 : 1);
 
@@ -294,6 +298,7 @@ public abstract class Adventure {
                 // wait until general is available through multiple loops
                 log.info("Waiting on general: " + general + "/" + generalName);
                 islandCmds.sleep(15, TimeUnit.SECONDS);
+                dsoService.preventScreensaver();
             } else {
                 break;
             }
