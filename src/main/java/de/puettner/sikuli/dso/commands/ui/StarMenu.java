@@ -117,7 +117,7 @@ public class StarMenu extends DsoMenu {
     }
 
     public boolean isStarMenuOpen() {
-        if (islandCmds.exists(StarMenuButtons.StarMenuTitleImage.pattern, menuRegion)) {
+        if (islandCmds.exists(StarMenuButtons.StarMenuTitleOrnament.pattern, menuRegion)) {
             log.info("StarMenu is open");
             return true;
         }

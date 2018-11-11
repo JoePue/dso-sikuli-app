@@ -11,6 +11,7 @@ public enum StarMenuButtons implements MenuButton {
     ConscientiousGeologic(pattern("ConscientiousGeologic-icon.png").similar(0.80f)),
     /** Im Kopfbereich des Sternmenu befindet sich dieser größere Stern */
     StarMenuTitleImage(pattern("StarMenuTitleImage.png").similar(0.90f)),
+    StarMenuTitleOrnament(pattern("StarMenuTitleOrnament.png").similar(0.95f)),
     /** Im Fussbereich des Sternmenu befindet sich dieser Tab */
     StarMenuStarTab(pattern("StarMenu-StarTab-Icon.png").similar(0.90));
 

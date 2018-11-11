@@ -140,7 +140,6 @@ public class DsoSikuliApp {
         dsoService.fetchRewardMessages();
         dsoService.confirmNewQuest();
         dsoService.confirmSolvedQuest();
-        dsoService.exitDso();
     }
 
     private static void secondDailyRun(DSOService dsoService) {
@@ -165,7 +164,6 @@ public class DsoSikuliApp {
         dsoService.fetchBookbinderItem();
         dsoService.confirmNewQuest();
         dsoService.confirmSolvedQuest();
-        dsoService.exitDso();
     }
 
     private static void thirdDailyRun(DSOService dsoService) {
