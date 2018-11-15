@@ -1,6 +1,7 @@
 @ECHO OFF
 TITLE dso_1-sikuli-idea
 SET START_DIR=D:\dev-tools\sikuli\workspace\dso-sikuli-app-idea\dist
+SET JAR_NAME=dso-automation-0.0.1-SNAPSHOT-jar-with-dependencies.jar
 
 REM Loop Through Arguments Passed To Batch Script
 :argumentsLoop
@@ -57,6 +58,7 @@ cd %START_DIR%
 REM java -jar dso-automation-0.0.1-SNAPSHOT-jar-with-dependencies.jar secondDailyRun
 
 if "%standbyFlag%" EQU "true" (
+  REM cp ../*.json . && java -cp ".;./;./dso-sikuli-app.sikuli" -jar %JAR_NAME% playBraveTailorAdventure
   java -cp ".;./;./dso-sikuli-app.sikuli" -jar %%i exitDso
   
   shutdown -a
