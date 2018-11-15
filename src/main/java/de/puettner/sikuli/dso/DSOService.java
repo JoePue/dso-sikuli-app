@@ -499,7 +499,7 @@ public class DSOService {
     }
 
     public void confirmNewQuest() {
-        log.info("confirmNewdQuest");
+        log.info("confirmNewQuest");
         if (islandCmds.clickNewQuestArrow()) {
             islandCmds.sleep(10, SECONDS);
             if (!islandCmds.clickSmallOkButton()) {
