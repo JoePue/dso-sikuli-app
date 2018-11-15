@@ -199,6 +199,7 @@ public abstract class Adventure {
     private void confirmSolvedQuest() {
         dsoService.confirmSolvedQuest();
         dsoService.confirmNewQuest();
+        islandCmds.closeQuestBook();
     }
 
     private void processStepDelay(AdventureStep step, boolean isNotFirst) {
