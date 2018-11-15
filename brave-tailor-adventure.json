@@ -29,7 +29,7 @@
       "general": "MdK", "generalName": "MdK 3"
     }, {
       "no": 10, "stepType": "LAND", "state": "DONE",
-      "general": "Mary"
+      "general": "Sani"
     }, {
       "no": 11, "stepType": "MOVE", "state": "DONE", "delay": 1,
       "general": "Vargus",
@@ -88,7 +88,7 @@
       }
     }, {
       "no": 19, "stepType": "MOVE", "state": "DONE",
-      "general": "Mary",
+      "general": "Sani",
       "startNavPoint": "NP_1", "targetNavPoint": "NP_1",
       "targetNavPointClickOffset": {
         "width": -8.0, "height": -121.0
@@ -174,7 +174,7 @@
       "comment": "#Sector-1 #5.2 attack"
     }, {
       "no": 26, "stepType": "ATTACK", "state": "DONE", "delay": 10,
-      "general": "Mary",
+      "general": "Sani",
       "camp": "CAMP_5",
       "units": [
         {
@@ -277,7 +277,7 @@
       }
     }, {
       "no": 45, "stepType": "MOVE", "state": "DONE",
-      "general": "Mary",
+      "general": "Sani",
       "startNavPoint": "NP_1", "targetNavPoint": "NP_2",
       "targetNavPointClickOffset": {
         "width": -24.0, "height": 168.0
@@ -425,7 +425,7 @@
       "comment": "#Sector-2 #4.3 attack"
     }, {
       "no": 59, "stepType": "ATTACK", "state": "DONE", "delay": 20,
-      "general": "Mary",
+      "general": "Sani",
       "camp": "CAMP_11",
       "units": [
         {
