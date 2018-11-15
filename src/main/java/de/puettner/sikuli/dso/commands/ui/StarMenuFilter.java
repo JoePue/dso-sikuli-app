@@ -8,7 +8,7 @@ public enum StarMenuFilter {
     GEO_1("Geo 1"),
     GEO_2("Geo 2"),
     GRANIT_GEOS("Geo 3|Geo 4|Geo 5|Geo 6|Geo 7|Geo 8"),
-    GeneralsFilterString("GM|Var|Ans|Nus|MdK|Mar|Vet|Sen|Dra");
+    GeneralsFilterString("GM|Var|Ans|Nus|MdK|Mar|Vet|Sen|Dra|San");
 
     public final String filterString;
 
