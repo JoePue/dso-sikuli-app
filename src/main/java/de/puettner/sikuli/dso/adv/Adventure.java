@@ -82,9 +82,16 @@ public abstract class Adventure {
                 break;
             } else {
                 log.severe("Failed step processing again. no: " + no);
+                clickAssertButtons();
                 islandCmds.sleep(120, TimeUnit.SECONDS);
                 failedStepsNo.add(no);
             }
+        }
+    }
+
+    private void clickAssertButtons() {
+        while (islandCmds.clickAssertOkButton()) {
+            //
         }
     }
 
@@ -104,9 +111,9 @@ public abstract class Adventure {
                 // *** OPEN ***
                 if (OPEN.equals(step.getState())) {
                     // *** OPEN - MOVE ***
+                    processStepDelay(step, processedCounter != 0);
                     if (StepType.ALL_BACK_TO_STAR_MENU.equals(step.getStepType())) {
                         supportedStep = true;
-                        processStepDelay(step, processedCounter != 0);
                         if (!processAllGeneralsBackToStarMenuStep()) {
                             throw new IllegalStateException("Failed to process step: " + step);
                         }
@@ -142,6 +149,7 @@ public abstract class Adventure {
                     }
                     // *** OPEN > SOLVE_QUEST ***
                     if (StepType.SOLVE_QUEST.equals(step.getStepType())) {
+                        supportedStep = true;
                         if (!processSolveQuestStep(step)) {
                             throw new IllegalStateException("step processing failed");
                         }
@@ -149,6 +157,7 @@ public abstract class Adventure {
                     }
                     // *** OPEN > UNSET_UNITS ***
                     if (StepType.UNSET_UNITS.equals(step.getStepType())) {
+                        supportedStep = true;
                         if (!processUnsetUnitsStep(step)) {
                             throw new IllegalStateException("step processing failed");
                         }
@@ -156,8 +165,14 @@ public abstract class Adventure {
                     }
                     // *** OPEN > EXIT_DSO ***
                     if (StepType.EXIT_DSO.equals(step.getStepType())) {
+                        supportedStep = true;
                         saveState(step, DONE);
                         dsoService.exitDso();
+                    }
+                    // *** OPEN > WAIT ***
+                    if (StepType.WAIT.equals(step.getStepType())) {
+                        supportedStep = true;
+                        saveState(step, DONE);
                     }
                 }
                 if (PREPARED.equals(step.getState())) {
@@ -286,10 +301,10 @@ public abstract class Adventure {
         if (!starMenu.openStarMenu(generalName)) {
             throw new IllegalStateException("Missing open star menu");
         }
-        return waitForGeneral(general, generalName, shouldWait);
+        return isGeneralAvailable(general, generalName, shouldWait);
     }
 
-    private Match waitForGeneral(GeneralType general, String generalName, boolean shouldWait) {
+    private Match isGeneralAvailable(GeneralType general, String generalName, boolean shouldWait) {
         Match match = null;
         int loops = (shouldWait ? 40 : 1);
 
