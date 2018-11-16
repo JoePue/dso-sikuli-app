@@ -66,35 +66,41 @@
         "width": 321.0, "height": 49.0
       }
     }, {
-      "no": 16, "stepType": "MOVE", "state": "DONE",
+      "no": 16, "stepType": "LAND", "state": "DONE",
+      "general": "Mary"
+    }, {
+      "no": 17, "stepType": "MOVE", "state": "DONE",
       "general": "MdK", "generalName": "MdK 1",
       "startNavPoint": "NP_1", "targetNavPoint": "NP_1",
       "targetNavPointClickOffset": {
         "width": 372.0, "height": 21.0
       }
     }, {
-      "no": 17, "stepType": "MOVE", "state": "DONE",
+      "no": 18, "stepType": "MOVE", "state": "DONE",
       "general": "MdK", "generalName": "MdK 2",
       "startNavPoint": "NP_1", "targetNavPoint": "NP_1",
       "targetNavPointClickOffset": {
         "width": 414.0, "height": -7.0
       }
     }, {
-      "no": 18, "stepType": "MOVE", "state": "DONE",
+      "no": 19, "stepType": "MOVE", "state": "DONE",
       "general": "MdK", "generalName": "MdK 3",
       "startNavPoint": "NP_1", "targetNavPoint": "NP_1",
       "targetNavPointClickOffset": {
         "width": 96.0, "height": -112.0
       }
     }, {
-      "no": 19, "stepType": "MOVE", "state": "DONE",
-      "general": "Sani",
+      "no": 20, "stepType": "MOVE", "state": "DONE",
+      "general": "Mary",
       "startNavPoint": "NP_1", "targetNavPoint": "NP_1",
       "targetNavPointClickOffset": {
         "width": -8.0, "height": -121.0
       }
     }, {
-      "no": 20, "stepType": "ATTACK", "state": "DONE",
+      "no": 21, "stepType": "LAND", "state": "DONE",
+      "general": "Mary"
+    }, {
+      "no": 22, "stepType": "ATTACK", "state": "DONE", "delay": 10,
       "general": "Vargus",
       "camp": "CAMP_1",
       "units": [
@@ -107,7 +113,14 @@
       "startNavPoint": "NP_1", "targetNavPoint": "NP_1",
       "comment": "#Sector-1 #1 attack"
     }, {
-      "no": 21, "stepType": "ATTACK", "state": "DONE", "delay": 10,
+      "no": 23, "stepType": "MOVE", "state": "DONE",
+      "general": "Mary",
+      "startNavPoint": "NP_1", "targetNavPoint": "NP_1",
+      "targetNavPointClickOffset": {
+        "width": -65.0, "height": -97.0
+      }
+    }, {
+      "no": 24, "stepType": "ATTACK", "state": "DONE", "delay": 10,
       "general": "Nusala",
       "camp": "CAMP_2",
       "units": [
@@ -120,7 +133,7 @@
       "startNavPoint": "NP_1", "targetNavPoint": "NP_1",
       "comment": "#Sector-1 #2 attack"
     }, {
-      "no": 22, "stepType": "ATTACK", "state": "DONE", "delay": 10,
+      "no": 25, "stepType": "ATTACK", "state": "DONE", "delay": 10,
       "general": "Generalmajor", "generalName": "GM 1",
       "camp": "CAMP_3",
       "units": [
@@ -136,7 +149,7 @@
       },
       "comment": "#Sector-1 #3 attack"
     }, {
-      "no": 23, "stepType": "ATTACK", "state": "DONE", "delay": 10,
+      "no": 26, "stepType": "ATTACK", "state": "DONE", "delay": 10,
       "general": "Vargus",
       "camp": "CAMP_4",
       "units": [
@@ -151,7 +164,7 @@
       "startNavPoint": "NP_1", "targetNavPoint": "NP_2",
       "comment": "#Sector-1 #4 attack"
     }, {
-      "no": 24, "stepType": "ATTACK", "state": "DONE", "delay": 1,
+      "no": 27, "stepType": "ATTACK", "state": "DONE", "delay": 1,
       "general": "MdK", "generalName": "MDK 1",
       "camp": "CAMP_5",
       "units": [
@@ -162,7 +175,7 @@
       "startNavPoint": "NP_1", "targetNavPoint": "NP_2",
       "comment": "#Sector-1 #5.1 attack"
     }, {
-      "no": 25, "stepType": "ATTACK", "state": "DONE", "delay": 1,
+      "no": 28, "stepType": "ATTACK", "state": "DONE", "delay": 1,
       "general": "MdK", "generalName": "MDK 2",
       "camp": "CAMP_5",
       "units": [
@@ -173,8 +186,8 @@
       "startNavPoint": "NP_1", "targetNavPoint": "NP_2",
       "comment": "#Sector-1 #5.2 attack"
     }, {
-      "no": 26, "stepType": "ATTACK", "state": "DONE", "delay": 10,
-      "general": "Sani",
+      "no": 29, "stepType": "ATTACK", "state": "DONE", "delay": 10,
+      "general": "Mary",
       "camp": "CAMP_5",
       "units": [
         {
@@ -186,7 +199,7 @@
       "startNavPoint": "NP_1", "targetNavPoint": "NP_2",
       "comment": "#Sector-1 #5.3 attack"
     }, {
-      "no": 27, "stepType": "ATTACK", "state": "DONE", "delay": 5,
+      "no": 30, "stepType": "ATTACK", "state": "DONE", "delay": 5,
       "general": "Nusala",
       "camp": "CAMP_6",
       "units": [
@@ -197,7 +210,7 @@
       "startNavPoint": "NP_1", "targetNavPoint": "NP_2",
       "comment": "#Sector-1 #6.1 attack"
     }, {
-      "no": 28, "stepType": "ATTACK", "state": "DONE", "delay": 5,
+      "no": 31, "stepType": "ATTACK", "state": "DONE", "delay": 5,
       "general": "Generalmajor", "generalName": "GM 2",
       "camp": "CAMP_6",
       "units": [
@@ -212,109 +225,109 @@
       "startNavPoint": "NP_1", "targetNavPoint": "NP_2",
       "comment": "#Sector-1 #6.2 attack"
     }, {
-      "no": 29, "stepType": "LAND", "state": "DONE",
+      "no": 32, "stepType": "LAND", "state": "DONE",
       "general": "Dracul", "generalName": "Draci 1"
     }, {
-      "no": 30, "stepType": "LAND", "state": "DONE",
+      "no": 33, "stepType": "LAND", "state": "DONE",
       "general": "Sensenmann", "generalName": "SM 1"
     }, {
-      "no": 31, "stepType": "LAND", "state": "DONE",
+      "no": 34, "stepType": "LAND", "state": "DONE",
       "general": "Veteran"
     }, {
-      "no": 32, "stepType": "LAND", "state": "DONE",
+      "no": 35, "stepType": "LAND", "state": "DONE",
       "general": "MdK", "generalName": "MdK 4"
     }, {
-      "no": 33, "stepType": "LAND", "state": "DONE",
+      "no": 36, "stepType": "LAND", "state": "DONE",
       "general": "MdK", "generalName": "MdK 5"
     }, {
-      "no": 34, "stepType": "MOVE", "state": "DONE", "delay": 1,
+      "no": 37, "stepType": "MOVE", "state": "DONE", "delay": 1,
       "general": "Veteran",
       "startNavPoint": "NP_1", "targetNavPoint": "NP_1",
       "targetNavPointClickOffset": {
         "width": 345.0, "height": 80.0
       }
     }, {
-      "no": 35, "stepType": "MOVE", "state": "DONE", "delay": 1,
+      "no": 38, "stepType": "MOVE", "state": "DONE", "delay": 1,
       "general": "Sensenmann", "generalName": "SM 1",
       "startNavPoint": "NP_1", "targetNavPoint": "NP_1",
       "targetNavPointClickOffset": {
         "width": 289.0, "height": 114.0
       }
     }, {
-      "no": 36, "stepType": "LAND", "state": "DONE",
+      "no": 39, "stepType": "LAND", "state": "DONE",
       "general": "MdK", "generalName": "MdK 6"
     }, {
-      "no": 37, "stepType": "LAND", "state": "DONE",
+      "no": 40, "stepType": "LAND", "state": "DONE",
       "general": "MdK", "generalName": "MdK 7"
     }, {
-      "no": 38, "stepType": "LAND", "state": "DONE",
+      "no": 41, "stepType": "LAND", "state": "DONE",
       "general": "MdK", "generalName": "MdK 8"
     }, {
-      "no": 39, "stepType": "LAND", "state": "DONE",
+      "no": 42, "stepType": "LAND", "state": "DONE",
       "general": "Dracul", "generalName": "Draci 2"
     }, {
-      "no": 40, "stepType": "LAND", "state": "DONE",
+      "no": 43, "stepType": "LAND", "state": "DONE",
       "general": "Sensenmann", "generalName": "SM 2"
     }, {
-      "no": 41, "stepType": "SOLVE_QUEST", "state": "DONE",
+      "no": 44, "stepType": "SOLVE_QUEST", "state": "DONE",
       "comment": "#Sector-1 is solved. ------------------------------------------------"
     }, {
-      "no": 42, "stepType": "MOVE", "state": "DONE", "delay": 1,
+      "no": 45, "stepType": "MOVE", "state": "DONE", "delay": 1,
       "general": "Generalmajor", "generalName": "GM 1",
       "startNavPoint": "NP_1", "targetNavPoint": "NP_2",
       "targetNavPointClickOffset": {
         "width": -55.0, "height": 204.0
       }
     }, {
-      "no": 43, "stepType": "UNSET_UNITS", "state": "DONE",
+      "no": 46, "stepType": "UNSET_UNITS", "state": "DONE",
       "general": "Vargus"
     }, {
-      "no": 44, "stepType": "MOVE", "state": "DONE",
+      "no": 47, "stepType": "MOVE", "state": "DONE",
       "general": "Vargus",
       "startNavPoint": "NP_1", "targetNavPoint": "NP_2",
       "targetNavPointClickOffset": {
         "width": -22.0, "height": 226.0
       }
     }, {
-      "no": 45, "stepType": "MOVE", "state": "DONE",
+      "no": 48, "stepType": "MOVE", "state": "DONE",
       "general": "Sani",
       "startNavPoint": "NP_1", "targetNavPoint": "NP_2",
       "targetNavPointClickOffset": {
         "width": -24.0, "height": 168.0
       }
     }, {
-      "no": 46, "stepType": "MOVE", "state": "DONE",
+      "no": 49, "stepType": "MOVE", "state": "DONE",
       "general": "MdK", "generalName": "MdK 1",
       "startNavPoint": "NP_1", "targetNavPoint": "NP_2",
       "targetNavPointClickOffset": {
         "width": 165.0, "height": 95.0
       }
     }, {
-      "no": 47, "stepType": "MOVE", "state": "DONE",
+      "no": 50, "stepType": "MOVE", "state": "DONE",
       "general": "MdK", "generalName": "MdK 2",
       "startNavPoint": "NP_1", "targetNavPoint": "NP_2",
       "targetNavPointClickOffset": {
         "width": 202.0, "height": 74.0
       }
     }, {
-      "no": 48, "stepType": "MOVE", "state": "DONE",
+      "no": 51, "stepType": "MOVE", "state": "DONE",
       "general": "MdK", "generalName": "MdK 3",
       "startNavPoint": "NP_1", "targetNavPoint": "NP_2",
       "targetNavPointClickOffset": {
         "width": 262.0, "height": 33.0
       }
     }, {
-      "no": 49, "stepType": "MOVE", "state": "DONE",
+      "no": 52, "stepType": "MOVE", "state": "DONE",
       "general": "Anslem",
       "startNavPoint": "NP_1", "targetNavPoint": "NP_2",
       "targetNavPointClickOffset": {
         "width": 298.0, "height": 12.0
       }
     }, {
-      "no": 50, "stepType": "UNSET_UNITS", "state": "DONE",
+      "no": 53, "stepType": "UNSET_UNITS", "state": "DONE",
       "general": "Generalmajor", "generalName": "GM 2"
     }, {
-      "no": 51, "stepType": "ATTACK", "state": "DONE",
+      "no": 54, "stepType": "ATTACK", "state": "DONE",
       "general": "Generalmajor", "generalName": "GM 1",
       "camp": "CAMP_7",
       "units": [
@@ -329,7 +342,7 @@
       "startNavPoint": "NP_2", "targetNavPoint": "NP_2",
       "comment": "#Sector-2 #1 attack ------------------------------------------------------"
     }, {
-      "no": 52, "stepType": "ATTACK", "state": "DONE",
+      "no": 55, "stepType": "ATTACK", "state": "DONE",
       "general": "Generalmajor", "generalName": "GM 1",
       "camp": "CAMP_8",
       "units": [
@@ -344,14 +357,14 @@
       "startNavPoint": "NP_2", "targetNavPoint": "NP_2",
       "comment": "#Sector-2 #2 attack"
     }, {
-      "no": 53, "stepType": "MOVE", "state": "DONE",
+      "no": 56, "stepType": "MOVE", "state": "DONE",
       "general": "Generalmajor", "generalName": "GM 2",
       "startNavPoint": "NP_1", "targetNavPoint": "NP_2",
       "targetNavPointClickOffset": {
         "width": 345.0, "height": -33.0
       }
     }, {
-      "no": 54, "stepType": "ATTACK", "state": "DONE",
+      "no": 57, "stepType": "ATTACK", "state": "DONE",
       "general": "Generalmajor", "generalName": "GM 1",
       "camp": "CAMP_9",
       "units": [
@@ -366,7 +379,7 @@
       "startNavPoint": "NP_2", "targetNavPoint": "NP_3",
       "comment": "#Sector-2 #3 attack "
     }, {
-      "no": 55, "stepType": "ATTACK", "state": "DONE",
+      "no": 58, "stepType": "ATTACK", "state": "DONE",
       "general": "Anslem", "generalName": "Anslem",
       "camp": "CAMP_10",
       "units": [
@@ -382,7 +395,7 @@
       },
       "comment": "#Sector-2 #4 attack"
     }, {
-      "no": 56, "stepType": "ATTACK", "state": "DONE",
+      "no": 59, "stepType": "ATTACK", "state": "DONE",
       "general": "MdK", "generalName": "MdK 1",
       "camp": "CAMP_11",
       "units": [
@@ -396,7 +409,7 @@
       },
       "comment": "#Sector-2 #4.1 attack"
     }, {
-      "no": 57, "stepType": "ATTACK", "state": "DONE",
+      "no": 60, "stepType": "ATTACK", "state": "DONE",
       "general": "MdK", "generalName": "MdK 2",
       "camp": "CAMP_11",
       "units": [
@@ -410,7 +423,7 @@
       },
       "comment": "#Sector-2 #4.2 attack"
     }, {
-      "no": 58, "stepType": "ATTACK", "state": "DONE",
+      "no": 61, "stepType": "ATTACK", "state": "DONE",
       "general": "MdK", "generalName": "MdK 3",
       "camp": "CAMP_11",
       "units": [
@@ -424,7 +437,7 @@
       },
       "comment": "#Sector-2 #4.3 attack"
     }, {
-      "no": 59, "stepType": "ATTACK", "state": "DONE", "delay": 20,
+      "no": 62, "stepType": "ATTACK", "state": "DONE", "delay": 20,
       "general": "Sani",
       "camp": "CAMP_11",
       "units": [
@@ -438,7 +451,7 @@
       },
       "comment": "#Sector-2 #4.3 attack"
     }, {
-      "no": 60, "stepType": "ATTACK", "state": "DONE", "delay": 10,
+      "no": 63, "stepType": "ATTACK", "state": "DONE", "delay": 10,
       "general": "Generalmajor", "generalName": "GM 2",
       "camp": "CAMP_11",
       "units": [
@@ -456,83 +469,48 @@
       },
       "comment": "#Sector-2 #4.4 attack"
     }, {
-      "no": 61, "stepType": "SOLVE_QUEST", "state": "DONE",
+      "no": 64, "stepType": "SOLVE_QUEST", "state": "DONE",
       "comment": "#Sector-2 is solved. ------------------------------------------------"
     }, {
-      "no": 62, "stepType": "UNSET_UNITS", "state": "DONE",
+      "no": 65, "stepType": "UNSET_UNITS", "state": "DONE",
       "general": "Generalmajor", "generalName": "GM 1"
     }, {
-      "no": 63, "stepType": "MOVE", "state": "DONE",
+      "no": 66, "stepType": "MOVE", "state": "DONE",
       "general": "Anslem",
       "startNavPoint": "NP_2", "targetNavPoint": "NP_3",
       "targetNavPointClickOffset": {
         "width": -470.0, "height": -215.0
       }
     }, {
-      "no": 64, "stepType": "MOVE", "state": "DONE",
-      "general": "Generalmajor", "generalName": "GM 2",
-      "startNavPoint": "NP_2", "targetNavPoint": "NP_3",
-      "targetNavPointClickOffset": {
-        "width": -487.0, "height": -174.0
-      }
-    }, {
-      "no": 65, "stepType": "MOVE", "state": "DONE",
+      "no": 67, "stepType": "MOVE", "state": "DONE",
       "general": "Vargus",
       "startNavPoint": "NP_2", "targetNavPoint": "NP_3",
       "targetNavPointClickOffset": {
         "width": -451.0, "height": -148.0
       }
     }, {
-      "no": 66, "stepType": "MOVE", "state": "DONE",
+      "no": 68, "stepType": "MOVE", "state": "DONE",
       "general": "MdK", "generalName": "MdK 4",
       "startNavPoint": "NP_1", "targetNavPoint": "NP_3",
       "targetNavPointClickOffset": {
         "width": -393.0, "height": -107.0
       }
     }, {
-      "no": 67, "stepType": "MOVE", "state": "DONE",
+      "no": 69, "stepType": "MOVE", "state": "DONE",
+      "general": "Generalmajor", "generalName": "GM 2",
+      "startNavPoint": "NP_2", "targetNavPoint": "NP_3",
+      "targetNavPointClickOffset": {
+        "width": -487.0, "height": -174.0
+      }
+    }, {
+      "no": 70, "stepType": "MOVE", "state": "DONE",
       "general": "MdK", "generalName": "MdK 5",
       "startNavPoint": "NP_1", "targetNavPoint": "NP_3",
       "targetNavPointClickOffset": {
         "width": -324.0, "height": -92.0
       }
     }, {
-      "no": 68, "stepType": "MOVE", "state": "DONE",
-      "general": "MdK", "generalName": "MdK 6",
-      "startNavPoint": "NP_1", "targetNavPoint": "NP_3",
-      "targetNavPointClickOffset": {
-        "width": -373.0, "height": -72.0
-      }
-    }, {
-      "no": 69, "stepType": "MOVE", "state": "DONE",
-      "general": "MdK", "generalName": "MdK 7",
-      "startNavPoint": "NP_1", "targetNavPoint": "NP_3",
-      "targetNavPointClickOffset": {
-        "width": -291.0, "height": -72.0
-      }
-    }, {
-      "no": 70, "stepType": "MOVE", "state": "DONE",
-      "general": "MdK", "generalName": "MdK 8",
-      "startNavPoint": "NP_1", "targetNavPoint": "NP_3",
-      "targetNavPointClickOffset": {
-        "width": -320.0, "height": -47.0
-      }
-    }, {
-      "no": 71, "stepType": "MOVE", "state": "DONE",
-      "general": "Sensenmann", "generalName": "SM 1",
-      "startNavPoint": "NP_1", "targetNavPoint": "NP_3",
-      "targetNavPointClickOffset": {
-        "width": -357.0, "height": 13.0
-      }
-    }, {
-      "no": 72, "stepType": "MOVE", "state": "DONE",
-      "general": "MdK", "generalName": "MdK 3",
-      "startNavPoint": "NP_2", "targetNavPoint": "NP_3",
-      "targetNavPointClickOffset": {
-        "width": -290.0, "height": -17.0
-      }
-    }, {
-      "no": 73, "stepType": "ATTACK", "state": "DONE",
+      "no": 71, "stepType": "ATTACK", "state": "DONE",
       "general": "Anslem",
       "camp": "CAMP_12",
       "units": [
@@ -545,10 +523,45 @@
       "startNavPoint": "NP_3", "targetNavPoint": "NP_3",
       "comment": "#Sector-3 #1 attack // --------------------------------------------------"
     }, {
-      "no": 74, "stepType": "UNSET_UNITS", "state": "DONE",
+      "no": 72, "stepType": "MOVE", "state": "DONE",
+      "general": "MdK", "generalName": "MdK 6",
+      "startNavPoint": "NP_1", "targetNavPoint": "NP_3",
+      "targetNavPointClickOffset": {
+        "width": -373.0, "height": -72.0
+      }
+    }, {
+      "no": 73, "stepType": "MOVE", "state": "DONE",
+      "general": "MdK", "generalName": "MdK 7",
+      "startNavPoint": "NP_1", "targetNavPoint": "NP_3",
+      "targetNavPointClickOffset": {
+        "width": -291.0, "height": -72.0
+      }
+    }, {
+      "no": 74, "stepType": "MOVE", "state": "DONE",
+      "general": "MdK", "generalName": "MdK 8",
+      "startNavPoint": "NP_1", "targetNavPoint": "NP_3",
+      "targetNavPointClickOffset": {
+        "width": -290.0, "height": -17.0
+      }
+    }, {
+      "no": 75, "stepType": "MOVE", "state": "DONE",
+      "general": "Sensenmann", "generalName": "SM 1",
+      "startNavPoint": "NP_1", "targetNavPoint": "NP_3",
+      "targetNavPointClickOffset": {
+        "width": -357.0, "height": 13.0
+      }
+    }, {
+      "no": 76, "stepType": "MOVE", "state": "DONE",
+      "general": "MdK", "generalName": "MdK 3",
+      "startNavPoint": "NP_2", "targetNavPoint": "NP_3",
+      "targetNavPointClickOffset": {
+        "width": -320.0, "height": -47.0
+      }
+    }, {
+      "no": 77, "stepType": "UNSET_UNITS", "state": "DONE",
       "general": "Generalmajor", "generalName": "GM 2"
     }, {
-      "no": 75, "stepType": "ATTACK", "state": "DONE",
+      "no": 78, "stepType": "ATTACK", "state": "DONE",
       "general": "Anslem",
       "camp": "CAMP_13",
       "units": [
@@ -564,14 +577,21 @@
       },
       "comment": "#Sector-3 #2 attack // --------------------------------------------------"
     }, {
-      "no": 76, "stepType": "MOVE", "state": "DONE",
+      "no": 79, "stepType": "MOVE", "state": "DONE",
       "general": "Generalmajor", "generalName": "GM 1",
       "startNavPoint": "NP_2", "targetNavPoint": "NP_3",
       "targetNavPointClickOffset": {
         "width": -389.0, "height": 26.0
       }
     }, {
-      "no": 77, "stepType": "ATTACK", "state": "DONE",
+      "no": 80, "stepType": "MOVE", "state": "DONE",
+      "general": "Sani",
+      "startNavPoint": "NP_2", "targetNavPoint": "NP_3",
+      "targetNavPointClickOffset": {
+        "width": -355.0, "height": 60.0
+      }
+    }, {
+      "no": 81, "stepType": "ATTACK", "state": "DONE",
       "general": "Generalmajor", "generalName": "GM 2",
       "camp": "CAMP_14",
       "units": [
@@ -589,7 +609,7 @@
       },
       "comment": "#Sector-3 #3 attack "
     }, {
-      "no": 78, "stepType": "ATTACK", "state": "DONE",
+      "no": 82, "stepType": "ATTACK", "state": "DONE",
       "general": "Anslem",
       "camp": "CAMP_15",
       "units": [
@@ -605,7 +625,7 @@
       },
       "comment": "#Sector-3 #4 attack "
     }, {
-      "no": 79, "stepType": "ATTACK", "state": "DONE",
+      "no": 83, "stepType": "ATTACK", "state": "DONE",
       "general": "Vargus",
       "camp": "CAMP_16",
       "units": [
@@ -621,7 +641,7 @@
       },
       "comment": "#Sector-3 / #5 attack (att-no 16)"
     }, {
-      "no": 80, "stepType": "ATTACK", "state": "DONE",
+      "no": 84, "stepType": "ATTACK", "state": "DONE",
       "general": "MdK", "generalName": "MdK 4",
       "camp": "CAMP_17",
       "units": [
@@ -634,7 +654,7 @@
         "width": 0.0, "height": -400.0
       }
     }, {
-      "no": 81, "stepType": "ATTACK", "state": "DONE",
+      "no": 85, "stepType": "ATTACK", "state": "DONE",
       "general": "MdK", "generalName": "MdK 5",
       "camp": "CAMP_17",
       "units": [
@@ -647,7 +667,7 @@
         "width": 0.0, "height": -400.0
       }
     }, {
-      "no": 82, "stepType": "ATTACK", "state": "DONE",
+      "no": 86, "stepType": "ATTACK", "state": "DONE",
       "general": "MdK", "generalName": "MdK 6",
       "camp": "CAMP_17",
       "units": [
@@ -660,7 +680,7 @@
         "width": 0.0, "height": -400.0
       }
     }, {
-      "no": 83, "stepType": "ATTACK", "state": "DONE",
+      "no": 87, "stepType": "ATTACK", "state": "DONE",
       "general": "MdK", "generalName": "MdK 7",
       "camp": "CAMP_17",
       "units": [
@@ -673,7 +693,7 @@
         "width": 0.0, "height": -400.0
       }
     }, {
-      "no": 84, "stepType": "ATTACK", "state": "DONE",
+      "no": 88, "stepType": "ATTACK", "state": "DONE",
       "general": "MdK", "generalName": "MdK 8",
       "camp": "CAMP_17",
       "units": [
@@ -686,8 +706,8 @@
         "width": 0.0, "height": -400.0
       }
     }, {
-      "no": 85, "stepType": "ATTACK", "state": "DONE",
-      "general": "Sensenmann", "generalName": "SM 1",
+      "no": 89, "stepType": "ATTACK", "state": "DONE",
+      "general": "Sani",
       "camp": "CAMP_17",
       "units": [
         {
@@ -699,7 +719,7 @@
         "width": 0.0, "height": -400.0
       }
     }, {
-      "no": 86, "stepType": "ATTACK", "state": "DONE", "delay": 30,
+      "no": 90, "stepType": "ATTACK", "state": "DONE", "delay": 30,
       "general": "MdK", "generalName": "MdK 3",
       "camp": "CAMP_17",
       "units": [
@@ -716,10 +736,10 @@
         "width": 0.0, "height": -400.0
       }
     }, {
-      "no": 87, "stepType": "SOLVE_QUEST", "state": "DONE",
+      "no": 91, "stepType": "SOLVE_QUEST", "state": "DONE",
       "comment": "#Sector-3 is solved. ------------------------------------------------"
     }, {
-      "no": 88, "stepType": "MOVE", "state": "DONE",
+      "no": 92, "stepType": "MOVE", "state": "DONE",
       "general": "Generalmajor", "generalName": "GM 1",
       "startNavPoint": "NP_3", "targetNavPoint": "NP_4",
       "initialDragDropOffset": {
@@ -729,119 +749,122 @@
         "width": -8.0, "height": -109.0
       }
     }, {
-      "no": 89, "stepType": "MOVE", "state": "DONE",
+      "no": 93, "stepType": "MOVE", "state": "DONE",
       "general": "Generalmajor", "generalName": "GM 2",
       "startNavPoint": "NP_3", "targetNavPoint": "NP_4",
       "targetNavPointClickOffset": {
         "width": -49.0, "height": -137.0
       }
     }, {
-      "no": 90, "stepType": "MOVE", "state": "DONE",
+      "no": 94, "stepType": "MOVE", "state": "DONE",
       "general": "Veteran",
       "startNavPoint": "NP_1", "targetNavPoint": "NP_4",
       "targetNavPointClickOffset": {
         "width": -209.0, "height": -292.0
       }
     }, {
-      "no": 91, "stepType": "MOVE", "state": "DONE",
+      "no": 95, "stepType": "MOVE", "state": "DONE",
       "general": "Sensenmann", "generalName": "SM 1",
       "startNavPoint": "NP_3", "targetNavPoint": "NP_4",
       "targetNavPointClickOffset": {
         "width": -245.0, "height": -261.0
       }
     }, {
-      "no": 92, "stepType": "MOVE", "state": "DONE",
+      "no": 96, "stepType": "MOVE", "state": "DONE",
       "general": "Sensenmann", "generalName": "SM 2",
       "startNavPoint": "NP_1", "targetNavPoint": "NP_4",
       "targetNavPointClickOffset": {
         "width": -298.0, "height": -288.0
       }
     }, {
-      "no": 93, "stepType": "MOVE", "state": "DONE",
+      "no": 97, "stepType": "MOVE", "state": "DONE",
       "general": "Dracul", "generalName": "Draci 1",
       "startNavPoint": "NP_1", "targetNavPoint": "NP_4",
       "targetNavPointClickOffset": {
         "width": -91.0, "height": -164.0
       }
     }, {
-      "no": 94, "stepType": "MOVE", "state": "DONE",
+      "no": 98, "stepType": "MOVE", "state": "DONE",
       "general": "Dracul", "generalName": "Draci 2",
       "startNavPoint": "NP_1", "targetNavPoint": "NP_4",
       "targetNavPointClickOffset": {
         "width": -22.0, "height": -190.0
       }
     }, {
-      "no": 95, "stepType": "UNSET_UNITS", "state": "DONE",
+      "no": 99, "stepType": "UNSET_UNITS", "state": "DONE",
       "general": "Vargus"
     }, {
-      "no": 96, "stepType": "UNSET_UNITS", "state": "DONE",
+      "no": 100, "stepType": "UNSET_UNITS", "state": "DONE",
       "general": "Anslem"
     }, {
-      "no": 97, "stepType": "MOVE", "state": "DONE",
+      "no": 101, "stepType": "MOVE", "state": "DONE",
       "general": "Anslem",
       "startNavPoint": "NP_3", "targetNavPoint": "NP_4",
       "targetNavPointClickOffset": {
         "width": -320.0, "height": -237.0
       }
     }, {
-      "no": 98, "stepType": "MOVE", "state": "DONE",
+      "no": 102, "stepType": "MOVE", "state": "DONE",
       "general": "Vargus",
       "startNavPoint": "NP_3", "targetNavPoint": "NP_4",
       "targetNavPointClickOffset": {
         "width": -291.0, "height": -217.0
       }
     }, {
-      "no": 99, "stepType": "MOVE", "state": "DONE",
+      "no": 103, "stepType": "MOVE", "state": "DONE",
       "general": "Nusala",
       "startNavPoint": "NP_1", "targetNavPoint": "NP_4",
       "targetNavPointClickOffset": {
         "width": -341.0, "height": -196.0
       }
     }, {
-      "no": 100, "stepType": "MOVE", "state": "DONE",
+      "no": 104, "stepType": "MOVE", "state": "DONE",
       "general": "MdK", "generalName": "MdK 3",
       "startNavPoint": "NP_3", "targetNavPoint": "NP_4",
       "targetNavPointClickOffset": {
         "width": -301.0, "height": -174.0
       }
     }, {
-      "no": 101, "stepType": "MOVE", "state": "DONE",
+      "no": 105, "stepType": "MOVE", "state": "DONE",
       "general": "MdK", "generalName": "MdK 4",
       "startNavPoint": "NP_3", "targetNavPoint": "NP_4",
       "targetNavPointClickOffset": {
         "width": -250.0, "height": -138.0
       }
     }, {
-      "no": 102, "stepType": "MOVE", "state": "DONE",
+      "no": 106, "stepType": "MOVE", "state": "DONE",
       "general": "MdK", "generalName": "MdK 5",
       "startNavPoint": "NP_3", "targetNavPoint": "NP_4",
       "targetNavPointClickOffset": {
         "width": -246.0, "height": -77.0
       }
     }, {
-      "no": 103, "stepType": "MOVE", "state": "DONE",
+      "no": 107, "stepType": "MOVE", "state": "DONE",
       "general": "MdK", "generalName": "MdK 6",
       "startNavPoint": "NP_3", "targetNavPoint": "NP_4",
       "targetNavPointClickOffset": {
         "width": -212.0, "height": -53.0
       }
     }, {
-      "no": 104, "stepType": "MOVE", "state": "DONE",
+      "no": 108, "stepType": "MOVE", "state": "DONE",
       "general": "MdK", "generalName": "MdK 7",
       "startNavPoint": "NP_3", "targetNavPoint": "NP_4",
       "targetNavPointClickOffset": {
         "width": -176.0, "height": -1.0
       }
     }, {
-      "no": 105, "stepType": "MOVE", "state": "DONE",
+      "no": 109, "stepType": "MOVE", "state": "DONE",
       "general": "MdK", "generalName": "MdK 8",
       "startNavPoint": "NP_3", "targetNavPoint": "NP_4",
       "targetNavPointClickOffset": {
         "width": -194.0, "height": 43.0
-      },
+      }
+    }, {
+      "no": 110, "stepType": "UNSET_UNITS", "state": "DONE",
+      "general": "Mary",
       "comment": "Last Move to Sector 4. ------------------------------------------------"
     }, {
-      "no": 106, "stepType": "ATTACK", "state": "DONE",
+      "no": 111, "stepType": "ATTACK", "state": "DONE",
       "general": "Generalmajor", "generalName": "GM 2",
       "camp": "CAMP_18",
       "units": [
@@ -855,7 +878,7 @@
       ],
       "startNavPoint": "NP_4", "targetNavPoint": "NP_4"
     }, {
-      "no": 107, "stepType": "ATTACK", "state": "DONE", "delay": 1,
+      "no": 112, "stepType": "ATTACK", "state": "DONE", "delay": 1,
       "general": "Veteran",
       "camp": "CAMP_19",
       "units": [
@@ -868,7 +891,7 @@
         "width": 0.0, "height": 200.0
       }
     }, {
-      "no": 108, "stepType": "ATTACK", "state": "DONE", "delay": 30,
+      "no": 113, "stepType": "ATTACK", "state": "DONE", "delay": 30,
       "general": "Generalmajor", "generalName": "GM 1",
       "camp": "CAMP_19",
       "units": [
@@ -878,7 +901,7 @@
       ],
       "startNavPoint": "NP_4", "targetNavPoint": "NP_4"
     }, {
-      "no": 109, "stepType": "ATTACK", "state": "DONE", "delay": 15,
+      "no": 114, "stepType": "ATTACK", "state": "DONE", "delay": 15,
       "general": "Sensenmann", "generalName": "SM 1",
       "camp": "CAMP_20",
       "units": [
@@ -891,7 +914,7 @@
         "width": 0.0, "height": 200.0
       }
     }, {
-      "no": 110, "stepType": "ATTACK", "state": "DONE", "delay": 30,
+      "no": 115, "stepType": "ATTACK", "state": "DONE", "delay": 30,
       "general": "Generalmajor", "generalName": "GM 2",
       "camp": "CAMP_20",
       "units": [
@@ -903,7 +926,7 @@
       ],
       "startNavPoint": "NP_4", "targetNavPoint": "NP_4"
     }, {
-      "no": 111, "stepType": "ATTACK", "state": "DONE", "delay": 0,
+      "no": 116, "stepType": "ATTACK", "state": "DONE", "delay": 0,
       "general": "Sensenmann", "generalName": "SM 2",
       "camp": "CAMP_21",
       "units": [
@@ -916,7 +939,7 @@
         "width": 0.0, "height": 200.0
       }
     }, {
-      "no": 112, "stepType": "ATTACK", "state": "DONE", "delay": 30,
+      "no": 117, "stepType": "ATTACK", "state": "DONE", "delay": 30,
       "general": "Generalmajor", "generalName": "GM 1",
       "camp": "CAMP_21",
       "units": [
@@ -926,7 +949,7 @@
       ],
       "startNavPoint": "NP_4", "targetNavPoint": "NP_4"
     }, {
-      "no": 113, "stepType": "ATTACK", "state": "DONE", "delay": 0,
+      "no": 118, "stepType": "ATTACK", "state": "DONE", "delay": 0,
       "general": "Vargus",
       "camp": "CAMP_22",
       "units": [
@@ -936,7 +959,7 @@
       ],
       "startNavPoint": "NP_4", "targetNavPoint": "NP_5"
     }, {
-      "no": 114, "stepType": "ATTACK", "state": "DONE", "delay": 0,
+      "no": 119, "stepType": "ATTACK", "state": "DONE", "delay": 0,
       "general": "Dracul", "generalName": "Draci 1",
       "camp": "CAMP_22",
       "units": [
@@ -946,7 +969,7 @@
       ],
       "startNavPoint": "NP_4", "targetNavPoint": "NP_5"
     }, {
-      "no": 115, "stepType": "ATTACK", "state": "DONE", "delay": 0,
+      "no": 120, "stepType": "ATTACK", "state": "DONE", "delay": 0,
       "general": "Dracul", "generalName": "Draci 2",
       "camp": "CAMP_22",
       "units": [
@@ -956,7 +979,7 @@
       ],
       "startNavPoint": "NP_4", "targetNavPoint": "NP_5"
     }, {
-      "no": 116, "stepType": "ATTACK", "state": "DONE", "delay": 10,
+      "no": 121, "stepType": "ATTACK", "state": "DONE", "delay": 10,
       "general": "Generalmajor", "generalName": "GM 2",
       "camp": "CAMP_22",
       "units": [
@@ -970,7 +993,7 @@
       ],
       "startNavPoint": "NP_4", "targetNavPoint": "NP_5"
     }, {
-      "no": 117, "stepType": "ATTACK", "state": "DONE", "delay": 10,
+      "no": 122, "stepType": "ATTACK", "state": "DONE", "delay": 10,
       "general": "Generalmajor", "generalName": "GM 1",
       "camp": "CAMP_23",
       "units": [
@@ -980,7 +1003,7 @@
       ],
       "startNavPoint": "NP_4", "targetNavPoint": "NP_5"
     }, {
-      "no": 118, "stepType": "ATTACK", "state": "DONE", "delay": 0,
+      "no": 123, "stepType": "ATTACK", "state": "DONE", "delay": 0,
       "general": "MdK", "generalName": "MdK 3",
       "camp": "CAMP_24",
       "units": [
@@ -990,7 +1013,7 @@
       ],
       "startNavPoint": "NP_4", "targetNavPoint": "NP_5"
     }, {
-      "no": 119, "stepType": "ATTACK", "state": "DONE", "delay": 0,
+      "no": 124, "stepType": "ATTACK", "state": "DONE", "delay": 0,
       "general": "MdK", "generalName": "MdK 4",
       "camp": "CAMP_24",
       "units": [
@@ -1000,7 +1023,7 @@
       ],
       "startNavPoint": "NP_4", "targetNavPoint": "NP_5"
     }, {
-      "no": 120, "stepType": "ATTACK", "state": "DONE", "delay": 0,
+      "no": 125, "stepType": "ATTACK", "state": "DONE", "delay": 0,
       "general": "MdK", "generalName": "MdK 5",
       "camp": "CAMP_24",
       "units": [
@@ -1010,7 +1033,7 @@
       ],
       "startNavPoint": "NP_4", "targetNavPoint": "NP_5"
     }, {
-      "no": 121, "stepType": "ATTACK", "state": "DONE", "delay": 0,
+      "no": 126, "stepType": "ATTACK", "state": "DONE", "delay": 0,
       "general": "MdK", "generalName": "MdK 6",
       "camp": "CAMP_24",
       "units": [
@@ -1020,7 +1043,7 @@
       ],
       "startNavPoint": "NP_4", "targetNavPoint": "NP_5"
     }, {
-      "no": 122, "stepType": "ATTACK", "state": "DONE", "delay": 0,
+      "no": 127, "stepType": "ATTACK", "state": "DONE", "delay": 0,
       "general": "MdK", "generalName": "MdK 7",
       "camp": "CAMP_24",
       "units": [
@@ -1030,7 +1053,7 @@
       ],
       "startNavPoint": "NP_4", "targetNavPoint": "NP_5"
     }, {
-      "no": 123, "stepType": "ATTACK", "state": "DONE", "delay": 0,
+      "no": 128, "stepType": "ATTACK", "state": "DONE", "delay": 0,
       "general": "MdK", "generalName": "MdK 8",
       "camp": "CAMP_24",
       "units": [
@@ -1040,7 +1063,7 @@
       ],
       "startNavPoint": "NP_4", "targetNavPoint": "NP_5"
     }, {
-      "no": 124, "stepType": "ATTACK", "state": "DONE", "delay": 0,
+      "no": 129, "stepType": "ATTACK", "state": "DONE", "delay": 0,
       "general": "Nusala",
       "camp": "CAMP_24",
       "units": [
@@ -1050,7 +1073,7 @@
       ],
       "startNavPoint": "NP_4", "targetNavPoint": "NP_5"
     }, {
-      "no": 125, "stepType": "ATTACK", "state": "DONE", "delay": 10,
+      "no": 130, "stepType": "ATTACK", "state": "DONE", "delay": 10,
       "general": "Anslem",
       "camp": "CAMP_24",
       "units": [
@@ -1060,7 +1083,7 @@
       ],
       "startNavPoint": "NP_4", "targetNavPoint": "NP_5"
     }, {
-      "no": 126, "stepType": "ATTACK", "state": "DONE", "delay": 30,
+      "no": 131, "stepType": "ATTACK", "state": "DONE", "delay": 30,
       "general": "Generalmajor", "generalName": "GM 2",
       "camp": "CAMP_24",
       "units": [
@@ -1074,7 +1097,7 @@
       ],
       "startNavPoint": "NP_4", "targetNavPoint": "NP_5"
     }, {
-      "no": 127, "stepType": "ATTACK", "state": "DONE", "delay": 0,
+      "no": 132, "stepType": "ATTACK", "state": "DONE", "delay": 0,
       "general": "Dracul", "generalName": "Draci 1",
       "camp": "CAMP_25",
       "units": [
@@ -1084,7 +1107,7 @@
       ],
       "startNavPoint": "NP_4", "targetNavPoint": "NP_5"
     }, {
-      "no": 128, "stepType": "ATTACK", "state": "DONE", "delay": 0,
+      "no": 133, "stepType": "ATTACK", "state": "DONE", "delay": 0,
       "general": "Dracul", "generalName": "Draci 2",
       "camp": "CAMP_25",
       "units": [
@@ -1094,7 +1117,9 @@
       ],
       "startNavPoint": "NP_4", "targetNavPoint": "NP_5"
     }, {
-      "no": 129, "stepType": "EXIT_DSO", "state": "DONE"
+      "no": 134, "stepType": "EXIT_DSO", "state": "DONE"
+    }, {
+      "no": 135, "stepType": "WAIT", "state": "DONE", "delay": 0
     }
   ]
 }
