@@ -57,6 +57,10 @@ public class IslandCommands extends SikuliCommands {
         return rv;
     }
 
+    public boolean clickAssertOkButton() {
+        return this.clickOkButton(OkButton.ASSERT_OK);
+    }
+
     public boolean clickBigOkButton() {
         return clickOkButton(OkButton.BIG_OK);
     }
