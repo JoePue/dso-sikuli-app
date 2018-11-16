@@ -99,7 +99,7 @@ public abstract class Adventure {
         Optional<AdventureStep> rv = Optional.empty();
         AdventureStep step = null;
         boolean supportedStep;
-        int processedCounter = 0;
+        int processedStepCounter = 0;
         try {
             for (int i = 0; i < this.adventureSteps.size(); ++i) {
                 step = this.adventureSteps.get(i);
@@ -111,12 +111,13 @@ public abstract class Adventure {
                 // *** OPEN ***
                 if (OPEN.equals(step.getState())) {
                     // *** OPEN - MOVE ***
-                    processStepDelay(step, processedCounter != 0);
+                    processStepDelay(step, processedStepCounter != 0);
                     if (StepType.ALL_BACK_TO_STAR_MENU.equals(step.getStepType())) {
                         supportedStep = true;
                         if (!processAllGeneralsBackToStarMenuStep()) {
                             throw new IllegalStateException("Failed to process step: " + step);
                         }
+                        ++processedStepCounter;
                         saveState(step, DONE);
                     }
                     // *** OPEN - LAND ***
@@ -125,6 +126,7 @@ public abstract class Adventure {
                         if (!processLandStep(step)) {
                             throw new IllegalStateException("Failed to process step: " + step);
                         }
+                        ++processedStepCounter;
                         saveState(step, DONE);
                     }
                     // *** OPEN > MOVE ***
@@ -134,6 +136,7 @@ public abstract class Adventure {
                         // Objects.requireNonNull(step.getTargetDragDropOffset());
                         if (OPEN.equals(step.getState())) {
                             processMoveStep(step);
+                            ++processedStepCounter;
                             saveState(step, AdventureStepState.DONE);
                         }
                     }
@@ -141,6 +144,7 @@ public abstract class Adventure {
                     if (StepType.ATTACK.equals(step.getStepType())) {
                         supportedStep = true;
                         if (this.prepareAttack(step)) {
+                            ++processedStepCounter;
                             saveState(step, PREPARED);
                             islandCmds.typeESC();
                         } else {
@@ -153,6 +157,7 @@ public abstract class Adventure {
                         if (!processSolveQuestStep(step)) {
                             throw new IllegalStateException("step processing failed");
                         }
+                        ++processedStepCounter;
                         saveState(step, DONE);
                     }
                     // *** OPEN > UNSET_UNITS ***
@@ -166,17 +171,19 @@ public abstract class Adventure {
                     // *** OPEN > EXIT_DSO ***
                     if (StepType.EXIT_DSO.equals(step.getStepType())) {
                         supportedStep = true;
+                        ++processedStepCounter;
                         saveState(step, DONE);
                         dsoService.exitDso();
                     }
                     // *** OPEN > WAIT ***
                     if (StepType.WAIT.equals(step.getStepType())) {
                         supportedStep = true;
+                        ++processedStepCounter;
                         saveState(step, DONE);
                     }
                 }
                 if (PREPARED.equals(step.getState())) {
-                    processStepDelay(step, processedCounter != 0);
+                    processStepDelay(step, processedStepCounter != 0);
                     // *** PREPARED > ATTACK ***
                     if (StepType.ATTACK.equals(step.getStepType())) {
                         supportedStep = true;
@@ -189,6 +196,7 @@ public abstract class Adventure {
                         } else {
                             throw new IllegalStateException("attack step failed");
                         }
+                        ++processedStepCounter;
                     }
                 }
                 if (DONE.equals(step.getState())) {
@@ -196,8 +204,6 @@ public abstract class Adventure {
                 }
                 if (!supportedStep) {
                     throw new IllegalStateException("Unsupported adventure step: " + step);
-                } else {
-                    ++processedCounter;
                 }
             }
             log.info("All adventure steps processed");
@@ -218,7 +224,7 @@ public abstract class Adventure {
     }
 
     private void processStepDelay(AdventureStep step, boolean isNotFirst) {
-        if (isNotFirst && step.getDelay() != null && step.getDelay() > 0) {
+        if (isNotFirst && step.getDelay() != null && step.getDelay() > 0 || !PREPARED.equals(step.getStepType())) {
             log.info("processStepDelay()");
             islandCmds.sleep(step.getDelay(), TimeUnit.SECONDS);
         }
