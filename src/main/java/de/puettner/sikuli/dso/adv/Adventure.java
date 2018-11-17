@@ -24,6 +24,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 
 import static de.puettner.sikuli.dso.adv.AdventureStepState.*;
+import static de.puettner.sikuli.dso.adv.StepType.WAIT;
 import static de.puettner.sikuli.dso.commands.ui.SikuliCommands.pattern;
 import static de.puettner.sikuli.dso.commands.ui.StarMenuFilter.GeneralsFilterString;
 
@@ -176,7 +177,7 @@ public abstract class Adventure {
                         dsoService.exitDso();
                     }
                     // *** OPEN > WAIT ***
-                    if (StepType.WAIT.equals(step.getStepType())) {
+                    if (WAIT.equals(step.getStepType())) {
                         supportedStep = true;
                         ++processedStepCounter;
                         saveState(step, DONE);
@@ -224,9 +225,11 @@ public abstract class Adventure {
     }
 
     private void processStepDelay(AdventureStep step, boolean isNotFirst) {
-        if (isNotFirst && step.getDelay() != null && step.getDelay() > 0 || !PREPARED.equals(step.getStepType())) {
-            log.info("processStepDelay()");
-            islandCmds.sleep(step.getDelay(), TimeUnit.SECONDS);
+        if (step.getDelay() != null && step.getDelay() > 0) {
+            if (isNotFirst || WAIT.equals(step.getStepType()) || !PREPARED.equals(step.getStepType())) {
+                log.info("processStepDelay()");
+                islandCmds.sleep(step.getDelay(), TimeUnit.SECONDS);
+            }
         }
     }
 
