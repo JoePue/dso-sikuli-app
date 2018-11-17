@@ -26,7 +26,7 @@ public class StarMenu extends DsoMenu {
         return rv;
     }
 
-    public int launchAllExplorerByImage(Pattern image) {
+    public int launchAllExplorerByImage(Pattern image, ExplorerAction action, ExplorerActionType type) {
         log.info("launchAllExplorerByImage");
         int launchCount = 0;
         int maxLoops = 4;
@@ -34,7 +34,7 @@ public class StarMenu extends DsoMenu {
             openStarMenu(Optional.empty());
             Match match = islandCmds.find(image, menuRegion);
             if (match != null) {
-                if (!launchExplorer(match, menuRegion)) {
+                if (!launchExplorer(match, menuRegion, action, type)) {
                     log.log(WARNING, "No explorer launched");
                     break;
                 }
@@ -60,15 +60,15 @@ public class StarMenu extends DsoMenu {
         return this.openStarMenu(str);
     }
 
-    public <PSI> boolean launchExplorer(Match match, Region searchRegion) {
+    public <PSI> boolean launchExplorer(Match match, Region searchRegion, ExplorerAction action, ExplorerActionType type) {
         log.info("launchExplorer()");
         match.click();
         islandCmds.sleep();
-        if (!islandCmds.click(pattern("TreasureFind-icon.png").targetOffset(49, -1))) {
+        if (!islandCmds.click(action.getPattern())) {
             return false;
         }
         islandCmds.sleep();
-        if (!islandCmds.click(pattern("TreasureSearchVeryLong.png").targetOffset(53, 0))) {
+        if (!islandCmds.click(type.getPattern())) {
             return false;
         }
         islandCmds.sleep();

@@ -8,6 +8,10 @@ import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.*;
 
+import static de.puettner.sikuli.dso.commands.ui.ExplorerAction.AdventureSearch;
+import static de.puettner.sikuli.dso.commands.ui.ExplorerAction.TreasureSearch;
+import static de.puettner.sikuli.dso.commands.ui.ExplorerActionType.VERY_LONG;
+import static de.puettner.sikuli.dso.commands.ui.ExplorerActionType.VERY_VERY_LONG;
 import static de.puettner.sikuli.dso.commands.ui.SikuliCommands.pattern;
 import static java.util.concurrent.TimeUnit.SECONDS;
 
@@ -433,7 +437,7 @@ public class DSOService {
     public void launchAllExplorer() {
         log.info("launchAllExplorer");
         launchAllBraveExplorer();        // Mutige
-        launchAllSuccessfulExplorer();   // Erfolgreiche
+        launchAllSuccessfulExplorer();   // Erfolgreicher Entdecker
         launchAllWildExplorer();         // Wilde
         launchAllFearlessExplorer();     // Furchlose
         launchAllNormalExplorer();
@@ -442,27 +446,32 @@ public class DSOService {
 
     public int launchAllBraveExplorer() {
         log.info("launchAllBraveExplorer");
-        return starMenu.launchAllExplorerByImage(pattern("BraveExplorer-icon.png").similar(0.80f));
+        return starMenu.launchAllExplorerByImage(pattern("BraveExplorer-icon.png").similar(0.80f), TreasureSearch, VERY_VERY_LONG);
     }
 
+    /**
+     * Erfolgreicher Entdecker
+     *
+     * @return
+     */
     public int launchAllSuccessfulExplorer() {
         log.info("launchAllSuccessfulExplorer");
-        return starMenu.launchAllExplorerByImage(pattern("SuccessfulExplorer-icon.png").similar(0.80f));
+        return starMenu.launchAllExplorerByImage(pattern("SuccessfulExplorer-icon.png").similar(0.80f), AdventureSearch, VERY_LONG);
     }
 
     public int launchAllWildExplorer() {
         log.info("launchAllWildExplorer");
-        return starMenu.launchAllExplorerByImage(pattern("WildExplorer-icon.png").similar(0.85f));
+        return starMenu.launchAllExplorerByImage(pattern("WildExplorer-icon.png").similar(0.85f), TreasureSearch, VERY_VERY_LONG);
     }
 
     public int launchAllFearlessExplorer() {
         log.info("launchAllFearlessExplorer");
-        return starMenu.launchAllExplorerByImage(pattern("FearlessExplorer-icon.png").similar(0.81f));
+        return starMenu.launchAllExplorerByImage(pattern("FearlessExplorer-icon.png").similar(0.81f), TreasureSearch, VERY_VERY_LONG);
     }
 
     public int launchAllNormalExplorer() {
         log.info("launchAllNormalExplorer");
-        return starMenu.launchAllExplorerByImage(pattern("NormalExplorer-icon.png").similar(0.80f));
+        return starMenu.launchAllExplorerByImage(pattern("NormalExplorer-icon.png").similar(0.80f), TreasureSearch, VERY_VERY_LONG);
     }
 
     public void preventScreensaver() {
