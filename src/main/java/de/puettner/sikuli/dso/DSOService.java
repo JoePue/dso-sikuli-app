@@ -466,7 +466,7 @@ public class DSOService {
 
     public int launchAllFearlessExplorer() {
         log.info("launchAllFearlessExplorer");
-        return starMenu.launchAllExplorerByImage(pattern("FearlessExplorer-icon.png").similar(0.81f), TreasureSearch, VERY_VERY_LONG);
+        return starMenu.launchAllExplorerByImage(pattern("FearlessExplorer-icon.png").similar(0.81f), AdventureSearch, VERY_LONG);
     }
 
     public int launchAllNormalExplorer() {

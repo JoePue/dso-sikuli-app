@@ -101,6 +101,11 @@ public class DSOServiceTest extends BaseServiceTest {
     }
 
     @Test
+    public void launchAllFearlessExplorer() {
+        dsoService.launchAllFearlessExplorer();
+    }
+
+    @Test
     public void closeWelcomeDialog() {
         dsoService.closeWelcomeDialog();
     }
