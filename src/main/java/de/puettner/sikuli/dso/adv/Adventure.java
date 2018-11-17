@@ -24,6 +24,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 
 import static de.puettner.sikuli.dso.adv.AdventureStepState.*;
+import static de.puettner.sikuli.dso.adv.StepType.ATTACK;
 import static de.puettner.sikuli.dso.adv.StepType.WAIT;
 import static de.puettner.sikuli.dso.commands.ui.SikuliCommands.pattern;
 import static de.puettner.sikuli.dso.commands.ui.StarMenuFilter.GeneralsFilterString;
@@ -112,7 +113,7 @@ public abstract class Adventure {
                 // *** OPEN ***
                 if (OPEN.equals(step.getState())) {
                     // *** OPEN - MOVE ***
-                    processStepDelay(step, processedStepCounter != 0);
+                    processStepDelay(step, processedStepCounter == 0);
                     if (StepType.ALL_BACK_TO_STAR_MENU.equals(step.getStepType())) {
                         supportedStep = true;
                         if (!processAllGeneralsBackToStarMenuStep()) {
@@ -184,7 +185,7 @@ public abstract class Adventure {
                     }
                 }
                 if (PREPARED.equals(step.getState())) {
-                    processStepDelay(step, processedStepCounter != 0);
+                    processStepDelay(step, processedStepCounter == 0);
                     // *** PREPARED > ATTACK ***
                     if (StepType.ATTACK.equals(step.getStepType())) {
                         supportedStep = true;
@@ -224,13 +225,23 @@ public abstract class Adventure {
         islandCmds.closeQuestBook();
     }
 
-    private void processStepDelay(AdventureStep step, boolean isNotFirst) {
+    protected void processStepDelay(AdventureStep step, boolean isFirst) {
+        if (isDelay(isFirst, step)) {
+            log.info("processStepDelay()");
+            islandCmds.sleep(step.getDelay(), TimeUnit.SECONDS);
+        }
+    }
+
+    protected boolean isDelay(boolean isFirst, AdventureStep step) {
         if (step.getDelay() != null && step.getDelay() > 0) {
-            if (isNotFirst || WAIT.equals(step.getStepType()) || !PREPARED.equals(step.getStepType())) {
-                log.info("processStepDelay()");
-                islandCmds.sleep(step.getDelay(), TimeUnit.SECONDS);
+            if (!isFirst || WAIT.equals(step.getStepType())) {
+                if (ATTACK.equals(step.getStepType()) && OPEN.equals(step.getState())) {
+                    return false;
+                }
+                return true;
             }
         }
+        return false;
     }
 
     private boolean processLandStep(AdventureStep step) {
