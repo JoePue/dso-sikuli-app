@@ -3,6 +3,7 @@ package de.puettner.sikuli.dso.commands.ui;
 import lombok.extern.java.Log;
 import org.sikuli.script.*;
 
+import java.awt.*;
 import java.util.function.BooleanSupplier;
 import java.util.logging.Level;
 
@@ -174,5 +175,25 @@ public class IslandCommands extends SikuliCommands {
 
     public void parkMouseInRightLowerCorner() {
         hover(new Location(appRegion.w, appRegion.h));
+    }
+
+    public void dragDrop(Dimension location) {
+        log.info("dragDrop() " + location);
+        // Nach rechts: INFORMATION: dragDrop()java.awt.Dimension[width=112,height=152]
+        if (location.width < 0) {
+            waitUntilNotificationInfoBoxDisappears();
+        }
+        super.dragDrop(location);
+    }
+
+    public void waitUntilNotificationInfoBoxDisappears() {
+        log.info("waitUntilNotificationInfoBoxDisappears()");
+        while (isNotificationInfoBoxVisible()) {
+            sleep();
+        }
+    }
+
+    public boolean isNotificationInfoBoxVisible() {
+        return this.exists(NotificationInfoBox.getPattern());
     }
 }

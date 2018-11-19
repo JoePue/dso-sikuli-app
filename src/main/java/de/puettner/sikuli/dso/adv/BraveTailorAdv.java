@@ -184,10 +184,10 @@ public class BraveTailorAdv extends Adventure {
      * @param targetClickOffset
      */
     private void navigate(NavigationPoint startPoint, NavigationPoint targetPoint, Dimension navDragDropOffset, Dimension targetDragDropOffset, Dimension
-
             targetClickOffset, boolean shouldCenterStart, boolean shouldCenterTarget) {
         log.info("navigate() " + startPoint + " -> " + targetPoint + ", navDragDropOffset: " + navDragDropOffset + ", " +
                 "targetDragDropOffset: " + targetDragDropOffset + ", targetClickOffset: " + targetClickOffset);
+
         if (shouldCenterStart) {
             centerNavigationPoint(startPoint);
         }

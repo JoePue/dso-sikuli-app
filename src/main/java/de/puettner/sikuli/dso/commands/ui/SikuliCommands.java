@@ -229,10 +229,6 @@ public class SikuliCommands {
         Location sourceLocation = LocationMath.calculateSourceLocation(xOffset, yOffset, appRegion);
         Location targetLocation = LocationMath.calculateTargetLocation(xOffset, yOffset, sourceLocation);
         try {
-            //            appRegion.hover(sourceLocation);
-            //            appRegion.hover(targetLocation);
-            //            appRegion.hover(sourceLocation);
-            //            appRegion.hover(targetLocation);
             appRegion.dragDrop(sourceLocation, targetLocation);
         } catch (FindFailed e) {
             log.log(Level.SEVERE, e.getMessage(), e);
