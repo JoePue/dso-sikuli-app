@@ -24,8 +24,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 
 import static de.puettner.sikuli.dso.adv.AdventureStepState.*;
-import static de.puettner.sikuli.dso.adv.StepType.ATTACK;
-import static de.puettner.sikuli.dso.adv.StepType.WAIT;
+import static de.puettner.sikuli.dso.adv.StepType.*;
 import static de.puettner.sikuli.dso.commands.ui.SikuliCommands.pattern;
 import static de.puettner.sikuli.dso.commands.ui.StarMenuFilter.GeneralsFilterString;
 
@@ -76,9 +75,9 @@ public abstract class Adventure {
         islandCmds.closeChat();
 
         Set<Integer> failedStepsNo = new HashSet<>();
-        Optional<AdventureStep> rv;
-        while ((rv = processSteps()).isPresent()) {
-            int no = rv.get().getNo();
+        Optional<AdventureStep> step;
+        while ((step = processSteps()).isPresent()) {
+            int no = step.get().getNo();
             if (failedStepsNo.contains(no)) {
                 log.severe("Failed step already processed. no: " + no);
                 break;
@@ -88,6 +87,22 @@ public abstract class Adventure {
                 islandCmds.sleep(120, TimeUnit.SECONDS);
                 failedStepsNo.add(no);
             }
+        }
+        processFinishAction();
+    }
+
+    private void processFinishAction() {
+        if (this.adventureSteps != null) {
+            for (AdventureStep step : this.adventureSteps) {
+                if (FINISH_ACTION.equals(step.getStepType()) && step.getComment() != null) {
+                    try {
+                        Runtime.getRuntime().exec("cmd /c start " + step.getComment());
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+            }
+
         }
     }
 
@@ -109,6 +124,10 @@ public abstract class Adventure {
                 if (!DONE.equals(step.getState())) {
                     log.info(step.toString());
                     confirmSolvedQuest();
+                }
+                if (FINISH_ACTION.equals(step.getState())) {
+                    ++processedStepCounter;
+                    continue;
                 }
                 // *** OPEN ***
                 if (OPEN.equals(step.getState())) {
