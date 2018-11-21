@@ -5,8 +5,15 @@ import de.puettner.sikuli.dso.commands.ui.IslandCommands;
 import lombok.extern.java.Log;
 import org.sikuli.script.*;
 
+import java.awt.*;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.DataFlavor;
+
 @Log
 public class GeneralMenu extends DsoMenu {
+
+    Toolkit toolkit = Toolkit.getDefaultToolkit();
+    Clipboard clipboard = toolkit.getSystemClipboard();
 
     public GeneralMenu(Region menuRegion, IslandCommands islandCmds) {
         super(menuRegion, islandCmds);
@@ -28,6 +35,7 @@ public class GeneralMenu extends DsoMenu {
                     islandCmds.type("a", Key.CTRL);
                     islandCmds.sleep();
                     islandCmds.paste(unit.getQuantity());
+                    checkQuantity(unit.getQuantity());
                 } catch (FindFailed findFailed) {
                     throw new RuntimeException(findFailed);
                 }
@@ -55,6 +63,22 @@ public class GeneralMenu extends DsoMenu {
             islandCmds.sleepX(2);
         }
         return rv;
+    }
+
+    private void checkQuantity(int expectedQuantity) {
+        islandCmds.type("a", Key.CTRL);
+        islandCmds.sleep();
+        islandCmds.type("c", Key.CTRL);
+        String actual = null;
+        try {
+            actual = (String) clipboard.getData(DataFlavor.stringFlavor);
+            if (actual == null || !actual.equals("" + expectedQuantity)) {
+                throw new IllegalStateException(String.format("Unit quantity mismatch. expectedQuantity: %s, actual: %s",
+                        expectedQuantity, actual));
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     /**
