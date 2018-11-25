@@ -8,14 +8,14 @@ REM Loop Through Arguments Passed To Batch Script
 if "%1" NEQ "" (
   @echo Argument: %1
   if "%1" EQU "build" SET buildFlag=true
-  if "%1" EQU "standby" SET standbyFlag=true
+  if "%1" EQU "hibernate" SET hibernateFlag=true
 )
 shift
 if not "%~1" == "" goto argumentsLoop
 
 cd %START_DIR%
 
-if "%standbyFlag%" EQU "true" (
+if "%hibernateFlag%" EQU "true" (
   start sikuliStandby.cmd
 )
 if "%buildFlag%" NEQ "true" GOTO RUN
@@ -39,27 +39,31 @@ cd ../dist
 :RUN
 for %%i in (*-jar-with-dependencies.jar) DO (
   java -cp ".;./;./dso-sikuli-app.sikuli" -jar %%i firstDailyRun
-  if "%standbyFlag%" EQU "true" (
-    java -cp ".;./;./dso-sikuli-app.sikuli" -jar %%i exitDso
-  )
+  REM if "%hibernateFlag%" EQU "true" (
+  REM   java -cp ".;./;./dso-sikuli-app.sikuli" -jar %%i exitDso
+  REM )
   for /L %%k in (1, 1, 6) DO (
     echo #%%k Loop
     java -cp ".;./;./dso-sikuli-app.sikuli" -jar %%i preventScreensaver
+    if "%%k" EQU "3" (
+      java -cp ".;./;./dso-sikuli-app.sikuli" -jar %%i buildAllMines
+      beep 3
+    )
     sleep 120
   )
   
   java -cp ".;./;./dso-sikuli-app.sikuli" -jar %%i secondDailyRun
-  if "%standbyFlag%" EQU "true" (
-    java -cp ".;./;./dso-sikuli-app.sikuli" -jar %%i exitDso
-  )
+  REM if "%hibernateFlag%" EQU "true" (
+  REM   java -cp ".;./;./dso-sikuli-app.sikuli" -jar %%i exitDso
+  REM )
 )
 
 cd %START_DIR%
 REM java -jar dso-automation-0.0.1-SNAPSHOT-jar-with-dependencies.jar secondDailyRun
 
-if "%standbyFlag%" EQU "true" (
+if "%hibernateFlag%" EQU "true" (
   REM cp ../*.json . && java -cp ".;./;./dso-sikuli-app.sikuli" -jar %JAR_NAME% playBraveTailorAdventure
-  java -cp ".;./;./dso-sikuli-app.sikuli" -jar %%i exitDso
+  REM java -cp ".;./;./dso-sikuli-app.sikuli" -jar %%i exitDso
   
   shutdown -a
   ECHO 10 Sekunden bis Standby
@@ -68,3 +72,6 @@ if "%standbyFlag%" EQU "true" (
 )
 
 SET START_DIR=
+SET hibernateFlag=
+SET buildFlag=
+beep 1
