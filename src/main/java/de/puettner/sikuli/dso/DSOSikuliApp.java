@@ -111,6 +111,7 @@ public class DsoSikuliApp {
         dsoService.confirmNewQuest();
         // 10 Happy Geo / 3 Consic / 3 Normal
         GeologicLaunchs launchs = GeologicLaunchs.builder().build()
+                .add(GeologicType.Happy, EI, 1, StarMenuFilter.GEO_1)
                 .add(GeologicType.Happy, KU, 6)
                 .add(GeologicType.Happy, ST, 4)
                 .add(GeologicType.Normal, ST, 3)
@@ -128,7 +129,6 @@ public class DsoSikuliApp {
         // jetzt sollten alle Goes wieder verfügbar sein.
         launchs = GeologicLaunchs.builder().build()
                 .add(GeologicType.Happy, GO, 2, StarMenuFilter.EIGTH_PERCENT)
-                .add(GeologicType.Happy, EI, 2, StarMenuFilter.GEO_1)
                 .add(GeologicType.Happy, MA, 6, StarMenuFilter.GRANIT_GEOS)
                 .add(GeologicType.Normal, KO, 1, StarMenuFilter.GEO_2)
                 .add(GeologicType.Normal, GR, 1)
@@ -154,8 +154,9 @@ public class DsoSikuliApp {
         // Ausgangspunkt: 6 verfügbare Geos
         GeologicLaunchs launchs = GeologicLaunchs.builder().build()
                 .add(GeologicType.Happy, GR, 6, StarMenuFilter.GRANIT_GEOS)
+                .add(GeologicType.Happy, EI, 1, StarMenuFilter.GEO_1)
                 .add(GeologicType.Happy, KO, 1, StarMenuFilter.GEO_2)
-                .add(GeologicType.Happy, EI, 3)
+                .add(GeologicType.Happy, EI, 2)
                 .add(GeologicType.Conscientious, GR, 2);
         dsoService.launchGeologics(launchs);
 
