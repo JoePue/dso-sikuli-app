@@ -1,7 +1,7 @@
 {
   "adventureSteps": [
     {
-      "no": 1, "stepType": "WAIT", "state": "OPEN", "delay": 660,
+      "no": 1, "stepType": "WAIT", "state": "OPEN", "delay": 600,
       "comment": "Es stehen nur 9 Landeplätze für Genies zur Verfügung (einer wird nicht erkannt.)"
     }, {
       "no": 2, "stepType": "ALL_BACK_TO_STAR_MENU", "state": "OPEN", "delay": 0
@@ -789,6 +789,9 @@
       "no": 98, "stepType": "MOVE", "state": "OPEN",
       "general": "Veteran",
       "startNavPoint": "NP_3", "targetNavPoint": "NP_4",
+      "initialDragDropOffset": {
+        "width": 200.0, "height": 0.0
+      },
       "targetNavPointClickOffset": {
         "width": -209.0, "height": -292.0
       }
@@ -880,7 +883,10 @@
       "general": "Mary",
       "comment": "Last Move to Sector 4. ------------------------------------------------"
     }, {
-      "no": 113, "stepType": "ATTACK", "state": "OPEN",
+      "no": 113, "stepType": "UNSET_UNITS", "state": "OPEN",
+      "general": "MdK", "generalName": "MdK 3"
+    }, {
+      "no": 114, "stepType": "ATTACK", "state": "OPEN",
       "general": "Generalmajor", "generalName": "GM 2",
       "camp": "CAMP_18",
       "units": [
@@ -894,7 +900,7 @@
       ],
       "startNavPoint": "NP_4", "targetNavPoint": "NP_4"
     }, {
-      "no": 114, "stepType": "ATTACK", "state": "OPEN", "delay": 1,
+      "no": 115, "stepType": "ATTACK", "state": "OPEN", "delay": 1,
       "general": "Veteran",
       "camp": "CAMP_19",
       "units": [
@@ -907,7 +913,7 @@
         "width": 0.0, "height": 200.0
       }
     }, {
-      "no": 115, "stepType": "ATTACK", "state": "OPEN", "delay": 30,
+      "no": 116, "stepType": "ATTACK", "state": "OPEN", "delay": 30,
       "general": "Generalmajor", "generalName": "GM 1",
       "camp": "CAMP_19",
       "units": [
@@ -917,7 +923,7 @@
       ],
       "startNavPoint": "NP_4", "targetNavPoint": "NP_4"
     }, {
-      "no": 116, "stepType": "ATTACK", "state": "OPEN", "delay": 15,
+      "no": 117, "stepType": "ATTACK", "state": "OPEN", "delay": 15,
       "general": "Sensenmann", "generalName": "SM 1",
       "camp": "CAMP_20",
       "units": [
@@ -930,7 +936,7 @@
         "width": 0.0, "height": 200.0
       }
     }, {
-      "no": 117, "stepType": "ATTACK", "state": "OPEN", "delay": 30,
+      "no": 118, "stepType": "ATTACK", "state": "OPEN", "delay": 30,
       "general": "Generalmajor", "generalName": "GM 2",
       "camp": "CAMP_20",
       "units": [
@@ -942,7 +948,7 @@
       ],
       "startNavPoint": "NP_4", "targetNavPoint": "NP_4"
     }, {
-      "no": 118, "stepType": "ATTACK", "state": "OPEN", "delay": 0,
+      "no": 119, "stepType": "ATTACK", "state": "OPEN", "delay": 0,
       "general": "Sensenmann", "generalName": "SM 2",
       "camp": "CAMP_21",
       "units": [
@@ -955,7 +961,7 @@
         "width": 0.0, "height": 200.0
       }
     }, {
-      "no": 119, "stepType": "ATTACK", "state": "OPEN", "delay": 30,
+      "no": 120, "stepType": "ATTACK", "state": "OPEN", "delay": 30,
       "general": "Generalmajor", "generalName": "GM 1",
       "camp": "CAMP_21",
       "units": [
@@ -965,7 +971,7 @@
       ],
       "startNavPoint": "NP_4", "targetNavPoint": "NP_4"
     }, {
-      "no": 120, "stepType": "ATTACK", "state": "OPEN", "delay": 0,
+      "no": 121, "stepType": "ATTACK", "state": "OPEN", "delay": 0,
       "general": "Vargus",
       "camp": "CAMP_22",
       "units": [
@@ -975,7 +981,7 @@
       ],
       "startNavPoint": "NP_4", "targetNavPoint": "NP_5"
     }, {
-      "no": 121, "stepType": "ATTACK", "state": "OPEN", "delay": 0,
+      "no": 122, "stepType": "ATTACK", "state": "OPEN", "delay": 0,
       "general": "Dracul", "generalName": "Draci 1",
       "camp": "CAMP_22",
       "units": [
@@ -985,7 +991,7 @@
       ],
       "startNavPoint": "NP_4", "targetNavPoint": "NP_5"
     }, {
-      "no": 122, "stepType": "ATTACK", "state": "OPEN", "delay": 0,
+      "no": 123, "stepType": "ATTACK", "state": "OPEN", "delay": 0,
       "general": "Dracul", "generalName": "Draci 2",
       "camp": "CAMP_22",
       "units": [
@@ -995,7 +1001,7 @@
       ],
       "startNavPoint": "NP_4", "targetNavPoint": "NP_5"
     }, {
-      "no": 123, "stepType": "ATTACK", "state": "OPEN", "delay": 10,
+      "no": 124, "stepType": "ATTACK", "state": "OPEN", "delay": 10,
       "general": "Generalmajor", "generalName": "GM 2",
       "camp": "CAMP_22",
       "units": [
@@ -1009,7 +1015,7 @@
       ],
       "startNavPoint": "NP_4", "targetNavPoint": "NP_5"
     }, {
-      "no": 124, "stepType": "ATTACK", "state": "OPEN", "delay": 10,
+      "no": 125, "stepType": "ATTACK", "state": "OPEN", "delay": 10,
       "general": "Generalmajor", "generalName": "GM 1",
       "camp": "CAMP_23",
       "units": [
@@ -1019,7 +1025,7 @@
       ],
       "startNavPoint": "NP_4", "targetNavPoint": "NP_5"
     }, {
-      "no": 125, "stepType": "ATTACK", "state": "OPEN", "delay": 0,
+      "no": 126, "stepType": "ATTACK", "state": "OPEN", "delay": 0,
       "general": "MdK", "generalName": "MdK 3",
       "camp": "CAMP_24",
       "units": [
@@ -1029,7 +1035,7 @@
       ],
       "startNavPoint": "NP_4", "targetNavPoint": "NP_5"
     }, {
-      "no": 126, "stepType": "ATTACK", "state": "OPEN", "delay": 0,
+      "no": 127, "stepType": "ATTACK", "state": "OPEN", "delay": 0,
       "general": "MdK", "generalName": "MdK 4",
       "camp": "CAMP_24",
       "units": [
@@ -1039,7 +1045,7 @@
       ],
       "startNavPoint": "NP_4", "targetNavPoint": "NP_5"
     }, {
-      "no": 127, "stepType": "ATTACK", "state": "OPEN", "delay": 0,
+      "no": 128, "stepType": "ATTACK", "state": "OPEN", "delay": 0,
       "general": "MdK", "generalName": "MdK 5",
       "camp": "CAMP_24",
       "units": [
@@ -1049,7 +1055,7 @@
       ],
       "startNavPoint": "NP_4", "targetNavPoint": "NP_5"
     }, {
-      "no": 128, "stepType": "ATTACK", "state": "OPEN", "delay": 0,
+      "no": 129, "stepType": "ATTACK", "state": "OPEN", "delay": 0,
       "general": "MdK", "generalName": "MdK 6",
       "camp": "CAMP_24",
       "units": [
@@ -1059,7 +1065,7 @@
       ],
       "startNavPoint": "NP_4", "targetNavPoint": "NP_5"
     }, {
-      "no": 129, "stepType": "ATTACK", "state": "OPEN", "delay": 0,
+      "no": 130, "stepType": "ATTACK", "state": "OPEN", "delay": 0,
       "general": "MdK", "generalName": "MdK 7",
       "camp": "CAMP_24",
       "units": [
@@ -1069,7 +1075,7 @@
       ],
       "startNavPoint": "NP_4", "targetNavPoint": "NP_5"
     }, {
-      "no": 130, "stepType": "ATTACK", "state": "OPEN", "delay": 0,
+      "no": 131, "stepType": "ATTACK", "state": "OPEN", "delay": 0,
       "general": "MdK", "generalName": "MdK 8",
       "camp": "CAMP_24",
       "units": [
@@ -1079,7 +1085,7 @@
       ],
       "startNavPoint": "NP_4", "targetNavPoint": "NP_5"
     }, {
-      "no": 131, "stepType": "ATTACK", "state": "OPEN", "delay": 0,
+      "no": 132, "stepType": "ATTACK", "state": "OPEN", "delay": 0,
       "general": "Nusala",
       "camp": "CAMP_24",
       "units": [
@@ -1089,7 +1095,7 @@
       ],
       "startNavPoint": "NP_4", "targetNavPoint": "NP_5"
     }, {
-      "no": 132, "stepType": "ATTACK", "state": "OPEN", "delay": 10,
+      "no": 133, "stepType": "ATTACK", "state": "OPEN", "delay": 10,
       "general": "Anslem",
       "camp": "CAMP_24",
       "units": [
@@ -1099,7 +1105,7 @@
       ],
       "startNavPoint": "NP_4", "targetNavPoint": "NP_5"
     }, {
-      "no": 133, "stepType": "ATTACK", "state": "OPEN", "delay": 30,
+      "no": 134, "stepType": "ATTACK", "state": "OPEN", "delay": 30,
       "general": "Generalmajor", "generalName": "GM 2",
       "camp": "CAMP_24",
       "units": [
@@ -1113,7 +1119,7 @@
       ],
       "startNavPoint": "NP_4", "targetNavPoint": "NP_5"
     }, {
-      "no": 134, "stepType": "ATTACK", "state": "OPEN", "delay": 0,
+      "no": 135, "stepType": "ATTACK", "state": "OPEN", "delay": 0,
       "general": "Dracul", "generalName": "Draci 1",
       "camp": "CAMP_25",
       "units": [
@@ -1123,7 +1129,7 @@
       ],
       "startNavPoint": "NP_4", "targetNavPoint": "NP_5"
     }, {
-      "no": 135, "stepType": "ATTACK", "state": "OPEN", "delay": 0,
+      "no": 136, "stepType": "ATTACK", "state": "OPEN", "delay": 0,
       "general": "Dracul", "generalName": "Draci 2",
       "camp": "CAMP_25",
       "units": [
@@ -1133,9 +1139,12 @@
       ],
       "startNavPoint": "NP_4", "targetNavPoint": "NP_5"
     }, {
-      "no": 136, "stepType": "EXIT_DSO", "state": "OPEN"
+      "no": 137, "stepType": "EXIT_DSO", "state": "OPEN"
     }, {
-      "no": 137, "stepType": "WAIT", "state": "OPEN", "delay": 30
+      "no": 138, "stepType": "WAIT", "state": "OPEN", "delay": 30
+    }, {
+      "no": 139, "stepType": "FINISH_ACTION", "state": "OPEN",
+      "comment": "D:\\dev-tools\\sikuli\\workspace\\dso-sikuli-app-idea\\dist\\finishAction.cmd"
     }
   ]
 }
