@@ -74,18 +74,22 @@ public abstract class Adventure {
         islandCmds.typeESC();
         islandCmds.closeChat();
 
-        Set<Integer> failedStepsNo = new HashSet<>();
+        final Map<Integer, Integer> failedSteps = new HashMap<>();
         Optional<AdventureStep> step;
         while ((step = processSteps()).isPresent()) {
-            int no = step.get().getNo();
-            if (failedStepsNo.contains(no)) {
-                log.severe("Failed step already processed. no: " + no);
-                break;
-            } else {
-                log.severe("Failed step processing again. no: " + no);
+            int stepNo = step.get().getNo();
+            int failureCount = 0;
+            if (failedSteps.containsKey(stepNo)) {
+                failureCount = failedSteps.get(stepNo);
+            }
+            if (failureCount < 3) {
+                log.severe("Failed step is processing again. stepNo: " + stepNo);
+                failedSteps.put(stepNo, ++failureCount);
                 clickAssertButtons();
-                islandCmds.sleep(120, TimeUnit.SECONDS);
-                failedStepsNo.add(no);
+                islandCmds.sleep(60, TimeUnit.SECONDS);
+            } else {
+                log.severe("Failed step no longer processed. stepNo: " + stepNo);
+                break;
             }
         }
         processFinishAction();
@@ -102,13 +106,12 @@ public abstract class Adventure {
                     }
                 }
             }
-
         }
     }
 
     private void clickAssertButtons() {
         while (islandCmds.clickAssertOkButton()) {
-            //
+            // correct
         }
     }
 
@@ -127,6 +130,7 @@ public abstract class Adventure {
                 }
                 if (FINISH_ACTION.equals(step.getState())) {
                     ++processedStepCounter;
+                    supportedStep = true;
                     continue;
                 }
                 // *** OPEN ***
