@@ -11,7 +11,7 @@ public class AppEnvironmentTest {
     @Test
     public void buildWithEmptyArray() {
         String[] args = {""};
-        AppEnvironment env = AppEnvironment.Builder.build(args);
+        AppEnvironment env = AppEnvironment.getInstance();
         assertNotNull(env);
         assertTrue(env.getHomeDir().isDirectory());
     }
@@ -22,7 +22,7 @@ public class AppEnvironmentTest {
         final String DIR = "D:\\dev-tools\\sikuli\\workspace\\dso-sikuli-app-idea\\dist";
         final String[] args = {AppEnvironment.Builder.DSO_SIKULI_APP_HOME + "=" + DIR};
         // when
-        AppEnvironment env = AppEnvironment.Builder.build(args);
+        AppEnvironment env = AppEnvironment.getInstance(args);
         // then
         assertResult(DIR, env);
     }

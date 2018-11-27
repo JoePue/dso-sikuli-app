@@ -38,7 +38,7 @@ public class AppEnvironment {
         return new File(path + File.separator + filename);
     }
 
-    private static class Builder {
+    static class Builder {
         public static final String DSO_SIKULI_APP_HOME = "--configDir".toUpperCase();
 
         public static AppEnvironment build(String[] args) {
