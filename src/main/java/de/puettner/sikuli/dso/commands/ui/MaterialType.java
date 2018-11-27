@@ -9,7 +9,7 @@ public enum MaterialType {
     ST(null),
     MA(null),
     GR(null),
-    KU(criteria(criteria(pattern("copper-source-icon.png").similar(0.84f), sectors(Sector.S2, Sector.S4)))),
+    KU(criteria(criteria(pattern("copper-source-icon.png").similar(0.90f), sectors(Sector.S2, Sector.S4)))),
     EI(criteria(criteria(pattern("iron-source-icon.png").similar(0.92f), sectors(Sector.S10, Sector.S3, Sector.S4, Sector.S5, Sector.S6,
             Sector.S8, Sector.S9)))),
     TI(null),
