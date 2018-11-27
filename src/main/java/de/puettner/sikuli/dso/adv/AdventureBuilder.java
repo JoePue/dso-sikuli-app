@@ -1,6 +1,8 @@
 package de.puettner.sikuli.dso.adv;
 
+import de.puettner.sikuli.dso.AppEnvironment;
 import de.puettner.sikuli.dso.DSOServiceBuilder;
+import de.puettner.sikuli.dso.DsoSikuliApp;
 import de.puettner.sikuli.dso.commands.os.WindowsPlatform;
 import de.puettner.sikuli.dso.commands.ui.IslandCommands;
 import de.puettner.sikuli.dso.commands.ui.MenuBuilder;
@@ -12,10 +14,12 @@ public class AdventureBuilder {
     private static IslandCommands islandCmds;
     private static BraveTailorAdv braveTailorAdv;
     private final Region dsoAppRegion;
+    private final AppEnvironment appEnvironment;
     private MenuBuilder menuBuilder = MenuBuilder.build();
 
-    private AdventureBuilder(Region chromeAppRegion) {
+    private AdventureBuilder(Region chromeAppRegion, AppEnvironment appEnvironment) {
         this.dsoAppRegion = chromeAppRegion;
+        this.appEnvironment = appEnvironment;
         this.dsoAppRegion.x = chromeAppRegion.x + 10;
         this.dsoAppRegion.y = chromeAppRegion.y + 115;
         this.dsoAppRegion.w = chromeAppRegion.w - 40;
@@ -25,7 +29,7 @@ public class AdventureBuilder {
     public static AdventureBuilder build() {
         if (advBuilder == null) {
             WindowsPlatform platformCmds = new WindowsPlatform();
-            advBuilder = new AdventureBuilder(platformCmds.getDsoBrowserDimension().getRegion());
+            advBuilder = new AdventureBuilder(platformCmds.getDsoBrowserDimension().getRegion(), DsoSikuliApp.appEnvironment);
         }
         return advBuilder;
     }
@@ -33,7 +37,7 @@ public class AdventureBuilder {
     public BraveTailorAdv buildBraveTailorAdv() {
         if (braveTailorAdv == null) {
             braveTailorAdv = new BraveTailorAdv(menuBuilder.buildIslandCommand(), menuBuilder.buildStarMenuCommands(), DSOServiceBuilder
-                    .build());
+                    .build(), appEnvironment);
         }
         return braveTailorAdv;
     }

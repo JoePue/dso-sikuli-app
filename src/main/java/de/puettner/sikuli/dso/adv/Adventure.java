@@ -3,6 +3,7 @@ package de.puettner.sikuli.dso.adv;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.module.SimpleModule;
+import de.puettner.sikuli.dso.AppEnvironment;
 import de.puettner.sikuli.dso.DSOService;
 import de.puettner.sikuli.dso.LocationMath;
 import de.puettner.sikuli.dso.commands.ui.IslandCommands;
@@ -36,16 +37,18 @@ public abstract class Adventure {
     protected final List<NavigationPoint> navPoints = new ArrayList<>();
     private final StarMenu starMenu;
     private final DSOService dsoService;
+    private final AppEnvironment appEnvironment;
     protected List<AdventureStep> adventureSteps = new ArrayList<>();
     protected IslandCommands islandCmds;
     protected GeneralMenu generalMenu;
 
-    protected Adventure(IslandCommands islandCmds, StarMenu starMenu, DSOService dsoService) {
+    protected Adventure(IslandCommands islandCmds, StarMenu starMenu, DSOService dsoService, AppEnvironment appEnvironment) {
         this.islandCmds = islandCmds;
         this.starMenu = starMenu;
         this.generalMenu = MenuBuilder.build().buildGeneralMenu();
         this.region = islandCmds.getIslandRegion();
         this.dsoService = dsoService;
+        this.appEnvironment = appEnvironment;
 
         this.fillNavigationPointsList();
 

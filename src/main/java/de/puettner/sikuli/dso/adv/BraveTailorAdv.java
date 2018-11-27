@@ -1,5 +1,6 @@
 package de.puettner.sikuli.dso.adv;
 
+import de.puettner.sikuli.dso.AppEnvironment;
 import de.puettner.sikuli.dso.DSOService;
 import de.puettner.sikuli.dso.commands.ui.IslandCommands;
 import de.puettner.sikuli.dso.commands.ui.StarMenu;
@@ -18,13 +19,14 @@ import java.util.Objects;
 @Log
 public class BraveTailorAdv extends Adventure {
 
-    public static final File stateFile = new File("brave-tailor-adventure.json");
+    public final File stateFile;
 
     /**
      * C'tor
      */
-    protected BraveTailorAdv(IslandCommands islandCmds, StarMenu starMenu, DSOService dsoService) {
-        super(islandCmds, starMenu, dsoService);
+    protected BraveTailorAdv(IslandCommands islandCmds, StarMenu starMenu, DSOService dsoService, AppEnvironment appEnvironment) {
+        super(islandCmds, starMenu, dsoService, appEnvironment);
+        this.stateFile = AppEnvironment.getInstance().appendFilename("brave-tailor-adventure.json");
     }
 
     @Override
