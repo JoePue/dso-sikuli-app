@@ -1,5 +1,6 @@
 @ECHO OFF
-TITLE dso_1-sikuli-idea
+TITLE %~nx0
+pause
 CLS
 SET START_DIR=D:\sikuli\workspace\dso_1-sikuli-idea\dist
 
