@@ -16,7 +16,11 @@ import static de.puettner.sikuli.dso.commands.ui.MaterialType.*;
 @Log
 public class AppArgumentProcessor {
 
-    public AppEnvironment appEnvironment;
+    public final AppEnvironment appEnvironment;
+
+    public AppArgumentProcessor() {
+        this.appEnvironment = AppEnvironment.getInstance();
+    }
 
     /*
      * *** Inventar ***                 *** Vorkommen ***

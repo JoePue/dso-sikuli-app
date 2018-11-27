@@ -2,7 +2,6 @@ package de.puettner.sikuli.dso.adv;
 
 import de.puettner.sikuli.dso.AppEnvironment;
 import de.puettner.sikuli.dso.DSOServiceBuilder;
-import de.puettner.sikuli.dso.DsoSikuliApp;
 import de.puettner.sikuli.dso.commands.os.WindowsPlatform;
 import de.puettner.sikuli.dso.commands.ui.IslandCommands;
 import de.puettner.sikuli.dso.commands.ui.MenuBuilder;
@@ -29,7 +28,7 @@ public class AdventureBuilder {
     public static AdventureBuilder build() {
         if (advBuilder == null) {
             WindowsPlatform platformCmds = new WindowsPlatform();
-            advBuilder = new AdventureBuilder(platformCmds.getDsoBrowserDimension().getRegion(), DsoSikuliApp.appEnvironment);
+            advBuilder = new AdventureBuilder(platformCmds.getDsoBrowserDimension().getRegion(), AppEnvironment.getInstance());
         }
         return advBuilder;
     }
