@@ -1,7 +1,6 @@
 package de.puettner.sikuli.dso;
 
 import de.puettner.sikuli.dso.commands.ui.MaterialType;
-import de.puettner.sikuli.dso.commands.ui.Sector;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -22,18 +21,11 @@ public class DSOServiceTest extends BaseServiceTest {
     @Test
     public void buildAllMines() {
         dsoService.buildAllMines(true);
-        dsoService.exitDso();
     }
 
     @Test
     public void findAllCollectables() {
         dsoService.findAllCollectables();
-    }
-
-    @Test
-    public void goToSector() {
-        dsoService.goToSector(Sector.S1);
-        dsoService.goToSector(Sector.S10);
     }
 
     @Test
@@ -138,11 +130,6 @@ public class DSOServiceTest extends BaseServiceTest {
     @Test
     public void closeChat() {
         dsoService.closeChat();
-    }
-
-    @Test
-    public void visitAllSectors() {
-        dsoService.visitAllSectors();
     }
 
     @Test

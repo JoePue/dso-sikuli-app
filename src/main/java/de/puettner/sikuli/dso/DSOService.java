@@ -26,6 +26,7 @@ public class DSOService {
     private final BuildQueueMenu buildQueueMenu;
     private final QuestBookMenu questBookCmds;
     private final MessageBoxMenu messageboxMenu;
+    private final SectorService sectorService;
 
 
     DSOService(WindowsPlatform winCommand, IslandCommands islandCmds, BuildMenu buildMenu, StarMenu starMenu,
@@ -39,6 +40,7 @@ public class DSOService {
         this.buildQueueMenu = buildQueueMenu;
         this.questBookCmds = questBookCmds;
         this.messageboxMenu = messageboxMenu;
+        this.sectorService = new SectorService(islandCmds);
     }
 
     public void startDsoApp() {
@@ -100,32 +102,6 @@ public class DSOService {
         return rv;
     }
 
-    public void visitAllSectors() {
-        log.info("visitAllSectors()");
-        for (Sector sector : Sector.values()) {
-            this.goToSector(sector);
-        }
-        goToSector(Sector.S1);
-    }
-
-    void goToSector(Sector sector) {
-        log.info("goToSector() " + sector);
-        int i = sector.index();
-        if (i >= 0 && i <= 9) {
-            islandCmds.type(i);
-        } else {
-            islandCmds.type(i - 9);
-            if (i >= 10 && i <= 12) {
-                islandCmds.dragDrop(300, 750);
-            }
-        }
-        this.sleepX(2);
-    }
-
-    void sleepX(int ms) {
-        islandCmds.sleepX(ms);
-    }
-
     public boolean solveDailyQuest() {
         log.info("solveDailyQuest");
         boolean rv = false;
@@ -179,7 +155,7 @@ public class DSOService {
         log.info("findAllCollectables");
         Sector[] sectors = Sector.valuesFromS1ToS9();
         for (Sector sector : sectors) {
-            this.goToSector(sector);
+            sectorService.goToSector(sector);
             islandCmds.parkMouse();
             clickCollectables();
             if (Sector.S3.equals(sector)) {
@@ -189,14 +165,12 @@ public class DSOService {
                 islandCmds.dragDrop(0, -200);
                 islandCmds.parkMouse();
                 clickCollectables();
-            }
-            if (Sector.S6.equals(sector)) {
+            } else if (Sector.S6.equals(sector)) {
                 islandCmds.dragDrop(200, 0);
                 islandCmds.parkMouse();
                 clickCollectables();
-            }
-            if (Sector.S9.equals(sector)) {
-                islandCmds.dragDrop(400, 0);
+            } else if (Sector.S2.equals(sector)) {
+                islandCmds.dragDrop(0, 200);
                 islandCmds.parkMouse();
                 clickCollectables();
             }
@@ -246,7 +220,8 @@ public class DSOService {
             } else {
                 throw new IllegalArgumentException("Unknown stepType: " + launch);
             }
-            launchCount += starMenu.launchAllGeologicsByImage(starMenuButton, launch.getMaterial(), launch.getLaunchLimit(), launch.getFilter());
+            launchCount += starMenu.launchAllGeologicsByImage(starMenuButton, launch.getMaterial(), launch.getLaunchLimit(), launch
+                    .getFilter());
         }
         islandCmds.typeESC();
         islandCmds.sleep();
@@ -266,7 +241,7 @@ public class DSOService {
 
     public boolean prepareStarMenu(StarMenuFilter filter) {
         log.info("prepareStarMenu() filter: " + filter);
-        this.goToSector(Sector.S1);
+        sectorService.goToSector(Sector.S1);
         boolean rv = starMenu.openStarMenu(Optional.of(filter));
         if (rv) {
             islandCmds.sleep();
@@ -287,7 +262,7 @@ public class DSOService {
     public void fetchBookbinderItem() {
         log.info("fetchBookbinderItem");
         islandCmds.parkMouse();
-        this.goToSector(Sector.S3);
+        sectorService.goToSector(Sector.S3);
         if (islandCmds.clickBookbinderBuilding()) {
             islandCmds.sleepX(4);
             if (islandCmds.clickBigOkButton()) {
@@ -303,7 +278,7 @@ public class DSOService {
         islandCmds.parkMouse();
         islandCmds.typeESC();
         islandCmds.sleep();
-        this.goToSector(Sector.S1);
+        sectorService.goToSector(Sector.S1);
     }
 
     public void exitDso() {
@@ -313,75 +288,8 @@ public class DSOService {
         sleepX(10);
     }
 
-    private int buildMines(int limit, MaterialType material, BuildMenuButtons mineButton) {
-        log.info("buildMines() limit: " + limit + ", material: " + material);
-
-        int buildCount = 0;
-        boolean isBuildMenuPrepared = false;
-        islandCmds.parkMouse();
-        outerloop:
-        for (int i = 0; i < material.msl.length; ++i) {
-            MaterialSector sourceSector = material.msl[i];
-            for (Sector sector : sourceSector.sectors) {
-                goToSector(sector);
-                islandCmds.parkMouse();
-                Iterator<Match> matches = islandCmds.findAll(sourceSector.pattern);
-                if (matches != null) {
-                    // we have found a material source icon
-                    while (matches.hasNext()) {
-                        if (buildCount >= limit) {
-                            log.info("limit of builds exceeded");
-                            break outerloop;
-                        }
-                        islandCmds.typeESC();
-                        if (!starMenu.openBuildMenu()) {
-                            log.severe("Cancel build");
-                            break outerloop;
-                        }
-                        if (!isBuildMenuPrepared) {
-                            if (!buildMenu.prepareBuildMenuTab(mineButton.tab)) {
-                                log.fine("Maybe menu is already prepared");
-                            }
-                            islandCmds.parkMouse();
-                            isBuildMenuPrepared = true;
-                        }
-                        if (!buildMenu.buildMine(matches.next(), mineButton)) {
-                            log.info("build of mine was not successful");
-                            break outerloop;
-                        }
-                        islandCmds.parkMouse();
-                        if (!islandCmds.clickBuildCancelButton()) {
-                            ++buildCount;
-                        }
-                    }
-                }
-            }
-            islandCmds.clickBuildCancelButton();
-            islandCmds.typeESC();
-        }
-        islandCmds.typeESC();
-        return buildCount;
-    }
-
-    public int buildCopperMines(int limit) {
-        log.info("buildCopperMines()");
-        return this.buildMines(limit, MaterialType.KU, BuildMenuButtons.CopperMineButton);
-    }
-
-    public int buildIronMines(int limit) {
-        log.info("buildIronMines()");
-        return this.buildMines(limit, MaterialType.EI, BuildMenuButtons.IronMineButton);
-    }
-
-    public int buildGoldMines(int limit) {
-        log.info("buildGoldMines()");
-        int buildCount = this.buildMines(limit, MaterialType.GO, BuildMenuButtons.GoldMineButton);
-        return buildCount;
-    }
-
-    public int buildColeMines(int limit) {
-        log.info("buildColeMines()");
-        return this.buildMines(limit, MaterialType.KO, BuildMenuButtons.ColeMineButton);
+    void sleepX(int ms) {
+        islandCmds.sleepX(ms);
     }
 
     public int getBuildQueueSize() {
@@ -422,6 +330,77 @@ public class DSOService {
                 return;
             }
         }
+    }
+
+    public int buildGoldMines(int limit) {
+        log.info("buildGoldMines()");
+        int buildCount = this.buildMines(limit, MaterialType.GO, BuildMenuButtons.GoldMineButton);
+        return buildCount;
+    }
+
+    public int buildColeMines(int limit) {
+        log.info("buildColeMines()");
+        return this.buildMines(limit, MaterialType.KO, BuildMenuButtons.ColeMineButton);
+    }
+
+    public int buildIronMines(int limit) {
+        log.info("buildIronMines()");
+        return this.buildMines(limit, MaterialType.EI, BuildMenuButtons.IronMineButton);
+    }
+
+    public int buildCopperMines(int limit) {
+        log.info("buildCopperMines()");
+        return this.buildMines(limit, MaterialType.KU, BuildMenuButtons.CopperMineButton);
+    }
+
+    private int buildMines(int limit, MaterialType material, BuildMenuButtons mineButton) {
+        log.info("buildMines() limit: " + limit + ", material: " + material);
+
+        int buildCount = 0;
+        boolean isBuildMenuPrepared = false;
+        islandCmds.parkMouse();
+        outerloop:
+        for (int i = 0; i < material.msl.length; ++i) {
+            MaterialSector sourceSector = material.msl[i];
+            for (Sector sector : sourceSector.sectors) {
+                sectorService.goToSector(sector, material);
+                islandCmds.parkMouse();
+                Iterator<Match> matches = islandCmds.findAll(sourceSector.pattern);
+                if (matches != null) {
+                    // we have found a material source icon
+                    while (matches.hasNext()) {
+                        if (buildCount >= limit) {
+                            log.info("limit of builds exceeded");
+                            break outerloop;
+                        }
+                        islandCmds.typeESC();
+                        if (!starMenu.openBuildMenu()) {
+                            log.severe("Cancel build");
+                            break outerloop;
+                        }
+                        if (!isBuildMenuPrepared) {
+                            if (!buildMenu.prepareBuildMenuTab(mineButton.tab)) {
+                                log.fine("Maybe menu is already prepared");
+                            }
+                            islandCmds.parkMouse();
+                            isBuildMenuPrepared = true;
+                        }
+                        if (!buildMenu.buildMine(matches.next(), mineButton)) {
+                            log.info("build of mine was not successful");
+                            break outerloop;
+                        }
+                        islandCmds.parkMouse();
+                        if (!islandCmds.clickBuildCancelButton()) {
+                            ++buildCount;
+                        }
+                    }
+                }
+            }
+            islandCmds.clickBuildCancelButton();
+            islandCmds.typeESC();
+        }
+        islandCmds.typeESC();
+        return buildCount;
     }
 
     public void highlightRegions() {
