@@ -5,22 +5,17 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 import de.puettner.sikuli.dso.AppEnvironment;
 import de.puettner.sikuli.dso.DSOService;
-import de.puettner.sikuli.dso.LocationMath;
 import de.puettner.sikuli.dso.commands.ui.IslandCommands;
 import de.puettner.sikuli.dso.commands.ui.MenuBuilder;
 import de.puettner.sikuli.dso.commands.ui.StarMenu;
 import de.puettner.sikuli.dso.commands.ui.StarMenuFilter;
 import lombok.extern.java.Log;
-import org.sikuli.script.Location;
 import org.sikuli.script.Match;
 import org.sikuli.script.Region;
 
-import javax.annotation.Nullable;
-import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.util.*;
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 
@@ -34,23 +29,25 @@ public abstract class Adventure {
 
     private static final ObjectMapper objectMapper = new ObjectMapper();
     protected final Region region;
-    protected final List<NavigationPoint> navPoints = new ArrayList<>();
     private final StarMenu starMenu;
     private final DSOService dsoService;
     private final AppEnvironment appEnvironment;
+    private final AdventureRouter adventureRouter;
     protected List<AdventureStep> adventureSteps = new ArrayList<>();
     protected IslandCommands islandCmds;
     protected GeneralMenu generalMenu;
 
-    protected Adventure(IslandCommands islandCmds, StarMenu starMenu, DSOService dsoService, AppEnvironment appEnvironment) {
+    protected Adventure(IslandCommands islandCmds, StarMenu starMenu, DSOService dsoService, AppEnvironment appEnvironment,
+                        AdventureRouter adventureRouter) {
         this.islandCmds = islandCmds;
         this.starMenu = starMenu;
         this.generalMenu = MenuBuilder.build().buildGeneralMenu();
         this.region = islandCmds.getIslandRegion();
         this.dsoService = dsoService;
         this.appEnvironment = appEnvironment;
+        this.adventureRouter = adventureRouter;
 
-        this.fillNavigationPointsList();
+        adventureRouter.fillNavigationPointsList();
 
         SimpleModule module = new SimpleModule();
         module.addDeserializer(AttackCamp.class, new AttackCampDeserializer());
@@ -58,21 +55,12 @@ public abstract class Adventure {
         objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
     }
 
-    protected abstract void fillNavigationPointsList();
-
-    public abstract void route(NavigationPoint startingPoint, NavigationPoint targetPoint, Dimension targetDragDropOffset, Dimension
-            targetNavPointClickOffset);
-
-    public abstract void routeCheck();
-
-    public abstract List<NavigationPoint> getNavigationPoints();
-
     protected abstract File getFilename();
 
     public void play() {
         log.info("play");
         this.restoreState();
-        this.routeCheck();
+        adventureRouter.routeCheck(adventureSteps);
         this.initZoom();
         islandCmds.typeESC();
         islandCmds.closeChat();
@@ -272,8 +260,8 @@ public abstract class Adventure {
 
     private boolean processLandStep(AdventureStep step) {
         log.info("processLandStep");
-        route(whereIam(), getFirstNavigationPoint(), null, null);
-        centerNavigationPoint(getFirstNavigationPoint());
+        adventureRouter.route(adventureRouter.whereIam(), getFirstNavigationPoint(), null, null);
+        adventureRouter.centerNavigationPoint(getFirstNavigationPoint());
         boolean rv = false;
         if (this.openGeneralMenu(step.getGeneral(), step.getGeneralName())) {
             islandCmds.sleep();
@@ -305,7 +293,7 @@ public abstract class Adventure {
 
     public boolean processAllGeneralsBackToStarMenuStep() {
         log.info("processAllGeneralsBackToStarMenuStep");
-        centerNavigationPoint(getFirstNavigationPoint());
+        adventureRouter.centerNavigationPoint(getFirstNavigationPoint());
         islandCmds.parkMouse();
         List<Match> matchList;
         int maxLoop = 3, loopCounter = 0;
@@ -398,7 +386,7 @@ public abstract class Adventure {
         if (openGeneralMenu(step.getGeneral(), step.getGeneralName())) {
             if (clickAttackButton()) {
                 islandCmds.sleep();
-                moveToCamp(step.getStartNavPoint(), step.getTargetNavPoint(), step.getTargetDragDropOffset(), step
+                adventureRouter.moveToCamp(step.getStartNavPoint(), step.getTargetNavPoint(), step.getTargetDragDropOffset(), step
                         .getInitialDragDropOffset());
                 if (clickAttackCamp(step.getCamp())) {
                     islandCmds.sleepX(2);
@@ -508,81 +496,8 @@ public abstract class Adventure {
         return rv;
     }
 
-    protected boolean centerNavigationPoint(NavigationPoint navPoint) {
-        return centerNavigationPoint(navPoint, null, null);
-    }
-
-    protected boolean centerNavigationPoint(NavigationPoint navPoint, @Nullable Dimension targetDragDropOffset, @Nullable Dimension
-            targetClickOffset) {
-        log.info("centerNavigationPoint() navPoint: " + navPoint);
-        boolean rv = false;
-        islandCmds.parkMouseForMove();
-        Match match = findNavPoint(navPoint);
-        if (match != null) {
-            Location navPointLocation = getNavPointLocation(match);
-            Location regionCenterLocation = getMidpoint();
-            Dimension dimension = new Dimension(navPointLocation.x - regionCenterLocation.x, navPointLocation.y - regionCenterLocation.y);
-            if (targetDragDropOffset != null) {
-                log.info("targetDragDropOffset: " + targetDragDropOffset);
-                dimension.width = dimension.width + targetDragDropOffset.width;
-                dimension.height = dimension.height + targetDragDropOffset.height;
-            }
-            islandCmds.dragDrop(dimension);
-            if (targetClickOffset != null) {
-                match = findNavPoint(navPoint);
-                navPointLocation = getNavPointLocation(match);
-                log.info("targetClickOffset: " + targetClickOffset);
-                Location clickLocation = new Location(navPointLocation.x + targetClickOffset.width, navPointLocation.y +
-                        targetClickOffset.height);
-                islandCmds.hover(clickLocation);
-                islandCmds.doubleClick(clickLocation);
-            }
-            rv = true;
-        } else {
-            throw new IllegalStateException("Navigation point not found");
-        }
-        return rv;
-    }
-
-    private Match findNavPoint(NavigationPoint navPoint) {
-        Match match;
-        // Nach DragDrop muss erneut gesucht werden.
-        islandCmds.parkMouseInLeftUpperCorner();
-        match = islandCmds.find(navPoint.getPattern(), region);
-        if (match == null) {
-            islandCmds.parkMouseInLeftLowerCorner();
-            match = islandCmds.find(navPoint.getPattern(), region);
-        }
-        if (match == null) {
-            islandCmds.parkMouseInRightLowerCorner();
-            match = islandCmds.find(navPoint.getPattern(), region);
-        }
-        if (match == null) {
-            islandCmds.parkMouseInRightUpperCorner();
-            match = islandCmds.find(navPoint.getPattern(), region);
-        }
-
-        log.info("match: " + match);
-        if (match == null) {
-            throw new IllegalStateException();
-        }
-        return match;
-    }
-
-
-    private Location getNavPointLocation(Match match) {
-        Location navPointLocation = new Location(match.x, match.y);
-        navPointLocation.x = match.x + (match.w / 2);
-        navPointLocation.y = match.y + (match.h / 2);
-        return navPointLocation;
-    }
-
     public void hoverRegionCenter() {
-        islandCmds.hover(getMidpoint());
-    }
-
-    protected Location getMidpoint() {
-        return LocationMath.getMidpointLocation(region);
+        islandCmds.hover(adventureRouter.getMidpoint());
     }
 
     /**
@@ -623,72 +538,6 @@ public abstract class Adventure {
         return match;
     }
 
-    /**
-     * This method assumes a General in Attack-Mode.
-     *
-     * @param startNavPoint Startpunkt
-     * @param targetNavPoint Zielpunkt
-     * @param targetDragDropOffset
-     * @param initialDragDropOffset Darf null sein, zum initialen verschieben hin zum Start NavPoint
-     */
-    protected void moveToCamp(NavigationPoint startNavPoint, NavigationPoint targetNavPoint, Dimension targetDragDropOffset, Dimension initialDragDropOffset) {
-        Objects.requireNonNull(startNavPoint, "Missing startNavPoint");
-        Objects.requireNonNull(targetNavPoint, "Missing targetNavPoint");
-
-        if (initialDragDropOffset != null) {
-            islandCmds.dragDrop(initialDragDropOffset);
-        }
-        NavigationPoint currentNavPoint = whereIam();
-        Objects.requireNonNull(currentNavPoint, "Failed to identify starting point");
-
-        if (!startNavPoint.equals(currentNavPoint)) {
-            log.info("Go to expectedStartNavPoint ");
-            route(currentNavPoint, startNavPoint, null, null);
-            currentNavPoint = whereIam();
-        }
-        if (!startNavPoint.equals(currentNavPoint)) {
-            throw new IllegalStateException("Required starting navigation point not given. expectedStartNavPoint:" +
-                    startNavPoint + ", currentNavPoint: " + currentNavPoint);
-        }
-        route(currentNavPoint, targetNavPoint, targetDragDropOffset, null);
-    }
-
-    NavigationPoint whereIam() {
-        log.info("whereIam");
-        List<NavigationPoint> navPoints = getNavigationPoints();
-        Match match = null;
-        islandCmds.parkMouseInLeftUpperCorner();
-        NavigationPoint navPoint = findCurrentNavPointOnScreen(navPoints);
-        if (navPoint == null) {
-            islandCmds.parkMouseInLeftLowerCorner();
-            navPoint = findCurrentNavPointOnScreen(navPoints);
-        }
-        if (navPoint == null) {
-            islandCmds.parkMouseInRightUpperCorner();
-            navPoint = findCurrentNavPointOnScreen(navPoints);
-        }
-        if (navPoint == null) {
-            islandCmds.parkMouseInRightLowerCorner();
-            navPoint = findCurrentNavPointOnScreen(navPoints);
-        }
-        if (navPoint == null) {
-            throw new IllegalStateException("The current position is unknown.");
-        }
-        return navPoint;
-    }
-
-    private NavigationPoint findCurrentNavPointOnScreen(List<NavigationPoint> navPoints) {
-        log.info("findCurrentNavPointOnScreen()");
-        Match match;
-        for (NavigationPoint navPoint : navPoints) {
-            match = islandCmds.find(navPoint.getPattern(), region);
-            if (match != null) {
-                return navPoint;
-            }
-        }
-        return null;
-    }
-
     void processMoveStep(AdventureStep step) {
         log.info("processMoveStep()");
         GeneralType general = step.getGeneral();
@@ -701,7 +550,7 @@ public abstract class Adventure {
                 if (step.getInitialDragDropOffset() != null) {
                     islandCmds.dragDrop(step.getInitialDragDropOffset());
                 }
-                route(step.getStartNavPoint(), step.getTargetNavPoint(), step.getTargetDragDropOffset(), step
+                adventureRouter.route(step.getStartNavPoint(), step.getTargetNavPoint(), step.getTargetDragDropOffset(), step
                         .getTargetNavPointClickOffset());
                 islandCmds.sleepX(1);
             } else {

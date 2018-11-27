@@ -8,7 +8,7 @@ import org.junit.Before;
 public class MenuTest {
 
     protected final SikuliCommands sikuliCmd = MenuBuilder.build().buildIslandCommand();
-    protected final IslandCommands islandCmds = MenuBuilder.build().buildIslandCommand();
+    protected IslandCommands islandCmds = MenuBuilder.build().buildIslandCommand();
 
     @Before
     public void before() {
