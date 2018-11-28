@@ -7,11 +7,11 @@ import static de.puettner.sikuli.dso.commands.ui.SikuliCommands.pattern;
 
 public enum GeneralMenuButton implements MenuButton {
 
-    Move(pattern("General-Move-Button.png").similar(0.90)),
-    Attack(pattern("General-Attack-Button.png").similar(0.95)),
-    ReleaseUnits(pattern("General-ReleaseUnits-Button.png").similar(0.90)),
-    PutBackToStarMenu(pattern("General-PutBackToStarMenu-Button.png").similar(0.90)),
-    RookieIcon(pattern("Armee-Rekruten.png").similar(0.90).targetOffset(10, 10));
+    Move(pattern("General-Move-Button.png").similar(0.90f)),
+    Attack(pattern("General-Attack-Button.png").similar(0.95f)),
+    ReleaseUnits(pattern("General-ReleaseUnits-Button.png").similar(0.90f)),
+    PutBackToStarMenu(pattern("General-PutBackToStarMenu-Button.png").similar(0.90f)),
+    RookieIcon(pattern("Armee-Rekruten.png").similar(0.90f).targetOffset(10, 10));
 
     public final Pattern pattern;
 

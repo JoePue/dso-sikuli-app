@@ -6,19 +6,19 @@ import org.sikuli.script.Pattern;
 import static de.puettner.sikuli.dso.commands.ui.SikuliCommands.pattern;
 
 public enum GeneralType implements MenuButton {
-    Anslem(pattern("Anslem.png").similar(0.98)),
-    Nusala(pattern("Nusala.png").similar(0.98)),
-    Vargus(pattern("Vargus.png").similar(0.90)),
-    Dracul(pattern("Dracul.png").similar(0.90)),
-    Generalmajor(pattern("Generalmajor.png").similar(0.98)),
-    MdK(pattern("MdK.png").similar(0.98)),
-    Mary(pattern("Mary.png").similar(0.98)),
-    Veteran(pattern("Veteran.png").similar(0.98)),
-    Sensenmann(pattern("Sensenmann.png").similar(0.98)),
-    Kampfgestaehlte(pattern("Kampfgestaehlte.png").similar(0.98)),
-    Verteidigungsmeister(pattern("Verteidigungsmeister.png").similar(0.98)),
-    Taverni(pattern("TavernenGeneral.png").similar(0.98)),
-    Sani(pattern("SaniGeneral.png").similar(0.98));;
+    Anslem(pattern("Anslem.png").similar(0.98f)),
+    Nusala(pattern("Nusala.png").similar(0.98f)),
+    Vargus(pattern("Vargus.png").similar(0.90f)),
+    Dracul(pattern("Dracul.png").similar(0.90f)),
+    Generalmajor(pattern("Generalmajor.png").similar(0.98f)),
+    MdK(pattern("MdK.png").similar(0.98f)),
+    Mary(pattern("Mary.png").similar(0.98f)),
+    Veteran(pattern("Veteran.png").similar(0.98f)),
+    Sensenmann(pattern("Sensenmann.png").similar(0.98f)),
+    Kampfgestaehlte(pattern("Kampfgestaehlte.png").similar(0.98f)),
+    Verteidigungsmeister(pattern("Verteidigungsmeister.png").similar(0.98f)),
+    Taverni(pattern("TavernenGeneral.png").similar(0.98f)),
+    Sani(pattern("SaniGeneral.png").similar(0.98f));
 
     public final Pattern pattern;
 

@@ -1,11 +1,11 @@
 package de.puettner.sikuli.dso;
 
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.java.Log;
 import org.junit.Test;
 import org.sikuli.script.Match;
 import org.sikuli.script.Region;
 
-@Slf4j
+@Log
 public class AppMathTest {
 
     private AppMath appMath = new AppMath();

@@ -3,11 +3,11 @@ package de.puettner.sikuli.dso;
 import de.puettner.sikuli.dso.commands.ui.MaterialType;
 import de.puettner.sikuli.dso.commands.ui.Sector;
 import de.puettner.sikuli.dso.commands.ui.SikuliCommands;
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.java.Log;
 
 import java.awt.*;
 
-@Slf4j
+@Log
 public class SectorService {
 
     private final SikuliCommands islandCmds;

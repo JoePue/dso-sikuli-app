@@ -10,7 +10,7 @@ public enum OkButton implements MenuButton {
     BIG_OK(pattern("Ok-Button-1.png").exact()),
     LOGIN_OK(pattern("Ok-Button-2.png")),
     BOOKBINDER_OK(pattern("Ok-Button-3-Bookbinder.png")),
-    ASSERT_OK(pattern("Assert-Ok-Button-.png.png").similar(0.95));
+    ASSERT_OK(pattern("Assert-Ok-Button-.png.png").similar(0.95f));
 
     public final Pattern pattern;
 

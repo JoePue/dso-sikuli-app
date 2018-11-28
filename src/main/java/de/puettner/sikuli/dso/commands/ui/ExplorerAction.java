@@ -6,7 +6,7 @@ import static de.puettner.sikuli.dso.commands.ui.SikuliCommands.pattern;
 
 public enum ExplorerAction implements MenuButton {
     TreasureSearch(pattern("TreasureFind-icon.png").targetOffset(49, -1)),
-    AdventureSearch(pattern("AdventureSearch-icon.png").similar(0.90).targetOffset(4, -20));
+    AdventureSearch(pattern("AdventureSearch-icon.png").similar(0.90f).targetOffset(4, -20));
 
     /** pattern of camp */
     private final Pattern pattern;

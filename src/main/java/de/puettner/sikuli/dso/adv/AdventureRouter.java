@@ -2,7 +2,7 @@ package de.puettner.sikuli.dso.adv;
 
 import de.puettner.sikuli.dso.LocationMath;
 import de.puettner.sikuli.dso.commands.ui.IslandCommands;
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.java.Log;
 import org.sikuli.script.Location;
 import org.sikuli.script.Match;
 import org.sikuli.script.Region;
@@ -12,7 +12,7 @@ import java.awt.*;
 import java.util.List;
 import java.util.Objects;
 
-@Slf4j
+@Log
 public abstract class AdventureRouter {
 
     protected final IslandCommands islandCmds;

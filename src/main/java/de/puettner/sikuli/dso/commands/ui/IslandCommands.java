@@ -154,7 +154,7 @@ public class IslandCommands extends SikuliCommands {
     }
 
     public boolean closeChat() {
-        return clickIfExists(pattern("Chat-Close-Icon.png").similar(0.95).targetOffset(0, -8), appRegion);
+        return clickIfExists(pattern("Chat-Close-Icon.png").similar(0.95f).targetOffset(0, -8), appRegion);
     }
 
     public Region getIslandRegion() {

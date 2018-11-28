@@ -4,7 +4,6 @@ import de.puettner.sikuli.dso.commands.os.WindowsPlatform;
 import de.puettner.sikuli.dso.commands.ui.*;
 import lombok.extern.java.Log;
 import org.sikuli.script.Match;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.*;
 
@@ -46,7 +45,7 @@ public class DSOService {
     public void startDsoApp() {
         log.info("startDsoApp");
         if (!winCommand.isDsoBrowserRunning()) {
-            throw new NotImplementedException();
+            throw new IllegalStateException("Not implemented");
         }
         focusBrowser();
         islandCmds.clickDsoTab();

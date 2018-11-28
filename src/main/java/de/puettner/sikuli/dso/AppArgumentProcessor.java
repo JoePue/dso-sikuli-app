@@ -7,8 +7,6 @@ import de.puettner.sikuli.dso.commands.ui.StarMenuFilter;
 import lombok.extern.java.Log;
 import org.sikuli.basics.Settings;
 
-import java.util.logging.Level;
-
 import static de.puettner.sikuli.dso.commands.ui.MaterialType.*;
 
 // TODO Logging konfigurieren / fachliches Logging def. / Log-File
@@ -31,6 +29,7 @@ public class AppArgumentProcessor {
      */
     public void process(String[] args) {
         log.info("process()");
+        logArgs(args);
         WindowsPlatform platform = new WindowsPlatform();
         logSettings();
         MenuBuilder menuBuilder = MenuBuilder.build();
@@ -91,7 +90,7 @@ public class AppArgumentProcessor {
                 } else if ("playBraveTailorAdventure".equals(arg)) {
                     AdventureBuilder.build().buildBraveTailorAdv().play();
                 } else {
-                    log.log(Level.WARNING, "Unknown argument: " + arg);
+                    log.fine("Unknown argument: " + arg);
                 }
             }
         } catch (Exception e) {
@@ -100,6 +99,13 @@ public class AppArgumentProcessor {
             log.info("App ends normally.");
             // Currently some Sikuli-Threads prevent termination of the java process
             System.exit(0);
+        }
+    }
+
+    private void logArgs(String[] args) {
+        log.fine("args.length: " + args.length);
+        for (String arg : args) {
+            log.fine("[argument] " + arg);
         }
     }
 

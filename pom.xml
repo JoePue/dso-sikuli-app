@@ -5,6 +5,11 @@
     <artifactId>dso-automation</artifactId>
     <version>0.0.2-SNAPSHOT</version>
 
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
     <repositories>
         <repository>
             <!-- OSSRH: com.sikulix -->
@@ -37,7 +42,7 @@
         <dependency>
             <groupId>com.sikulix</groupId>
             <artifactId>sikulixapi</artifactId>
-            <version>1.1.4-SNAPSHOT</version>
+            <version>1.1.2</version>
         </dependency>
         <!-- the selenium-java artifact has a lot of transitive dependencies -->
         <dependency>
@@ -76,6 +81,12 @@
             <artifactId>junit</artifactId>
             <version>4.12</version>
             <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.6</version>
         </dependency>
     </dependencies>
 

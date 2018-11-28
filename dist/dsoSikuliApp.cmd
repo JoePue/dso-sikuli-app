@@ -1,9 +1,10 @@
 @ECHO OFF
+SET JAR_NAME=dso-automation-0.0.1-SNAPSHOT-jar-with-dependencies.jar
+REM SET JAR_NAME=dso-automation-0.0.2-SNAPSHOT-jar-with-dependencies.jar
 SET BATCH_FILE_NAME=%~n0
 SET START_DIR=D:\dev-tools\sikuli\workspace\dso-sikuli-app-idea\dist
 SET APP_CONFIG_DIR=D:\dev-tools\sikuli\workspace\dso-sikuli-app-idea\dist\config
-SET JAR_NAME=dso-automation-0.0.1-SNAPSHOT-jar-with-dependencies.jar
-SET EXE_CMD=java -cp ".;./;./dso-sikuli-app.sikuli" -jar %JAR_NAME% --configDir=%APP_CONFIG_DIR%
+SET EXE_CMD=java -cp ".;./;./dso-sikuli-app.sikuli" -jar %JAR_NAME% --configDir=%APP_CONFIG_DIR% 
 
 REM Loop Through Arguments Passed To Batch Script
 :argumentsLoop
@@ -50,6 +51,7 @@ if NOT EXIST "%JAR_NAME%" (
   ECHO Missing Jar: %JAR_NAME%
   GOTO END
 )
+ECHO TEST: %EXE_CMD% firstDailyRun 
 %EXE_CMD% firstDailyRun
 REM if "%exitDsoFlag%" EQU "true" (
 REM   java -cp ".;./;./dso-sikuli-app.sikuli" -jar %JAR_NAME% exitDso --configDir=%APP_CONFIG_DIR%

@@ -205,7 +205,7 @@ public class StarMenu extends DsoMenu {
 
     public boolean clickMessageBoxButton() {
         log.info("clickStarButton");
-        return islandCmds.clickIfExists(pattern("Message-Box-Button.png").similar(0.90).targetOffset(-1, -6), menuRegion);
+        return islandCmds.clickIfExists(pattern("Message-Box-Button.png").similar(0.90f).targetOffset(-1, -6), menuRegion);
     }
 
     public boolean clickOkBuildingButton() {

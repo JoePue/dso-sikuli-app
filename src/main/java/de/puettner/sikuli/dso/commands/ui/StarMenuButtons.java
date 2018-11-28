@@ -13,7 +13,7 @@ public enum StarMenuButtons implements MenuButton {
     StarMenuTitleImage(pattern("StarMenuTitleImage.png").similar(0.90f)),
     StarMenuTitleOrnament(pattern("StarMenuTitleOrnament.png").similar(0.95f)),
     /** Im Fussbereich des Sternmenu befindet sich dieser Tab */
-    StarMenuStarTab(pattern("StarMenu-StarTab-Icon.png").similar(0.90));
+    StarMenuStarTab(pattern("StarMenu-StarTab-Icon.png").similar(0.90f));
 
     public final Pattern pattern;
 

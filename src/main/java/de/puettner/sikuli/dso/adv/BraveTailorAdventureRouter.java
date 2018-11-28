@@ -1,7 +1,7 @@
 package de.puettner.sikuli.dso.adv;
 
 import de.puettner.sikuli.dso.commands.ui.IslandCommands;
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.java.Log;
 import org.sikuli.script.Region;
 
 import javax.annotation.Nullable;
@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-@Slf4j
+@Log
 public class BraveTailorAdventureRouter extends AdventureRouter {
 
     protected final List<NavigationPoint> navPoints = new ArrayList<>();
@@ -36,11 +36,6 @@ public class BraveTailorAdventureRouter extends AdventureRouter {
     }
 
     @Override
-    public java.util.List<NavigationPoint> getNavigationPoints() {
-        return navPoints;
-    }
-
-    @Override
     protected void fillNavigationPointsList() {
         log.info("fillNavigationPointsList()");
         for (NavigationPoint np : BraveTailorNavPoints.values()) {
@@ -52,6 +47,11 @@ public class BraveTailorAdventureRouter extends AdventureRouter {
     public void route(NavigationPoint startingPoint, NavigationPoint targetPoint, Dimension targetDragDropOffset, Dimension
             targetClickOffset) {
         this.route(startingPoint, targetPoint, targetDragDropOffset, targetClickOffset, false);
+    }
+
+    @Override
+    public java.util.List<NavigationPoint> getNavigationPoints() {
+        return navPoints;
     }
 
     public void route(NavigationPoint startingPoint, NavigationPoint targetPoint, @Nullable Dimension targetDragDropOffset, @Nullable

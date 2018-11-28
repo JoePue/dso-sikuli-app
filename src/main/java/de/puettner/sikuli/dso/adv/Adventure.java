@@ -288,7 +288,7 @@ public abstract class Adventure {
     }
 
     private Optional<Match> findLandingLocation() {
-        return Optional.ofNullable(islandCmds.find((pattern("landing-location-1-zoom1.png").similar(0.90)), region));
+        return Optional.ofNullable(islandCmds.find((pattern("landing-location-1-zoom1.png").similar(0.90f)), region));
     }
 
     public boolean processAllGeneralsBackToStarMenuStep() {
@@ -315,7 +315,7 @@ public abstract class Adventure {
 
     protected List<Match> findAllReadyGenerals() {
         List<Match> list = new ArrayList<>();
-        Iterator<Match> it = islandCmds.findAll(pattern("ready-general-flag.png").similar(0.72).targetOffset(0, 20));
+        Iterator<Match> it = islandCmds.findAll(pattern("ready-general-flag.png").similar(0.72f).targetOffset(0, 20));
         if (it != null) {
             while (it.hasNext()) {
                 list.add(it.next());
