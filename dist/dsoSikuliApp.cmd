@@ -8,15 +8,16 @@ SET EXE_CMD=java -cp ".;./;./dso-sikuli-app.sikuli" -jar %JAR_NAME% --configDir=
 
 REM Loop Through Arguments Passed To Batch Script
 :argumentsLoop
-if "%1" NEQ "" (
+IF "%1" NEQ "" (
   @echo Argument: %1
-  if "%1" EQU "build" SET buildFlag=true
-  if "%1" EQU "hibernate" SET hibernateFlag=true
-  if "%1" EQU "exitDso" SET exitDsoFlag=true
+  IF "%1" EQU "build" SET buildFlag=true
+  IF "%1" EQU "hibernate" SET hibernateFlag=true
+  IF "%1" EQU "exitDso" SET exitDsoFlag=true
+  IF "%1" EQU "unset" SET unsetFlag=true
   
 )
 shift
-if not "%~1" == "" goto argumentsLoop
+IF not "%~1" == "" goto argumentsLoop
 
 TITLE %BATCH_FILE_NAME% buildFlag: %buildFlag% hibernateFlag: %hibernateFlag% exitDsoFlag: %exitDsoFlag%
 
@@ -25,11 +26,13 @@ ECHO START_DIR=%START_DIR%
 ECHO hibernateFlag=%hibernateFlag%
 ECHO buildFlag=%buildFlag%
 ECHO exitDsoFlag=%exitDsoFlag%
+ECHO unset=%unsetFlag%
 
-if "%hibernateFlag%" EQU "true" (
+IF "%unsetFlag%" EQU "true" GOTO UNSET_FLAGS
+IF "%hibernateFlag%" EQU "true" (
   start sikuliStandby.cmd
 )
-if "%buildFlag%" NEQ "true" GOTO RUN
+IF "%buildFlag%" NEQ "true" GOTO RUN
 
 REM Kopiere Sikuli-Screenshots
 xcopy /Y D:\dev-tools\sikuli\workspace\dso-sikuli-app.sikuli D:\dev-tools\sikuli\workspace\dso-sikuli-app-idea\dist\dso-sikuli-app.sikuli
@@ -42,24 +45,27 @@ call mvn -o clean package -DskipTests=true
 REM ls && pwd && pause
 ECHO Kopiere Jar
 cd target
-xcopy /Y *.jar ..\dist
+IF NOT EXIST "%JAR_NAME%" (
+  ECHO Missing file: %JAR_NAME%
+  GOTO END
+)
+xcopy /Y %JAR_NAME% ..\dist
 
 cd ../dist
 
 :RUN
-if NOT EXIST "%JAR_NAME%" (
+IF NOT EXIST "%JAR_NAME%" (
   ECHO Missing Jar: %JAR_NAME%
   GOTO END
 )
-ECHO TEST: %EXE_CMD% firstDailyRun 
+echo fehler
+pause
 %EXE_CMD% firstDailyRun
-REM if "%exitDsoFlag%" EQU "true" (
-REM   java -cp ".;./;./dso-sikuli-app.sikuli" -jar %JAR_NAME% exitDso --configDir=%APP_CONFIG_DIR%
-REM )
+
 for /L %%k in (1, 1, 6) DO (
   echo #%%k Loop
   %EXE_CMD% preventScreensaver
-  if "%%k" EQU "3" (
+  IF "%%k" EQU "3" (
     beep 3
     %EXE_CMD% buildAllMines
   )
@@ -67,27 +73,27 @@ for /L %%k in (1, 1, 6) DO (
 )
 
 %EXE_CMD% secondDailyRun
-REM if "%exitDsoFlag%" EQU "true" (
-REM    java -cp ".;./;./dso-sikuli-app.sikuli" -jar %JAR_NAME% exitDso  --configDir=%APP_CONFIG_DIR%
-REM )
-
 
 cd %START_DIR%
 
-if "%exitDsoFlag%" EQU "true" (
+IF "%exitDsoFlag%" EQU "true" (
   %EXE_CMD% exitDso
   sleep 3
 )
-if "%hibernateFlag%" EQU "true" (
+IF "%hibernateFlag%" EQU "true" (
   shutdown -a
   ECHO 10 Sekunden bis Standby
   sleep 10
   shutdown /h /f
 )
 :END
+beep 1
+:UNSET_FLAGS
 SET BATCH_FILE_NAME=
 SET START_DIR=
 SET hibernateFlag=
 SET buildFlag=
 SET exitDsoFlag=
-beep 1
+SET EXE_CMD=
+SET APP_CONFIG_DIR=
+SET JAR_NAME=
