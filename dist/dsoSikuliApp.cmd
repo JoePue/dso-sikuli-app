@@ -3,8 +3,9 @@ SET JAR_NAME=dso-automation-0.0.1-SNAPSHOT-jar-with-dependencies.jar
 REM SET JAR_NAME=dso-automation-0.0.2-SNAPSHOT-jar-with-dependencies.jar
 SET BATCH_FILE_NAME=%~n0
 SET START_DIR=D:\dev-tools\sikuli\workspace\dso-sikuli-app-idea\dist
-SET APP_CONFIG_DIR=D:\dev-tools\sikuli\workspace\dso-sikuli-app-idea\dist\config
-SET EXE_CMD=java -cp ".;./;./dso-sikuli-app.sikuli" -jar %JAR_NAME% --configDir=%APP_CONFIG_DIR% 
+SET APP_CONFIG_DIR=D:\dev-tools\sikuli\workspace\dso-sikuli-app-idea\config
+SET LOG_PROP_FILE=%APP_CONFIG_DIR%\logging.properties
+SET EXE_CMD=java -Djava.util.logging.config.file=%LOG_PROP_FILE% -cp ".;./;./dso-sikuli-app.sikuli" -jar %JAR_NAME% --configDir=%APP_CONFIG_DIR% 
 
 REM Loop Through Arguments Passed To Batch Script
 :argumentsLoop
@@ -26,7 +27,7 @@ ECHO START_DIR=%START_DIR%
 ECHO hibernateFlag=%hibernateFlag%
 ECHO buildFlag=%buildFlag%
 ECHO exitDsoFlag=%exitDsoFlag%
-ECHO unset=%unsetFlag%
+ECHO unsetFlag=%unsetFlag%
 
 IF "%unsetFlag%" EQU "true" GOTO UNSET_FLAGS
 IF "%hibernateFlag%" EQU "true" (
@@ -58,8 +59,6 @@ IF NOT EXIST "%JAR_NAME%" (
   ECHO Missing Jar: %JAR_NAME%
   GOTO END
 )
-echo fehler
-pause
 %EXE_CMD% firstDailyRun
 
 for /L %%k in (1, 1, 6) DO (
@@ -97,3 +96,4 @@ SET exitDsoFlag=
 SET EXE_CMD=
 SET APP_CONFIG_DIR=
 SET JAR_NAME=
+SET unsetFlag=

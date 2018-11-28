@@ -33,7 +33,6 @@ public class AppArgumentProcessor {
         WindowsPlatform platform = new WindowsPlatform();
         logSettings();
         MenuBuilder menuBuilder = MenuBuilder.build();
-        // SikuliCommands sikuli = menuBuilder.buildIslandCommand();
 
         DSOService dsoService = DSOServiceBuilder.build();
         try {
@@ -103,6 +102,14 @@ public class AppArgumentProcessor {
     }
 
     private void logArgs(String[] args) {
+        log.info("Level: info");
+        log.severe("Level: severe");
+        log.fine("Level: fine");
+        log.finer("Level: finer");
+        log.finest("Level: finest");
+        log.warning("Level: warning");
+        log.config("Level: config");
+
         log.fine("args.length: " + args.length);
         for (String arg : args) {
             log.fine("[argument] " + arg);
