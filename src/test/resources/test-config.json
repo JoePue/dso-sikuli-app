@@ -1,0 +1,8 @@
+{
+  "adventureSteps": [
+    {
+      "no": 2, "stepType": "WAIT", "state": "OPEN", "delay": 600,
+      "comment": "Es stehen nur 9 Landeplätze für Genies zur Verfügung (einer wird nicht erkannt.)"
+    }
+  ]
+}

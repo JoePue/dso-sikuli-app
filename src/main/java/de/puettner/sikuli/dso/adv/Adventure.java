@@ -1,8 +1,5 @@
 package de.puettner.sikuli.dso.adv;
 
-import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.module.SimpleModule;
 import de.puettner.sikuli.dso.AppEnvironment;
 import de.puettner.sikuli.dso.DSOService;
 import de.puettner.sikuli.dso.commands.ui.IslandCommands;
@@ -27,8 +24,8 @@ import static de.puettner.sikuli.dso.commands.ui.StarMenuFilter.GeneralsFilterSt
 @Log
 public abstract class Adventure {
 
-    private static final ObjectMapper objectMapper = new ObjectMapper();
     protected final Region region;
+    protected final FileService fileService;
     private final StarMenu starMenu;
     private final DSOService dsoService;
     private final AppEnvironment appEnvironment;
@@ -48,11 +45,7 @@ public abstract class Adventure {
         this.adventureRouter = adventureRouter;
 
         adventureRouter.fillNavigationPointsList();
-
-        SimpleModule module = new SimpleModule();
-        module.addDeserializer(AttackCamp.class, new AttackCampDeserializer());
-        objectMapper.registerModule(module);
-        objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+        fileService = new FileService(getFilename());
     }
 
     protected abstract File getFilename();
@@ -415,21 +408,7 @@ public abstract class Adventure {
 
     public void restoreState() {
         log.info("restoreState()");
-        List<AdventureStep> list;
-        try {
-            AdventureState state = objectMapper.readValue(getFilename(), AdventureState.class);
-            list = state.getAdventureSteps();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        if (list == null) {
-            list = new ArrayList<>();
-        }
-        int i = 0;
-        for (AdventureStep item : list) {
-            item.setNo(++i);
-        }
-        this.adventureSteps = list;
+        this.adventureSteps = fileService.restoreState().getAdventureSteps();
     }
 
     private void saveState(AdventureStep step, AdventureStepState state) {
@@ -439,18 +418,13 @@ public abstract class Adventure {
 
     public void saveState() {
         log.info("saveState()");
-        try {
-            AdventureState state = new AdventureState();
-            state.setAdventureSteps(this.adventureSteps);
-            objectMapper.writerWithDefaultPrettyPrinter().writeValue(getFilename(), state);
-            JsonFileFormatter.format(getFilename());
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        AdventureState state = new AdventureState();
+        state.setAdventureSteps(this.adventureSteps);
+        fileService.saveState(state);
     }
 
     /**
-     * @return
+     *
      */
     protected boolean prepareAttack(AdventureStep step) {
         log.info("prepareAttack() " + step.getCamp());

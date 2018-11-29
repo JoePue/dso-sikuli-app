@@ -20,13 +20,6 @@ public class BraveTailorAdvTest extends MenuTest {
         adventure.play();
     }
 
-
-    @Test
-    public void saveState() {
-        adventure.restoreState();
-        adventure.saveState();
-    }
-
     @Test
     public void restoreState() {
         adventure.restoreState();
@@ -41,5 +34,4 @@ public class BraveTailorAdvTest extends MenuTest {
     public void clickAttackCamp() {
         adventure.clickAttackCamp(BraveTailorAttackCamp.CAMP_4);
     }
-
 }
