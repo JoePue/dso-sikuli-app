@@ -455,10 +455,7 @@ public class DSOService {
     public void preventScreensaver() {
         log.info("preventScreensaver()");
         islandCmds.clickDsoTab();
-        islandCmds.hover();
-        starMenu.hover();
-        buildQueueMenu.hover();
-        // islandCmds.type(" NO type*() commands here"); !!!
+        islandCmds.parkMouse();
     }
 
     public void fetchRewardMessages() {
@@ -493,5 +490,9 @@ public class DSOService {
                 log.severe("Missing ok button");
             }
         }
+    }
+
+    public void goToFirstSector() {
+        sectorService.goToSector(Sector.S1);
     }
 }
