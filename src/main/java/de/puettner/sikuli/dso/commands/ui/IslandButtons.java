@@ -16,7 +16,7 @@ public enum IslandButtons implements MenuButton {
     QuestBookIcon(pattern("Questbook-icon.png")),
     SolvedQuestArrow(pattern("SolvedQuestArrow.png").similar(0.96f)),
     NewQuestArrow(pattern("NewQuestArrow.png").similar(0.95f)),
-    NotificationInfoBox(pattern("notification-frame.png").similar(0.80f));
+    NotificationInfoBox(pattern("notification-frame.png").similar(0.90f));
 
     public final Pattern pattern;
 
