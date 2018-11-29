@@ -13,44 +13,29 @@ import java.util.Objects;
 @Log
 public class BraveTailorAdventureRouter extends AdventureRouter {
 
-    protected final List<NavigationPoint> navPoints = new ArrayList<>();
+    protected List<NavigationPoint> navPoints;
 
     public BraveTailorAdventureRouter(IslandCommands islandCmds, Region region) {
         super(islandCmds, region);
     }
 
     @Override
-    public void routeCheck(java.util.List<AdventureStep> adventureSteps) {
-        log.info("routeCheck()");
-        for (AdventureStep step : adventureSteps) {
-            if (StepType.ATTACK.equals(step.getStepType()) || StepType.MOVE.equals(step.getStepType())) {
-                try {
-                    this.route(step.getStartNavPoint(), step.getTargetNavPoint(), step.getTargetDragDropOffset(), step
-                            .getTargetNavPointClickOffset(), true);
-                } catch (Exception e) {
-                    log.info("routeCheck: " + step);
-                    throw e;
-                }
-            }
-        }
-    }
-
-    @Override
-    protected void fillNavigationPointsList() {
-        log.info("fillNavigationPointsList()");
+    protected void postConstruct() {
+        log.info("postConstruct()");
+        this.navPoints = new ArrayList<>();
         for (NavigationPoint np : BraveTailorNavPoints.values()) {
             navPoints.add(np);
         }
     }
 
     @Override
-    public void route(NavigationPoint startingPoint, NavigationPoint targetPoint, Dimension targetDragDropOffset, Dimension
-            targetClickOffset) {
+    public void route(NavigationPoint startingPoint, NavigationPoint targetPoint, @Nullable Dimension targetDragDropOffset,
+                      @Nullable Dimension targetClickOffset) {
         this.route(startingPoint, targetPoint, targetDragDropOffset, targetClickOffset, false);
     }
 
     @Override
-    public java.util.List<NavigationPoint> getNavigationPoints() {
+    public List<NavigationPoint> getNavigationPoints() {
         return navPoints;
     }
 
@@ -174,10 +159,10 @@ public class BraveTailorAdventureRouter extends AdventureRouter {
         if (shouldCenterStart) {
             centerNavigationPoint(startPoint);
         }
-        islandCmds.dragDrop(navDragDropOffset);
+        super.dragDrop(navDragDropOffset);
         if (shouldCenterTarget) {
             centerNavigationPoint(targetPoint, targetDragDropOffset, targetClickOffset);
         }
-        islandCmds.parkMouse();
+        super.parkMouse();
     }
 }

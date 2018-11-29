@@ -15,17 +15,17 @@ import java.util.Objects;
 @Log
 public abstract class AdventureRouter {
 
-    protected final IslandCommands islandCmds;
-    protected final Region region;
+    private final IslandCommands islandCmds;
+    private final Region region;
 
     public AdventureRouter(IslandCommands islandCmds, Region region) {
         this.islandCmds = islandCmds;
         this.region = region;
+
+        postConstruct();
     }
 
-    public abstract void routeCheck(List<AdventureStep> adventureSteps);
-
-    protected abstract void fillNavigationPointsList();
+    protected abstract void postConstruct();
 
     protected boolean centerNavigationPoint(NavigationPoint navPoint) {
         return centerNavigationPoint(navPoint, null, null);
@@ -46,7 +46,7 @@ public abstract class AdventureRouter {
                 dimension.width = dimension.width + targetDragDropOffset.width;
                 dimension.height = dimension.height + targetDragDropOffset.height;
             }
-            islandCmds.dragDrop(dimension);
+            this.dragDrop(dimension);
             if (targetClickOffset != null) {
                 match = findNavPoint(navPoint);
                 navPointLocation = getNavPointLocation(match);
@@ -99,13 +99,17 @@ public abstract class AdventureRouter {
         return LocationMath.getMidpointLocation(region);
     }
 
+    public void dragDrop(Dimension navDragDropOffset) {
+        islandCmds.dragDrop(navDragDropOffset);
+    }
+
     /**
      * This method assumes a General in Attack-Mode.
      *
      * @param startNavPoint         Startpunkt
      * @param targetNavPoint        Zielpunkt
      * @param targetDragDropOffset
-     * @param initialDragDropOffset Darf null sein, zum initialen verschieben hin zum Start NavPoint
+     * @param initialDragDropOffset Darf null sein, zum initialen Verschieben hin zum Start NavPoint
      */
     protected void moveToCamp(NavigationPoint startNavPoint, NavigationPoint targetNavPoint, Dimension targetDragDropOffset, Dimension
             initialDragDropOffset) {
@@ -132,7 +136,7 @@ public abstract class AdventureRouter {
 
     NavigationPoint whereIam() {
         log.info("whereIam");
-        java.util.List<NavigationPoint> navPoints = getNavigationPoints();
+        List<NavigationPoint> navPoints = getNavigationPoints();
         Match match = null;
         islandCmds.parkMouseInLeftUpperCorner();
         NavigationPoint navPoint = findCurrentNavPointOnScreen(navPoints);
@@ -169,5 +173,27 @@ public abstract class AdventureRouter {
             }
         }
         return null;
+    }
+
+    public void routeCheck(java.util.List<AdventureStep> adventureSteps) {
+        log.info("routeCheck()");
+        for (AdventureStep step : adventureSteps) {
+            if (StepType.ATTACK.equals(step.getStepType()) || StepType.MOVE.equals(step.getStepType())) {
+                try {
+                    route(step.getStartNavPoint(), step.getTargetNavPoint(), step.getTargetDragDropOffset(), step
+                            .getTargetNavPointClickOffset(), true);
+                } catch (Exception e) {
+                    log.info("routeCheck: " + step);
+                    throw e;
+                }
+            }
+        }
+    }
+
+    public abstract void route(NavigationPoint startingPoint, NavigationPoint targetPoint, Dimension targetDragDropOffset, Dimension
+            targetNavPointClickOffset, boolean isRouteCheck);
+
+    public void parkMouse() {
+        islandCmds.parkMouse();
     }
 }

@@ -125,18 +125,20 @@ public class AppArgumentProcessor {
     private void firstDailyRun(DSOService dsoService) {
         dsoService.startDsoApp();
         // dsoService.highlightRegions();
+        GeologicLaunchs geologicLaunchs = GeologicLaunchs.builder().build()
+                .add(GeologicType.Happy, EI, 1, StarMenuFilter.GEO_1);
+        dsoService.launchGeologics(geologicLaunchs);
         dsoService.buildAllMines(true);
-        dsoService.prepareStarMenu();
+        //dsoService.prepareStarMenu();
         dsoService.confirmSolvedQuest();
         dsoService.confirmNewQuest();
         // 10 Happy Geo / 3 Consic / 3 Normal
-        GeologicLaunchs launchs = GeologicLaunchs.builder().build()
-                .add(GeologicType.Happy, EI, 1, StarMenuFilter.GEO_1)
+        geologicLaunchs = GeologicLaunchs.builder().build()
                 .add(GeologicType.Happy, KU, 6)
                 .add(GeologicType.Happy, ST, 4)
                 .add(GeologicType.Normal, ST, 3)
                 .add(GeologicType.Conscientious, ST, 2);
-        dsoService.launchGeologics(launchs);
+        dsoService.launchGeologics(geologicLaunchs);
         dsoService.launchAllExplorer();
 
         dsoService.fetchBookbinderItem();
@@ -147,19 +149,20 @@ public class AppArgumentProcessor {
         dsoService.buildAllMines(false);
 
         // jetzt sollten alle Goes wieder verfügbar sein.
-        launchs = GeologicLaunchs.builder().build()
+        geologicLaunchs = GeologicLaunchs.builder().build()
                 .add(GeologicType.Happy, GO, 2, StarMenuFilter.EIGTH_PERCENT)
                 .add(GeologicType.Happy, MA, 6, StarMenuFilter.GRANIT_GEOS)
                 .add(GeologicType.Normal, KO, 1, StarMenuFilter.GEO_2)
                 .add(GeologicType.Normal, GR, 1)
                 .add(GeologicType.Normal, EI, 1)
-                .add(GeologicType.Conscientious, GR, 2)
+                .add(GeologicType.Conscientious, GR, 3)
         ;
-        dsoService.launchGeologics(launchs);
+        dsoService.launchGeologics(geologicLaunchs);
         dsoService.buildAllMines(false);
         dsoService.fetchRewardMessages();
         dsoService.confirmNewQuest();
         dsoService.confirmSolvedQuest();
+        dsoService.goToFirstSector();
     }
 
     private void secondDailyRun(DSOService dsoService) {

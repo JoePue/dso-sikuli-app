@@ -43,9 +43,7 @@ public abstract class Adventure {
         this.dsoService = dsoService;
         this.appEnvironment = appEnvironment;
         this.adventureRouter = adventureRouter;
-
-        adventureRouter.fillNavigationPointsList();
-        fileService = new FileService(getFilename());
+        this.fileService = new FileService(getFilename());
     }
 
     protected abstract File getFilename();

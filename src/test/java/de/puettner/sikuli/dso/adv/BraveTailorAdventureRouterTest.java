@@ -4,8 +4,10 @@ import de.puettner.sikuli.dso.ui.commands.MenuTest;
 import lombok.extern.java.Log;
 import org.junit.Before;
 import org.junit.Test;
+import org.sikuli.script.App;
 
 import static de.puettner.sikuli.dso.adv.BraveTailorNavPoints.*;
+import static de.puettner.sikuli.dso.commands.os.WindowsPlatform.CHROME_EXE;
 
 @Log
 public class BraveTailorAdventureRouterTest extends MenuTest {
@@ -14,6 +16,7 @@ public class BraveTailorAdventureRouterTest extends MenuTest {
 
     @Before
     public void before() {
+        App app = new App(CHROME_EXE);
         adventure = new BraveTailorAdventureRouter(islandCmds, islandCmds.getIslandRegion());
         sikuliCmd.focusBrowser();
     }

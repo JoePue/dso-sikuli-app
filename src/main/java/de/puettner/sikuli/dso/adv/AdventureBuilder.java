@@ -3,14 +3,12 @@ package de.puettner.sikuli.dso.adv;
 import de.puettner.sikuli.dso.AppEnvironment;
 import de.puettner.sikuli.dso.DSOServiceBuilder;
 import de.puettner.sikuli.dso.commands.os.WindowsPlatform;
-import de.puettner.sikuli.dso.commands.ui.IslandCommands;
 import de.puettner.sikuli.dso.commands.ui.MenuBuilder;
 import org.sikuli.script.Region;
 
 public class AdventureBuilder {
 
     private static AdventureBuilder advBuilder;
-    private static IslandCommands islandCmds;
     private static BraveTailorAdv braveTailorAdv;
     private final Region dsoAppRegion;
     private final AppEnvironment appEnvironment;
