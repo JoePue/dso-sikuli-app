@@ -1,6 +1,6 @@
 @ECHO OFF
-SET JAR_NAME=dso-automation-0.0.1-SNAPSHOT-jar-with-dependencies.jar
-REM SET JAR_NAME=dso-automation-0.0.2-SNAPSHOT-jar-with-dependencies.jar
+REM JAR_NAME=dso-automation-0.0.1-SNAPSHOT-jar-with-dependencies.jar
+SET JAR_NAME=dso-automation-0.0.2-SNAPSHOT-jar-with-dependencies.jar
 SET BATCH_FILE_NAME=%~n0
 SET START_DIR=D:\dev-tools\sikuli\workspace\dso-sikuli-app-idea\dist
 SET APP_CONFIG_DIR=D:\dev-tools\sikuli\workspace\dso-sikuli-app-idea\config
@@ -11,11 +11,12 @@ REM Loop Through Arguments Passed To Batch Script
 :argumentsLoop
 IF "%1" NEQ "" (
   @echo Argument: %1
+  IF "%1" EQU "clean" SET cleanFlag=true
+  IF "%1" EQU "run" SET runFlag=true
   IF "%1" EQU "build" SET buildFlag=true
   IF "%1" EQU "hibernate" SET hibernateFlag=true
   IF "%1" EQU "exitDso" SET exitDsoFlag=true
   IF "%1" EQU "unset" SET unsetFlag=true
-  
 )
 shift
 IF not "%~1" == "" goto argumentsLoop
@@ -24,58 +25,70 @@ TITLE %BATCH_FILE_NAME% buildFlag: %buildFlag% hibernateFlag: %hibernateFlag% ex
 
 cd %START_DIR%
 ECHO START_DIR=%START_DIR%
-ECHO hibernateFlag=%hibernateFlag%
+ECHO runFlag=%runFlag%
 ECHO buildFlag=%buildFlag%
-ECHO exitDsoFlag=%exitDsoFlag%
 ECHO unsetFlag=%unsetFlag%
+ECHO exitDsoFlag=%exitDsoFlag%
+ECHO hibernateFlag=%hibernateFlag%
+ECHO cleanFlag=%cleanFlag%
 
-IF "%unsetFlag%" EQU "true" GOTO UNSET_FLAGS
+IF "%cleanFlag%" EQU "true" (
+  cd %START_DIR%
+  del %JAR_NAME%
+  del %START_DIR%\bins /S /Q
+)
+
 IF "%hibernateFlag%" EQU "true" (
   start sikuliStandby.cmd
 )
-IF "%buildFlag%" NEQ "true" GOTO RUN
+IF "%buildFlag%" EQU "true" (
+  cd %START_DIR%
+  REM Kopiere Sikuli-Screenshots
+  xcopy /Y D:\dev-tools\sikuli\workspace\dso-sikuli-app.sikuli D:\dev-tools\sikuli\workspace\dso-sikuli-app-idea\dist\dso-sikuli-app.sikuli
 
-REM Kopiere Sikuli-Screenshots
-xcopy /Y D:\dev-tools\sikuli\workspace\dso-sikuli-app.sikuli D:\dev-tools\sikuli\workspace\dso-sikuli-app-idea\dist\dso-sikuli-app.sikuli
+  ECHO Baue Jar
+  cd ..
+  xcopy /Y bins dist\bins
+  call mvn -o clean package -DskipTests=true
 
-ECHO Baue Jar
-cd ..
-xcopy /Y bins dist\bins
-call mvn -o clean package -DskipTests=true
-
-REM ls && pwd && pause
-ECHO Kopiere Jar
-cd target
-IF NOT EXIST "%JAR_NAME%" (
-  ECHO Missing file: %JAR_NAME%
-  GOTO END
-)
-xcopy /Y %JAR_NAME% ..\dist
-
-cd ../dist
-
-:RUN
-IF NOT EXIST "%JAR_NAME%" (
-  ECHO Missing Jar: %JAR_NAME%
-  GOTO END
-)
-%EXE_CMD% firstDailyRun
-
-for /L %%k in (1, 1, 6) DO (
-  echo #%%k Loop
-  %EXE_CMD% preventScreensaver
-  IF "%%k" EQU "3" (
-    beep 3
-    %EXE_CMD% buildAllMines
+  REM ls && pwd && pause
+  ECHO Kopiere Jar
+  cd target
+  IF NOT EXIST "%JAR_NAME%" (
+    ECHO Missing file: %JAR_NAME%
+    GOTO END
   )
-  sleep 120
+  xcopy /Y %JAR_NAME% ..\dist
+
+  cd ../dist
 )
 
-%EXE_CMD% secondDailyRun
+IF "%runFlag%" EQU "true" (
+  cd %START_DIR%
+  
+  IF NOT EXIST "%JAR_NAME%" (
+    ECHO Missing Jar: %JAR_NAME%
+    GOTO END
+  )
+  %EXE_CMD% firstDailyRun
 
-cd %START_DIR%
+  for /L %%k in (1, 1, 6) DO (
+    echo #%%k Loop
+    %EXE_CMD% preventScreensaver
+    IF "%%k" EQU "3" (
+      beep 3
+      %EXE_CMD% buildAllMines
+    )
+    sleep 120
+  )
+
+  %EXE_CMD% secondDailyRun
+  
+  beep 1
+)
 
 IF "%exitDsoFlag%" EQU "true" (
+  cd %START_DIR%
   %EXE_CMD% exitDso
   sleep 3
 )
@@ -86,7 +99,6 @@ IF "%hibernateFlag%" EQU "true" (
   shutdown /h /f
 )
 :END
-beep 1
 :UNSET_FLAGS
 SET BATCH_FILE_NAME=
 SET START_DIR=
@@ -97,3 +109,5 @@ SET EXE_CMD=
 SET APP_CONFIG_DIR=
 SET JAR_NAME=
 SET unsetFlag=
+SET runFlag=
+SET cleanFlag=
