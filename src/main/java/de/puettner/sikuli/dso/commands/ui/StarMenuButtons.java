@@ -6,9 +6,9 @@ import static de.puettner.sikuli.dso.commands.ui.SikuliCommands.pattern;
 
 public enum StarMenuButtons implements MenuButton {
     ZOOM_ICON(pattern("zoom-icon.png").targetOffset(-43, -3)),
-    HappyGeologic(pattern("HappyGeologic-icon.png").similar(0.80f)),
-    NormalGeologic(pattern("NormalGeologic-icon.png").similar(0.80f)),
-    ConscientiousGeologic(pattern("ConscientiousGeologic-icon.png").similar(0.80f)),
+    HappyGeologic(pattern("HappyGeologic-icon.png").similar(0.85f)),
+    NormalGeologic(pattern("NormalGeologic-icon.png").similar(0.85f)),
+    ConscientiousGeologic(pattern("ConscientiousGeologic-icon.png").similar(0.85f)),
     /** Im Kopfbereich des Sternmenu befindet sich dieser größere Stern */
     StarMenuTitleImage(pattern("StarMenuTitleImage.png").similar(0.90f)),
     StarMenuTitleOrnament(pattern("StarMenuTitleOrnament.png").similar(0.95f)),
