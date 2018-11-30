@@ -124,12 +124,11 @@ public class AppArgumentProcessor {
 
     private void firstDailyRun(DSOService dsoService) {
         dsoService.startDsoApp();
-        // dsoService.highlightRegions();
         GeologicLaunchs geologicLaunchs = GeologicLaunchs.builder().build()
                 .add(GeologicType.Happy, EI, 1, StarMenuFilter.GEO_1);
         dsoService.launchGeologics(geologicLaunchs);
         dsoService.buildAllMines(true);
-        //dsoService.prepareStarMenu();
+
         dsoService.confirmSolvedQuest();
         dsoService.confirmNewQuest();
         // 10 Happy Geo / 3 Consic / 3 Normal
@@ -137,7 +136,7 @@ public class AppArgumentProcessor {
                 .add(GeologicType.Happy, KU, 6)
                 .add(GeologicType.Happy, ST, 4)
                 .add(GeologicType.Normal, ST, 3)
-                .add(GeologicType.Conscientious, ST, 2);
+                .add(GeologicType.Conscientious, ST, 3);
         dsoService.launchGeologics(geologicLaunchs);
         dsoService.launchAllExplorer();
 
@@ -158,6 +157,7 @@ public class AppArgumentProcessor {
                 .add(GeologicType.Conscientious, GR, 3)
         ;
         dsoService.launchGeologics(geologicLaunchs);
+
         dsoService.buildAllMines(false);
         dsoService.fetchRewardMessages();
         dsoService.confirmNewQuest();
