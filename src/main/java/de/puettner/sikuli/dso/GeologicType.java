@@ -1,5 +1,10 @@
 package de.puettner.sikuli.dso;
 
 public enum GeologicType {
-    Normal, Happy, Conscientious
+    /** Normale Geologe */
+    Normal,
+    /** Glückliche Geologe */
+    Happy,
+    /** Gewissenhafte Geologe */
+    Conscientious
 }
