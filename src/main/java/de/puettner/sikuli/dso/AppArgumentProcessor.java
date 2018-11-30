@@ -60,15 +60,15 @@ public class AppArgumentProcessor {
                 } else if ("buildCopperMines".equals(arg)) {
                     dsoService.buildCopperMines(Integer.valueOf(args[1]));
                 } else if ("launchAllHappyGeologics".equals(arg)) {
-                    GeologicLaunchs launch = GeologicLaunchs.builder().build().add(GeologicType.Happy, valueOf
+                    GeologicLaunches launch = GeologicLaunches.builder().build().add(GeologicType.Happy, valueOf
                             (args[1]), Integer.valueOf(args[1]));
                     dsoService.launchGeologics(launch);
                 } else if ("launchAllNormalGeologics".equals(arg)) {
-                    GeologicLaunchs launch = GeologicLaunchs.builder().build().add(GeologicType.Normal, valueOf
+                    GeologicLaunches launch = GeologicLaunches.builder().build().add(GeologicType.Normal, valueOf
                             (args[1]), Integer.valueOf(args[1]));
                     dsoService.launchGeologics(launch);
                 } else if ("launchAllConscientiousGeologics".equals(arg)) {
-                    GeologicLaunchs launch = GeologicLaunchs.builder().build().add(GeologicType.Conscientious, valueOf
+                    GeologicLaunches launch = GeologicLaunches.builder().build().add(GeologicType.Conscientious, valueOf
                             (args[1]), Integer.valueOf(args[1]));
                     dsoService.launchGeologics(launch);
                 } else if ("fetchBookbinderItem".equals(arg)) {

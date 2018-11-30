@@ -8,20 +8,20 @@ public class HomeIslandRunConfigs {
 
     public static void firstDailyRun(DSOService dsoService) {
         dsoService.startDsoApp();
-        GeologicLaunchs geologicLaunchs = GeologicLaunchs.builder().build()
+        GeologicLaunches geologicLaunches = GeologicLaunches.builder().build()
                 .add(GeologicType.Happy, EI, 1, StarMenuFilter.GEO_1);
-        dsoService.launchGeologics(geologicLaunchs);
+        dsoService.launchGeologics(geologicLaunches);
         dsoService.buildAllMines(true);
 
         dsoService.confirmSolvedQuest();
         dsoService.confirmNewQuest();
         // 10 Happy Geo / 3 Consic / 3 Normal
-        geologicLaunchs = GeologicLaunchs.builder().build()
+        geologicLaunches = GeologicLaunches.builder().build()
                 .add(GeologicType.Happy, KU, 6)
                 .add(GeologicType.Happy, ST, 4)
                 .add(GeologicType.Normal, ST, 3)
                 .add(GeologicType.Conscientious, ST, 3);
-        dsoService.launchGeologics(geologicLaunchs);
+        dsoService.launchGeologics(geologicLaunches);
         dsoService.launchAllExplorer();
 
         dsoService.fetchBookbinderItem();
@@ -32,7 +32,7 @@ public class HomeIslandRunConfigs {
         dsoService.buildAllMines(false);
 
         // jetzt sollten alle Goes wieder verfügbar sein.
-        geologicLaunchs = GeologicLaunchs.builder().build()
+        geologicLaunches = GeologicLaunches.builder().build()
                 .add(GeologicType.Happy, GO, 2, StarMenuFilter.EIGTH_PERCENT)
                 .add(GeologicType.Happy, MA, 6, StarMenuFilter.GRANIT_GEOS)
                 .add(GeologicType.Normal, KO, 1, StarMenuFilter.GEO_2)
@@ -40,7 +40,7 @@ public class HomeIslandRunConfigs {
                 .add(GeologicType.Normal, EI, 1)
                 .add(GeologicType.Conscientious, GR, 3)
         ;
-        dsoService.launchGeologics(geologicLaunchs);
+        dsoService.launchGeologics(geologicLaunches);
 
         dsoService.buildAllMines(false);
         dsoService.fetchRewardMessages();
@@ -59,13 +59,13 @@ public class HomeIslandRunConfigs {
         dsoService.prepareStarMenu();
 
         // Ausgangspunkt: 6 verfügbare Geos
-        GeologicLaunchs launchs = GeologicLaunchs.builder().build()
+        GeologicLaunches launches = GeologicLaunches.builder().build()
                 .add(GeologicType.Happy, GR, 6, StarMenuFilter.GRANIT_GEOS)
                 .add(GeologicType.Happy, EI, 1, StarMenuFilter.GEO_1)
                 .add(GeologicType.Happy, KO, 1, StarMenuFilter.GEO_2)
                 .add(GeologicType.Happy, EI, 2)
                 .add(GeologicType.Conscientious, GR, 2);
-        dsoService.launchGeologics(launchs);
+        dsoService.launchGeologics(launches);
 
         dsoService.buildAllMines(false);
         dsoService.findAllCollectables();
@@ -78,14 +78,14 @@ public class HomeIslandRunConfigs {
         dsoService.startDsoApp();
 
         dsoService.prepareStarMenuForGold();
-        dsoService.launchGeologics(GeologicLaunchs.builder().build().add(GeologicType.Happy, GO, 2));
+        dsoService.launchGeologics(GeologicLaunches.builder().build().add(GeologicType.Happy, GO, 2));
 
         dsoService.prepareStarMenu();
-        GeologicLaunchs launchs = GeologicLaunchs.builder().build()
+        GeologicLaunches launches = GeologicLaunches.builder().build()
                 .add(GeologicType.Happy, GR, 4)
                 .add(GeologicType.Happy, KO, 4)
                 .add(GeologicType.Conscientious, GR, 2);
-        dsoService.launchGeologics(launchs);
+        dsoService.launchGeologics(launches);
 
         dsoService.buildAllMines(false);
         dsoService.findAllCollectables();

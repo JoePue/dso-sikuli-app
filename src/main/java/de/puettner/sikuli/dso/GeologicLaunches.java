@@ -10,16 +10,16 @@ import java.util.Iterator;
 
 @Builder
 @Data
-public class GeologicLaunchs implements Iterable<GeologicLaunch> {
+public class GeologicLaunches implements Iterable<GeologicLaunch> {
 
     private final ArrayList<GeologicLaunch> lanches = new ArrayList<>();
 
-    public GeologicLaunchs add(GeologicType type, MaterialType material, int launchLimit) {
+    public GeologicLaunches add(GeologicType type, MaterialType material, int launchLimit) {
         this.lanches.add(new GeologicLaunch(type, material, launchLimit, StarMenuFilter.ALL));
         return this;
     }
 
-    public GeologicLaunchs add(GeologicType type, MaterialType material, int launchLimit, StarMenuFilter filter) {
+    public GeologicLaunches add(GeologicType type, MaterialType material, int launchLimit, StarMenuFilter filter) {
         this.lanches.add(new GeologicLaunch(type, material, launchLimit, filter));
         return this;
     }

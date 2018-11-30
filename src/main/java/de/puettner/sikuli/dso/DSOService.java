@@ -201,15 +201,15 @@ public class DSOService {
     @Deprecated
     public int launchAllHappyGeologics(MaterialType material, int launchLimit) {
         log.info("launchAllHappyGeologics");
-        return launchGeologics(GeologicLaunchs.builder().build().add(GeologicType.Happy, material, launchLimit));
+        return launchGeologics(GeologicLaunches.builder().build().add(GeologicType.Happy, material, launchLimit));
     }
 
-    public int launchGeologics(GeologicLaunchs launchs) {
+    public int launchGeologics(GeologicLaunches launches) {
         log.info("launchGeologics()");
         int launchCount = 0;
         islandCmds.parkMouse();
         StarMenuButtons starMenuButton;
-        for (GeologicLaunch launch : launchs) {
+        for (GeologicLaunch launch : launches) {
             if (GeologicType.Normal.equals(launch.getType())) {
                 starMenuButton = StarMenuButtons.NormalGeologic;
             } else if (GeologicType.Happy.equals(launch.getType())) {
