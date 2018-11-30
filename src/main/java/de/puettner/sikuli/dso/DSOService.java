@@ -408,10 +408,10 @@ public class DSOService {
 
     public void launchAllExplorer() {
         log.info("launchAllExplorer");
-        launchAllBraveExplorer();        // Mutige
+        launchAllBraveExplorer();        // Mutige Entdecker
         launchAllSuccessfulExplorer();   // Erfolgreicher Entdecker
-        launchAllWildExplorer();         // Wilde
-        launchAllFearlessExplorer();     // Furchlose
+        launchAllWildExplorer();         // Wilde Entdecker
+        launchAllFearlessExplorer();     // Furchtlose Entdecker
         launchAllNormalExplorer();
         islandCmds.typeESC();
     }
