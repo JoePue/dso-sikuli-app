@@ -4,6 +4,8 @@ import de.puettner.sikuli.dso.commands.ui.MaterialType;
 import org.junit.Before;
 import org.junit.Test;
 
+import static de.puettner.sikuli.dso.commands.ui.MaterialType.ST;
+
 public class DSOServiceTest extends BaseServiceTest {
 
     private DSOService dsoService = DSOServiceBuilder.build();
@@ -67,19 +69,9 @@ public class DSOServiceTest extends BaseServiceTest {
 
     @Test
     public void launchAllGeologics() {
-        //        dsoService.buildAllMines();
-        GeologicLaunchs launchs = GeologicLaunchs.builder().build()
-                .add(GeologicType.Happy, MaterialType.KU, 3)
-                .add(GeologicType.Normal, MaterialType.ST, 3)
-                .add(GeologicType.Happy, MaterialType.GR, 3)
-                .add(GeologicType.Normal, MaterialType.MA, 3)
-                .add(GeologicType.Conscientious, MaterialType.EI, 2)
-                .add(GeologicType.Happy, MaterialType.KO, 1)
-                .add(GeologicType.Happy, MaterialType.EI, 5);
-        dsoService.launchGeologics(launchs);
-        //        dsoService.buildAllMines();
-        // dsoService.exitDso();
-        // windowsPlatform.standby();
+        GeologicLaunchs launches = GeologicLaunchs.builder().build()
+                .add(GeologicType.Conscientious, ST, 3);
+        dsoService.launchGeologics(launches);
     }
 
     @Test
