@@ -3,7 +3,6 @@ package de.puettner.sikuli.dso.commands.ui;
 import lombok.extern.java.Log;
 import org.sikuli.script.Key;
 import org.sikuli.script.Match;
-import org.sikuli.script.Pattern;
 import org.sikuli.script.Region;
 
 import java.util.Optional;
@@ -26,13 +25,13 @@ public class StarMenu extends DsoMenu {
         return rv;
     }
 
-    public int launchAllExplorerByImage(Pattern image, ExplorerAction action, ExplorerActionType type) {
+    public int launchAllExplorerByImage(ExplorerType explorer, ExplorerAction action, ExplorerActionType type) {
         log.info("launchAllExplorerByImage");
         int launchCount = 0;
         int maxLoops = 4;
         do {
             openStarMenu(Optional.empty());
-            Match match = islandCmds.find(image, menuRegion);
+            Match match = islandCmds.find(explorer.getPattern(), menuRegion);
             if (match != null) {
                 if (!launchExplorer(match, menuRegion, action, type)) {
                     log.log(WARNING, "No explorer launched");
