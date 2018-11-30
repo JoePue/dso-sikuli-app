@@ -198,28 +198,22 @@ public class DSOService {
         }
     }
 
-    @Deprecated
-    public int launchAllHappyGeologics(MaterialType material, int launchLimit) {
-        log.info("launchAllHappyGeologics");
-        return launchGeologics(GeologicLaunches.builder().build().add(GeologicType.Happy, material, launchLimit));
-    }
-
     public int launchGeologics(GeologicLaunches launches) {
         log.info("launchGeologics()");
         int launchCount = 0;
         islandCmds.parkMouse();
-        StarMenuButtons starMenuButton;
+        StarMenuButtons menuButton;
         for (GeologicLaunch launch : launches) {
             if (GeologicType.Normal.equals(launch.getType())) {
-                starMenuButton = StarMenuButtons.NormalGeologic;
+                menuButton = StarMenuButtons.NormalGeologic;
             } else if (GeologicType.Happy.equals(launch.getType())) {
-                starMenuButton = StarMenuButtons.HappyGeologic;
+                menuButton = StarMenuButtons.HappyGeologic;
             } else if (GeologicType.Conscientious.equals(launch.getType())) {
-                starMenuButton = StarMenuButtons.ConscientiousGeologic;
+                menuButton = StarMenuButtons.ConscientiousGeologic;
             } else {
                 throw new IllegalArgumentException("Unknown stepType: " + launch);
             }
-            launchCount += starMenu.launchAllGeologicsByImage(starMenuButton, launch.getMaterial(), launch.getLaunchLimit(), launch
+            launchCount += starMenu.launchAllGeologicsByImage(menuButton, launch.getMaterial(), launch.getLaunchLimit(), launch
                     .getFilter());
         }
         islandCmds.typeESC();

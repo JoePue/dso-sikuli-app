@@ -4,7 +4,7 @@ import de.puettner.sikuli.dso.commands.ui.MaterialType;
 import org.junit.Before;
 import org.junit.Test;
 
-import static de.puettner.sikuli.dso.commands.ui.MaterialType.ST;
+import static de.puettner.sikuli.dso.commands.ui.MaterialType.GR;
 
 public class DSOServiceTest extends BaseServiceTest {
 
@@ -70,7 +70,7 @@ public class DSOServiceTest extends BaseServiceTest {
     @Test
     public void launchAllGeologics() {
         GeologicLaunches launches = GeologicLaunches.builder().build()
-                .add(GeologicType.Conscientious, ST, 3);
+                .add(GeologicType.Conscientious, GR, 3);
         dsoService.launchGeologics(launches);
     }
 
