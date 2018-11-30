@@ -1,4 +1,4 @@
-@ECHO OFF
+@ECHO OFF & setlocal
 REM JAR_NAME=dso-automation-0.0.1-SNAPSHOT-jar-with-dependencies.jar
 SET JAR_NAME=dso-automation-0.0.2-SNAPSHOT-jar-with-dependencies.jar
 SET BATCH_FILE_NAME=%~n0
