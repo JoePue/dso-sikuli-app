@@ -10,7 +10,6 @@ import lombok.extern.java.Log;
 import org.sikuli.script.Match;
 import org.sikuli.script.Region;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
@@ -24,6 +23,7 @@ import static de.puettner.sikuli.dso.commands.ui.StarMenuFilter.GeneralsFilterSt
 @Log
 public abstract class Adventure {
 
+    public final String adventureFilename;
     protected final Region region;
     protected final FileService fileService;
     private final StarMenu starMenu;
@@ -35,7 +35,8 @@ public abstract class Adventure {
     protected GeneralMenu generalMenu;
 
     protected Adventure(IslandCommands islandCmds, StarMenu starMenu, DSOService dsoService, AppEnvironment appEnvironment,
-                        AdventureRouter adventureRouter) {
+                        AdventureRouter adventureRouter, String adventureFilename) {
+        this.adventureFilename = adventureFilename;
         this.islandCmds = islandCmds;
         this.starMenu = starMenu;
         this.generalMenu = MenuBuilder.build().buildGeneralMenu();
@@ -43,10 +44,8 @@ public abstract class Adventure {
         this.dsoService = dsoService;
         this.appEnvironment = appEnvironment;
         this.adventureRouter = adventureRouter;
-        this.fileService = new FileService(getFilename());
+        this.fileService = new FileService(AppEnvironment.getInstance().appendFilename("brave-tailor-adventure.json"));
     }
-
-    protected abstract File getFilename();
 
     public void play() {
         log.info("play");
@@ -65,12 +64,15 @@ public abstract class Adventure {
                 failureCount = failedSteps.get(stepNo);
             }
             if (failureCount < 3) {
-                log.severe("Failed step is processing again. stepNo: " + stepNo);
+                log.severe("Failed to process step. stepNo: " + stepNo);
                 failedSteps.put(stepNo, ++failureCount);
+                // Rollback actions
                 clickAssertButtons();
-                islandCmds.sleep(60, TimeUnit.SECONDS);
+                islandCmds.clickBuildCancelButton();
+                dsoService.confirmNewQuest();
+                islandCmds.sleep(30, TimeUnit.SECONDS);
             } else {
-                log.severe("Failed step no longer processed. stepNo: " + stepNo);
+                log.severe("Failed step is not longer processed. stepNo: " + stepNo);
                 break;
             }
         }
@@ -251,7 +253,7 @@ public abstract class Adventure {
 
     private boolean processLandStep(AdventureStep step) {
         log.info("processLandStep");
-        adventureRouter.route(adventureRouter.whereIam(), getFirstNavigationPoint(), null, null);
+        adventureRouter.route(adventureRouter.whereIam(), getFirstNavigationPoint(), null, null, step.getInitialDragDropOffset());
         adventureRouter.centerNavigationPoint(getFirstNavigationPoint());
         boolean rv = false;
         if (this.openGeneralMenu(step.getGeneral(), step.getGeneralName())) {
@@ -523,7 +525,7 @@ public abstract class Adventure {
                     islandCmds.dragDrop(step.getInitialDragDropOffset());
                 }
                 adventureRouter.route(step.getStartNavPoint(), step.getTargetNavPoint(), step.getTargetDragDropOffset(), step
-                        .getTargetNavPointClickOffset());
+                        .getTargetNavPointClickOffset(), step.getInitialDragDropOffset());
                 islandCmds.sleepX(1);
             } else {
                 log.severe("Failed to click processMoveStep button");
