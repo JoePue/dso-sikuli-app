@@ -68,6 +68,11 @@ public class DSOServiceTest extends BaseServiceTest {
     }
 
     @Test
+    public void launchAllWildExplorer() {
+        dsoService.launchAllWildExplorer();
+    }
+
+    @Test
     public void launchAllGeologics() {
         GeologicLaunches launches = GeologicLaunches.builder().build()
                 .add(GeologicType.Conscientious, GR, 3);

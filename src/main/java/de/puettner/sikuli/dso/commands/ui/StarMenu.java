@@ -5,6 +5,7 @@ import org.sikuli.script.Key;
 import org.sikuli.script.Match;
 import org.sikuli.script.Region;
 
+import java.awt.*;
 import java.util.Optional;
 
 import static de.puettner.sikuli.dso.commands.ui.SikuliCommands.pattern;
@@ -63,11 +64,11 @@ public class StarMenu extends DsoMenu {
         log.info("launchExplorer()");
         match.click();
         islandCmds.sleep();
-        if (!islandCmds.click(action.getPattern())) {
+        if (!islandCmds.clickAndHover(action.getPattern(), Optional.of(new Dimension(20, 0)))) {
             return false;
         }
         islandCmds.sleep();
-        if (!islandCmds.click(type.getPattern())) {
+        if (!islandCmds.clickAndHover(type.getPattern(), Optional.of(new Dimension(20, 0)))) {
             return false;
         }
         islandCmds.sleep();

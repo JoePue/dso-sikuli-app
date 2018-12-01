@@ -44,6 +44,10 @@ public class AppMath {
         return result;
     }
 
+    public static Location add(Match match, Dimension dimension) {
+        return new Location(match.x + dimension.width, match.y + dimension.height);
+    }
+
     public static List<Dimension> splitDimension(final Dimension dimension, final int maxDim) {
         int absW = Math.abs(dimension.width), absH = Math.abs(dimension.height);
         boolean isNegativW = dimension.width < 0, isNegativH = dimension.height < 0;

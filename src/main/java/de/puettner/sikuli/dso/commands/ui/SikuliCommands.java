@@ -1,6 +1,8 @@
 package de.puettner.sikuli.dso.commands.ui;
 
+import de.puettner.sikuli.dso.AppMath;
 import de.puettner.sikuli.dso.LocationMath;
+import de.puettner.sikuli.dso.exception.AppException;
 import lombok.extern.java.Log;
 import org.sikuli.script.*;
 import org.sikuli.script.Image;
@@ -9,6 +11,7 @@ import java.awt.*;
 import java.io.File;
 import java.util.Collections;
 import java.util.Iterator;
+import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 
@@ -159,20 +162,31 @@ public class SikuliCommands {
     }
 
     public boolean clickIfExists(Pattern pattern, Region searchRegion) {
-        final Match match = searchRegion.exists(pattern);
-        boolean rv = false;
-        if (match != null) {
-            match.click();
-            sleep(250);
-            rv = true;
-        }
-        log.info(removePath(pattern.getFilename()) + (rv ? " exists and clicked" : " not exists and not clicked"));
-        return rv;
+        return clickIfExists(pattern, searchRegion, Optional.empty());
     }
 
     public static Pattern pattern(String filename) {
         Image img = Image.create(filename);
         return new Pattern(img);
+    }
+
+    public boolean clickIfExists(Pattern pattern, Region searchRegion, Optional<Dimension> hoverLocation) {
+        final Match match = searchRegion.exists(pattern);
+        boolean rv = false;
+        if (match != null) {
+            match.click();
+            if (hoverLocation.isPresent()) {
+                try {
+                    match.hover(AppMath.add(match, hoverLocation.get()));
+                } catch (FindFailed findFailed) {
+                    throw new AppException(findFailed);
+                }
+            }
+            sleep(250);
+            rv = true;
+        }
+        log.info(removePath(pattern.getFilename()) + (rv ? " exists and clicked" : " not exists and not clicked"));
+        return rv;
     }
 
     protected String removePath(String filename) {
@@ -186,13 +200,18 @@ public class SikuliCommands {
         return this.clickIfExists(menuButton.getPattern(), searchRegion);
     }
 
-    boolean click(Pattern filename) {
-        if (clickIfExists(filename, appRegion)) {
+    boolean click(Pattern pattern) {
+        return clickAndHover(pattern, Optional.empty());
+    }
+
+    boolean clickAndHover(Pattern pattern, Optional<Dimension> hover) {
+        if (clickIfExists(pattern, appRegion, hover)) {
             return true;
         }
         log.log(Level.SEVERE, "Missing pattern");
         return false;
     }
+
 
     boolean exists(Pattern filename) {
         return this.exists(filename, appRegion);
