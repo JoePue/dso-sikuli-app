@@ -12,6 +12,8 @@ import java.util.Iterator;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 
+import static java.lang.String.format;
+
 @Log
 public class SikuliCommands {
 
@@ -115,7 +117,7 @@ public class SikuliCommands {
     }
 
     public void focusBrowser() {
-        app.focus(1);
+        app.focus();
         sleep();
     }
 
@@ -208,56 +210,41 @@ public class SikuliCommands {
         return match;
     }
 
-    public Match find(Pattern filename) {
-        final Match match = appRegion.exists(filename);
-        return match;
-    }
-
     public void highlightRegion() {
-        appRegion.highlight(2, "green");
+        highlightRegion(appRegion);
     }
 
-    public void dragDrop(Dimension location) {
-        this.dragDrop(location.width, location.height);
-        this.sleep();
+    public void highlightRegion(Region region) {
+        region.highlight(2, "green");
     }
 
-    public void dragDrop(int xOffset, int yOffset) {
+    public void dragDrop(Dimension dimension) {
+        this.dragDrop(dimension.width, dimension.height, appRegion);
+    }
+
+    public static void dragDrop(int w, int h, Region region) {
+        if (w == 0 && h == 0) {
+            return;
+        }
+        log.finer(format("dragDrop() w: %s, h: %s, region: %s", w, h, region));
         // Das drag-n-drop muss in umgekehrter Richtung erfolgen.
-        yOffset = yOffset * -1;
-        xOffset = xOffset * -1;
-        Location sourceLocation = LocationMath.calculateSourceLocation(xOffset, yOffset, appRegion);
-        Location targetLocation = LocationMath.calculateTargetLocation(xOffset, yOffset, sourceLocation);
+        h = h * -1;
+        w = w * -1;
+        Location sourceLocation = LocationMath.calculateSourceLocation(w, h, region);
+        Location targetLocation = LocationMath.calculateTargetLocation(w, h, sourceLocation);
         try {
-            appRegion.dragDrop(sourceLocation, targetLocation);
+            region.dragDrop(sourceLocation, targetLocation);
         } catch (FindFailed e) {
             log.log(Level.SEVERE, e.getMessage(), e);
         }
     }
 
-    @Deprecated
-    public void dragDrop(Location location) {
-        this.dragDrop(location.x, location.y);
-        this.sleep();
+    public void dragDrop(Dimension dimension, Region region) {
+        this.dragDrop(dimension.width, dimension.height, region);
     }
 
-    public boolean click(Match match) {
-        if (match == null) {
-            throw new IllegalArgumentException("match must not be null");
-        }
-        if (1 == match.click()) {
-            return true;
-        }
-        log.severe("Click was not successful.");
-        return false;
-    }
-
-    public void click(Location moveLocation) {
-        try {
-            appRegion.click(moveLocation);
-        } catch (FindFailed findFailed) {
-            throw new RuntimeException(findFailed);
-        }
+    public void dragDrop(int w, int h) {
+        dragDrop(w, h, appRegion);
     }
 
     public void doubleClick(Location location) {

@@ -5,6 +5,7 @@ import lombok.extern.java.Log;
 import org.junit.Before;
 import org.junit.Test;
 import org.sikuli.script.App;
+import org.sikuli.script.Location;
 
 import static de.puettner.sikuli.dso.adv.BraveTailorNavPoints.*;
 import static de.puettner.sikuli.dso.commands.os.WindowsPlatform.CHROME_EXE;
@@ -33,14 +34,20 @@ public class BraveTailorAdventureRouterTest extends MenuTest {
 
     @Test
     public void route() {
-        adventure.route(NP_1, NP_4, null, null);
-        adventure.route(NP_4, NP_1, null, null);
+        adventure.route(NP_1, NP_4, null, null, null);
+        adventure.route(NP_4, NP_1, null, null, null);
     }
 
     @Test
     public void centerNavigationPoint() {
-        // adventure.centerNavigationPoint(NP_2, new Dimension(-55, 204), null);
-        adventure.centerNavigationPoint(NP_4, null, null);
+        adventure.centerNavigationPoint(NP_4);
+    }
+
+    @Test
+    public void getMidpoint() {
+        adventure.highlightRegion();
+        Location location = adventure.getMidpoint();
+        log.info("location " + location);
     }
 
 }

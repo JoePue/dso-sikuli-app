@@ -5,6 +5,8 @@ import org.junit.Test;
 import org.sikuli.script.Match;
 import org.sikuli.script.Region;
 
+import java.awt.*;
+
 @Log
 public class AppMathTest {
 
@@ -18,4 +20,14 @@ public class AppMathTest {
         log.info("distance: " + result);
         System.out.println(result);
     }
+
+    @Test
+    public void splitDimension() {
+        Dimension startDimension = new Dimension(0, 0);
+        java.util.List<Dimension> dims = AppMath.splitDimension(startDimension, 50);
+        for (Dimension splitDim : dims) {
+            log.info("" + splitDim);
+        }
+    }
+
 }

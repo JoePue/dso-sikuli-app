@@ -6,8 +6,7 @@ import de.puettner.sikuli.dso.commands.ui.IslandCommands;
 import de.puettner.sikuli.dso.commands.ui.StarMenu;
 import de.puettner.sikuli.dso.commands.ui.StarMenuFilter;
 import lombok.extern.java.Log;
-
-import java.io.File;
+import org.sikuli.script.Region;
 
 /**
  * brave tailor = tapferes Schneiderlein
@@ -15,19 +14,13 @@ import java.io.File;
 @Log
 public class BraveTailorAdv extends Adventure {
 
-    public final File stateFile;
-
     /**
      * C'tor
      */
-    protected BraveTailorAdv(IslandCommands islandCmds, StarMenu starMenu, DSOService dsoService, AppEnvironment appEnvironment) {
-        super(islandCmds, starMenu, dsoService, appEnvironment, new BraveTailorAdventureRouter(islandCmds, islandCmds.getIslandRegion()));
-        this.stateFile = AppEnvironment.getInstance().appendFilename("brave-tailor-adventure.json");
-    }
-
-    @Override
-    protected File getFilename() {
-        return stateFile;
+    protected BraveTailorAdv(IslandCommands islandCmds, StarMenu starMenu, DSOService dsoService, AppEnvironment appEnvironment, Region
+            dsoAppRegion) {
+        super(islandCmds, starMenu, dsoService, appEnvironment, new BraveTailorAdventureRouter(islandCmds, dsoAppRegion),
+                "brave-tailor-adventure.json");
     }
 
     @Override
