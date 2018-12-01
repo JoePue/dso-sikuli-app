@@ -177,13 +177,13 @@ public class IslandCommands extends SikuliCommands {
         hover(new Location(appRegion.w, appRegion.h));
     }
 
-    public void dragDrop(Dimension location) {
-        log.info("dragDrop() " + location);
+    public void dragDrop(Dimension dimension) {
+        log.info("dragDrop() " + dimension);
         // Nach rechts: INFORMATION: dragDrop()java.awt.Dimension[width=112,height=152]
-        if (location.width < 0) {
+        if (dimension.width < 0) {
             waitUntilNotificationInfoBoxDisappears();
         }
-        super.dragDrop(location);
+        super.dragDrop(dimension);
     }
 
     public void waitUntilNotificationInfoBoxDisappears() {
