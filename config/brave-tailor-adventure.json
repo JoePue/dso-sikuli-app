@@ -147,7 +147,7 @@
       ],
       "startNavPoint": "NP_1", "targetNavPoint": "NP_1",
       "targetDragDropOffset": {
-        "width": -400.0, "height": -100.0
+        "width": -800.0, "height": -200.0
       },
       "comment": "#Sector-1 #3 attack"
     }, {
@@ -606,8 +606,11 @@
         }
       ],
       "startNavPoint": "NP_3", "targetNavPoint": "NP_3",
+      "initialDragDropOffset": {
+        "width": 200.0, "height": 100.0
+      },
       "targetDragDropOffset": {
-        "width": 0.0, "height": -400.0
+        "width": 0.0, "height": -200.0
       },
       "comment": "#Sector-3 #3 attack "
     }, {
@@ -768,6 +771,9 @@
       "no": 95, "stepType": "MOVE", "state": "OPEN",
       "general": "Generalmajor", "generalName": "GM 2",
       "startNavPoint": "NP_3", "targetNavPoint": "NP_4",
+      "initialDragDropOffset": {
+        "width": 200.0, "height": 0.0
+      },
       "targetNavPointClickOffset": {
         "width": -49.0, "height": -137.0
       }
@@ -806,6 +812,9 @@
       "no": 100, "stepType": "MOVE", "state": "OPEN",
       "general": "Sensenmann", "generalName": "SM 2",
       "startNavPoint": "NP_3", "targetNavPoint": "NP_4",
+      "initialDragDropOffset": {
+        "width": 100.0, "height": 0.0
+      },
       "targetNavPointClickOffset": {
         "width": -298.0, "height": -288.0
       }
@@ -872,19 +881,19 @@
         "width": -176.0, "height": -1.0
       }
     }, {
-      "no": 111, "stepType": "MOVE", "state": "OPEN",
+      "no": 111, "stepType": "UNSET_UNITS", "state": "OPEN",
+      "general": "MdK", "generalName": "MdK 3"
+    }, {
+      "no": 112, "stepType": "MOVE", "state": "OPEN",
       "general": "MdK", "generalName": "MdK 3",
       "startNavPoint": "NP_3", "targetNavPoint": "NP_4",
       "targetNavPointClickOffset": {
         "width": -194.0, "height": 43.0
       }
     }, {
-      "no": 112, "stepType": "UNSET_UNITS", "state": "OPEN",
+      "no": 113, "stepType": "UNSET_UNITS", "state": "OPEN",
       "general": "Mary",
       "comment": "Last Move to Sector 4. ------------------------------------------------"
-    }, {
-      "no": 113, "stepType": "UNSET_UNITS", "state": "OPEN",
-      "general": "MdK", "generalName": "MdK 3"
     }, {
       "no": 114, "stepType": "ATTACK", "state": "OPEN",
       "general": "Generalmajor", "generalName": "GM 2",
