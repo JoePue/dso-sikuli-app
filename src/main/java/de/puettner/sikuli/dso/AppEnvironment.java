@@ -42,7 +42,8 @@ public class AppEnvironment {
         public static final String DSO_SIKULI_APP_HOME = "--configDir".toUpperCase();
 
         public static AppEnvironment build(String[] args) {
-            for (String arg : args) {
+            for (int i = 0; i < args.length; ++i) {
+                String arg = args[i];
                 if (arg.isEmpty()) {
                     continue;
                 }
@@ -53,6 +54,7 @@ public class AppEnvironment {
                         return new AppEnvironment();
                     }
                     File homeDir = new File(paramValue);
+                    args[i] = null;
                     if (homeDir.isDirectory()) {
                         return new AppEnvironment(homeDir);
                     } else {

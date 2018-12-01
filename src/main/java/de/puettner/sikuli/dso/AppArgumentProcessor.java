@@ -36,6 +36,9 @@ public class AppArgumentProcessor {
         DSOService dsoService = DSOServiceBuilder.build();
         try {
             for (String arg : args) {
+                if (arg == null) {
+                    continue;
+                }
                 dsoService.focusBrowser();
                 if ("firstDailyRun".equals(arg)) {
                     HomeIslandRunConfigs.firstDailyRun(dsoService);
