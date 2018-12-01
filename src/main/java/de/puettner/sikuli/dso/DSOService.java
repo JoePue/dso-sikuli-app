@@ -51,11 +51,12 @@ public class DSOService {
         islandCmds.clickDsoTab();
         if (islandCmds.clickLetsPlayButton()) {
             this.closeWelcomeDialog();
-            closeChat();
         } else {
             islandCmds.clickSmallOkButton();
             log.info("expected a running DSO app");
         }
+        closeChat();
+        islandCmds.initZoom();
     }
 
     public void focusBrowser() {

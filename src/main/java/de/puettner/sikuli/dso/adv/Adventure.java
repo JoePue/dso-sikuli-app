@@ -51,7 +51,7 @@ public abstract class Adventure {
         log.info("play");
         this.restoreState();
         adventureRouter.routeCheck(adventureSteps);
-        this.initZoom();
+        initZoom();
         islandCmds.typeESC();
         islandCmds.closeChat();
 
@@ -77,6 +77,11 @@ public abstract class Adventure {
             }
         }
         processFinishAction();
+    }
+
+    private void initZoom() {
+        islandCmds.initZoom();
+        islandCmds.zoomOut();
     }
 
     private void processFinishAction() {
@@ -536,11 +541,6 @@ public abstract class Adventure {
         failIfBuildCancelButtonExists();
     }
 
-    public void initZoom() {
-        islandCmds.type("0");
-        zoomOut();
-    }
-
     public boolean openGeneralMenu(GeneralType general, String generalName) {
         log.info("openGeneralMenu() general: " + general + ", generalName: " + generalName);
         boolean rv = false;
@@ -557,10 +557,6 @@ public abstract class Adventure {
             log.severe("General not found");
         }
         return rv;
-    }
-
-    public void zoomOut() {
-        islandCmds.type("-");
     }
 
     public void prepareStarMenu(StarMenuFilter filter) {

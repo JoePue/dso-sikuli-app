@@ -196,4 +196,12 @@ public class IslandCommands extends SikuliCommands {
     public boolean isNotificationInfoBoxVisible() {
         return this.exists(NotificationInfoBox.getPattern());
     }
+
+    public void initZoom() {
+        type("0");
+    }
+
+    public void zoomOut() {
+        type("-");
+    }
 }
