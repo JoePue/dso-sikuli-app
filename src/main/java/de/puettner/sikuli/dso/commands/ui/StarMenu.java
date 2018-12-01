@@ -78,7 +78,7 @@ public class StarMenu extends DsoMenu {
     }
 
     public boolean openStarMenu(String filterString) {
-        log.info("openStarMenu()" + (filterString == null ? "" : "menuFilter: " + filterString));
+        log.info("openStarMenu() " + (filterString == null ? "" : "menuFilter: " + filterString));
         boolean rv = true;
         if (!isStarMenuOpen()) {
             if (islandCmds.clickStarButton()) {
