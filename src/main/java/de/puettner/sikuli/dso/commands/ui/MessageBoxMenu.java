@@ -16,7 +16,7 @@ public class MessageBoxMenu extends DsoMenu {
      */
     public int fetchRewardMessages() {
         log.info("fetchRewardMessages()");
-        int i = 0, loopLimit = 100;
+        int i = 0, loopLimit = 20;
         Match match = null;
         do {
             match = islandCmds.find(MessageBoxButton.ExplorerTreasureRewardMessageIcon.pattern, menuRegion);
