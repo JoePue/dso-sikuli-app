@@ -29,10 +29,10 @@ public class AppMath {
      * @return
      */
     public static Dimension calculateCenterDimension(Location midpoint, Location location) {
-        log.fine("midpoint: " + midpoint);
-        log.fine("location: " + location);
+        log.finest("midpoint: " + midpoint);
+        log.finest("location: " + location);
         Dimension dimension = new Dimension(location.x - midpoint.x, location.y - midpoint.y);
-        log.info("dimension: " + dimension);
+        log.finest("dimension: " + dimension);
         return dimension;
     }
 
