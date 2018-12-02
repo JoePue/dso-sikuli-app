@@ -49,7 +49,6 @@ public class GeneralMenu extends DsoMenu {
                 rv = false;
             }
         }
-        // todo impl setup check
         return rv;
     }
 
