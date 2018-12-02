@@ -13,8 +13,8 @@ import java.util.List;
 @Log
 public class FileService {
 
-    private final File filename;
     private static final ObjectMapper objectMapper = new ObjectMapper();
+    private final File filename;
 
     public FileService(File filename) {
         this.filename = filename;
@@ -23,6 +23,14 @@ public class FileService {
         module.addDeserializer(AttackCamp.class, new AttackCampDeserializer());
         objectMapper.registerModule(module);
         objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+    }
+
+    public static String removeFilePath(String filename) {
+        int idx = filename.lastIndexOf(File.separator);
+        if (idx > 1) {
+            return filename.substring(idx + 1);
+        }
+        return filename;
     }
 
     public void saveState(AdventureState state) {

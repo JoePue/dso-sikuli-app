@@ -15,6 +15,7 @@ import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 
+import static de.puettner.sikuli.dso.adv.FileService.removeFilePath;
 import static java.lang.String.format;
 
 @Log
@@ -220,7 +221,7 @@ public class SikuliCommands {
     boolean exists(Pattern pattern, Region searchRegion) {
         final Match match = find(pattern, searchRegion);
         boolean exists = (match == null ? false : true);
-        log.fine(pattern.getFilename() + " " + (exists ? "exists" : "not exists"));
+        log.fine(removeFilePath(pattern.getFilename()) + " " + (exists ? "exists" : "not exists"));
         return exists;
     }
 
