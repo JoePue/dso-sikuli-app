@@ -1,5 +1,9 @@
-package de.puettner.sikuli.dso.adv;
+package de.puettner.sikuli.dso.adv.step_proc;
 
+import de.puettner.sikuli.dso.adv.AdventureBuilder;
+import de.puettner.sikuli.dso.adv.AdventureStep;
+import de.puettner.sikuli.dso.adv.AdventureStepState;
+import de.puettner.sikuli.dso.adv.StepType;
 import org.junit.Test;
 
 import static de.puettner.sikuli.dso.adv.AdventureStepState.OPEN;
@@ -9,9 +13,9 @@ import static de.puettner.sikuli.dso.adv.StepType.MOVE;
 import static junit.framework.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-public class AdventureTest {
+public class CommonStepProcessorTest {
 
-    Adventure sut = AdventureBuilder.build().buildBraveTailorAdv();
+    CommonStepProcessor sut = AdventureBuilder.build().buildBraveTailorAdv().getCommonStepProcessor();
 
     @Test
     public void isDelay() {

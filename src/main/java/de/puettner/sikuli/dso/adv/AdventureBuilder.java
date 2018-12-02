@@ -34,7 +34,7 @@ public class AdventureBuilder {
     public BraveTailorAdv buildBraveTailorAdv() {
         if (braveTailorAdv == null) {
             braveTailorAdv = new BraveTailorAdv(menuBuilder.buildIslandCommand(), menuBuilder.buildStarMenuCommands(), DSOServiceBuilder
-                    .build(), appEnvironment, dsoAppRegion);
+                    .build(), dsoAppRegion);
         }
         return braveTailorAdv;
     }

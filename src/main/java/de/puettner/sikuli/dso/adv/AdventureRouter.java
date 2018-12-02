@@ -74,7 +74,7 @@ public abstract class AdventureRouter {
         }
     }
 
-    protected Location getMidpoint() {
+    public Location getMidpoint() {
         return LocationMath.getMidpointLocation(adventureRegion);
     }
 
@@ -93,7 +93,7 @@ public abstract class AdventureRouter {
      * @param targetDragDropOffset
      * @param initialDragDropOffset Darf null sein, zum initialen Verschieben hin zum Start NavPoint
      */
-    protected void moveToCamp(NavigationPoint startNavPoint, NavigationPoint targetNavPoint, Dimension targetDragDropOffset, Dimension
+    public void moveToCamp(NavigationPoint startNavPoint, NavigationPoint targetNavPoint, Dimension targetDragDropOffset, Dimension
             initialDragDropOffset) {
         Objects.requireNonNull(startNavPoint, "Missing startNavPoint");
         Objects.requireNonNull(targetNavPoint, "Missing targetNavPoint");

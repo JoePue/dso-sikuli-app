@@ -32,7 +32,7 @@ public class AdventureStep {
     private Dimension targetNavPointClickOffset;
     private String comment;
 
-    protected AdventureStep() {
+    public AdventureStep() {
     }
 
     public AdventureStep(StepType stepType, NavigationPoint startNavPoint, NavigationPoint targetNavPoint, AttackCamp camp,

@@ -27,11 +27,11 @@ public class BraveTailorAdvTest extends MenuTest {
 
     @Test
     public void hoverRegionCenter() {
-        adventure.hoverRegionCenter();
+        adventure.getCommonStepProcessor().hoverRegionCenter();
     }
 
     @Test
     public void clickAttackCamp() {
-        adventure.clickAttackCamp(BraveTailorAttackCamp.CAMP_4);
+        adventure.getAttackStepProcessor().clickAttackCamp(BraveTailorAttackCamp.CAMP_4);
     }
 }

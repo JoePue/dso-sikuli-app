@@ -83,7 +83,7 @@ public class GeneralMenu extends DsoMenu {
     /**
      * Expects an open general menu.
      */
-    protected boolean unsetUnits() {
+    public boolean unsetUnits() {
         log.info("unsetUnits");
         boolean rv = clickUnsetUnitButton();
         if (rv) {
