@@ -8,4 +8,5 @@ import java.util.List;
 @Data
 public class AdventureState {
     private List<AdventureStep> adventureSteps;
+    private AdventureConfiguration configuration;
 }

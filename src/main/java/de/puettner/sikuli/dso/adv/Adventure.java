@@ -33,6 +33,7 @@ public abstract class Adventure {
     protected List<AdventureStep> adventureSteps = new ArrayList<>();
     protected IslandCommands islandCmds;
     protected GeneralMenu generalMenu;
+    private AdventureConfiguration configuration;
 
     protected Adventure(IslandCommands islandCmds, StarMenu starMenu, DSOService dsoService, AppEnvironment appEnvironment,
                         AdventureRouter adventureRouter, String adventureFilename) {
@@ -421,7 +422,9 @@ public abstract class Adventure {
 
     public void restoreState() {
         log.info("restoreState()");
-        this.adventureSteps = fileService.restoreState().getAdventureSteps();
+        AdventureState state = fileService.restoreState();
+        this.adventureSteps = state.getAdventureSteps();
+        this.configuration = state.getConfiguration();
     }
 
     private void saveState(AdventureStep step, AdventureStepState state) {
@@ -433,6 +436,7 @@ public abstract class Adventure {
         log.info("saveState()");
         AdventureState state = new AdventureState();
         state.setAdventureSteps(this.adventureSteps);
+        state.setConfiguration(this.configuration);
         fileService.saveState(state);
     }
 
