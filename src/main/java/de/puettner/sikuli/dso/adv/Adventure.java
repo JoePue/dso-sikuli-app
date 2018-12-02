@@ -147,22 +147,11 @@ public abstract class Adventure {
                     if (StepType.MOVE.equals(step.getStepType())) {
                         supportedStep = true;
                         Objects.requireNonNull(step.getTargetNavPoint());
-                        // Objects.requireNonNull(step.getTargetDragDropOffset());
+
                         if (OPEN.equals(step.getState())) {
                             processMoveStep(step);
                             ++processedStepCounter;
                             saveState(step, AdventureStepState.DONE);
-                        }
-                    }
-                    // *** OPEN > ATTACK ***
-                    if (StepType.ATTACK.equals(step.getStepType())) {
-                        supportedStep = true;
-                        if (this.prepareAttack(step)) {
-                            ++processedStepCounter;
-                            saveState(step, PREPARED);
-                            islandCmds.typeESC();
-                        } else {
-                            throw new IllegalStateException("Attack preparation failed");
                         }
                     }
                     // *** OPEN > SOLVE_QUEST ***
@@ -195,21 +184,26 @@ public abstract class Adventure {
                         ++processedStepCounter;
                         saveState(step, DONE);
                     }
+                    // *** OPEN > ATTACK ***
+                    if (StepType.ATTACK.equals(step.getStepType())) {
+                        supportedStep = true;
+                        if (this.prepareAttack(step)) {
+                            saveState(step, PREPARED);
+                            int errorCode = attack(step);
+                            processAttackReturnCode(step, i, errorCode);
+                            ++processedStepCounter;
+                        } else {
+                            throw new IllegalStateException("Attack preparation failed");
+                        }
+                    }
                 }
                 if (PREPARED.equals(step.getState())) {
                     processStepDelay(step, processedStepCounter == 0);
                     // *** PREPARED > ATTACK ***
                     if (StepType.ATTACK.equals(step.getStepType())) {
                         supportedStep = true;
-                        int errorCode = attack(step);
-                        if (errorCode == 0) {
-                            saveState(step, DONE);
-                            markPreviousStepsAsDone(step, i);
-                        } else if (errorCode == 5) {
-                            throw new IllegalStateException("attack step failed");
-                        } else {
-                            throw new IllegalStateException("attack step failed");
-                        }
+                        int errorCode = processAttackStep(step);
+                        processAttackReturnCode(step, i, errorCode);
                         ++processedStepCounter;
                     }
                 }
@@ -229,6 +223,17 @@ public abstract class Adventure {
             saveState();
         }
         return rv;
+    }
+
+    private void processAttackReturnCode(AdventureStep step, int i, int errorCode) {
+        if (errorCode == 0) {
+            saveState(step, DONE);
+            markPreviousStepsAsDone(step, i);
+        } else if (errorCode == 5) {
+            throw new IllegalStateException("processAttackStep step failed");
+        } else {
+            throw new IllegalStateException("processAttackStep step failed");
+        }
     }
 
     private void confirmSolvedQuest() {
@@ -261,7 +266,7 @@ public abstract class Adventure {
         adventureRouter.route(adventureRouter.whereIam(), getFirstNavigationPoint(), null, null, step.getInitialDragDropOffset());
         adventureRouter.centerNavigationPoint(getFirstNavigationPoint());
         boolean rv = false;
-        if (this.openGeneralMenu(step.getGeneral(), step.getGeneralName())) {
+        if (this.openGeneralMenu(step.getGeneral(), step.getGeneralName(), step.getState())) {
             islandCmds.sleep();
             Optional<Match> match = this.findLandingLocation();
             if (match.isPresent()) {
@@ -324,7 +329,6 @@ public abstract class Adventure {
         return list;
     }
 
-
     public Match findGeneralInStarMenu(GeneralType general, String generalName, boolean shouldWait) {
         log.info("findGeneralInStarMenu() general: " + general + ", generalName: " + generalName + "m shouldWait: " + shouldWait);
         if (generalName == null || generalName.isEmpty()) {
@@ -339,7 +343,6 @@ public abstract class Adventure {
     private Match isGeneralAvailable(GeneralType general, String generalName, boolean shouldWait) {
         Match match = null;
         int loops = (shouldWait ? 40 : 1);
-
         for (int i = 0; i < loops; ++i) {
             match = islandCmds.find(general.getPattern(), starMenu.getMenuRegion());
             if (match == null) {
@@ -373,34 +376,39 @@ public abstract class Adventure {
      * 0 : alles ok
      * 1 : unbekannter Fehler
      * 2 : camp nicht gefunden
-     * 3 : attack preparation failed
-     * 4 : Clicking the attack button failed
-     * 5 : Clicking attack camp failed
+     * 3 : processAttackStep preparation failed
+     * 4 : Clicking the processAttackStep button failed
+     * 5 : Clicking processAttackStep camp failed
      */
-    private int attack(AdventureStep step) {
-        log.info("attack()");
-        int rv = 0;
-        // NavigationPoint navPoint = whereIam();
-        if (openGeneralMenu(step.getGeneral(), step.getGeneralName())) {
-            if (clickAttackButton()) {
-                islandCmds.sleep();
-                adventureRouter.moveToCamp(step.getStartNavPoint(), step.getTargetNavPoint(), step.getTargetDragDropOffset(), step
-                        .getInitialDragDropOffset());
-                if (clickAttackCamp(step.getCamp())) {
-                    islandCmds.sleepX(2);
-                    failIfBuildCancelButtonExists();
-                } else {
-                    rv = 5;
-                    log.severe("Clicking attack camp failed");
-                    islandCmds.clickBuildCancelButton();
-                }
-            } else {
-                log.severe("Clicking the attack button failed");
-                rv = 4;
-            }
+    private int processAttackStep(AdventureStep step) {
+        log.info("processAttackStep()");
+        int rv;
+        if (openGeneralMenu(step.getGeneral(), step.getGeneralName(), step.getState())) {
+            rv = attack(step);
         } else {
             log.severe("Failed to open general menu");
             rv = 3;
+        }
+        return rv;
+    }
+
+    private int attack(AdventureStep step) {
+        int rv = 0;
+        if (clickAttackButton()) {
+            islandCmds.sleep();
+            adventureRouter.moveToCamp(step.getStartNavPoint(), step.getTargetNavPoint(), step.getTargetDragDropOffset(), step
+                    .getInitialDragDropOffset());
+            if (clickAttackCamp(step.getCamp())) {
+                islandCmds.sleepX(2);
+                failIfBuildCancelButtonExists();
+            } else {
+                rv = 5;
+                log.severe("Clicking processAttackStep camp failed");
+                islandCmds.clickBuildCancelButton();
+            }
+        } else {
+            log.severe("Clicking the processAttackStep button failed");
+            rv = 4;
         }
         return rv;
     }
@@ -428,22 +436,18 @@ public abstract class Adventure {
         fileService.saveState(state);
     }
 
-    /**
-     *
-     */
     protected boolean prepareAttack(AdventureStep step) {
         log.info("prepareAttack() " + step.getCamp());
         GeneralType general = step.getGeneral();
         String generalName = step.getGeneralName();
         AttackUnit[] units = step.getUnits();
         boolean rv = false;
-        if (openGeneralMenu(general, generalName)) {
+        if (openGeneralMenu(general, generalName, step.getState())) {
             islandCmds.sleep();
             if (generalMenu.setupAttackUnits(units)) {
-                // TODO JPU Implement a method to check the setup
                 rv = true;
             } else {
-                log.severe("Failed to setup attack units");
+                log.severe("Failed to setup processAttackStep units");
             }
         } else {
             log.severe("Failed to open general menu");
@@ -522,7 +526,7 @@ public abstract class Adventure {
         GeneralType general = step.getGeneral();
         String generalName = step.getGeneralName();
         NavigationPoint navPoint = step.getTargetNavPoint();
-        if (openGeneralMenu(general, generalName)) {
+        if (openGeneralMenu(general, generalName, step.getState())) {
             islandCmds.sleepX(5);
             if (generalMenu.clickMoveBtn()) {
                 Objects.requireNonNull(step.getTargetNavPointClickOffset());
@@ -541,7 +545,7 @@ public abstract class Adventure {
         failIfBuildCancelButtonExists();
     }
 
-    public boolean openGeneralMenu(GeneralType general, String generalName) {
+    public boolean openGeneralMenu(GeneralType general, String generalName, AdventureStepState state) {
         log.info("openGeneralMenu() general: " + general + ", generalName: " + generalName);
         boolean rv = false;
         Match match = findGeneralInStarMenu(general, generalName, true);
@@ -565,13 +569,16 @@ public abstract class Adventure {
 
     private boolean processSolveQuestStep(AdventureStep step) {
         log.info("processSolveQuestStep()");
-        for (int i = 0; i < 50; ++i) {
+        final int SLEEP_TIME = 15;
+        final int MAX_TIME = 300 / SLEEP_TIME;
+
+        for (int i = 0; i < MAX_TIME; ++i) {
             if (dsoService.confirmSolvedQuest()) {
                 islandCmds.sleepX(2);
                 dsoService.confirmNewQuest();
                 break;
             } else {
-                islandCmds.sleep(15, TimeUnit.SECONDS);
+                islandCmds.sleep(SLEEP_TIME, TimeUnit.SECONDS);
             }
         }
         return true;
@@ -580,7 +587,7 @@ public abstract class Adventure {
     private boolean processUnsetUnitsStep(AdventureStep step) {
         log.info("processUnsetUnitsStep()");
         boolean rv = false;
-        if (openGeneralMenu(step.getGeneral(), step.getGeneralName())) {
+        if (openGeneralMenu(step.getGeneral(), step.getGeneralName(), step.getState())) {
             rv = generalMenu.unsetUnits();
         }
         return rv;
