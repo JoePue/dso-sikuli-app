@@ -172,14 +172,18 @@ public abstract class Adventure {
                     // *** OPEN > ATTACK ***
                     if (StepType.ATTACK.equals(step.getStepType())) {
                         supportedStep = true;
-                        if (attackStepProcessor.prepareAttack(step, Optional.ofNullable(configuration.getRedoOneManSetup()))) {
-                            saveState(step, PREPARED);
-                            int errorCode = attackStepProcessor.attack(step);
-                            processAttackReturnCode(step, i, errorCode);
-                            ++processedStepCounter;
+                        if (attackStepProcessor.isPreparationRequired(adventureSteps, i, configuration.getRedoOneManSetup())) {
+                            log.fine("Unit preparation is required");
+                            if (!attackStepProcessor.prepareAttack(step)) {
+                                throw new IllegalStateException("Attack preparation failed");
+                            }
                         } else {
-                            throw new IllegalStateException("Attack preparation failed");
+                            log.fine("Unit preparation is not required");
                         }
+                        saveState(step, PREPARED);
+                        int errorCode = attackStepProcessor.attack(step);
+                        processAttackReturnCode(step, i, errorCode);
+                        ++processedStepCounter;
                     }
                 }
                 if (PREPARED.equals(step.getState())) {
@@ -308,7 +312,7 @@ public abstract class Adventure {
         }
     }
 
-    protected AttackStepProcessor getAttackStepProcessor() {
+    public AttackStepProcessor getAttackStepProcessor() {
         return attackStepProcessor;
     }
 

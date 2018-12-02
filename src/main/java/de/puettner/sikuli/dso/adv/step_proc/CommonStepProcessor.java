@@ -198,7 +198,6 @@ public class CommonStepProcessor {
         return true;
     }
 
-
     private boolean campExists(AttackCamp camp) {
         log.info("campExists()");
         Match match = islandCmds.find(camp.getPattern(), region);
@@ -210,12 +209,14 @@ public class CommonStepProcessor {
     }
 
     public boolean processAllGeneralsBackToStarMenuStep() {
+        log.info("processAllGeneralsBackToStarMenuStep()");
         islandCmds.parkMouse();
-        int maxLoop = 3, loopCounter = 0;
+        int loopCounter = 0;
         List<Match> matchList = findAllReadyGenerals();
-        while (matchList.size() > 0) {
+        if (matchList.size() > 0) {
+            log.fine("matchList.size() " + matchList.size());
             for (Match match : matchList) {
-                log.info("match: " + match);
+                log.fine("match: " + match);
                 match.hover();
                 match.doubleClick();
                 islandCmds.sleepX(3);

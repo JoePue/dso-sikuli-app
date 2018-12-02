@@ -117,18 +117,26 @@ public class AttackStepProcessor {
         return rv;
     }
 
+    /**
+     * @param adventureSteps  list of adventure steps
+     * @param idx             index of current step in list
+     * @param redoOneManSetup
+     * @return
+     */
     public boolean isPreparationRequired(List<AdventureStep> adventureSteps, int idx, Boolean redoOneManSetup) {
-        AdventureStep step = adventureSteps.get(idx);
-        if (step.getGeneralName() != null && redoOneManSetup != null && redoOneManSetup == false && idx < adventureSteps.size()) {
+        log.info("isPreparationRequired()");
+        AdventureStep currentStep = adventureSteps.get(idx);
+        if (redoOneManSetup != null && redoOneManSetup == false && idx < adventureSteps.size() && currentStep.getGeneralName() != null &&
+                currentStep.getUnits() != null && currentStep.getUnits().length == 1) {
             for (int i = idx - 1; i >= 0; --i) {
                 AdventureStep pastStep = adventureSteps.get(i);
-                if (step.getGeneralName().equals(pastStep.getGeneralName())) {
+                if (currentStep.getGeneralName().equalsIgnoreCase(pastStep.getGeneralName())) {
 
                     if (StepType.UNSET_UNITS.equals(pastStep.getStepType())) {
                         return true;
                     }
                     if (StepType.ATTACK.equals(pastStep.getStepType()) && AdventureStepState.DONE.equals(pastStep.getState())) {
-                        return !AttackUnit.compare(pastStep.getUnits(), step.getUnits());
+                        return !AttackUnit.compare(pastStep.getUnits(), currentStep.getUnits());
                     }
                 }
             }

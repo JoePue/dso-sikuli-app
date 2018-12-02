@@ -52,7 +52,7 @@ public abstract class AdventureRouter {
             match = islandCmds.find(navPoint.getPattern(), adventureRegion);
         }
 
-        log.info("match: " + match);
+        log.fine("match: " + match);
         if (match == null) {
             throw new IllegalStateException();
         }
@@ -66,12 +66,11 @@ public abstract class AdventureRouter {
     }
 
     public void dragDrop(Dimension dimension) {
+        log.info(String.format("dragDrop() w: %s, h: %s", dimension.width, dimension.height));
         final int maxDim = 700;
         islandCmds.parkMouseForMove();
         List<Dimension> splittedDimensions = AppMath.splitDimension(dimension, maxDim);
-        for (Dimension partialDimension : splittedDimensions) {
-            islandCmds.dragDrop(partialDimension);
-        }
+        splittedDimensions.forEach(islandCmds::dragDrop);
     }
 
     public Location getMidpoint() {
@@ -216,18 +215,18 @@ public abstract class AdventureRouter {
                 Dimension targetPointDiffDimension = AppMath.add(targetDragDropOffset, targetPointDim);
                 dragDrop(targetPointDiffDimension);
             }
-            processTargetClickOffset(targetPoint, targetClickOffset);
+            processTargetClickOffset(targetClickOffset, targetPoint);
         } else {
             throw new IllegalStateException("Navigation point not found");
         }
         parkMouse();
     }
 
-    protected void processTargetClickOffset(NavigationPoint navPoint, @Nullable Dimension targetClickOffset) {
+    protected void processTargetClickOffset(@Nullable Dimension targetClickOffset, NavigationPoint targetPoint) {
         Match match;
         Location navPointLocation;
         if (targetClickOffset != null) {
-            match = findNavPoint(navPoint);
+            match = findNavPoint(targetPoint);
             navPointLocation = convertMatchToLocation(match);
             log.info("targetClickOffset: " + targetClickOffset);
             Location clickLocation = new Location(navPointLocation.x + targetClickOffset.width, navPointLocation.y +

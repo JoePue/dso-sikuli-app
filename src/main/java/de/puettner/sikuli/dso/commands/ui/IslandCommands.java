@@ -178,7 +178,6 @@ public class IslandCommands extends SikuliCommands {
     }
 
     public void dragDrop(Dimension dimension) {
-        log.info("dragDrop() " + dimension);
         // Nach rechts: INFORMATION: dragDrop()java.awt.Dimension[width=112,height=152]
         if (dimension.width < 0) {
             waitUntilNotificationInfoBoxDisappears();

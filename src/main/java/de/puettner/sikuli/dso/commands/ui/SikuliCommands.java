@@ -147,6 +147,7 @@ public class SikuliCommands {
     }
 
     public void parkMouseForMove() {
+        log.finer("parkMouseForMove()");
         hover(new Location(appRegion.w / 2, appRegion.h / 2));
     }
 
@@ -172,8 +173,8 @@ public class SikuliCommands {
     }
 
     public boolean clickIfExists(Pattern pattern, Region searchRegion, Optional<Dimension> hoverLocation) {
-        final Match match = searchRegion.exists(pattern);
         boolean rv = false;
+        final Match match = searchRegion.exists(pattern);
         if (match != null) {
             match.click();
             if (hoverLocation.isPresent()) {

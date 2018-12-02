@@ -43,4 +43,23 @@ public class AttackUnit {
     public static AttackUnit Kan(int i) {
         return AttackUnit.builder().type(Kan).quantity(i).build();
     }
+
+    public static boolean compare(AttackUnit[] left, AttackUnit[] right) {
+        if (left == null || right == null) {
+            return false;
+        }
+        if (left.length != right.length) {
+            return false;
+        }
+        for (int i = 0; i < left.length; ++i) {
+            if (!left[i].getType().equals(right[i].getType())) {
+                return false;
+            }
+            if (left[i].getQuantity() != right[i].getQuantity()) {
+                return false;
+            }
+        }
+
+        return true;
+    }
 }

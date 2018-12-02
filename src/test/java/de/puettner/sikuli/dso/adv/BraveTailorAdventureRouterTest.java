@@ -34,8 +34,10 @@ public class BraveTailorAdventureRouterTest extends MenuTest {
 
     @Test
     public void route() {
+        adventure.centerNavigationPoint(NP_1);
+        log.info("=============================================");
         adventure.route(NP_1, NP_4, null, null, null);
-        adventure.route(NP_4, NP_1, null, null, null);
+        // adventure.route(NP_4, NP_1, null, null, null);
     }
 
     @Test

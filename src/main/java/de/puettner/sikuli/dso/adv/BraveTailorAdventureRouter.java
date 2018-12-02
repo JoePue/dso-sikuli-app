@@ -41,7 +41,7 @@ public class BraveTailorAdventureRouter extends AdventureRouter {
 
     public void route(NavigationPoint startingPoint, NavigationPoint targetPoint, @Nullable Dimension targetDragDropOffset, @Nullable
             Dimension targetClickOffset, boolean isRouteCheck, Dimension initialDragDropOffset) {
-        log.info("route() " + startingPoint + " -> " + targetPoint + "(isRouteCheck: " + isRouteCheck + ")");
+        log.info("route() " + startingPoint + " -> " + targetPoint + " (isRouteCheck: " + isRouteCheck + ")");
         Objects.requireNonNull(startingPoint, "startingPoint is null");
         Objects.requireNonNull(targetPoint, "targetPoint is null");
         log.fine("route() targetDragDropOffset: " + targetDragDropOffset);

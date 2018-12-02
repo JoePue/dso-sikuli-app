@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import static de.puettner.sikuli.dso.LogFormats.formatToLog;
 import static java.lang.Math.pow;
 import static java.lang.Math.sqrt;
 
@@ -29,18 +30,18 @@ public class AppMath {
      * @return
      */
     public static Dimension calculateCenterDimension(Location midpoint, Location location) {
-        log.finest("midpoint: " + midpoint);
-        log.finest("location: " + location);
+        log.finest(formatToLog("midpoint", midpoint));
+        log.finest(formatToLog("location", location));
         Dimension dimension = new Dimension(location.x - midpoint.x, location.y - midpoint.y);
-        log.finest("dimension: " + dimension);
+        log.finest(formatToLog(dimension));
         return dimension;
     }
 
     public static Dimension add(Dimension left, Dimension right) {
-        log.finest("add() leftArg: " + left);
-        log.finest("add() rightArg: " + right);
+        log.finest(formatToLog("add() leftArg: ", left));
+        log.finest(formatToLog("add() rightArg: ", right));
         Dimension result = new Dimension(left.width + right.width, left.height + right.height);
-        log.finest("result() result: " + result);
+        log.finest(formatToLog("result", result));
         return result;
     }
 
