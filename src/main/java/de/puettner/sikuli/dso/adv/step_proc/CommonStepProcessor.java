@@ -4,7 +4,6 @@ import de.puettner.sikuli.dso.DSOService;
 import de.puettner.sikuli.dso.adv.*;
 import de.puettner.sikuli.dso.commands.ui.IslandCommands;
 import de.puettner.sikuli.dso.commands.ui.StarMenu;
-import de.puettner.sikuli.dso.commands.ui.StarMenuFilter;
 import lombok.extern.java.Log;
 import org.sikuli.script.Match;
 import org.sikuli.script.Region;
@@ -177,10 +176,6 @@ public class CommonStepProcessor {
         }
     }
 
-    public void prepareStarMenu(StarMenuFilter filter) {
-        dsoService.prepareStarMenu(filter);
-    }
-
     public boolean processSolveQuestStep(AdventureStep step) {
         log.info("processSolveQuestStep()");
         final int SLEEP_TIME = 15;
@@ -195,16 +190,6 @@ public class CommonStepProcessor {
                 islandCmds.sleep(SLEEP_TIME, TimeUnit.SECONDS);
             }
         }
-        return true;
-    }
-
-    private boolean campExists(AttackCamp camp) {
-        log.info("campExists()");
-        Match match = islandCmds.find(camp.getPattern(), region);
-        if (match == null) {
-            return false;
-        }
-        match.hover();
         return true;
     }
 
@@ -247,7 +232,6 @@ public class CommonStepProcessor {
             islandCmds.sleep(step.getDelay(), TimeUnit.SECONDS);
         }
     }
-
 
     public boolean isDelay(boolean isFirst, AdventureStep step) {
         if (step.getDelay() != null && step.getDelay() > 0) {
