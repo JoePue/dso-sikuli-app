@@ -114,7 +114,7 @@
                                     <archive>
                                         <manifest>
                                             <mainClass>
-                                                de.puettner.sikuli.dso.DsoSikuliApp
+                                                de.puettner.sikuli.dso.DSOSikuliApp
                                             </mainClass>
                                         </manifest>
                                     </archive>
