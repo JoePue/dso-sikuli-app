@@ -14,8 +14,6 @@ import java.util.List;
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
-import static de.puettner.sikuli.dso.adv.AdventureStepState.OPEN;
-import static de.puettner.sikuli.dso.adv.StepType.ATTACK;
 import static de.puettner.sikuli.dso.adv.StepType.WAIT;
 import static de.puettner.sikuli.dso.commands.ui.SikuliCommands.pattern;
 import static de.puettner.sikuli.dso.commands.ui.StarMenuFilter.GeneralsFilterString;
@@ -236,9 +234,6 @@ public class CommonStepProcessor {
     public boolean isDelay(boolean isFirst, AdventureStep step) {
         if (step.getDelay() != null && step.getDelay() > 0) {
             if (!isFirst || WAIT.equals(step.getStepType())) {
-                if (ATTACK.equals(step.getStepType()) && OPEN.equals(step.getState())) {
-                    return false;
-                }
                 return true;
             }
         }

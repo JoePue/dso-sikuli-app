@@ -70,6 +70,7 @@ IF "%runFlag%" EQU "true" (
     ECHO Missing Jar: %JAR_NAME%
     GOTO END
   )
+  ECHO %EXE_CMD% firstDailyRun
   %EXE_CMD% firstDailyRun
 
   for /L %%k in (1, 1, 6) DO (
