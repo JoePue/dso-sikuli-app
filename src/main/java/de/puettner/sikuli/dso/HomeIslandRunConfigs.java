@@ -89,6 +89,5 @@ public class HomeIslandRunConfigs {
 
         dsoService.buildAllMines(false);
         dsoService.findAllCollectables();
-        dsoService.exitDso();
     }
 }
