@@ -1,5 +1,6 @@
 package de.puettner.sikuli.dso;
 
+import de.puettner.sikuli.dso.commands.ui.BookbinderMenuButtons;
 import de.puettner.sikuli.dso.commands.ui.MaterialType;
 import org.junit.Before;
 import org.junit.Test;
@@ -101,7 +102,7 @@ public class DSOServiceTest extends BaseServiceTest {
 
     @Test
     public void fetchBookbinderItem() {
-        dsoService.fetchBookbinderItem();
+        dsoService.fetchBookbinderItem(BookbinderMenuButtons.Manusskript);
     }
 
     @Test

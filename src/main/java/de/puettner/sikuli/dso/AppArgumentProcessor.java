@@ -2,6 +2,7 @@ package de.puettner.sikuli.dso;
 
 import de.puettner.sikuli.dso.adv.AdventureBuilder;
 import de.puettner.sikuli.dso.commands.os.WindowsPlatform;
+import de.puettner.sikuli.dso.commands.ui.BookbinderMenuButtons;
 import de.puettner.sikuli.dso.commands.ui.MenuBuilder;
 import lombok.extern.java.Log;
 import org.sikuli.basics.Settings;
@@ -75,7 +76,7 @@ public class AppArgumentProcessor {
                             (args[1]), Integer.valueOf(args[1]));
                     dsoService.launchGeologics(launch);
                 } else if ("fetchBookbinderItem".equals(arg)) {
-                    dsoService.fetchBookbinderItem();
+                    dsoService.fetchBookbinderItem(BookbinderMenuButtons.Manusskript);
                 } else if ("solveDailyQuest".equals(arg)) {
                     dsoService.solveDailyQuest();
                 } else if ("solveGuildQuest".equals(arg)) {

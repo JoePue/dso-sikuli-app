@@ -245,7 +245,7 @@ public class DSOService {
         return this.prepareStarMenu(StarMenuFilter.EIGTH_PERCENT);
     }
 
-    public void fetchBookbinderItem() {
+    public void fetchBookbinderItem(BookbinderMenuButtons bookType) {
         log.info("fetchBookbinderItem");
         islandCmds.parkMouse();
         sectorService.goToSector(Sector.S3);
@@ -255,7 +255,7 @@ public class DSOService {
                 // Assumes production is ready
                 islandCmds.sleepX(15);
             }
-            bookbinderMenu.clickButton(BookbinderMenuButtons.Kompendium);
+            bookbinderMenu.clickButton(bookType);
             islandCmds.sleep();
             if (bookbinderMenu.clickOkButtonBookbinder()) {
 

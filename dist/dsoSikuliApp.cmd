@@ -75,7 +75,7 @@ IF "%runFlag%" EQU "true" (
 
   for /L %%k in (1, 1, 6) DO (
     echo #%%k Loop
-    %EXE_CMD% preventScreensaver
+    REM %EXE_CMD% preventScreensaver
     IF "%%k" EQU "3" (
       beep 3
       %EXE_CMD% buildAllMines

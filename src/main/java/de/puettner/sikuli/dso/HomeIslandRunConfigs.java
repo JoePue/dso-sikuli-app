@@ -1,10 +1,13 @@
 package de.puettner.sikuli.dso;
 
+import de.puettner.sikuli.dso.commands.ui.BookbinderMenuButtons;
 import de.puettner.sikuli.dso.commands.ui.StarMenuFilter;
 
 import static de.puettner.sikuli.dso.commands.ui.MaterialType.*;
 
 public class HomeIslandRunConfigs {
+
+    private static BookbinderMenuButtons bookType = BookbinderMenuButtons.Manusskript;
 
     public static void firstDailyRun(DSOService dsoService) {
         dsoService.startDsoApp();
@@ -24,7 +27,7 @@ public class HomeIslandRunConfigs {
         dsoService.launchGeologics(geologicLaunches);
         dsoService.launchAllExplorer();
 
-        dsoService.fetchBookbinderItem();
+        dsoService.fetchBookbinderItem(bookType);
         dsoService.solveDailyQuest();
         dsoService.solveGuildQuest();
 
@@ -69,7 +72,7 @@ public class HomeIslandRunConfigs {
 
         dsoService.buildAllMines(false);
         dsoService.findAllCollectables();
-        dsoService.fetchBookbinderItem();
+        dsoService.fetchBookbinderItem(bookType);
         dsoService.confirmNewQuest();
         dsoService.confirmSolvedQuest();
     }
