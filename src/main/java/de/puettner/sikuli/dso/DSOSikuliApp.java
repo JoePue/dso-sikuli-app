@@ -3,7 +3,7 @@ package de.puettner.sikuli.dso;
 import lombok.extern.java.Log;
 
 @Log
-public class DsoSikuliApp {
+public class DSOSikuliApp {
 
     public static void main(String[] args) {
         log.info("App starting");

@@ -42,19 +42,13 @@
         <dependency>
             <groupId>com.sikulix</groupId>
             <artifactId>sikulixapi</artifactId>
-            <!-- 1.1.4-SNAPSHOT als 1.1.4-JPU ins lokale Maven-Repo importiert -->
             <version>1.1.4-SNAPSHOT</version>
         </dependency>
-        <!-- the selenium-java artifact has a lot of transitive dependencies -->
         <dependency>
-            <!-- TODO JPU: Dep entfernen -->
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-java</artifactId>
-            <version>3.13.0</version>
-            <!-- Currently only used for demos -->
-            <scope>provided</scope>
+            <groupId>com.google.code.findbugs</groupId>
+            <artifactId>jsr305</artifactId>
+            <version>3.0.2</version>
         </dependency>
-
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-core</artifactId>
@@ -114,7 +108,7 @@
                                     <archive>
                                         <manifest>
                                             <mainClass>
-                                                de.puettner.sikuli.dso.DsoSikuliApp
+                                                de.puettner.sikuli.dso.DSOSikuliApp
                                             </mainClass>
                                         </manifest>
                                     </archive>
