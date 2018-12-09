@@ -2,6 +2,7 @@ package de.puettner.sikuli.dso.adv;
 
 import de.puettner.sikuli.dso.AppEnvironment;
 import de.puettner.sikuli.dso.DSOServiceBuilder;
+import de.puettner.sikuli.dso.InstanceBuilder;
 import de.puettner.sikuli.dso.commands.os.WindowsPlatform;
 import de.puettner.sikuli.dso.commands.ui.MenuBuilder;
 import org.sikuli.script.Region;
@@ -25,8 +26,8 @@ public class AdventureBuilder {
 
     public static AdventureBuilder build() {
         if (advBuilder == null) {
-            WindowsPlatform platformCmds = new WindowsPlatform();
-            advBuilder = new AdventureBuilder(platformCmds.getDsoBrowserDimension().getRegion(), AppEnvironment.getInstance());
+            WindowsPlatform platformCmds = WindowsPlatform.Builder.build();
+            advBuilder = new AdventureBuilder(platformCmds.getDsoBrowserDimension().getRegion(), InstanceBuilder.buildAppEnvironment());
         }
         return advBuilder;
     }

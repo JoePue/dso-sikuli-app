@@ -1,5 +1,6 @@
 package de.puettner.sikuli.dso.commands.ui;
 
+import de.puettner.sikuli.dso.InstanceBuilder;
 import de.puettner.sikuli.dso.adv.GeneralMenu;
 import de.puettner.sikuli.dso.commands.os.WindowsPlatform;
 import lombok.extern.java.Log;
@@ -36,7 +37,7 @@ public class MenuBuilder {
 
     public static MenuBuilder build() {
         if (menuBuilder == null) {
-            WindowsPlatform platformCmds = new WindowsPlatform();
+            WindowsPlatform platformCmds = new WindowsPlatform(InstanceBuilder.buildAppEnvironment());
             menuBuilder = new MenuBuilder(platformCmds.getDsoBrowserDimension().getRegion());
         }
         return menuBuilder;

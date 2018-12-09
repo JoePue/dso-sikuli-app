@@ -1,15 +1,18 @@
 package de.puettner.sikuli.dso;
 
+import de.puettner.sikuli.dso.adv.FileService;
 import de.puettner.sikuli.dso.exception.InvalidParameterException;
 import lombok.Getter;
 
 import java.io.File;
+import java.util.List;
 
 @Getter
 public class AppEnvironment {
 
     private static AppEnvironment instance;
     private final File homeDir;
+    private AppProperties properties;
 
     private AppEnvironment(File homeDir) {
         this.homeDir = homeDir;
@@ -19,13 +22,9 @@ public class AppEnvironment {
         this.homeDir = new File(".");
     }
 
-    public static AppEnvironment getInstance() {
-        return getInstance(new String[0]);
-    }
-
-    public static AppEnvironment getInstance(String[] args) {
+    public static AppEnvironment getInstance(List<String> args, FileService fileService) {
         if (instance == null) {
-            instance = Builder.build(args);
+            instance = Builder.build(args, fileService);
         }
         return instance;
     }
@@ -38,12 +37,18 @@ public class AppEnvironment {
         return new File(path + File.separator + filename);
     }
 
-    static class Builder {
+    private void setProperties(AppProperties properties) {
+        this.properties = properties;
+    }
+
+    public static class Builder {
+        public static final String APP_PROPERTIES_FILENAME = "dso-sikuli-app.properties";
         public static final String DSO_SIKULI_APP_HOME = "--configDir".toUpperCase();
 
-        public static AppEnvironment build(String[] args) {
-            for (int i = 0; i < args.length; ++i) {
-                String arg = args[i];
+        public static AppEnvironment build(List<String> args, FileService fileService) {
+            File homeDir = null;
+            for (int i = 0; i < args.size(); ++i) {
+                String arg = args.get(i);
                 if (arg.isEmpty()) {
                     continue;
                 }
@@ -51,18 +56,30 @@ public class AppEnvironment {
                 if (argToUpper.startsWith(DSO_SIKULI_APP_HOME) && argToUpper.length() > DSO_SIKULI_APP_HOME.length()) {
                     String paramValue = arg.substring(DSO_SIKULI_APP_HOME.length() + 1);
                     if (paramValue.isEmpty()) {
-                        return new AppEnvironment();
+                        break;
                     }
-                    File homeDir = new File(paramValue);
-                    args[i] = null;
+                    homeDir = new File(paramValue);
+                    args.set(i, null);
                     if (homeDir.isDirectory()) {
-                        return new AppEnvironment(homeDir);
+                        break;
                     } else {
                         throw new InvalidParameterException("Parameter " + DSO_SIKULI_APP_HOME + " is invalid: ");
                     }
                 }
             }
-            return new AppEnvironment();
+            AppEnvironment env = null;
+            if (homeDir == null) {
+                env = new AppEnvironment();
+            } else {
+                env = new AppEnvironment(homeDir);
+            }
+            env.setProperties(loadAppConfig(env, fileService));
+            return env;
+        }
+
+        private static AppProperties loadAppConfig(AppEnvironment homeDir, FileService fileService) {
+            File appConfigFile = homeDir.appendFilename(APP_PROPERTIES_FILENAME);
+            return fileService.loadFile(appConfigFile);
         }
     }
 }

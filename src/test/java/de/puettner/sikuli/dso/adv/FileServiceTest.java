@@ -21,12 +21,13 @@ public class FileServiceTest {
         log.info("url: " + url);
         File file = new File(url.toURI());
         log.info("file: " + file);
-        sut = new FileService(file);
+        sut = new FileService();
     }
 
     @Test
     public void saveState() {
-        AdventureState state = sut.restoreState();
-        sut.saveState(state);
+        File file = new File("test.txt");
+        AdventureState state = sut.restoreAdventureState(file);
+        sut.saveAdventureState(state, file);
     }
 }

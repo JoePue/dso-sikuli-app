@@ -3,6 +3,8 @@ package de.puettner.sikuli.dso.adv;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.module.SimpleModule;
+import de.puettner.sikuli.dso.AppProperties;
+import de.puettner.sikuli.dso.exception.AppException;
 import lombok.extern.java.Log;
 
 import java.io.File;
@@ -14,11 +16,8 @@ import java.util.List;
 public class FileService {
 
     private static final ObjectMapper objectMapper = new ObjectMapper();
-    private final File filename;
 
-    public FileService(File filename) {
-        this.filename = filename;
-
+    public FileService() {
         SimpleModule module = new SimpleModule();
         module.addDeserializer(AttackCamp.class, new AttackCampDeserializer());
         objectMapper.registerModule(module);
@@ -33,7 +32,7 @@ public class FileService {
         return filename;
     }
 
-    public void saveState(AdventureState state) {
+    public void saveAdventureState(AdventureState state, File filename) {
         log.info("saveState()");
         try {
             objectMapper.writerWithDefaultPrettyPrinter().writeValue(filename, state);
@@ -43,7 +42,7 @@ public class FileService {
         }
     }
 
-    public AdventureState restoreState() {
+    public AdventureState restoreAdventureState(File filename) {
         log.info("restoreState()");
         AdventureState state;
         try {
@@ -62,6 +61,17 @@ public class FileService {
         int i = 0;
         for (AdventureStep item : list) {
             item.setNo(++i);
+        }
+    }
+
+    public AppProperties loadFile(File file) {
+        if (!(file.exists() && file.isFile())) {
+            throw new AppException("Missing file: " + file.getAbsolutePath());
+        }
+        try {
+            return objectMapper.readValue(file, AppProperties.class);
+        } catch (IOException e) {
+            throw new AppException(e);
         }
     }
 }

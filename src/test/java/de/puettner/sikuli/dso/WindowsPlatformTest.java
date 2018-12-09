@@ -10,11 +10,11 @@ import static org.junit.Assert.assertTrue;
 
 public class WindowsPlatformTest {
 
-    private WindowsPlatform sut = new WindowsPlatform();
+    private WindowsPlatform sut = WindowsPlatform.Builder.build();
 
     @Test
     public void isProcessRunning() {
-        assertTrue(sut.isDsoBrowserRunning());
+        assertTrue(sut.isChromeBrowserRunning());
     }
 
     @Test

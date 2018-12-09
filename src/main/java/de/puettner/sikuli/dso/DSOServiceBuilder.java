@@ -6,7 +6,7 @@ import de.puettner.sikuli.dso.commands.ui.MenuBuilder;
 public class DSOServiceBuilder {
 
     private static final MenuBuilder menuBuilder = MenuBuilder.build();
-    private static final WindowsPlatform winPlatfom = new WindowsPlatform();
+    private static final WindowsPlatform winPlatfom = WindowsPlatform.Builder.build();
     private static DSOService dsoService = null;
 
     public static DSOService build() {

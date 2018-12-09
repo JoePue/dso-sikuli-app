@@ -1,6 +1,6 @@
 package de.puettner.sikuli.dso.adv;
 
-import de.puettner.sikuli.dso.AppEnvironment;
+import de.puettner.sikuli.dso.InstanceBuilder;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -9,6 +9,6 @@ public class JsonFileFormatterTest {
 
     @Test
     public void format() throws IOException {
-        JsonFileFormatter.format(AppEnvironment.getInstance().appendFilename("brave-tailor-adventure.json"));
+        JsonFileFormatter.format(InstanceBuilder.buildAppEnvironment().appendFilename("brave-tailor-adventure.json"));
     }
 }

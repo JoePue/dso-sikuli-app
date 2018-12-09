@@ -16,7 +16,7 @@ public class AppArgumentProcessor {
     public final AppEnvironment appEnvironment;
 
     public AppArgumentProcessor() {
-        this.appEnvironment = AppEnvironment.getInstance();
+        this.appEnvironment = InstanceBuilder.buildAppEnvironment();
     }
 
     /*
@@ -29,7 +29,7 @@ public class AppArgumentProcessor {
     public void process(String[] args) {
         log.info("process()");
         logArgs(args);
-        WindowsPlatform platform = new WindowsPlatform();
+        WindowsPlatform platform = WindowsPlatform.Builder.build();
         logSettings();
         MenuBuilder menuBuilder = MenuBuilder.build();
 

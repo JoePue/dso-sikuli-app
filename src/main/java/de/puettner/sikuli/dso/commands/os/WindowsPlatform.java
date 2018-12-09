@@ -1,5 +1,7 @@
 package de.puettner.sikuli.dso.commands.os;
 
+import de.puettner.sikuli.dso.AppEnvironment;
+import de.puettner.sikuli.dso.InstanceBuilder;
 import org.sikuli.script.Region;
 
 import java.awt.*;
@@ -20,8 +22,13 @@ public class WindowsPlatform {
     public static final String CHROME_EXE = "chrome.exe";
     public static final String CMDOW_EXE = "bins/cmdow.exe";
     private static final String CHROME_PROCESS_CAPTION_REGEX = "* - Google Chrome";
+    private final AppEnvironment appEnvironment;
 
-    public boolean isDsoBrowserRunning() {
+    public WindowsPlatform(AppEnvironment appEnvironment) {
+        this.appEnvironment = appEnvironment;
+    }
+
+    public boolean isChromeBrowserRunning() {
         return this.isProcessRunning(CHROME_EXE);
     }
 
@@ -109,6 +116,12 @@ public class WindowsPlatform {
 
         if (!isProcessRunning(applicationName)) {
             Desktop.getDesktop().open(application);
+        }
+    }
+
+    public static class Builder {
+        public static WindowsPlatform build() {
+            return new WindowsPlatform(InstanceBuilder.buildAppEnvironment());
         }
     }
 

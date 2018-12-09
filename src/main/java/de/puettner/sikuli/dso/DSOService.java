@@ -44,7 +44,7 @@ public class DSOService {
 
     public void startDsoApp() {
         log.info("startDsoApp");
-        if (!winCommand.isDsoBrowserRunning()) {
+        if (!winCommand.isChromeBrowserRunning()) {
             throw new IllegalStateException("Not implemented");
         }
         focusBrowser();

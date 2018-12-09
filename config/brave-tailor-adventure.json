@@ -112,7 +112,7 @@
       "units": [
         {
           "type": "Rek", "quantity": 120
-    }, {
+        }, {
           "type": "Kan", "quantity": 75
         }
       ],
@@ -125,7 +125,7 @@
       "units": [
         {
           "type": "Rek", "quantity": 65
-    }, {
+        }, {
           "type": "Cav", "quantity": 115
         }
       ],
@@ -141,7 +141,7 @@
       "units": [
         {
           "type": "Rek", "quantity": 200
-    }, {
+        }, {
           "type": "Kan", "quantity": 85
         }
       ],
@@ -157,9 +157,9 @@
       "units": [
         {
           "type": "Rek", "quantity": 140
-    }, {
+        }, {
           "type": "Sol", "quantity": 30
-    }, {
+        }, {
           "type": "Kan", "quantity": 25
         }
       ],
@@ -194,7 +194,7 @@
       "units": [
         {
           "type": "Bos", "quantity": 160
-    }, {
+        }, {
           "type": "Kan", "quantity": 55
         }
       ],
@@ -218,9 +218,9 @@
       "units": [
         {
           "type": "Rek", "quantity": 70
-    }, {
+        }, {
           "type": "Eso", "quantity": 10
-    }, {
+        }, {
           "type": "Kan", "quantity": 205
         }
       ],
@@ -302,7 +302,7 @@
       "general": "MdK", "generalName": "MdK 1",
       "startNavPoint": "NP_1", "targetNavPoint": "NP_2",
       "targetNavPointClickOffset": {
-        "width": 165.0, "height": 95.0
+        "width": 298.0, "height": 12.0
       }
     }, {
       "no": 50, "stepType": "MOVE", "state": "DONE",
@@ -323,7 +323,7 @@
       "general": "Anslem",
       "startNavPoint": "NP_1", "targetNavPoint": "NP_2",
       "targetNavPointClickOffset": {
-        "width": 298.0, "height": 12.0
+        "width": 165.0, "height": 95.0
       }
     }, {
       "no": 53, "stepType": "UNSET_UNITS", "state": "DONE",
@@ -335,9 +335,9 @@
       "units": [
         {
           "type": "Rek", "quantity": 160
-    }, {
+        }, {
           "type": "Bos", "quantity": 60
-    }, {
+        }, {
           "type": "Kan", "quantity": 65
         }
       ],
@@ -350,9 +350,9 @@
       "units": [
         {
           "type": "Rek", "quantity": 135
-    }, {
+        }, {
           "type": "Cav", "quantity": 30
-    }, {
+        }, {
           "type": "Kan", "quantity": 120
         }
       ],
@@ -372,9 +372,9 @@
       "units": [
         {
           "type": "Rek", "quantity": 160
-    }, {
+        }, {
           "type": "Sol", "quantity": 40
-    }, {
+        }, {
           "type": "Kan", "quantity": 85
         }
       ],
@@ -387,7 +387,7 @@
       "units": [
         {
           "type": "Rek", "quantity": 90
-    }, {
+        }, {
           "type": "Kan", "quantity": 75
         }
       ],
@@ -459,9 +459,9 @@
       "units": [
         {
           "type": "Rek", "quantity": 140
-    }, {
+        }, {
           "type": "Sol", "quantity": 60
-    }, {
+        }, {
           "type": "Kan", "quantity": 85
         }
       ],
@@ -518,7 +518,7 @@
       "units": [
         {
           "type": "Rek", "quantity": 140
-    }, {
+        }, {
           "type": "Kan", "quantity": 25
         }
       ],
@@ -569,7 +569,7 @@
       "units": [
         {
           "type": "Rek", "quantity": 100
-    }, {
+        }, {
           "type": "Kan", "quantity": 65
         }
       ],
@@ -599,9 +599,9 @@
       "units": [
         {
           "type": "Rek", "quantity": 120
-    }, {
+        }, {
           "type": "Bos", "quantity": 140
-    }, {
+        }, {
           "type": "Kan", "quantity": 25
         }
       ],
@@ -620,7 +620,7 @@
       "units": [
         {
           "type": "Rek", "quantity": 60
-    }, {
+        }, {
           "type": "Kan", "quantity": 105
         }
       ],
@@ -636,7 +636,7 @@
       "units": [
         {
           "type": "Bos", "quantity": 160
-    }, {
+        }, {
           "type": "Arm", "quantity": 35
         }
       ],
@@ -730,9 +730,9 @@
       "units": [
         {
           "type": "Rek", "quantity": 60
-    }, {
+        }, {
           "type": "Cav", "quantity": 60
-    }, {
+        }, {
           "type": "Kan", "quantity": 100
         }
       ],
@@ -901,9 +901,9 @@
       "units": [
         {
           "type": "Rek", "quantity": 130
-    }, {
+        }, {
           "type": "Cav", "quantity": 55
-    }, {
+        }, {
           "type": "Kan", "quantity": 100
         }
       ],
@@ -951,7 +951,7 @@
       "units": [
         {
           "type": "Rek", "quantity": 120
-    }, {
+        }, {
           "type": "Arm", "quantity": 165
         }
       ],
@@ -970,7 +970,7 @@
         "width": 0.0, "height": 200.0
       }
     }, {
-      "no": 120, "stepType": "ATTACK", "state": "PREPARED", "delay": 30,
+      "no": 120, "stepType": "ATTACK", "state": "DONE", "delay": 30,
       "general": "Generalmajor", "generalName": "GM 1",
       "camp": "CAMP_21",
       "units": [
@@ -980,7 +980,7 @@
       ],
       "startNavPoint": "NP_4", "targetNavPoint": "NP_4"
     }, {
-      "no": 121, "stepType": "ATTACK", "state": "OPEN", "delay": 0,
+      "no": 121, "stepType": "ATTACK", "state": "DONE", "delay": 0,
       "general": "Vargus",
       "camp": "CAMP_22",
       "units": [
@@ -990,7 +990,7 @@
       ],
       "startNavPoint": "NP_4", "targetNavPoint": "NP_5"
     }, {
-      "no": 122, "stepType": "ATTACK", "state": "OPEN", "delay": 0,
+      "no": 122, "stepType": "ATTACK", "state": "DONE", "delay": 0,
       "general": "Dracul", "generalName": "Draci 1",
       "camp": "CAMP_22",
       "units": [
@@ -1000,7 +1000,7 @@
       ],
       "startNavPoint": "NP_4", "targetNavPoint": "NP_5"
     }, {
-      "no": 123, "stepType": "ATTACK", "state": "OPEN", "delay": 0,
+      "no": 123, "stepType": "ATTACK", "state": "DONE", "delay": 0,
       "general": "Dracul", "generalName": "Draci 2",
       "camp": "CAMP_22",
       "units": [
@@ -1010,21 +1010,21 @@
       ],
       "startNavPoint": "NP_4", "targetNavPoint": "NP_5"
     }, {
-      "no": 124, "stepType": "ATTACK", "state": "OPEN", "delay": 10,
+      "no": 124, "stepType": "ATTACK", "state": "DONE", "delay": 10,
       "general": "Generalmajor", "generalName": "GM 2",
       "camp": "CAMP_22",
       "units": [
         {
           "type": "Rek", "quantity": 160
-    }, {
+        }, {
           "type": "Lnb", "quantity": 60
-    }, {
+        }, {
           "type": "Kan", "quantity": 65
         }
       ],
       "startNavPoint": "NP_4", "targetNavPoint": "NP_5"
     }, {
-      "no": 125, "stepType": "ATTACK", "state": "OPEN", "delay": 10,
+      "no": 125, "stepType": "ATTACK", "state": "DONE", "delay": 10,
       "general": "Generalmajor", "generalName": "GM 1",
       "camp": "CAMP_23",
       "units": [
@@ -1034,7 +1034,7 @@
       ],
       "startNavPoint": "NP_4", "targetNavPoint": "NP_5"
     }, {
-      "no": 126, "stepType": "ATTACK", "state": "OPEN", "delay": 0,
+      "no": 126, "stepType": "ATTACK", "state": "DONE", "delay": 0,
       "general": "MdK", "generalName": "MdK 3",
       "camp": "CAMP_24",
       "units": [
@@ -1044,7 +1044,7 @@
       ],
       "startNavPoint": "NP_4", "targetNavPoint": "NP_5"
     }, {
-      "no": 127, "stepType": "ATTACK", "state": "OPEN", "delay": 0,
+      "no": 127, "stepType": "ATTACK", "state": "DONE", "delay": 0,
       "general": "MdK", "generalName": "MdK 4",
       "camp": "CAMP_24",
       "units": [
@@ -1054,7 +1054,7 @@
       ],
       "startNavPoint": "NP_4", "targetNavPoint": "NP_5"
     }, {
-      "no": 128, "stepType": "ATTACK", "state": "OPEN", "delay": 0,
+      "no": 128, "stepType": "ATTACK", "state": "DONE", "delay": 0,
       "general": "MdK", "generalName": "MdK 5",
       "camp": "CAMP_24",
       "units": [
@@ -1064,7 +1064,7 @@
       ],
       "startNavPoint": "NP_4", "targetNavPoint": "NP_5"
     }, {
-      "no": 129, "stepType": "ATTACK", "state": "OPEN", "delay": 0,
+      "no": 129, "stepType": "ATTACK", "state": "DONE", "delay": 0,
       "general": "MdK", "generalName": "MdK 6",
       "camp": "CAMP_24",
       "units": [
@@ -1074,7 +1074,7 @@
       ],
       "startNavPoint": "NP_4", "targetNavPoint": "NP_5"
     }, {
-      "no": 130, "stepType": "ATTACK", "state": "OPEN", "delay": 0,
+      "no": 130, "stepType": "ATTACK", "state": "DONE", "delay": 0,
       "general": "MdK", "generalName": "MdK 7",
       "camp": "CAMP_24",
       "units": [
@@ -1084,7 +1084,7 @@
       ],
       "startNavPoint": "NP_4", "targetNavPoint": "NP_5"
     }, {
-      "no": 131, "stepType": "ATTACK", "state": "OPEN", "delay": 0,
+      "no": 131, "stepType": "ATTACK", "state": "DONE", "delay": 0,
       "general": "MdK", "generalName": "MdK 8",
       "camp": "CAMP_24",
       "units": [
@@ -1094,7 +1094,7 @@
       ],
       "startNavPoint": "NP_4", "targetNavPoint": "NP_5"
     }, {
-      "no": 132, "stepType": "ATTACK", "state": "OPEN", "delay": 0,
+      "no": 132, "stepType": "ATTACK", "state": "DONE", "delay": 0,
       "general": "Nusala",
       "camp": "CAMP_24",
       "units": [
@@ -1104,7 +1104,7 @@
       ],
       "startNavPoint": "NP_4", "targetNavPoint": "NP_5"
     }, {
-      "no": 133, "stepType": "ATTACK", "state": "OPEN", "delay": 10,
+      "no": 133, "stepType": "ATTACK", "state": "DONE", "delay": 10,
       "general": "Anslem",
       "camp": "CAMP_24",
       "units": [
@@ -1114,21 +1114,21 @@
       ],
       "startNavPoint": "NP_4", "targetNavPoint": "NP_5"
     }, {
-      "no": 134, "stepType": "ATTACK", "state": "OPEN", "delay": 30,
+      "no": 134, "stepType": "ATTACK", "state": "DONE", "delay": 30,
       "general": "Generalmajor", "generalName": "GM 2",
       "camp": "CAMP_24",
       "units": [
         {
           "type": "Rek", "quantity": 80
-    }, {
+        }, {
           "type": "Cav", "quantity": 195
-    }, {
+        }, {
           "type": "Kan", "quantity": 10
         }
       ],
       "startNavPoint": "NP_4", "targetNavPoint": "NP_5"
     }, {
-      "no": 135, "stepType": "ATTACK", "state": "OPEN", "delay": 0,
+      "no": 135, "stepType": "ATTACK", "state": "DONE", "delay": 0,
       "general": "Dracul", "generalName": "Draci 1",
       "camp": "CAMP_25",
       "units": [
@@ -1138,7 +1138,7 @@
       ],
       "startNavPoint": "NP_4", "targetNavPoint": "NP_5"
     }, {
-      "no": 136, "stepType": "ATTACK", "state": "OPEN", "delay": 0,
+      "no": 136, "stepType": "ATTACK", "state": "DONE", "delay": 0,
       "general": "Dracul", "generalName": "Draci 2",
       "camp": "CAMP_25",
       "units": [
@@ -1148,9 +1148,12 @@
       ],
       "startNavPoint": "NP_4", "targetNavPoint": "NP_5"
     }, {
-      "no": 137, "stepType": "EXIT_DSO", "state": "OPEN"
+      "no": 32, "stepType": "LAND", "state": "DONE",
+      "general": "Dracul", "generalName": "Draci 3"
     }, {
-      "no": 138, "stepType": "WAIT", "state": "OPEN", "delay": 30
+      "no": 137, "stepType": "EXIT_DSO", "state": "DONE"
+    }, {
+      "no": 138, "stepType": "WAIT", "state": "OPEN", "delay": 5
     }, {
       "no": 139, "stepType": "FINISH_ACTION", "state": "OPEN",
       "comment": "D:\\dev-tools\\sikuli\\workspace\\dso-sikuli-app-idea\\dist\\finishAction.cmd"

@@ -2,6 +2,7 @@ package de.puettner.sikuli.dso.adv;
 
 import de.puettner.sikuli.dso.AppEnvironment;
 import de.puettner.sikuli.dso.DSOService;
+import de.puettner.sikuli.dso.InstanceBuilder;
 import de.puettner.sikuli.dso.adv.step_proc.AttackStepProcessor;
 import de.puettner.sikuli.dso.adv.step_proc.CommonStepProcessor;
 import de.puettner.sikuli.dso.commands.ui.IslandCommands;
@@ -10,6 +11,7 @@ import de.puettner.sikuli.dso.commands.ui.StarMenu;
 import lombok.extern.java.Log;
 import org.sikuli.script.Match;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
@@ -30,16 +32,19 @@ public abstract class Adventure {
     private final IslandCommands islandCmds;
     private final AttackStepProcessor attackStepProcessor;
     private final CommonStepProcessor cmnStepProcessor;
+    private final File adventureFile;
     protected List<AdventureStep> adventureSteps = new ArrayList<>();
     private AdventureConfiguration configuration;
 
     protected Adventure(IslandCommands islandCmds, StarMenu starMenu, DSOService dsoService, AdventureRouter adventureRouter, String
             adventureFilename) {
+        AppEnvironment env = InstanceBuilder.buildAppEnvironment();
         this.adventureFilename = adventureFilename;
+        this.adventureFile = env.appendFilename(adventureFilename);
         this.adventureRouter = adventureRouter;
         this.islandCmds = islandCmds;
         this.dsoService = dsoService;
-        this.fileService = new FileService(AppEnvironment.getInstance().appendFilename(adventureFilename));
+        this.fileService = InstanceBuilder.buildFileService();
         this.cmnStepProcessor = new CommonStepProcessor(islandCmds, MenuBuilder.build().buildGeneralMenu(), adventureRouter, starMenu,
                 dsoService);
         this.attackStepProcessor = new AttackStepProcessor(cmnStepProcessor);
@@ -79,7 +84,7 @@ public abstract class Adventure {
 
     public void restoreState() {
         log.info("restoreState()");
-        AdventureState state = fileService.restoreState();
+        AdventureState state = fileService.restoreAdventureState(adventureFile);
         this.adventureSteps = state.getAdventureSteps();
         this.configuration = state.getConfiguration();
     }
@@ -292,7 +297,7 @@ public abstract class Adventure {
         AdventureState state = new AdventureState();
         state.setAdventureSteps(this.adventureSteps);
         state.setConfiguration(this.configuration);
-        fileService.saveState(state);
+        fileService.saveAdventureState(state, adventureFile);
     }
 
     protected abstract NavigationPoint getFirstNavigationPoint();
