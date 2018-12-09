@@ -7,9 +7,7 @@ import org.sikuli.script.Match;
 
 import java.util.*;
 
-import static de.puettner.sikuli.dso.commands.ui.ExplorerAction.AdventureSearch;
 import static de.puettner.sikuli.dso.commands.ui.ExplorerAction.TreasureSearch;
-import static de.puettner.sikuli.dso.commands.ui.ExplorerActionType.VERY_LONG;
 import static de.puettner.sikuli.dso.commands.ui.ExplorerActionType.VERY_VERY_LONG;
 import static de.puettner.sikuli.dso.commands.ui.ExplorerType.*;
 import static java.util.concurrent.TimeUnit.SECONDS;
@@ -423,7 +421,7 @@ public class DSOService {
      */
     public int launchAllSuccessfulExplorer() {
         log.info("launchAllSuccessfulExplorer");
-        return starMenu.launchAllExplorerByImage(SuccessfulExplorer, AdventureSearch, VERY_LONG);
+        return starMenu.launchAllExplorerByImage(SuccessfulExplorer, TreasureSearch, VERY_VERY_LONG);
     }
 
     public int launchAllWildExplorer() {
@@ -433,7 +431,7 @@ public class DSOService {
 
     public int launchAllFearlessExplorer() {
         log.info("launchAllFearlessExplorer");
-        return starMenu.launchAllExplorerByImage(FearlessExplorer, AdventureSearch, VERY_LONG);
+        return starMenu.launchAllExplorerByImage(FearlessExplorer, TreasureSearch, VERY_VERY_LONG);
     }
 
     public int launchAllNormalExplorer() {
